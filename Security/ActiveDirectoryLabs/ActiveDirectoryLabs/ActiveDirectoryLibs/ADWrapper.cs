@@ -12,6 +12,7 @@ using Fwk.Exceptions;
 using System.DirectoryServices.AccountManagement;
 using System.Reflection;
 using ActiveDirectoryLabs.Properties;
+using System.ComponentModel;
 
 namespace Fwk.Security.ActiveDirectory
 {
@@ -190,7 +191,64 @@ namespace Fwk.Security.ActiveDirectory
 
         #region users
 
+         /// <summary>
+         /// Esta funcion utiliza chequea el loging de un usuario contra un dominio
+         /// </summary>
+         /// <param name="userName"></param>
+         /// <param name="password"></param>
+         /// <param name="logError"></param>
+         /// <returns></returns>
+         public LoginResult User_Logon32(string userName, string password, out Fwk.Exceptions.TechnicalException logError)
+         {
+             LoginResult wLoginResult = LoginResult.LOGIN_OK;
+             Win32Exception win32Error = null;
+             logError = null;
+             SafeTokenHandle safeTokenHandle;
 
+             #region Busco el usuario con un DirectoryEntry con usuario administrador
+
+
+             this.User_Get(userName, password, out wLoginResult);
+
+             if (wLoginResult == LoginResult.ERROR_SERVER_IS_NOT_OPERATIONAL)
+             {
+                 win32Error = new Win32Exception();
+                 logError = new Fwk.Exceptions.TechnicalException(win32Error.Message);
+                 SetError(logError);
+                 logError.ErrorId = "15004";
+                 logError.Source = string.Concat(logError.Source, Environment.NewLine, win32Error.Source);
+                 return wLoginResult;
+             }
+             #endregion
+             if (wLoginResult == LoginResult.LOGIN_OK) return wLoginResult;
+
+             //obtain a handle to an access token.
+             bool returnValue = LogonProviderHelper.LogonUser(userName, _LDAPDomain, password,
+                 (int)LOGON32.LOGON32_LOGON_INTERACTIVE,
+                 (int)LOGON32.LOGON32_PROVIDER_DEFAULT,
+                out safeTokenHandle);
+
+
+
+
+             if (!returnValue)
+             {
+                 int ret = LogonProviderHelper.GetLastError();
+                 win32Error = new Win32Exception();
+                 logError = new Fwk.Exceptions.TechnicalException(win32Error.Message);
+                 SetError(logError);
+                 logError.ErrorId = "15004";
+                 logError.Source = string.Concat(logError.Source, Environment.NewLine, win32Error.Source);
+
+
+             }
+
+
+
+             return wLoginResult;
+
+
+         }
 
         /// <summary>
         /// Busca un usuario con autenticacion 
@@ -947,6 +1005,17 @@ namespace Fwk.Security.ActiveDirectory
 
             return result;
         }
+        /// <summary>
+        /// Establece los valores basicos de error producido en el componente ADHelper
+        /// </summary>
+        /// <param name="te"></param>
+        protected static void SetError(Fwk.Exceptions.TechnicalException te)
+        {
+            te.Namespace = typeof(ADWrapper).Namespace;
+            te.Source = "Fwk active directory component";
+            te.UserName = Environment.UserName;
+            te.UserName = Environment.MachineName;
+        }
         #endregion
 
          void ImpersonateWindowsContext()
@@ -974,5 +1043,13 @@ namespace Fwk.Security.ActiveDirectory
          }
 
         #endregion
+    }
+
+    [Serializable]
+    public class LoogonUserResult
+    {
+        public string ErrorMessage { get; set; }
+        public string LogResult { get; set; }
+        public bool Autenticated { get; set; }
     }
 }

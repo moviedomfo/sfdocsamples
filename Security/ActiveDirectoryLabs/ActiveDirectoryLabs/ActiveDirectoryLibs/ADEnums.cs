@@ -238,4 +238,6 @@ namespace Fwk.Security.ActiveDirectory
         /// </summary>
         LOGON32_LOGON_INTERACTIVE = 2
     }
+   
+
 }
