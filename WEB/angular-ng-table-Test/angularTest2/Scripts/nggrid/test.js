@@ -15,7 +15,7 @@ app.service('EmployeeService', function ($http) {
 
 
 app.controller('EmployeeController', function ($scope, EmployeeService) {
-    pepe
+
     GetAllRecords();
     function GetAllRecords() {
         var promiseGet = EmployeeService.getAllEmployee();
