@@ -24,6 +24,7 @@ app.controller('EmployeeController', function ($scope, EmployeeService) {
                   $log.error('Some Error in Getting Records.', errorPl);
               });
     }
+
     $scope.myData = [];
     $scope.gridOptions = {
 
