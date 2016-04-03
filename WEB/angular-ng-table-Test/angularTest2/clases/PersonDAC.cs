@@ -38,7 +38,7 @@ namespace SportsClub.DAC
            
             List<PersonFullViewBE> wPersonFullViewList = new List<PersonFullViewBE>();
             PersonFullViewBE wPersonFullView;
-
+            return Retrive();
 
             try
             {
@@ -94,7 +94,106 @@ namespace SportsClub.DAC
 
         }
 
-     
+        public static List<PersonFullViewBE> Retrive()
+        {
+            List<PersonFullViewBE> list = new List<PersonFullViewBE>();
+            PersonFullViewBE item = new PersonFullViewBE();
+            item.PersonId = 123213;
+            item.Name = "Martin";
+            item.Lastname = "Glover";
+            item.DocNumber = "6577332";
+
+            list.Add(item);
+            item = new PersonFullViewBE();
+            item.PersonId = 5835645;
+            item.Name = "pppppp";
+            item.Lastname = "plum";
+            item.DocNumber = "6577332";
+
+            
+            list.Add(item);
+            item = new PersonFullViewBE();
+            item.PersonId = 321;
+            item.Name = "aaaaaaaaaaaaa";
+            item.Lastname = "ADÁN";
+            item.DocNumber = "67854645";
+
+            list.Add(item);
+            list.Add(item);
+            item = new PersonFullViewBE();
+            item.PersonId = 8675;
+            item.Name = "ARGIDER";
+            item.Lastname = "Groster";
+            item.DocNumber = "6666";
+
+            list.Add(item);
+            list.Add(item);
+            item = new PersonFullViewBE();
+            item.PersonId = 23;
+            item.Name = " 	ARGINA";
+            item.Lastname = "Groster";
+            item.DocNumber = "07986254";
+
+            list.Add(item);
+            list.Add(item);
+            item = new PersonFullViewBE();
+            item.PersonId = 4;
+            item.Name = "ARGOITZ";
+            item.Lastname = "Groster";
+            item.DocNumber = "77732123";
+
+            list.Add(item);
+            list.Add(item);
+            item = new PersonFullViewBE();
+            item.PersonId = 5;
+            item.Name = "Jacob";
+            item.Lastname = "Groster";
+            item.DocNumber = "8907087";
+
+            list.Add(item);
+            list.Add(item);
+            item = new PersonFullViewBE();
+            item.PersonId = 7;
+            item.Name = "BERART";
+            item.Lastname = "435674";
+            item.DocNumber = "6666";
+
+            list.Add(item);
+            list.Add(item);
+            item = new PersonFullViewBE();
+            item.PersonId = 6;
+            item.Name = "BERDAITZ";
+            item.Lastname = "Groster";
+            item.DocNumber = "8679087";
+
+            list.Add(item);
+            list.Add(item);
+            item = new PersonFullViewBE();
+            item.PersonId = 321;
+            item.Name = "BERDAITZ";
+            item.Lastname = "Groster";
+            item.DocNumber = "6666";
+
+            list.Add(item);
+            list.Add(item);
+            item = new PersonFullViewBE();
+            item.PersonId = 567;
+            item.Name = "DULANTZI";
+            item.Lastname = "DIONISIO";
+            item.DocNumber = "875467";
+
+            list.Add(item);
+            list.Add(item);
+            item = new PersonFullViewBE();
+            item.PersonId = 123;
+            item.Name = "DIONISIO";
+            item.Lastname = "Groster";
+            item.DocNumber = "4565234";
+
+            list.Add(item);
+
+            return list;
+        }
 
         ///// <summary>
         ///// 

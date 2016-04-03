@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System.Configuration;
+using System.Web;
 using System.Web.Optimization;
 
 namespace angularTest2
@@ -30,17 +31,15 @@ namespace angularTest2
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
             "~/Content/bootstrap.css",
-            "~/Content/ng-table.css",
             "~/Content/site.css"));
 
 
-            bundles.Add(new ScriptBundle("~/bundles/app").Include(
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
              "~/Scripts/angular.js",
              "~/Scripts/angular-route.js",
                 "~/Scripts/underscore-min.js",
-             //"~/Scripts/lodash.js",
-             "~/Scripts/restangular.js",
-             "~/Scripts/ng-table.js"
+             "~/Scripts/restangular.js"
+             
              ));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
@@ -48,7 +47,9 @@ namespace angularTest2
                 //"~/Scripts/bootstrap-datepicker.min.js"
 
                  ));
-
+            //// Enable optimisation based on web.config setting
+            //BundleTable.EnableOptimizations =
+            //    bool.Parse(ConfigurationManager.AppSettings["BundleOptimisation"]);
         }
     }
 }

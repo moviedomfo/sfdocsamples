@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.0
+ * @license AngularJS v1.5.3
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -22,7 +22,11 @@
  */
  /* global -ngRouteModule */
 var ngRouteModule = angular.module('ngRoute', ['ng']).
-                        provider('$route', $RouteProvider),
+                        provider('$route', $RouteProvider).
+                        // Ensure `$route` will be instantiated in time to capture the initial
+                        // `$locationChangeSuccess` event. This is necessary in case `ngView` is
+                        // included in an asynchronously loaded template.
+                        run(['$route', angular.noop]),
     $routeMinErr = angular.$$minErr('ngRoute');
 
 /**
@@ -75,12 +79,12 @@ function $RouteProvider() {
    *
    *    Object properties:
    *
-   *    - `controller` â€“ `{(string|function()=}` â€“ Controller fn that should be associated with
+   *    - `controller` – `{(string|function()=}` – Controller fn that should be associated with
    *      newly created scope or the name of a {@link angular.Module#controller registered
    *      controller} if passed as a string.
-   *    - `controllerAs` â€“ `{string=}` â€“ An identifier name for a reference to the controller.
+   *    - `controllerAs` – `{string=}` – An identifier name for a reference to the controller.
    *      If present, the controller will be published to scope under the `controllerAs` name.
-   *    - `template` â€“ `{string=|function()=}` â€“ html template as a string or a function that
+   *    - `template` – `{string=|function()=}` – html template as a string or a function that
    *      returns an html template as a string which should be used by {@link
    *      ngRoute.directive:ngView ngView} or {@link ng.directive:ngInclude ngInclude} directives.
    *      This property takes precedence over `templateUrl`.
@@ -90,7 +94,7 @@ function $RouteProvider() {
    *      - `{Array.<Object>}` - route parameters extracted from the current
    *        `$location.path()` by applying the current route
    *
-   *    - `templateUrl` â€“ `{string=|function()=}` â€“ path or function that returns a path to an html
+   *    - `templateUrl` – `{string=|function()=}` – path or function that returns a path to an html
    *      template that should be used by {@link ngRoute.directive:ngView ngView}.
    *
    *      If `templateUrl` is a function, it will be called with the following parameters:
@@ -117,7 +121,7 @@ function $RouteProvider() {
    *      </div>
    *      The map object is:
    *
-   *      - `key` â€“ `{string}`: a name of a dependency to be injected into the controller.
+   *      - `key` – `{string}`: a name of a dependency to be injected into the controller.
    *      - `factory` - `{string|function}`: If `string` then it is an alias for a service.
    *        Otherwise if function, then it is {@link auto.$injector#invoke injected}
    *        and the return value is treated as the dependency. If the result is a promise, it is
@@ -128,7 +132,7 @@ function $RouteProvider() {
    *    - `resolveAs` - `{string=}` - The name under which the `resolve` map will be available on
    *      the scope of the route. If omitted, defaults to `$resolve`.
    *
-   *    - `redirectTo` â€“ `{(string|function())=}` â€“ value to update
+   *    - `redirectTo` – `{(string|function())=}` – value to update
    *      {@link ng.$location $location} path with and trigger route redirection.
    *
    *      If `redirectTo` is a function, it will be called with the following parameters:
@@ -218,9 +222,9 @@ function $RouteProvider() {
 
     path = path
       .replace(/([().])/g, '\\$1')
-      .replace(/(\/)?:(\w+)([\?\*])?/g, function(_, slash, key, option) {
-        var optional = option === '?' ? option : null;
-        var star = option === '*' ? option : null;
+      .replace(/(\/)?:(\w+)(\*\?|[\?\*])?/g, function(_, slash, key, option) {
+        var optional = (option === '?' || option === '*?') ? '?' : null;
+        var star = (option === '*' || option === '*?') ? '*' : null;
         keys.push({ name: key, optional: !!optional });
         slash = slash || '';
         return ''
@@ -749,8 +753,10 @@ ngRouteModule.directive('ngView', ngViewFillContentFactory);
  * Requires the {@link ngRoute `ngRoute`} module to be installed.
  *
  * @animations
- * enter - animation is used to bring new content into the browser.
- * leave - animation is used to animate existing content away.
+ * | Animation                        | Occurs                              |
+ * |----------------------------------|-------------------------------------|
+ * | {@link ng.$animate#enter enter}  | when the new element is inserted to the DOM |
+ * | {@link ng.$animate#leave leave}  | when the old element is removed from to the DOM  |
  *
  * The enter and leave animation occur concurrently.
  *

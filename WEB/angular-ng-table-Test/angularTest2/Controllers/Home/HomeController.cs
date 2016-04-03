@@ -23,7 +23,23 @@ namespace SportsClub.Controllers
             return View("Index");
 
         }
+        public ActionResult aggrid()
+        {
+            return View("aggrid");
 
+        }
+        public ActionResult test()
+        {
+            return View();
+
+        }
+        public JsonResult GetAll()
+        {
+            var list = PersonDAC.SearchByParam_sp("", "", "", true);
+
+            return Json(list, JsonRequestBehavior.AllowGet);
+            
+        }
     }
 
  

@@ -2,7 +2,10 @@
     ViewBag.Title = "Reporte de personas";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@section styles {
+    
+<link href="~/Content/ng-table.css" rel="stylesheet" />
+    }
 <div ng-app="app">
     <div ng-controller="PersonController as vm">
         <h1>Personas</h1>
@@ -22,6 +25,8 @@
 
 @section Scripts {
 
+<script src="@Url.Content("~/Scripts/ng-table.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/restangular.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/person/lista.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/person/person.controller.js")" type="text/javascript"></script>
 }
