@@ -42,7 +42,7 @@ app.controller('EmployeeController', function ($scope, EmployeeService) {
                     enableCellEdit: true
                 },
                 {
-                    field: "Person Id",
+                    field: "PersonId",
                     width: 200,
                     enableCellEdit: true
                 },
