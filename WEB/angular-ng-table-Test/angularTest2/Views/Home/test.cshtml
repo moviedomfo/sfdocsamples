@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Reporte de personas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    $(function () {
+
+        $('#btnCall').on('click', function () {
+
+        });
+    });
+
+
+</script>
+@section styles {
+
+    <link href="~/Content/ng-grid.css" rel="stylesheet" />
+
+    <style>
+        .gridStyle {
+            border: 1px solid rgb(212,212,212);
+            width: 1000px;
+            height: 300px;
+        }
+    </style>
+
+}
+
+
+<button id="btnCall" type="button" class="btn btn-primary">llamar al svc</button>
+<div id="json_resul"></div>
+<div ng-app="myApp">
+
+    <div ng-controller="EmployeeController">
+        <h1>Personas</h1>
+
+
+        <div class="gridStyle" ng-grid="gridOptions">
+        </div>
+        <input type="button" value="Buscar enbase de datos" ng-click="vm.search()" />
+
+    </div>
+</div>
+
+
+@section Scripts {
+  
+    <script src="@Url.Content("~/Scripts/ng-grid.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/nggrid/test.js")" type="text/javascript"></script>
+}
