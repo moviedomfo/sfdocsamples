@@ -40,6 +40,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Fwk.Bases">
+      <HintPath>..\..\..\..\..\PelsoftFreeLancer\pelsofthealth\trunk\Libraries\Fwk.Bases.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -192,6 +195,9 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App_Data\persons.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -204,6 +210,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\nggrid\ng_validations.js" />
     <Content Include="Scripts\nggrid\test.js" />
     <Content Include="Scripts\nggrid\nggrid.js" />
     <Content Include="Scripts\angular-animate.js" />
@@ -1008,24 +1015,18 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\knockout-2.2.0.debug.js" />
-    <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\lodash.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\ng-grid.js" />
     <Content Include="Scripts\ng-grid.min.js" />
-    <Content Include="Scripts\ng-table.js" />
-    <Content Include="Scripts\ng-table.min.js" />
-    <Content Include="Scripts\person\index.js" />
-    <Content Include="Scripts\person\index2.js" />
-    <Content Include="Scripts\person\lista.js" />
-    <Content Include="Scripts\person\person.controller.js" />
+    <Content Include="Scripts\nggrid\ng_service.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\restangular.js" />
     <Content Include="Scripts\restangular.min.js" />
     <Content Include="Scripts\Site-helpers.js" />
     <Content Include="Scripts\Site.js" />
+    <Content Include="Scripts\nggrid\ng_promise.js" />
     <Content Include="Scripts\underscore-min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
@@ -1039,15 +1040,14 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Scripts\ng-table.less" />
-    <Content Include="Scripts\ng-table.min.js.map" />
+    <Content Include="Views\Home\ng_promise.cshtml" />
     <Content Include="Views\Home\aggrid.cshtml" />
     <Content Include="Views\Home\test.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Home\ng_service.cshtml" />
+    <Content Include="Views\Home\ng_validations.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

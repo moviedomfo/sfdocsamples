@@ -1,5 +1,4 @@
-﻿
-var app;
+﻿var app;
 (function () {
     app = angular.module("myApp", ['ngGrid']);
 })();
@@ -11,9 +10,6 @@ app.service('EmployeeService', function ($http) {
 
 });
 
-
-
-
 app.controller('EmployeeController', function ($scope, EmployeeService) {
 
     GetAllRecords();
@@ -24,7 +20,8 @@ app.controller('EmployeeController', function ($scope, EmployeeService) {
                   $log.error('Some Error in Getting Records.', errorPl);
               });
     }
-
+    $scope.LastName;
+    $scope.Name;
     $scope.myData = [];
     $scope.gridOptions = {
 
@@ -75,9 +72,14 @@ app.controller('EmployeeController', function ($scope, EmployeeService) {
         filterText: "",
         useExternalFilter: true
     };
+    $scope.editCell = function (row, cell, column) {
+        $scope.selectedCell = cell;
+        $scope.selectedRow = row;
+        $scope.selectedColumn = column;
+    };
 
     $scope.gridOptions.sortInfo = {
-        fields: ['Company', 'Price'],
+        fields: ['Lastname', 'docNumber'],
         directions: ['asc'],
         columns: [0, 1]
     };
@@ -89,4 +91,36 @@ app.controller('EmployeeController', function ($scope, EmployeeService) {
         currentPage: 1
     };
     var basicCellTemplate = '<div class="ngCellText" ng-class="col.colIndex()" ng-click="editCell(row.entity, row.getProperty(col.field), col.field)"><span class="ui-disableSelection hover">{{row.getProperty(col.field)}}</span></div>';
+
+
+    $scope.changeGroupBy = function (group1, group2) {
+        $scope.gridOptions.$gridScope.configGroups = [];
+        $scope.gridOptions.$gridScope.configGroups.push(group1);
+        $scope.gridOptions.$gridScope.configGroups.push(group2);
+        $scope.gridOptions.groupBy();
+    }
+    $scope.clearGroupBy = function () {
+        $scope.gridOptions.$gridScope.configGroups = [];
+        $scope.gridOptions.groupBy();
+    }
+
+    $scope.submit = function () {
+
+        alert("Quiere insertar " +   $scope.LastName + " " +  $scope.Name);
+    }
+    $scope.dataToSjon;
+    $scope.showBindedData = function () {
+
+        alert(JSON.stringify( $scope.myData));
+    }
+    $scope.refresh = function () {
+ 
+        var promiseGet = EmployeeService.getAllEmployee();
+        promiseGet.then(
+              function (pl) { $scope.Employees = pl.data, $scope.myData = pl.data },
+              function (errorPl) {
+                  $log.error('Ocurrio un error al llamar el servicio.', errorPl);
+              }
+              );
+    }
 });

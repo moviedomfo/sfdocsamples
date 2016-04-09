@@ -15,7 +15,12 @@ using System.Web.Http;
 
 namespace SportsClub.Controllers
 {
+    
 
+    /// <summary>
+    /// JavaScript Promises https://carlosazaustre.es/blog/uso-de-promesas-en-angularjs/
+    /// $q                  https://docs.angularjs.org/api/ng/service/$q
+    /// </summary>
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -23,16 +28,30 @@ namespace SportsClub.Controllers
             return View("Index");
 
         }
-        public ActionResult aggrid()
+        public ActionResult ng_promise()
         {
-            return View("aggrid");
+            return View();
+
+        }
+        /// <summary>
+        /// https://carlosazaustre.es/blog/uso-de-promesas-en-angularjs/
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ng_service()
+        {
+            return View();
 
         }
         public ActionResult test()
         {
             return View();
-
         }
+
+        public ActionResult ng_validations()
+        {
+            return View();
+        }
+     
         public JsonResult GetAll()
         {
             var list = PersonDAC.SearchByParam_sp("", "", "", true);

@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "Reporte de personas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles {
+    <style type="text/css">
+        .error {  border-color: red;}
+        .warning {  border-color: yellow;}
+
+         .messagesError {     color: #FA787E;      }
+ 
+ 
+      .messagesOK{        color: #21610B;      }
+
+        /*param las custom validatiosn defs angular*/
+      form.ng-submitted input.ng-invalid{
+        border-color: #FA787E;
+      }
+      form input.ng-invalid.ng-touched {
+        border-color: #FA787E;
+      }
+
+    </style>
+
+    }
+@*$valid: True si el formulario es válido de acuerdo a las reglas definidas sobre este.
+$invalid:  True si al menos un componente del formulario no cumple con las reglas definidas.
+$dirty: True si el usuario ha interactuado con al menos un componente del formulario. Por ejemplo, si el formulario consiste en dos campos de texto y el usuario ingresa información en uno de estos.
+$pristine: True si el usuario no ha ingresado nada en el formulario, es decir si el formulario no se ha usado.*@
+<div ng-app="myApp">
+    <div ng-controller="personController ">
+        <h2>Formulario de AngularJS!</h2>
+
+        <form name="personForm" novalidate>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" placeholder="Nombre " name="name" ng-model="person.name" required>
+                <span ng-show="personForm.name.$error.required">Nombre es requerido</span>
+            </div>
+
+            <div class="form-group">
+                <label for="lastname">Last Name</label>
+                <input type="text" class="form-control" placeholder="Apellido" name="lastname" ng-model="person.lastname" required>
+                <span ng-show="!personForm.$pristine && personForm.lastname.$error.required">Apellido es requerido</span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" placeholder="example@email.com" name="email" ng-model="person.email" value="pepe@gmail.com" required
+                       ng-class="{ error: personForm.email.$error.required && !personForm.$pristine, warning: personForm.email.$error.email }">
+                <span class="text-warning" ng-show="!personForm.$pristine && personForm.email.$error.required">Email is required</span>
+                <span class="text-warning" ng-show="!personForm.$pristine && personForm.email.$error.email">Ingrese un correo valido</span>
+            </div>
+         
+            <div class="form-group">
+                <label for="Name">Name</label><br />
+                <input name="Name"
+                       type="text"
+                       ng-model="person.Name"
+                       ng-model-options="{ updateOn: 'blur' }"
+                       name-validation />
+                <span>{{person.Name}}</span>
+                <span ng-show="personForm.Name.$invalid">Name no válido.</span>
+            </div>
+
+            <div class="form-group">
+                <label for="DocNumber">DocNumber</label><br />
+                <input name="DocNumber"
+                       type="text"
+                       ng-model="person.DocNumber"
+                       ng-model-options="{ updateOn: 'blur' }"
+                       doc-number-validation />
+                <span>{{person.DocNumber}}</span>
+                <span ng-show="personForm.DocNumber.$invalid">DocNumber no válido.</span>
+            </div>
+
+        
+                <div my-customer></div>
+      
+
+            <input type="submit" class="btn btn-success pull-right" ng-click="submitForm(formData)" ng-disabled="!formData.$valid" />
+
+</form>
+    </div>
+</div>
+
+
+@section Scripts {
+<script src="@Url.Content("~/Scripts/nggrid/ng_validations.js")" type="text/javascript"></script>
+
+}

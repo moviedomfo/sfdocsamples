@@ -19,7 +19,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SportsClub.Common.BE
 {
+    public partial class ServiceCall
+    {
 
+}
 
     public class PersonList : List<PersonBE>
     { }
