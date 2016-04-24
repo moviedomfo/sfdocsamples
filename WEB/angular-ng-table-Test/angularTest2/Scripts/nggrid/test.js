@@ -34,33 +34,52 @@ app.controller('EmployeeController', function ($scope, EmployeeService) {
         enableCellSelection: true,
         columnDefs: [
                 {
-                    field: "Name",
+                    field: "Ammount",
                     width: 180,
                     pinned: true,
                     enableCellEdit: true
                 },
                 {
-                    field: "PersonId",
+                    field: "Concept",
                     width: 200,
                     enableCellEdit: true
                 },
                 {
-                    field: "Lastname",
+                    field: "ModuleTypeName",
                     width: 100,
                     enableCellEdit: true
                 },
                 {
-                    field: "docNumber",
+                    field: "CreatedDate",
                     width: 120,
                     enableCellEdit: true,
                     cellTemplate: basicCellTemplate
                 },
-                {
-                    field: "Action",
-                    width: 200,
-                    enableCellEdit: false,
-                    cellTemplate: '<button id="editBtn" type="button" class="btn btn-xs btn-info"  ng-click="updateCell()" >Edit </button>'
-                }]
+                  {
+                      field: "UserName",
+                      width: 120,
+                      enableCellEdit: true,
+                      cellTemplate: basicCellTemplate
+                  },
+                    {
+                        field: "CashFlowConceptName",
+                        width: 120,
+                        enableCellEdit: true,
+                        cellTemplate: basicCellTemplate
+                    },
+                    {
+                        field: "CashFlowName",
+                        width: 120,
+                        enableCellEdit: true,
+                        cellTemplate: basicCellTemplate
+                    }
+                //{
+                //    field: "Action",
+                //    width: 200,
+                //    enableCellEdit: false,
+                //    cellTemplate: '<button id="editBtn" type="button" class="btn btn-xs btn-info"  ng-click="updateCell()" >Edit </button>'
+                //}
+        ]
 
     };
 

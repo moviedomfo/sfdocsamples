@@ -1,4 +1,5 @@
-﻿var myApp;
+﻿/// <reference path="my-person.html" />
+var myApp;
 (function () {
     myApp = angular.module("myApp", []);
 })();
@@ -57,8 +58,6 @@ myApp.directive('nameValidation', function () {
         require: 'ngModel',
         link: function (scope, elm, attrs, ctrl) {
             ctrl.$validators.namevalidation = function (modelValue, viewValue) {
-
-
                 if (ctrl.$isEmpty(modelValue)) {
                     // tratamos los modelos vacíos como correctos
                     return true;
@@ -124,12 +123,12 @@ myApp.directive('nifValidation', function () {
 angular.module('docsTemplateUrlDirective', [])
 .controller('personController', ['$scope', function ($scope) {
     $scope.customer = {
-        name: 'Naomi',
-        address: '1600 Amphitheatre'
+        Name: 'Naomi',
+        Lastname: '1600 Amphitheatre'
     };
 }])
 .directive('myCustomer', function () {
     return {
-        templateUrl: 'my-customer.html'
+        templateUrl: 'my-person.html'
     };
 });

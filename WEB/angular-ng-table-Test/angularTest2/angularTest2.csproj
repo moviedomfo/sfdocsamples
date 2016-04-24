@@ -1046,6 +1046,7 @@
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Home\ng_service.cshtml" />
     <Content Include="Views\Home\ng_validations.cshtml" />
+    <Content Include="Scripts\nggrid\my-person.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
