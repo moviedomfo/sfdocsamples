@@ -26,6 +26,12 @@ namespace Labs1.Controllers
     /// http://www.asp
     public class ProductsController : ApiController
     {
+        /// <summary>
+        /// http://localhost:2838/api/Products/1/retrivelist/
+        /// http://localhost:2838/api/Products/69/retrivelist/
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("api/Products/{type}/retrivelist")]
         public List<ProductBE> typesRetriveList(string type)
@@ -44,7 +50,7 @@ namespace Labs1.Controllers
         }
 
         /// <summary>
-        /// http://localhost:2838/api/Products/retrivelist/2134
+        /// http://localhost:2838/api/Products/retrivelist/88
         /// </summary>
         /// <param name="isbn"></param>
         /// <returns></returns>
@@ -108,6 +114,13 @@ namespace Labs1.Controllers
             return "Se ejecuto el Get2 con paramatro " + id.ToString();
         }
 
+        [HttpGet]
+        [Route("api/Products/Factura/{id=-1}{clienteId= -1}")]
+        public string Factura(int id, int clientId)
+        {
+            return "Se ejecuto el Factura con paramatro " + id.ToString() + " " + clientId.ToString();
+
+        }
 
     }
     public class ProductBE
