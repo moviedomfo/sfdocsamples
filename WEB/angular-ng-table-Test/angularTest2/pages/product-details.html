@@ -1,0 +1,17 @@
+﻿
+<div>
+<section>
+    <ul class="nav nav-pills">
+        <li ng-class="{ active:tab.isSet(1) }">
+            <a href ng-click="tab.setTab(1)">First tab</a>
+        </li>
+        <li ng-class="{ active:tab.isSet(2) }">
+            <a href ng-click="tab.setTab(2)">Second tab</a>
+        </li>
+    </ul>
+
+    <!--  Tabs Content  -->
+    <custom-first-tab ng-show="tab.isSet(1)"> </custom-first-tab>
+    <div custom-second-tab ng-show="tab.isSet(2)"></div>
+</section>
+</div>

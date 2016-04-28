@@ -28,6 +28,11 @@ namespace SportsClub.Controllers
             return View("Index");
 
         }
+        public ActionResult directives()
+        {
+            return View();
+
+        }
         public ActionResult ng_promise()
         {
             return View();

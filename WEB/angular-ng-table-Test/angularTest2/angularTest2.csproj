@@ -171,11 +171,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clases\EmployeesBE.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="clases\clubData.designer.cs">
+    <Compile Include="App_Data\clubData.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>clubData.dbml</DependentUpon>
@@ -198,6 +199,9 @@
     <None Include="App_Data\persons.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Content Include="App_Data\Cars.xml" />
+    <Content Include="App_Data\CitiesData.xml" />
+    <Content Include="App_Data\Employees.xml" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -210,6 +214,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\vm_angular\directives.js" />
     <Content Include="Scripts\nggrid\ng_validations.js" />
     <Content Include="Scripts\nggrid\test.js" />
     <Content Include="Scripts\nggrid\nggrid.js" />
@@ -985,7 +990,7 @@
     <Content Include="Scripts\i18n\angular-locale_zu-za.js" />
     <Content Include="Scripts\i18n\angular-locale_zu.js" />
     <Content Include="Scripts\jquery-2.1.3.min.map" />
-    <Content Include="clases\clubData.dbml">
+    <Content Include="App_Data\clubData.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>clubData.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
@@ -1029,6 +1034,12 @@
     <Content Include="Scripts\nggrid\ng_promise.js" />
     <Content Include="Scripts\underscore-min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="pages\product-tabs.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="pages\product-details.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1047,8 +1058,11 @@
     <Content Include="Views\Home\ng_service.cshtml" />
     <Content Include="Views\Home\ng_validations.cshtml" />
     <Content Include="Scripts\nggrid\my-person.html" />
+    <Content Include="Views\Home\directives.cshtml" />
+    <Content Include="Views\Shared\_Layout2.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="images\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -1059,7 +1073,7 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="clases\clubData.dbml.layout">
+    <None Include="App_Data\clubData.dbml.layout">
       <DependentUpon>clubData.dbml</DependentUpon>
     </None>
   </ItemGroup>
