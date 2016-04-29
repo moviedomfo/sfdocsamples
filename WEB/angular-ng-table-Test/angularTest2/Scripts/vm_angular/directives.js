@@ -66,7 +66,15 @@ var app;
                     this.tab = setTab;
                 };
             },
-            controllerAs: "tab"
+            controllerAs: "tab" //dado q en la vista TabController as tab
+        };
+    });
+
+
+    app.directive('productDetails', function () {
+        return {
+            restrict: 'E',
+            templateUrl: 'product-details.html'
         };
     });
 })();

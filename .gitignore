@@ -2094,3 +2094,4 @@ WEB/MVC/Routing/Labs1/packages/jQuery.Validation.1.11.1/Content/Scripts/jquery.v
 WEB/MVC/Routing/Labs1/packages/jQuery.Validation.1.11.1/Content/Scripts/jquery.validate.min.js
 WEB/MVC/Routing/Labs1/packages/jQuery.Validation.1.11.1/jQuery.Validation.1.11.1.nupkg
 WEB/MVC/Routing/Labs1/.vs/Labs1/v14/.suo
+*.suo

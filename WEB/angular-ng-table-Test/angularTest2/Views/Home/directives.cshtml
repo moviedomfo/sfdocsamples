@@ -32,10 +32,14 @@
            
         </div>
 
-    <!-- some html code -->
+    <!-- usa product-tabs -->
     <section ng-controller="TabController as tab">
         <product-tabs></product-tabs>
     </section>
+    @*usa product-details*@
+    <div ng-repeat="usuario in MiControlador.usuarios">
+        <product-details></product-details>
+    </div>
 </div>
 
 
