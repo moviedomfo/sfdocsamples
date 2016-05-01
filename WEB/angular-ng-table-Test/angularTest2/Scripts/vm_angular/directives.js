@@ -35,19 +35,12 @@ var app;
             template: '  <div class="text-primary">{{cliente.LastName}}, {{cliente.Name}} </div> '
         };
     });
+
     app.directive('hello', function () {
         return {
             restrict: 'A',
             template: '<div>Hi there</div>',
             replace: true
-        };
-    });
-
-
-    app.directive('productDetails', function () {
-        return {
-            restrict: 'E',
-            templateUrl: 'product-details.html'
         };
     });
 
@@ -70,11 +63,10 @@ var app;
         };
     });
 
-
     app.directive('productDetails', function () {
         return {
             restrict: 'E',
-            templateUrl: 'product-details.html'
+            templateUrl: '../pages/product-details.html'
         };
     });
 })();
@@ -82,6 +74,20 @@ var app;
 
 app.controller('myController', function ($scope) {
 
+    $scope.products = [
+        {
+            name:"Mercedes-Benz",
+            description: "Engine 4,966-cc SOHC 24-valve 90° V-8. High-pressure die-cast alloy cylinder block, alloy heads. "
+        },
+         {
+             name: "Dodge",
+             description: " one carryover unit are offered. A new 3.7-liter Magnum V- "
+         },
+          {
+              name: "TRUCK-Benz",
+              description: "-cab Ram is abundant, and three adults fit adequately when the im. "
+          }
+    ];
     $scope.cliente = {
         Name: "",
         LastName: ""

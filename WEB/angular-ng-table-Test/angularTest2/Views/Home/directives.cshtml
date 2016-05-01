@@ -28,18 +28,18 @@
 
         <h3>directiva usando datos del $scope</h3>
         <div cliente-full-name></div>
-
-           
+        <h3>directiva roduct-details</h3>
+       
+        <div ng-repeat="product in products">
+            <product-details></product-details>
+        </div>
         </div>
 
     <!-- usa product-tabs -->
     <section ng-controller="TabController as tab">
         <product-tabs></product-tabs>
     </section>
-    @*usa product-details*@
-    <div ng-repeat="usuario in MiControlador.usuarios">
-        <product-details></product-details>
-    </div>
+    
 </div>
 
 
