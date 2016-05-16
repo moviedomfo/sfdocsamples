@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Reporte de personas";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+@section styles {
+
+    <script type="text/javascript" >
+
+
+    </script>
+}
+
+<div ng-app="myApp">
+    <div ng-controller="myController ">
+        <h1>Understandiing angular  directives</h1>
+
+       Name  <input type="text" ng-model='cliente.Name' class="text-danger" />
+        Lastname <input type="text" ng-model='cliente.LastName'  class="text-danger" />
+
+        <br /><br />
+        <h3>directiva hello</h3>
+        <div hello></div>
+        <br /><br />
+
+        <h3>directiva insert-image</h3>
+        <div class="alert alert-info"  style="height:30px;width:300px"  ></div>
+        <div class="alert alert-info" insert-image></div>
+
+        <h3>directiva usando datos del $scope</h3>
+        <div cliente-full-name></div>
+        <h3>directiva roduct-details</h3>
+       
+        <div ng-repeat="product in products">
+            <product-details></product-details>
+        </div>
+        </div>
+
+    <!-- usa product-tabs -->
+    <section ng-controller="TabController as tab">
+        <product-tabs></product-tabs>
+    </section>
+    
+</div>
+
+
+
+@section Scripts {
+    <script src="@Url.Content("~/Scripts/vm_angular/directives.js")" type="text/javascript"></script>
+
+
+}

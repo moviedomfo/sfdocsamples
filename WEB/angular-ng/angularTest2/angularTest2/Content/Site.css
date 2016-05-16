@@ -1,0 +1,83 @@
+﻿body {    padding-top: 50px;    padding-bottom: 20px;}
+/* Set padding to keep content from hitting the edges */
+.body-content {    padding-left: 15px;    padding-right: 15px;}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 760px;
+}
+/* styles for validation helpers */
+.field-validation-error {    color: #b94a48;}
+.field-validation-valid {    display: none;}
+input.input-validation-error {    border: 1px solid #b94a48;}
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+.validation-summary-errors {color: #b94a48;}
+.validation-summary-valid {display: none;}
+.input-group { font-size: 14px !important; }
+
+.numeric {
+    text-align:right;
+    width:80px;
+}
+
+
+
+/*.activity  {
+    color: #e67e22;
+}*/
+
+.nav-activity .nav > li > a {
+  color: #e67e22;
+}
+/*.nav-activity .nav:hover, .nav:focus {
+  color: #ffe6d1;
+}*/
+
+.nav-activity .nav > li > a:hover,  .nav > li > a:focus {
+  color: #d35400;
+}
+
+/*violetTulip*/
+.text-violetTulip { color: #9395CA;}
+/*Placid Blue*/
+a.text-violetTulip:hover {  color: #DAEBF7; }
+
+/*Paloma*/
+.text-paloma { color: #A9B2B2;}
+/*Paloma mas clarito*/
+a.text-paloma:hover {  color: #E9EBEB; }
+
+/*verde loro*/
+.text-consulta { color: #009999;}
+/*celeste/turquesa*/
+a.text-consulta:hover {  color: #99FFFF; }
+
+
+/*azul*/
+.text-create { color: #3c763d;}
+/*Placid Blue*/
+a.text-create:hover {  color: #2b542c; }
+
+/*azul*/
+.text-edit { color: #3c763d;}
+/*Placid Blue*/
+a.text-edit:hover {  color: #A3D5D1; }
+
+/*naranja fuerte*/
+.text-remove { color: #D35400;}
+/*roza fuerte*/
+a.text-remove:hover {  color: #FF9999; }
+
+
+.dataTables_filter.label {
+  font-weight: normal;
+}
+.dataTables_filter .label {
+  font-weight: normal;
+}
+
+/*ActionLink <a> */

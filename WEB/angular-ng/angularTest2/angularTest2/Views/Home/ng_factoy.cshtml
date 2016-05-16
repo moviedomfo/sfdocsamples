@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Reporte de personas";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+@section styles {
+    
+<link href="~/Content/ng-table.css" rel="stylesheet" />
+    }
+
+<div ng-app="myApp">
+    <div ng-controller="personController ">
+        <h1> angular  service</h1>
+        @*<input type="text" ng-model='' name="valorcillo" class="text-danger"/>*@
+        <button id="btnCall" type="button" ng-click="GetAllRecords()" class="btn btn-primary">llamar al svc</button>
+        <br /><br />
+           
+                  <div class="text-primary ">{{nombre}}</div>
+        
+        <br />
+        <p>
+            <div class="text-center text-consulta"></div>
+        </p>
+    </div>
+</div>
+
+
+@section Scripts {
+<script src="@Url.Content("~/Scripts/vm_angular/ng_factoy.js")" type="text/javascript"></script>
+
+}
