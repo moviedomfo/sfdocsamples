@@ -115,7 +115,7 @@ namespace Labs1.Controllers
         }
 
         [HttpGet]
-        [Route("api/Products/Factura/{id=-1}{clienteId= -1}")]
+        [Route("api/Products/Factura/{id=-1}/{clienteId= -1}")]
         public string Factura(int id, int clientId)
         {
             return "Se ejecuto el Factura con paramatro " + id.ToString() + " " + clientId.ToString();

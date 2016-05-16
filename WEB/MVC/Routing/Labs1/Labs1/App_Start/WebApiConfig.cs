@@ -31,6 +31,10 @@ defaults: new { action = "Get", id = RouteParameter.Optional }
                 defaults: new { id = RouteParameter.Optional }
             );
 
+
+            //Esto hace que se reorne sin el xml
+            //si no esta el codigo --> <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">Se ejecuto el SearchByParams 1Beer</string>
+            //Si descomento se muestra "Se ejecuto el SearchByParams 1Beer"
             var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t => t.MediaType == "application/xml");
             config.Formatters.XmlFormatter.SupportedMediaTypes.Remove(appXmlType);
         }

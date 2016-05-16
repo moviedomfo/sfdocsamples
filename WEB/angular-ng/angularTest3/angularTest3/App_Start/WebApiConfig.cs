@@ -21,10 +21,10 @@ namespace angularTest3
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
-           name: "DefaultApi",
-routeTemplate: "api/{controller}/{action}/{id}",
-defaults: new { action = "Get", id = RouteParameter.Optional }
-);
+                   name: "DefaultApi",
+        routeTemplate: "api/{controller}/{action}/{id}",
+        defaults: new { action = "Get", id = RouteParameter.Optional }
+        );
             config.Routes.MapHttpRoute(
                 name: "DefaultApi2",
                 routeTemplate: "api/{controller}/{id}",

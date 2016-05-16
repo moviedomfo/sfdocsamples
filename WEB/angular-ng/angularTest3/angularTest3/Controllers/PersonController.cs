@@ -20,6 +20,11 @@ namespace SportsClub.Controllers
 
     public class PersonController : ApiController
     {
+        /// <summary>
+        /// http://localhost:1833/api/Person/getall
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
         [Route("api/person/getall")]
         public List<PersonFullViewBE> GetAll()
         {
@@ -28,6 +33,13 @@ namespace SportsClub.Controllers
             return list;
         }
 
+           [HttpGet]
+        [Route("api/person/retorno")]
+        public string retorno()
+        {
+       
+            return "hola";
+        }
         //http://localhost:51663/api/Person?pageNo=1&pageSize=10&search=&sort=%2BlastName
         //http://localhost:51663/api/customers?pageNo=1&pageSize=10&search=&sort=%2BlastName
         //public PagedResult<PersonFullViewBE> Get(int pageNo = 1, int pageSize = 50, [FromUri] string[] sort = null, string search = null)
