@@ -13,6 +13,7 @@ using System.Text;
 using System.IO;
 using SportsClub.DAC;
 using AngularWebApiGrid.Controllers;
+using angularTest3.clases;
 
 
 namespace SportsClub.Controllers
@@ -32,14 +33,45 @@ namespace SportsClub.Controllers
 
             return list;
         }
-
-           [HttpGet]
-        [Route("api/person/retorno")]
-        public string retorno()
+        [HttpGet]
+        [Route("api/person/getById/{id}")]
+        public PersonFullViewBE GetById(int id)
         {
-       
-            return "hola";
+            var person = PersonDAC.getById(id);
+
+            return person;
         }
+
+       [HttpPost]
+       [Route("api/person/retriveAll")]
+        public List<PersonFullViewBE> retriveAll()
+        {
+
+            var list = PersonDAC.SearchByParam_sp("", "", "", true);
+
+            return list;
+        }
+
+
+       [HttpPost]
+       [Route("api/person/retriveById")]
+       public PersonFullViewBE retriveById(int id)
+       {
+           var person = PersonDAC.getById(id);
+
+           return person;
+       }
+
+        
+        [HttpPost]
+       public String create(CreatePersonParam createPerosnParam)
+       {
+           if (createPerosnParam == null)
+               return "BUSCA ANTES UNA PERSONA Y LUEGO CLICK";
+
+           return "Creado Con exito " + createPerosnParam.Person.Name + " con el auto: " + createPerosnParam.Car.Trademark;
+       }
+
         //http://localhost:51663/api/Person?pageNo=1&pageSize=10&search=&sort=%2BlastName
         //http://localhost:51663/api/customers?pageNo=1&pageSize=10&search=&sort=%2BlastName
         //public PagedResult<PersonFullViewBE> Get(int pageNo = 1, int pageSize = 50, [FromUri] string[] sort = null, string search = null)
@@ -136,7 +168,15 @@ namespace SportsClub.Controllers
 
 
     }
+    public class CreatePersonParam
+    {
+        public PersonBE Person { get; set; }
+        public CarBE Car { get; set; }
+        
+        
 
+    }
+    
     public class SearchPersonParams
     {
         public String Nombre { get; set; }

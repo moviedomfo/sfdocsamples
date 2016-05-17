@@ -43,7 +43,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Fwk.Bases">
-      <HintPath>..\..\..\..\..\PelsoftFreeLancer\pelsofthealth\trunk\Libraries\Fwk.Bases.dll</HintPath>
+      <HintPath>..\..\libs\Fwk.Bases.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />

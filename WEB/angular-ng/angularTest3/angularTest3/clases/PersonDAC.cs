@@ -32,6 +32,26 @@ namespace SportsClub.DAC
         /// <returns>PersonFullViewList</returns>
         /// <Date>2015-07-01T12:19:40</Date>
         /// <Author>moviedo</Author>
+        public static PersonFullViewBE getById(int personId)
+        {
+            SqlParameter param = null;
+
+            List<PersonFullViewBE> wPersonFullViewList = new List<PersonFullViewBE>();
+            PersonFullViewBE wPersonFullView;
+            var list = Retrive();
+
+
+            wPersonFullView = list.Where(p => p.PersonId == personId).FirstOrDefault();
+
+            return wPersonFullView;
+        }
+        /// <summary>
+        /// SearchByParam
+        /// </summary>
+        ///<param name="pPersonFullView">PersonFullView</param>
+        /// <returns>PersonFullViewList</returns>
+        /// <Date>2015-07-01T12:19:40</Date>
+        /// <Author>moviedo</Author>
         public static List<PersonFullViewBE> SearchByParam_sp(string nombre, string apellido, string dni, Boolean? memmbersFlag)
         {
             SqlParameter param = null;

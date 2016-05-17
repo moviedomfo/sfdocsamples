@@ -31,6 +31,8 @@ myApp.controller("personController",  function ($scope, dataService) {
        
         GetAllRecords();
     }
+
+
     function GetAllRecords() {
         var promiseGet =  dataService.getAll();
 
