@@ -1,9 +1,0 @@
-F:\Bakups\projects_back\FileCache\Main\Source\FileCache.UnitTests\bin\Debug\FileCache.UnitTests.dll
-F:\Bakups\projects_back\FileCache\Main\Source\FileCache.UnitTests\bin\Debug\FileCache.UnitTests.pdb
-F:\Bakups\projects_back\FileCache\Main\Source\FileCache.UnitTests\bin\Debug\FileCache.dll
-F:\Bakups\projects_back\FileCache\Main\Source\FileCache.UnitTests\bin\Debug\FileCache.pdb
-F:\Bakups\projects_back\FileCache\Main\Source\FileCache.UnitTests\bin\Debug\FileCache_Accessor.dll
-F:\Bakups\projects_back\FileCache\Main\Source\FileCache.UnitTests\bin\Debug\FileCache_Accessor.pdb
-F:\Bakups\projects_back\FileCache\Main\Source\FileCache.UnitTests\obj\Debug\FileCache.UnitTests.csprojResolveAssemblyReference.cache
-F:\Bakups\projects_back\FileCache\Main\Source\FileCache.UnitTests\obj\Debug\FileCache.UnitTests.dll
-F:\Bakups\projects_back\FileCache\Main\Source\FileCache.UnitTests\obj\Debug\FileCache.UnitTests.pdb

@@ -1,4 +1,0 @@
-F:\Bakups\projects_back\FileCache\Main\Source\FileCache.Signed\bin\Debug\FileCache.Signed.dll
-F:\Bakups\projects_back\FileCache\Main\Source\FileCache.Signed\bin\Debug\FileCache.Signed.pdb
-F:\Bakups\projects_back\FileCache\Main\Source\FileCache.Signed\obj\Debug\FileCache.Signed.dll
-F:\Bakups\projects_back\FileCache\Main\Source\FileCache.Signed\obj\Debug\FileCache.Signed.pdb

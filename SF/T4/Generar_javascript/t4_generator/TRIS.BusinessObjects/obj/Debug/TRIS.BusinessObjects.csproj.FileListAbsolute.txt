@@ -1,7 +1,0 @@
-E:\Projects\DocEjemplos\.Net\DesarrolloWeb\jquery\t4_generator\TRIS.BusinessObjects\bin\Debug\TRIS.BusinessObjects.dll
-E:\Projects\DocEjemplos\.Net\DesarrolloWeb\jquery\t4_generator\TRIS.BusinessObjects\bin\Debug\TRIS.BusinessObjects.pdb
-E:\Projects\DocEjemplos\.Net\DesarrolloWeb\jquery\t4_generator\TRIS.BusinessObjects\bin\Debug\TRIS.ViewModels.dll
-E:\Projects\DocEjemplos\.Net\DesarrolloWeb\jquery\t4_generator\TRIS.BusinessObjects\bin\Debug\TRIS.ViewModels.pdb
-E:\Projects\DocEjemplos\.Net\DesarrolloWeb\jquery\t4_generator\TRIS.BusinessObjects\obj\Debug\TRIS.BusinessObjects.csprojResolveAssemblyReference.cache
-E:\Projects\DocEjemplos\.Net\DesarrolloWeb\jquery\t4_generator\TRIS.BusinessObjects\obj\Debug\TRIS.BusinessObjects.dll
-E:\Projects\DocEjemplos\.Net\DesarrolloWeb\jquery\t4_generator\TRIS.BusinessObjects\obj\Debug\TRIS.BusinessObjects.pdb

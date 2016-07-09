@@ -1,4 +1,0 @@
-F:\Bakups\projects_back\FileCache\Main\Source\FileCache\bin\Debug\FileCache.dll
-F:\Bakups\projects_back\FileCache\Main\Source\FileCache\bin\Debug\FileCache.pdb
-F:\Bakups\projects_back\FileCache\Main\Source\FileCache\obj\Debug\FileCache.dll
-F:\Bakups\projects_back\FileCache\Main\Source\FileCache\obj\Debug\FileCache.pdb

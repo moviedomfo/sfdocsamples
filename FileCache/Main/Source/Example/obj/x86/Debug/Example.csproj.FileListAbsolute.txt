@@ -1,8 +1,0 @@
-F:\Bakups\projects_back\FileCache\Main\Source\Example\bin\Debug\Example.exe.config
-F:\Bakups\projects_back\FileCache\Main\Source\Example\bin\Debug\Example.exe
-F:\Bakups\projects_back\FileCache\Main\Source\Example\bin\Debug\Example.pdb
-F:\Bakups\projects_back\FileCache\Main\Source\Example\bin\Debug\FileCache.dll
-F:\Bakups\projects_back\FileCache\Main\Source\Example\bin\Debug\FileCache.pdb
-F:\Bakups\projects_back\FileCache\Main\Source\Example\obj\x86\Debug\Example.csprojResolveAssemblyReference.cache
-F:\Bakups\projects_back\FileCache\Main\Source\Example\obj\x86\Debug\Example.exe
-F:\Bakups\projects_back\FileCache\Main\Source\Example\obj\x86\Debug\Example.pdb
