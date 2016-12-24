@@ -1,0 +1,7 @@
+HTML5
+
+http://www.ibm.com/developerworks/ssa/web/library/wa-html5fundamentals2/
+
+VISOR JSON
+
+http://jsonviewer.stack.hu/#http://
