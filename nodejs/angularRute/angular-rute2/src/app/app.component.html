@@ -12,7 +12,7 @@
           <ul class="nav navbar-nav">
    
             <li>
-              <a href="../cliente/">Ventas</a>
+              <a routerLink="sales" routerLinkActive="active">Ventas</a>
             </li>
             <li>
                <a [routerLink]="['clientes']">Client</a>
@@ -30,7 +30,8 @@
       </div>
     </div>
 
- <div id="content">
+
+<div id="content">
   <div class="container">
     <router-outlet></router-outlet>
   </div>

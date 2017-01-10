@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { ClientesComponent } from './clientes/clientes.component';
+import { SalesComponent } from './sales/sales.component';
+
 //import { SelectivePreloadingStrategy }   from './selective-preloading-strategy'
 //import { CanDeactivateGuard }       from './can-deactivate-guard.service';
 import { PageNotFoundComponent }       from './not-found.component';
@@ -11,6 +13,8 @@ import { PageNotFoundComponent }       from './not-found.component';
 export const appRoutes: Routes = [
     {path:'', redirectTo:'clientes', pathMatch:'full'},
     {path:'clientes',component :ClientesComponent},
+    {path:'sales',component :SalesComponent},
+    //{path:'sales:id',component :SalesComponent},
     { path: '**', component: PageNotFoundComponent }
 ];
 

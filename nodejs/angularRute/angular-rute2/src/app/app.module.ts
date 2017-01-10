@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import {rutesModule} from './app.router';
 import { ClientesComponent } from './clientes/clientes.component';
 import { PageNotFoundComponent } from './not-found.component';
+import { SalesComponent } from './sales/sales.component';
+import { AlertModule } from 'ng2-bootstrap';
 
 @NgModule({
  
@@ -16,13 +18,14 @@ import { PageNotFoundComponent } from './not-found.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    rutesModule
+    rutesModule,AlertModule.forRoot()
     
       ],
        declarations: [
         AppComponent,
         ClientesComponent,
-        PageNotFoundComponent
+        PageNotFoundComponent,
+        SalesComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
