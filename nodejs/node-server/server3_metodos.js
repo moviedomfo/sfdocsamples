@@ -20,6 +20,7 @@ class SociosDAC {
 
 
 
+
 //Ejecuta un query string
     getSocios() {
         return new Promise(function (resolve, reject) {
@@ -64,6 +65,8 @@ class SociosDAC {
             });
         });
     }
+
+    
 }
 module.exports.SociosDAC = SociosDAC;
 

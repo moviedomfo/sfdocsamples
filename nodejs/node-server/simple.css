@@ -1,0 +1,22 @@
+.title{
+    color: darkblue;
+}
+header,footer{
+    background-color: lightslategray;
+    color:aliceblue;
+    padding: 20px;
+}
+
+aside{
+    padding-top: 10px;
+    font-weight: bold;
+
+}
+
+nav {
+    background-color:black
+}
+img{
+    height: 100%;
+    width: 100%
+}
