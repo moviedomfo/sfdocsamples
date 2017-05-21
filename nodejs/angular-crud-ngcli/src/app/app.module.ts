@@ -6,11 +6,13 @@ import { AlertModule } from 'ngx-bootstrap';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AppComponent } from './app.component';
 import { ClienteComponent } from './cliente/cliente.component';
+import { FontAgComponent } from './font-ag/font-ag.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ClienteComponent
+    ClienteComponent,
+    FontAgComponent
   ],
   imports: [
     AlertModule.forRoot(),
