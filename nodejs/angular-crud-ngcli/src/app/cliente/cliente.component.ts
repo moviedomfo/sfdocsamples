@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
- import { ModelDialogComponent } from '../model-dialog/model-dialog.component';
-    import { DialogService } from "ng2-bootstrap-modal";
+ import { ModalDialogComponent } from '../modal-dialog/modal-dialog.component';
+ import { DialogService } from "ng2-bootstrap-modal";
+    
+    
 @Component({
   selector: 'app-cliente',
   templateUrl: './cliente.component.html',
@@ -17,7 +19,7 @@ export class ClienteComponent implements OnInit {
     alert('Crear cliente');
   }
 showConfirm() {
-            let disposable = this.dialogService.addDialog(ModelDialogComponent, {
+            let disposable = this.dialogService.addDialog(ModalDialogComponent, {
                 title:'Confirm title', 
                 message:'Confirm message'})
                 .subscribe((isConfirmed)=>{

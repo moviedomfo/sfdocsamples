@@ -7,19 +7,21 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AppComponent } from './app.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { FontAgComponent } from './font-ag/font-ag.component';
-import { ModelDialogComponent } from './model-dialog/model-dialog.component';
+import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
+
 @NgModule({
   declarations: [
     AppComponent,
     ClienteComponent,
     FontAgComponent,
-    ModelDialogComponent
+    ModalDialogComponent
   ],
   imports: [
     AlertModule.forRoot(),
     BsDropdownModule.forRoot(),
-    BrowserModule,BootstrapModalModule,
+    BrowserModule,
+    BootstrapModalModule,
     FormsModule,
     HttpModule
   ],
