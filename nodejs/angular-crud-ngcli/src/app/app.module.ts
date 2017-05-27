@@ -24,6 +24,8 @@ import { BootstrapModalModule } from 'ng2-bootstrap-modal';
     BootstrapModalModule,
     FormsModule,
     HttpModule
+  ],entryComponents: [
+    ModalDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
