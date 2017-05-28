@@ -12,6 +12,24 @@
     </li>
   </ul>
 </div>
+<div class="alert alert-success" role="alert">
+  <div class="btn-group" dropdown>
+ <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
+    Listado de paises <span class="caret"></span>  </button>
+  <ul *dropdownMenu class="dropdown-menu" role="menu" (change)="onPaisSelection($event)" >
+        <li role="menuitem" *ngFor="let pais of paises" ><a class="dropdown-item"  
+        href="setCountry/{{pais}}" > {{pais}}</a></li>
+   
+   </ul>
+   </div>
+</div>
+
+<select [(ngModel)]="selectedPais" (change)="onPaisSelection($event)">
+  <option *ngFor="let c of paises" [ngValue]="c"  >{{c}}</option>
+</select>
+
+<label for="selectedPais"> Pais seleccionado</label>
+<div>{{selectedPais}}</div>
 <button class="btn btn-danger" (click)="createClient($event)" >Crear cliente</button>
 
 
