@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {ClienteService} from './service/cliente.service';
+/*import {Dropdown} from './dropdown.directive';
+import {DropdownMenu} from './dropdown-menu.directive';
+import {DropdownToggle} from './dropdown-toggle.directive';*/
 //  import { ModalDialogComponent } from '../modal-dialog/modal-dialog.component';
 //  import { DialogService } from "ng2-bootstrap-modal";
 
@@ -6,7 +10,8 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-cliente',
   templateUrl: './cliente.component.html',
-  styleUrls: ['./cliente.component.css']
+  styleUrls: ['./cliente.component.css'],
+  
 })
 export class ClienteComponent implements OnInit {
 
@@ -17,7 +22,7 @@ export class ClienteComponent implements OnInit {
 
 
   //constructor(private dialogService:DialogService) { }
-  constructor() {
+  constructor(private clienteService:ClienteService) {
     //let paises: Array<number> = [1, 2, 3];
 
   }
@@ -36,9 +41,15 @@ export class ClienteComponent implements OnInit {
     //alert(str);
 
   }
+onPaisSelection2(pais){
+
+   this.selectedPais = pais;
+  }
 
 onPaisSelection(event){
-    alert( this.selectedPais);
+
+   alert(this.selectedPais);
+  
 
   }
   // showConfirm() {

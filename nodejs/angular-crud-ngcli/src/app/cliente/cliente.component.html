@@ -1,4 +1,20 @@
 
+<h4>Angular 2 Dropdown Menu with Keyboard Accessibility</h4>
+<div class="btn-group" dropdown keyboardNav="true">
+  <button id="dropdown-keyboard-access" type="button" class="btn btn-info" dropdownToggle>
+                          Dropdown with Keyboard Accessibility (Up and Down) <span class="caret"></span>
+                        </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-keyboard-access">
+    <li role="menuitem"><a class="dropdown-item" href="#">BMW Serie 1</a></li>
+    <li role="menuitem"><a class="dropdown-item" href="#">BMW Serie 5</a></li>
+    <li role="menuitem"><a class="dropdown-item" href="#">BMW Serie 3</a></li>
+    <li class="divider dropdown-divider"></li>
+    <li role="menuitem"><a class="dropdown-item" href="#">Porsche</a></li>
+    <li role="menuitem"><a class="dropdown-item" href="#">Audi New</a></li>
+  </ul>
+</div>
+
+
 <div class="btn-group" dropdown>
   <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
     Button dropdown <span class="caret"></span>
@@ -13,15 +29,15 @@
   </ul>
 </div>
 <div class="alert alert-success" role="alert">
-  <div class="btn-group" dropdown>
- <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
-    Listado de paises <span class="caret"></span>  </button>
-  <ul *dropdownMenu class="dropdown-menu" role="menu" (change)="onPaisSelection($event)" >
-        <li role="menuitem" *ngFor="let pais of paises" ><a class="dropdown-item"  
-        href="setCountry/{{pais}}" > {{pais}}</a></li>
-   
-   </ul>
-   </div>
+  <div class="btn-group" dropdown keyboardNav="true">
+    <button id="pepe" dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
+    Listado de paises <span class="caret"></span> {{selectedPais}} </button>
+    <ul *dropdownMenu class="dropdown-menu" role="<menubar></menubar>" aria-labelledby="pepe">
+      <li role="menuitem" *ngFor="let pais of paises">
+        <a class="dropdown-item" href="setCountry/{{pais}}"> {{pais}}</a></li>
+
+    </ul>
+  </div>
 </div>
 
 <select [(ngModel)]="selectedPais" (change)="onPaisSelection($event)">
@@ -30,8 +46,4 @@
 
 <label for="selectedPais"> Pais seleccionado</label>
 <div>{{selectedPais}}</div>
-<button class="btn btn-danger" (click)="createClient($event)" >Crear cliente</button>
-
-
-
-         
+<button class="btn btn-danger" (click)="createClient($event)">Crear cliente</button>

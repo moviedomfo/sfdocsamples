@@ -9,7 +9,7 @@ import { ClienteComponent } from './cliente/cliente.component';
 import { FontAgComponent } from './font-ag/font-ag.component';
 import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
-
+import {ClienteService} from './service/cliente.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +27,7 @@ import { BootstrapModalModule } from 'ng2-bootstrap-modal';
   ],entryComponents: [
     ModalDialogComponent
   ],
-  providers: [],
+  providers: [ClienteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
