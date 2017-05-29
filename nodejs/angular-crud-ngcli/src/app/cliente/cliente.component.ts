@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ClienteService} from './service/cliente.service';
+import { ClienteService } from '../service/cliente.service';
 /*import {Dropdown} from './dropdown.directive';
 import {DropdownMenu} from './dropdown-menu.directive';
 import {DropdownToggle} from './dropdown-toggle.directive';*/
@@ -11,18 +11,18 @@ import {DropdownToggle} from './dropdown-toggle.directive';*/
   selector: 'app-cliente',
   templateUrl: './cliente.component.html',
   styleUrls: ['./cliente.component.css'],
-  
+
 })
 export class ClienteComponent implements OnInit {
 
-  private selectedPais:String ='';
+  private selectedPais: String = '';
   public paises: Array<String> = ["Afghanistan",
     "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain",
     "Bangladesh", "Cote d'Ivoire", "Croatia", "Cuba"];
 
 
   //constructor(private dialogService:DialogService) { }
-  constructor(private clienteService:ClienteService) {
+  constructor(private clienteService: ClienteService) {
     //let paises: Array<number> = [1, 2, 3];
 
   }
@@ -30,26 +30,27 @@ export class ClienteComponent implements OnInit {
   }
 
   createClient(event) {
-    var str: String = 'Pais seleccionado ' + this.selectedPais;
-  alert (str);
-   var paicesFiltrados =  this.paises.filter(p=>p.startsWith('Ar') );
-    
-    
+    var result = this.clienteService.myData();
+    var str: String = 'Pais seleccionado ' + this.selectedPais + ' ' + result;
+    alert(str);
+    var paicesFiltrados = this.paises.filter(p => p.startsWith('Ar'));
+
+
     paicesFiltrados.forEach(element => {
-        alert(element);
+      alert(element);
     });
     //alert(str);
 
   }
-onPaisSelection2(pais){
+  onPaisSelection2(pais) {
 
-   this.selectedPais = pais;
+    this.selectedPais = pais;
   }
 
-onPaisSelection(event){
+  onPaisSelection(event) {
 
-   alert(this.selectedPais);
-  
+    alert(this.selectedPais);
+
 
   }
   // showConfirm() {

@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ClienteService {
-
-  constructor() { }
- cars = [
+cars = [
     'Ford','Chevrolet','Buick'
   ];
+  constructor() { }
+ 
 
 
   myData() {
