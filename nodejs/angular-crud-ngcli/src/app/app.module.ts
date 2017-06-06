@@ -10,6 +10,10 @@ import { FontAgComponent } from './font-ag/font-ag.component';
 import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import {ClienteService} from './service/cliente.service';
+
+import {MovimientosModule} from './movimientos/movimientos.module' ;
+// import {MovimientosComponent} from './movimientos/movimientos.component' ;
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +27,7 @@ import {ClienteService} from './service/cliente.service';
     BrowserModule,
     BootstrapModalModule,
     FormsModule,
-    HttpModule
+    HttpModule,MovimientosModule
   ],entryComponents: [
     ModalDialogComponent
   ],
