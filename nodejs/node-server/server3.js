@@ -13,9 +13,6 @@ app.get('/buscar', function (req, res,next) {
         res.send(result);
   }).catch(err => res.send(err.message));
    
-
-
-   
    
 });
 
