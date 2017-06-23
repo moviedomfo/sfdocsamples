@@ -10,12 +10,14 @@ import { FontAgComponent } from './font-ag/font-ag.component';
 import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import {ClienteService} from './service/cliente.service';
+import { PruebaComponent } from './prueba/prueba.component';
 @NgModule({
   declarations: [
     AppComponent,
     ClienteComponent,
     FontAgComponent,
-    ModalDialogComponent
+    ModalDialogComponent,
+    PruebaComponent
   ],
   imports: [
     AlertModule.forRoot(),
