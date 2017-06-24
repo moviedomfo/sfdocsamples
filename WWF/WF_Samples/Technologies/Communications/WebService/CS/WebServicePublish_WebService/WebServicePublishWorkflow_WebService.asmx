@@ -1,1 +1,0 @@
-<%@WebService Class="Microsoft.Samples.Workflow.WebService.WebServicePublishWorkflow_WebService" %>
