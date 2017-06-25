@@ -11,7 +11,8 @@ import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import {ClienteService} from './service/cliente.service';
 
-import {MovimientosModule} from './movimientos/movimientos.module' ;
+import {MovimientosModule} from './movimientos/movimientos.module';
+import { PersonsComponent } from './persons/persons.component' ;
 // import {MovimientosComponent} from './movimientos/movimientos.component' ;
 
 @NgModule({
@@ -19,7 +20,8 @@ import {MovimientosModule} from './movimientos/movimientos.module' ;
     AppComponent,
     ClienteComponent,
     FontAgComponent,
-    ModalDialogComponent
+    ModalDialogComponent,
+    PersonsComponent
   ],
   imports: [
     AlertModule.forRoot(),
