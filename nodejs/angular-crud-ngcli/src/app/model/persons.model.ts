@@ -1,3 +1,5 @@
+
+
 export class PersonsBE {
     IdPersona: number;
      UserId: string;
@@ -5,7 +7,7 @@ export class PersonsBE {
      NroDocumento: string;
      Apellido: string;
      Nombre: string;
-     Sexo: number;
+     Sexo: number;  
      IdEstadocivil: number;
      FechaNacimiento: Date;
      LastAccessTime: Date;
