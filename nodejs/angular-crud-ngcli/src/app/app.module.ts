@@ -5,11 +5,11 @@ import { HttpModule } from '@angular/http';
 import { AlertModule } from 'ngx-bootstrap';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AppComponent } from './app.component';
-import { ClienteComponent } from './cliente/cliente.component';
+import { PatientComponent } from './patient/patient.component';
 import { FontAgComponent } from './font-ag/font-ag.component';
 import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
-import {ClienteService} from './service/cliente.service';
+import {PatientsService} from './service/patients.service';
 
 import {MovimientosModule} from './movimientos/movimientos.module';
 import { PersonsComponent } from './persons/persons.component' ;
@@ -18,7 +18,7 @@ import { PersonsComponent } from './persons/persons.component' ;
 @NgModule({
   declarations: [
     AppComponent,
-    ClienteComponent,
+    PatientComponent,
     FontAgComponent,
     ModalDialogComponent,
     PersonsComponent
@@ -33,7 +33,7 @@ import { PersonsComponent } from './persons/persons.component' ;
   ],entryComponents: [
     ModalDialogComponent
   ],
-  providers: [ClienteService],
+  providers: [PatientsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

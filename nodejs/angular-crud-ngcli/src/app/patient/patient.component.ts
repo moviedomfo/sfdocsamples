@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ClienteService } from '../service/cliente.service';
-import { IMovimiento, Movimiento } from '../model/movimientos.model';
+import { PatientsService } from '../service/patients.service';
+import {  PatientBE } from '../model/patients.model';
 //permmite cambiar la variable obsevada
 import { Subject } from 'rxjs/Subject';
 //permite observar
@@ -13,15 +13,15 @@ import {DropdownToggle} from './dropdown-toggle.directive';*/
 
 
 @Component({
-  selector: 'app-cliente',
-  templateUrl: './cliente.component.html',
-  styleUrls: ['./cliente.component.css'],
+  selector: 'app-patient',
+  templateUrl: './patient.component.html',
+  styleUrls: ['./patient.component.css'],
 
 })
-export class ClienteComponent implements OnInit {
+export class PatientComponent implements OnInit {
 
- movimientoList$:Observable<Movimiento[]>;
- movimientoList:Movimiento[];
+ movimientoList$:Observable<PatientBE[]>;
+ movimientoList:PatientBE[];
   private selectedPais: String = '';
   public paises: Array<String> = ["Afghanistan",
     "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain",
@@ -29,7 +29,7 @@ export class ClienteComponent implements OnInit {
 
 
   //constructor(private dialogService:DialogService) { }
-  constructor(private clienteService: ClienteService) {
+  constructor(private patientService: PatientsService) {
     //let paises: Array<number> = [1, 2, 3];
 
   }
@@ -39,13 +39,13 @@ export class ClienteComponent implements OnInit {
   }
   ngOnInit() {
 
-    this.movimientoList$= this.clienteService.getMovimientoList$();
+    this.movimientoList$= this.patientService.getPatientsList$();
     //this.movimientoList$.subscribe(res => {this.onCreateMovimiento(res);});
     this.movimientoList$.subscribe(res => this.onCreateMovimiento(res));
   }
   
   createClient(event) {
-    var result = this.clienteService.myData();
+    var result = this.patientService.myData();
     var str: String = 'Pais seleccionado ' + this.selectedPais + ' ' + result;
     alert(str);
     var paicesFiltrados = this.paises.filter(p => p.startsWith('Ar'));

@@ -1,4 +1,15 @@
-export class Patient  {
+import {PersonsBE} from '../model/persons.model';
+
+export interface IPatient  {
+     PatientId: number;
+     IdPersona: number;
+     FechaAlta: Date;
+     LastAccessTime: Date;
+     LastAccessUserId: string;
+     LastHealthInstId: string;
+}
+
+export class PatientBE extends PersonsBE implements IPatient {
     public PatientId: number;
     public IdPersona: number;
     public FechaAlta: Date;
@@ -8,6 +19,7 @@ export class Patient  {
 }
 
 export class PatientAllergy {
+
      AllergyId: number;
      PatientId: number;
      FoodAllergy: Boolean;
@@ -25,6 +37,8 @@ export class PatientAllergy {
      SunAllergy: Boolean;
      MedicalEventId: number;
      Enabled: Boolean;
+
+    
 }
 
 export class PatientMedicament {
