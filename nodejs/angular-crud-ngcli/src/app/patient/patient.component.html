@@ -1,21 +1,56 @@
+<section>
 
-<h4>Angular 2 Dropdown Menu with Keyboard Accessibility</h4>
-<div class="btn-group" dropdown keyboardNav="true">
+  <header class="header">
+    <h4>Alta de paciente</h4>
+    <input class="new-todo" placeholder="Nombre paciente" autofocus="" [(ngModel)]="currenPatient.Nombre" (keyup.enter)="addTodo()">
+    <input class="new-todo" placeholder="Apellido paciente" autofocus="" [(ngModel)]="currenPatient.Apellido" (keyup.enter)="addTodo()">
+  </header>
+
+  <body>
+    <div class="container">
+      <!--FechaAlta-->
+      <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">FechaAlta</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="currenPatient.FechaAlta" id="patient-FechaAlta-input">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">PatientId</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="currenPatient.PatientId" id="patient-PatientId-input">
+        </div>
+      </div>
+    </div>
+
+  </body>
+</section>
+
+<section>
+
+<div>{{currenPatient.Nombre}}</div>
+  <div>{{currenPatient.Apellido}}</div>
+  <br>
+<div>{{currenPatient | json}}</div>
+
+</section>
+<!--<div class="btn-group" dropdown keyboardNav="true">
   <button id="dropdown-keyboard-access" type="button" class="btn btn-info" dropdownToggle>
                           Dropdown with Keyboard Accessibility (Up and Down) <span class="caret"></span>
                         </button>
   <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-keyboard-access">
-    <li role="menuitem"><a class="dropdown-item" href="#">BMW Serie 1</a></li>
+    <li role="menuitem"><a class="dropdown-item" href="#">Casado</a></li>
     <li role="menuitem"><a class="dropdown-item" href="#">BMW Serie 5</a></li>
     <li role="menuitem"><a class="dropdown-item" href="#">BMW Serie 3</a></li>
     <li class="divider dropdown-divider"></li>
     <li role="menuitem"><a class="dropdown-item" href="#">Porsche</a></li>
     <li role="menuitem"><a class="dropdown-item" href="#">Audi New</a></li>
   </ul>
-</div>
+</div>-->
 
 
-<div class="btn-group" dropdown>
+<!--<div class="btn-group" dropdown>
   <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
     Button dropdown <span class="caret"></span>
   </button>
@@ -27,7 +62,9 @@
     <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
     </li>
   </ul>
-</div>
+</div>-->
+
+
 <div class="alert alert-success" role="alert">
   <div class="btn-group" dropdown keyboardNav="true">
     <button id="pepe" dropdownToggle type="button" class="btn btn-primary dropdown-toggle">

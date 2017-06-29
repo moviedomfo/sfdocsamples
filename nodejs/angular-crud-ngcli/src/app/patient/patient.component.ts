@@ -20,8 +20,9 @@ import {DropdownToggle} from './dropdown-toggle.directive';*/
 })
 export class PatientComponent implements OnInit {
 
- movimientoList$:Observable<PatientBE[]>;
- movimientoList:PatientBE[];
+ patientList$:Observable<PatientBE[]>;
+ patientList:PatientBE[];
+ currenPatient:PatientBE;
   private selectedPais: String = '';
   public paises: Array<String> = ["Afghanistan",
     "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain",
@@ -38,10 +39,11 @@ export class PatientComponent implements OnInit {
     
   }
   ngOnInit() {
-
-    this.movimientoList$= this.patientService.getPatientsList$();
+  this.currenPatient= new PatientBE();
+  this.currenPatient.Nombre="lolo";
+    this.patientList$= this.patientService.getPatientsList$();
     //this.movimientoList$.subscribe(res => {this.onCreateMovimiento(res);});
-    this.movimientoList$.subscribe(res => this.onCreateMovimiento(res));
+    this.patientList$.subscribe(res => this.onCreateMovimiento(res));
   }
   
   createClient(event) {

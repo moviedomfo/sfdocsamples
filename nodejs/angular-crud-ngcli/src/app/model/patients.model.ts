@@ -1,16 +1,31 @@
 import {PersonsBE} from '../model/persons.model';
 
+export interface IParam
+{
+      Id: number;
+    Name:string;
+    ParentId?:number
+}
+export class Param implements IParam{
+    Id: number;
+    Name:string;
+    ParentId:number
+}
 export interface IPatient  {
      PatientId: number;
      IdPersona: number;
+     Apellido:string;
+     Nombre:string;
      FechaAlta: Date;
      LastAccessTime: Date;
      LastAccessUserId: string;
      LastHealthInstId: string;
 }
 
-export class PatientBE extends PersonsBE implements IPatient {
+export class PatientBE implements IPatient {
     public PatientId: number;
+    public Apellido:string;
+    public Nombre:string;
     public IdPersona: number;
     public FechaAlta: Date;
     public LastAccessTime: Date;
