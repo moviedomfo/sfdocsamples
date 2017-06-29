@@ -35,30 +35,36 @@ export class PatientComponent implements OnInit {
 
   }
 
-   onCreateMovimiento(res){
-    
+   onCreatePatient(res){
+      this.patientList= res;
   }
   ngOnInit() {
-  this.currenPatient= new PatientBE();
-  this.currenPatient.Nombre="lolo";
+    this.currenPatient= new PatientBE();
+    this.currenPatient.FechaAlta=new Date(Date.now());
+
     this.patientList$= this.patientService.getPatientsList$();
-    //this.movimientoList$.subscribe(res => {this.onCreateMovimiento(res);});
-    this.patientList$.subscribe(res => this.onCreateMovimiento(res));
+
+    this.patientList$.subscribe(res => this.onCreatePatient(res));
   }
   
-  createClient(event) {
-    var result = this.patientService.myData();
-    var str: String = 'Pais seleccionado ' + this.selectedPais + ' ' + result;
-    alert(str);
-    var paicesFiltrados = this.paises.filter(p => p.startsWith('Ar'));
-
-
-    paicesFiltrados.forEach(element => {
-      alert(element);
-    });
+  createPatient(event) {
+    //var result = this.patientService.myData();
+    //var str: String = 'Pais seleccionado ' + this.selectedPais + ' ' + result;
     //alert(str);
+    //var paicesFiltrados = this.paises.filter(p => p.startsWith('Ar'));
 
+
+    // paicesFiltrados.forEach(element => {
+    //   alert(element);
+    // });
+    //alert(str);
+      this.patientService.createPatients(this.currenPatient);
   }
+
+retriveAllpatients(){
+   this.patientService.getPatientsList$();
+}
+
   onPaisSelection2(pais) {
 
     this.selectedPais = pais;

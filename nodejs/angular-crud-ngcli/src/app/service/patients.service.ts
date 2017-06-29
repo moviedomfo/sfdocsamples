@@ -59,16 +59,6 @@ export class PatientsService {
     //Subject<IPatients[]>
     //Emito un evento.
     this.patientList$.next(this.patientList);
-    // mov.id=0;
-    // mov.fecha= new Date(Date.now());
-    // mov.tipoId=11;
-    // mov.importe=1000;
-
-    // let mov2 :Patients =  {  
-    //   id=0,
-    //   fecha= new Date(Date.now()),
-    //   tipoId=11,
-    //   importe=1000};
 
 
   }
@@ -82,18 +72,16 @@ export class PatientsService {
     });
   }
 
-  getPatientsList$(): Observable<PatientBE[]> {
+  reriveAllPatientList$(): Observable<PatientBE[]> {
 
     return this.patientList$.asObservable();
   }
 
-  getPatients(movId: number): IPatient {
+  getPatientById(patintId: number): IPatient {
     let patient: IPatient;
-    patient = this.patientList.filter(p => p.PatientId === movId)[0];
+    patient = this.patientList.filter(p => p.PatientId === patintId)[0];
     return patient;
   }
-  myData() {
-    return 'This is my data, man!';
-  }
+  
 
 }
