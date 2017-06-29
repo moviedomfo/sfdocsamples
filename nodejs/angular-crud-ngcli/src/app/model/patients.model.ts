@@ -9,7 +9,7 @@ export interface IParam
 export class Param implements IParam{
     Id: number;
     Name:string;
-    ParentId:number
+    ParentId?:number
 }
 export interface IPatient  {
      PatientId: number;

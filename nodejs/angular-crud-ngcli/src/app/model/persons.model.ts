@@ -33,9 +33,7 @@ export class PersonsBE {
       City: string,
       ZipCode: string,
       LastHealthInstId: string 
- ) {
-
-     
+ ) { 
     
 }
 
