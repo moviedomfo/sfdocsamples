@@ -1,16 +1,6 @@
 import {PersonsBE} from '../model/persons.model';
 
-export interface IParam
-{
-      Id: number;
-    Name:string;
-    ParentId?:number
-}
-export class Param implements IParam{
-    Id: number;
-    Name:string;
-    ParentId?:number
-}
+
 export interface IPatient  {
      PatientId: number;
      IdPersona: number;

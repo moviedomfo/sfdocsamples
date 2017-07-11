@@ -1,6 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import {  Param, IParam } from '../model/patients.model';
+import {  Param, IParam } from '../model/common.model';
 import { Http, Response } from '@angular/http';
 //permmite cambiar la variable obsevada
 import { Subject } from 'rxjs/Subject';

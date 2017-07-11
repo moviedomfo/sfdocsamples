@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientsService } from '../service/patients.service';
 import {  PatientBE } from '../model/patients.model';
+import {  IContextInformation,IParam ,Param} from '../model/common.model';
 //permmite cambiar la variable obsevada
 import { Subject } from 'rxjs/Subject';
 //permite observar
@@ -41,10 +42,10 @@ export class PatientComponent implements OnInit {
   ngOnInit() {
     this.currenPatient= new PatientBE();
     this.currenPatient.FechaAlta=new Date(Date.now());
+    this.patientList$ = this.patientService.reriveAllPatientList2$();
+    //this.patientList$ = this.patientService.retrivePatientsSimple$();
 
-    this.patientList$= this.patientService.reriveAllPatientList$();
-
-    this.patientList$.subscribe(res => this.onCreatePatient(res));
+    //this.patientList$.subscribe(res => this.onCreatePatient(res));
   }
   
   createPatient(event) {
@@ -61,7 +62,7 @@ export class PatientComponent implements OnInit {
       this.patientService.createPatients(this.currenPatient);
   }
 
-retriveAllpatients(){
+reriveAllPatientList(){
    this.patientService.reriveAllPatientList$();
 }
 

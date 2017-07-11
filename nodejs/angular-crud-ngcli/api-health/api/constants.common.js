@@ -10,7 +10,8 @@ const Constantes={
                 encrypt: true // Use this if you're on Windows Azure 
                 }
             },
-      ANOTHER_CONSTANT: 'another value'
+     
+      HealthAPI_URL:"http://localhost:63251/api/"
 }
 
 module.exports =  Constantes;
