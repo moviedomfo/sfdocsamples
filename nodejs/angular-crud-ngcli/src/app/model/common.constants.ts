@@ -2,7 +2,7 @@
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 let headers = new Headers({ 'Content-Type': 'application/json' });
      headers.append('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
-     headers.append('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+     headers.append('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
      headers.append('Access-Control-Allow-Origin', '*');
 
 let options = new RequestOptions({ headers: headers });

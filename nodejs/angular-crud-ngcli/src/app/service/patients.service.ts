@@ -65,19 +65,29 @@ export class PatientsService {
       apellido: "Ovieso ", nombre: "Marcelo"
 
     };
-    let data = new URLSearchParams();
-    data.append('nombre', "marsadasd");
-    data.append('apellido', "asdasdasdas");
-
+   /*  let data = new URLSearchParams(); */
+    let body = JSON.stringify(paramsSimple);
    
-    // this.http.post(`${HealtConstants.HealthAPI_URL}patients/retrivePatients`, data,HealtConstants.httpOptions).subscribe(res => res.json
-    // );
-    //map retorna el mapeo de un json que viene del servicio que tiene la misma estructura que  PatientBE
-    return this.http.post(`${HealtConstants.HealthAPI_URL}patients/retrivePatients`, HealtConstants.httpOptions)
-      .map(function (res: Response) {
+    /* data.append('nombre', "marsadasd");
+    data.append('apellido', "asdasdasdas"); */
+//let body = data.toString();
+    
 
+/*   return  this.http.get(`${HealtConstants.HealthAPI_URL}patients/retriveMedimcamets`)
+      .map(function (res: Response) {
+        console.log(`${HealtConstants.HealthAPI_URL}patients/retriveMedimcamets`);
         return res.json();
-      }).catch(this.handleErrorObservable);
+      }).catch(this.handleErrorObservable); */
+
+
+    //map retorna el mapeo de un json que viene del servicio que tiene la misma estructura que  PatientBE
+
+
+     return this.http.post(`${HealtConstants.HealthAPI_URL}patients/retrivePatients`,body, HealtConstants.httpOptions)
+      .map(function (res: Response) {
+        console.log("se ejecuto retrivePatients");
+        return res.json();
+      }).catch(this.handleErrorObservable); 
   }
 
 

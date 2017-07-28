@@ -63,7 +63,11 @@ export class PatientComponent implements OnInit {
   }
 
 reriveAllPatientList(){
-   this.patientService.reriveAllPatientList$();
+  
+   this.patientService.reriveAllPatientList2$().subscribe(res => {
+        this.patientList =  res;
+      });;
+   //this.patientService.reriveAllPatientList$();
 }
 
   onPaisSelection2(pais) {
