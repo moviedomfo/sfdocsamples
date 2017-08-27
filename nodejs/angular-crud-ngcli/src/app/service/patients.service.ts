@@ -62,7 +62,7 @@ export class PatientsService {
       ContextInformation: this.contextInfo
     };
     var paramsSimple = {
-      apellido: "Ovieso ", nombre: "Marcelo"
+      apellido: "Oviedo ", nombre: "Marcelo"
 
     };
    /*  let data = new URLSearchParams(); */
