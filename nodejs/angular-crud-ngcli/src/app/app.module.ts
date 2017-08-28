@@ -10,7 +10,7 @@ import { FontAgComponent } from './font-ag/font-ag.component';
 import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import {PatientsService} from './service/patients.service';
-
+import {CommonService} from './service/common.service';
 import {MovimientosModule} from './movimientos/movimientos.module';
 import { PersonsComponent } from './persons/persons.component' ;
 // import {MovimientosComponent} from './movimientos/movimientos.component' ;
@@ -33,7 +33,7 @@ import { PersonsComponent } from './persons/persons.component' ;
   ],entryComponents: [
     ModalDialogComponent
   ],
-  providers: [PatientsService],
+  providers: [PatientsService,CommonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

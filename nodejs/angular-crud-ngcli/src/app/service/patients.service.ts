@@ -1,13 +1,15 @@
-import { Injectable } from '@angular/core';
+import { Injectable,Inject } from '@angular/core';
 import { IPatient, PatientBE } from '../model/patients.model';
 import { Param, IParam, IContextInformation } from '../model/common.model';
 import { HealtConstants, contextInfo } from "../model/common.constants";
-import { Http, Response, RequestOptions, Headers } from '@angular/http';
+import { Http, Response, RequestOptions, Headers,URLSearchParams } from '@angular/http';
 import { PersonsBE } from '../model/persons.model';
 //permmite cambiar la variable obsevada
 import { Subject } from 'rxjs/Subject';
 //permite observar
 import { Observable } from 'rxjs/Observable';
+import { CommonService } from '../service/common.service';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class PatientsService {
@@ -20,74 +22,58 @@ export class PatientsService {
   public paramList: Param[];
   private patient: PatientBE;
   private contextInfo: IContextInformation;
-  constructor(private http: Http) {
+  private commonService: CommonService;
+  constructor(private http: Http,@Inject(CommonService) commonService: CommonService) {
     this.contextInfo = contextInfo;
+    this.commonService=commonService;
   }
 
 
+  /// GET to  "http://localhost:63251/api/",
+  retrivePatientsSimple$(): Observable<PatientBE[]> {
+    
+    
+    //map retorna el mapeo de un json que viene del servicio que tiene la misma estructura que  PatientBE
+    return this.http.get(`${HealtConstants.HealthAPI_URL}patients/RetrivePatientsSimple`, HealtConstants.httpOptions)
+       .map(function (res: Response) {
+         return res.json();
+       });
 
 
+  }
+
+//Request header field Access-Control-Allow-Origin is not allowed by 
+//Access-Control-Allow-Headers in preflight response.
   reriveAllPatientList$(): Observable<PatientBE[]> {
     return this.patientList$.asObservable();
   }
 
 
-  retrivePatientsSimple$(): Observable<PatientBE[]> {
-
-
-    //map retorna el mapeo de un json que viene del servicio que tiene la misma estructura que  PatientBE
-    return this.http.post(`${HealtConstants.HealthAPI_URL}patients/RetrivePatientsSimple`, HealtConstants.httpOptions)
-       .map(function (res: Response) {
-         return res.json();
-       }).catch(this.handleErrorObservable);
-  }
 
 
 
-  //RetrivePatientsService
-  reriveAllPatientList2$(): Observable<PatientBE[]> {
 
-    let bussinesData: any = {
-      Nombre: "",
-      Apellido: "",
-      NroDocumento: "",
-      Id: "",
-      ReturnGrid: ""
+  //retrivePatients
+  retrivePatients$(): Observable<PatientBE[]> {
 
-    }
-    var requetObj = {
-      SecurityProviderName: null,
-      ServiceName: 'RetrivePatientsService',
-      BusinessData: bussinesData,
-      ContextInformation: this.contextInfo
-    };
-    var paramsSimple = {
-      apellido: "Oviedo ", nombre: "Marcelo"
-
-    };
-   /*  let data = new URLSearchParams(); */
-    let body = JSON.stringify(paramsSimple);
-   
-    /* data.append('nombre', "marsadasd");
-    data.append('apellido', "asdasdasdas"); */
-//let body = data.toString();
     
-
-/*   return  this.http.get(`${HealtConstants.HealthAPI_URL}patients/retriveMedimcamets`)
+    var bussinesData={
+      nombre:"marcelo",
+      apellido:"marcelo"
+    };
+    
+     let searchParams: URLSearchParams = new URLSearchParams();
+     //searchParams.set("nombre","marcelo");
+    // searchParams.set("apellido","oviedo");
+    
+    var req = this.commonService.createFwk_SOA_REQ(bussinesData);
+    searchParams.set("jsonRequest",JSON.stringify(req));
+    HealtConstants.httpOptions.search = searchParams;
+    //console.log ( JSON.stringify(req));
+     return this.http.get(`${HealtConstants.HealthAPI_URL}patients/retrivePatients`, HealtConstants.httpOptions)
       .map(function (res: Response) {
-        console.log(`${HealtConstants.HealthAPI_URL}patients/retriveMedimcamets`);
         return res.json();
-      }).catch(this.handleErrorObservable); */
-
-
-    //map retorna el mapeo de un json que viene del servicio que tiene la misma estructura que  PatientBE
-
-
-     return this.http.post(`${HealtConstants.HealthAPI_URL}patients/retrivePatients`,body, HealtConstants.httpOptions)
-      .map(function (res: Response) {
-        console.log("se ejecuto retrivePatients");
-        return res.json();
-      }).catch(this.handleErrorObservable); 
+      });
   }
 
 
@@ -102,7 +88,7 @@ export class PatientsService {
     this.patientList$.next(this.patientList);
 
 
-  }
+    }
 
   private handleErrorObservable(error: Response | any) {
     console.error(error.message || error);
@@ -122,3 +108,4 @@ export class PatientsService {
 
 
 }
+

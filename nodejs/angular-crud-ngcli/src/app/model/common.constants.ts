@@ -1,9 +1,10 @@
 
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
+import { Param, IParam, IContextInformation ,IRequest} from '../model/common.model';
 let headers = new Headers({ 'Content-Type': 'application/json' });
      headers.append('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
      headers.append('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
-     headers.append('Access-Control-Allow-Origin', '*');
+     headers.append('Access-Control-Allow-Origin', 'http://localhost:4200');
 
 let options = new RequestOptions({ headers: headers });
 export  const HealtConstants={
@@ -63,6 +64,32 @@ export  const HealtConstants={
 
     ];
 
+// expect commonHelper = function function_name(argument) {
+// createFwk_SOA_REQ(bussinesData:any):IRequest
+//   {
+//     let contextInfo: IContextInformation;
+//     let req :IRequest;
+//     contextInfo.Culture = "ES-AR";
+//     contextInfo.ProviderNameWithCultureInfo = "";
+//     contextInfo.HostName  =  'localhost';
+//     contextInfo.HostIp  =  '10.10.200.168';
+//     contextInfo.HostTime  =  new Date(),
+//     contextInfo.ServerName  =  'WebAPIDispatcherClienteWeb';
+//     contextInfo.ServerTime  =  new Date();
+//     contextInfo.UserName  =  'moviedo',
+//     contextInfo.UserId  =  '';
+//     contextInfo.AppId  =  'Healt';
+//     contextInfo.ProviderName = 'health';
+//     req.ContextInformation=contextInfo;
+//     req.BusinessData=bussinesData;
+//     req.Error =null;
+//     req.SecurityProviderName="";
+//     req.Encrypt=false;
+
+//     return req;
+//   }
+  
+// }
 //module.exports =  HealtConstants;
 //module.exports =  contextInfo;
 // const  CNN_STRING_HEALTH  = {

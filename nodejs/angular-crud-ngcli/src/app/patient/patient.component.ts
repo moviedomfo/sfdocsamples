@@ -42,12 +42,26 @@ export class PatientComponent implements OnInit {
   ngOnInit() {
     this.currenPatient= new PatientBE();
     this.currenPatient.FechaAlta=new Date(Date.now());
-    this.patientList$ = this.patientService.reriveAllPatientList2$();
-    //this.patientList$ = this.patientService.retrivePatientsSimple$();
+    this.patientList$ = this.patientService.retrivePatientsSimple$();
+    this.patientList$.subscribe(
+      res=>{
+        
+          this.patientList = res;
+          
+      }
+    ); 
+
+    // this.patientService.retrivePatientsSimple$().subscribe(
+    //   res=>{
+    //     alert('dasdasd');
+    //       this.patientList = res;
+    //       alert(JSON.stringify(this.patientList));
+    //   }
+    // ); 
 
     //this.patientList$.subscribe(res => this.onCreatePatient(res));
   }
-  
+   
   createPatient(event) {
     //var result = this.patientService.myData();
     //var str: String = 'Pais seleccionado ' + this.selectedPais + ' ' + result;
@@ -63,11 +77,9 @@ export class PatientComponent implements OnInit {
   }
 
 reriveAllPatientList(){
-  
-   this.patientService.reriveAllPatientList2$().subscribe(res => {
-        this.patientList =  res;
-      });;
-   //this.patientService.reriveAllPatientList$();
+  console.log("LLAMANDO A this.patientService.reriveAllPatientList$()");
+   this.patientService.reriveAllPatientList$();
+
 }
 
   onPaisSelection2(pais) {
@@ -81,5 +93,16 @@ reriveAllPatientList(){
 
 
   }
+
+  seMovio(event)
+  {
+    console.log('llamando retrivePatients');
+  
+    this.patientService.retrivePatients$()
+   .subscribe(res => alert(JSON.stringify( res)));
+    
+    
+  }
+
   
 }
