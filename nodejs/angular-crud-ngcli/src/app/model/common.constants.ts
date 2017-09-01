@@ -19,6 +19,7 @@ export  const HealtConstants={
                 }
             },
      HealthAPI_URL:"http://localhost:63251/api/",
+     HealthExecuteAPI_URL:"http://localhost:63251/api/patients/execute",
      httpOptions:options
 }
   export  const contextInfo ={

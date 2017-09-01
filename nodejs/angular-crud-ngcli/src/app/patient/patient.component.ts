@@ -99,7 +99,7 @@ reriveAllPatientList(){
     console.log('llamando retrivePatients');
   
     this.patientService.retrivePatients$()
-   .subscribe(res => alert(JSON.stringify( res)));
+   .subscribe(res => alert("Se encontraron " +res.length + " pacientes"));
     
     
   }

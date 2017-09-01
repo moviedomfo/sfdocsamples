@@ -1,6 +1,7 @@
 import { Injectable,Inject } from '@angular/core';
 import { IPatient, PatientBE } from '../model/patients.model';
-import { Param, IParam, IContextInformation } from '../model/common.model';
+//import { Param, IParam } from '../model/common.model';
+import { Param, IParam, IContextInformation,IRequest,IResponse,Result } from '../model/common.model';
 import { HealtConstants, contextInfo } from "../model/common.constants";
 import { Http, Response, RequestOptions, Headers,URLSearchParams } from '@angular/http';
 import { PersonsBE } from '../model/persons.model';
@@ -59,22 +60,33 @@ export class PatientsService {
     
     var bussinesData={
       nombre:"marcelo",
-      apellido:"marcelo"
+      apellido:""
     };
     
-     let searchParams: URLSearchParams = new URLSearchParams();
-     //searchParams.set("nombre","marcelo");
-    // searchParams.set("apellido","oviedo");
-    
-    var req = this.commonService.createFwk_SOA_REQ(bussinesData);
-    searchParams.set("jsonRequest",JSON.stringify(req));
+     
+    let searchParams: URLSearchParams  = this.commonService.generete_get_searchParams("RetrivePatientsService",bussinesData);
     HealtConstants.httpOptions.search = searchParams;
-    //console.log ( JSON.stringify(req));
-     return this.http.get(`${HealtConstants.HealthAPI_URL}patients/retrivePatients`, HealtConstants.httpOptions)
+
+     return this.http.get(`${HealtConstants.HealthExecuteAPI_URL}`, HealtConstants.httpOptions)
       .map(function (res: Response) {
-        return res.json();
+
+       let retrivePatientsRes :Result;
+       retrivePatientsRes = JSON.parse(res.json());
+
+
+        if (retrivePatientsRes.Error)
+        {
+           alert("Se encontraron errores " + retrivePatientsRes.Error.Message);
+        }
+
+        let patientlist :PatientBE[] =retrivePatientsRes.BusinessData["PatientList"] as PatientBE[];
+        //let lita :any[]=retrivePatientsRes.BusinessData["PatientList"];
+        //patientlist = retrivePatientsRes.BusinessData["PatientList"] as PatientBE[];
+        //alert(JSON.stringify(patientlist));
+        
+        return patientlist;
       });
-  }
+    }
 
 
     createPatients(patient: PatientBE) {

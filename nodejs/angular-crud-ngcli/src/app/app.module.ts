@@ -13,6 +13,8 @@ import {PatientsService} from './service/patients.service';
 import {CommonService} from './service/common.service';
 import {MovimientosModule} from './movimientos/movimientos.module';
 import { PersonsComponent } from './persons/persons.component' ;
+import {  PatientBE } from './model/patients.model';
+import {IContextInformation,  ContextInformation,IRequest,Request,IResponse,Result,ServiceError } from './model/common.model';
 // import {MovimientosComponent} from './movimientos/movimientos.component' ;
 
 @NgModule({

@@ -1,7 +1,8 @@
 
 import { Injectable } from '@angular/core';
-import { Param, IParam, ContextInformation ,Request} from '../model/common.model';
-import { Http, Response } from '@angular/http';
+import { Param, IParam, ContextInformation ,Request,ServiceError} from '../model/common.model';
+
+import { Http, Response, RequestOptions, Headers,URLSearchParams } from '@angular/http';
 //permmite cambiar la variable obsevada
 import { Subject } from 'rxjs/Subject';
 //permite observar
@@ -29,6 +30,19 @@ export class CommonService {
   }
 
 
+  generete_get_searchParams(serviceName,bussinesData):URLSearchParams
+  {
+    let searchParams: URLSearchParams = new URLSearchParams();
+    var req = this.createFwk_SOA_REQ(bussinesData);
+    req.ServiceName= serviceName;
+    searchParams.set("serviceProviderName","health");//defaul 
+    searchParams.set("serviceName",serviceName);
+    searchParams.set("jsonRequest",JSON.stringify(req));
+
+    
+
+    return searchParams;
+  }
   createFwk_SOA_REQ(bussinesData:any):Request
   {
     let contextInfo: ContextInformation= new ContextInformation() ;
@@ -52,5 +66,10 @@ export class CommonService {
     req.Encrypt=false;
 
     return req;
+  }
+
+  processException(Error:ServiceError)
+  {
+
   }
 }
