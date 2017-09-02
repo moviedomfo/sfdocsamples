@@ -1,7 +1,6 @@
-
 import { Injectable } from '@angular/core';
-import { Param, IParam, ContextInformation ,Request,ServiceError} from '../model/common.model';
-
+import { HealtConstants, contextInfo } from "../model/common.constants";
+import { Param, IParam, IContextInformation,ContextInformation ,Request, IRequest, IResponse, Result,ServiceError } from '../model/common.model';
 import { Http, Response, RequestOptions, Headers,URLSearchParams } from '@angular/http';
 //permmite cambiar la variable obsevada
 import { Subject } from 'rxjs/Subject';
@@ -14,12 +13,32 @@ export class CommonService {
   public paramList$: Subject<Param[]> = new Subject<Param[]>();
   constructor(private http: Http) { }
 
-  retriveAllParam$(parentId :number) : Observable<Param[]>
+  searchParametroByParams$(idTipoParametro :number,idParametroRef :number) : Observable<Param[]>
   {
-    //return this.paramList$.asObservable();
-     return this.http.get('../data/patient').map(function (res: Response) {
-      return res.json();
-    });
+    
+    var bussinesData = {
+      IdParametroRef : idParametroRef,
+      IdTipoParametro :idTipoParametro,
+      Vigente :true
+    };
+
+    let searchParams: URLSearchParams = this.generete_get_searchParams("SearchParametroByParamsService", bussinesData);
+    HealtConstants.httpOptions.search = searchParams;
+
+    return this.http.get(`${HealtConstants.HealthExecuteAPI_URL}`, HealtConstants.httpOptions)
+      .map(function (res: Response) {
+
+        let resToObject: Result;
+        resToObject = JSON.parse(res.json());
+
+        if (resToObject.Error) {
+          alert("Se encontraron errores " + resToObject.Error.Message);
+        }
+
+        let patient: Param[] = resToObject.BusinessData as Param[];
+
+        return patient;
+      });
   }
 
   //Metodo directo sin observable

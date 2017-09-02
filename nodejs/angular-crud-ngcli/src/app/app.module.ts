@@ -15,6 +15,10 @@ import {MovimientosModule} from './movimientos/movimientos.module';
 import { PersonsComponent } from './persons/persons.component' ;
 import {  PatientBE } from './model/patients.model';
 import {IContextInformation,  ContextInformation,IRequest,Request,IResponse,Result,ServiceError } from './model/common.model';
+
+import { PatientGridComponent } from './patient/patient-grid/patient-grid.component';
+
+import { PersonCardComponent } from './persons/person-card/person-card.component';
 // import {MovimientosComponent} from './movimientos/movimientos.component' ;
 
 @NgModule({
@@ -23,7 +27,11 @@ import {IContextInformation,  ContextInformation,IRequest,Request,IResponse,Resu
     PatientComponent,
     FontAgComponent,
     ModalDialogComponent,
-    PersonsComponent
+    PersonsComponent,
+    
+    PatientGridComponent,
+    
+    PersonCardComponent
   ],
   imports: [
     AlertModule.forRoot(),
