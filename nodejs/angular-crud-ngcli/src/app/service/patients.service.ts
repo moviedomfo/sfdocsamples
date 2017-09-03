@@ -1,9 +1,9 @@
 import { Injectable, Inject } from '@angular/core';
-import { IPatient, PatientBE } from '../model/patients.model';
+import { PatientBE } from '../model/patients.model';
 import { Param, IParam, IContextInformation, IRequest, IResponse, Result } from '../model/common.model';
 import { HealtConstants, contextInfo } from "../model/common.constants";
 import { Http, Response, RequestOptions, Headers, URLSearchParams } from '@angular/http';
-import { PersonsBE } from '../model/persons.model';
+import { PersonBE } from '../model/persons.model';
 //permmite cambiar la variable obsevada
 import { Subject } from 'rxjs/Subject';
 //permite observar
@@ -17,7 +17,7 @@ export class PatientsService {
   private static _token: any;
 
   private patientList: PatientBE[] = [];
-  private patientList$: Subject<IPatient[]> = new Subject<IPatient[]>();
+  private patientList$: Subject<PatientBE[]> = new Subject<PatientBE[]>();
 
   public paramList: Param[];
   private patient: PatientBE;
@@ -49,7 +49,7 @@ export class PatientsService {
   }
 
 
-
+ 
   getPatientService$(id: number): Observable<PatientBE> {
     var bussinesData = {
       Id: id
@@ -61,14 +61,13 @@ export class PatientsService {
     return this.http.get(`${HealtConstants.HealthExecuteAPI_URL}`, HealtConstants.httpOptions)
       .map(function (res: Response) {
 
-        let getPatientRes: Result;
-        getPatientRes = JSON.parse(res.json());
+        let result: Result= JSON.parse(res.json());
 
-        if (getPatientRes.Error) {
-          alert("Se encontraron errores " + getPatientRes.Error.Message);
+        if (result.Error) {
+          this.commonService.handleErrorService(result.Error.Message);
         }
 
-        let patient: PatientBE = getPatientRes.BusinessData as PatientBE;
+        let patient: PatientBE = result.BusinessData as PatientBE;
 
         return patient;
       });
@@ -76,30 +75,29 @@ export class PatientsService {
 
 
   //retrivePatients
-  retrivePatients$(): Observable<PatientBE[]> {
+  retrivePatients$(txtQuery:string): Observable<PatientBE[]> {
 
 
+    
     var bussinesData = {
-      nombre: "marcelo",
-      apellido: ""
+      nombre: txtQuery,
+      apellido: txtQuery
     };
 
 
     let searchParams: URLSearchParams = this.commonService.generete_get_searchParams("RetrivePatientsService", bussinesData);
     HealtConstants.httpOptions.search = searchParams;
-
+    console.log('trying to execute ' + `${HealtConstants.HealthExecuteAPI_URL}`);
     return this.http.get(`${HealtConstants.HealthExecuteAPI_URL}`, HealtConstants.httpOptions)
       .map(function (res: Response) {
 
-        let retrivePatientsRes: Result;
-        retrivePatientsRes = JSON.parse(res.json());
+        let result: Result = JSON.parse(res.json());
 
-
-        if (retrivePatientsRes.Error) {
-          alert("Se encontraron errores " + retrivePatientsRes.Error.Message);
+        if (result.Error) {
+          this.commonService.handleErrorService(result.Error.Message);
         }
 
-        let patientlist: PatientBE[] = retrivePatientsRes.BusinessData["PatientList"] as PatientBE[];
+        let patientlist: PatientBE[] = result.BusinessData["PatientList"] as PatientBE[];
         //let lita :any[]=retrivePatientsRes.BusinessData["PatientList"];
         //patientlist = retrivePatientsRes.BusinessData["PatientList"] as PatientBE[];
         //alert(JSON.stringify(patientlist));
@@ -112,7 +110,8 @@ export class PatientsService {
   createPatients(patient: PatientBE) {
 
     //Clona Patients por parametro
-    var patientClone: IPatient = Object.assign({}, patient);
+    //var patientClone: IPatient = Object.assign({}, patient);
+    var patientClone: PatientBE = Object.assign({}, patient);
     this.patientList.push(patientClone);
     //esto es lo siguiente q envio o notifico. lo que le envio es algo q coincida con la declaracion
     //Subject<IPatients[]>
@@ -122,22 +121,19 @@ export class PatientsService {
 
   }
 
-  private handleErrorObservable(error: Response | any) {
-    console.error(error.message || error);
-    return Observable.throw(error.message || error);
-  }
-  private handleErrorPromise(error: Response | any) {
-    console.error(error.message || error);
-    return Promise.reject(error.message || error);
-  }
+  
 
 
-  getPatientById(patintId: number): IPatient {
-    let patient: IPatient;
-    patient = this.patientList.filter(p => p.PatientId === patintId)[0];
-    return patient;
-  }
+  // getPatientById(patintId: number): IPatient {
+  //   let patient: IPatient;
+  //   patient = this.patientList.filter(p => p.PatientId === patintId)[0];
+  //   return patient;
+  // }
 
-
+  getPatientById(patintId: number): PatientBE {
+     let patient: PatientBE;
+     patient = this.patientList.filter(p => p.PatientId === patintId)[0];
+     return patient;
+   }
 }
 

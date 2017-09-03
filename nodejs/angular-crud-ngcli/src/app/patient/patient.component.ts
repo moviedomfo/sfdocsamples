@@ -95,10 +95,10 @@ export class PatientComponent implements OnInit {
   }
 
   seMovio(event) {
-    console.log('llamando retrivePatients');
+    // console.log('llamando retrivePatients');
 
-    this.patientService.retrivePatients$()
-      .subscribe(res => alert("Se encontraron " + res.length + " pacientes"));
+    // this.patientService.retrivePatients$()
+    //   .subscribe(res => alert("Se encontraron " + res.length + " pacientes"));
 
 
   }

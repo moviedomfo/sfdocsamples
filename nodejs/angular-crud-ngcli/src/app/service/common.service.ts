@@ -87,8 +87,20 @@ export class CommonService {
     return req;
   }
 
-  processException(Error:ServiceError)
-  {
+ 
 
+  public handleErrorService(serviceError:ServiceError){
+    if (serviceError) {
+      alert("Se encontraron errores " + serviceError.Message);
+    }
+  }
+  
+  public handleErrorObservable(error: Response | any) {
+    console.error(error.message || error);
+    return Observable.throw(error.message || error);
+  }
+  public handleErrorPromise(error: Response | any) {
+    console.error(error.message || error);
+    return Promise.reject(error.message || error);
   }
 }

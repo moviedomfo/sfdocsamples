@@ -19,6 +19,7 @@ import {IContextInformation,  ContextInformation,IRequest,Request,IResponse,Resu
 import { PatientGridComponent } from './patient/patient-grid/patient-grid.component';
 
 import { PersonCardComponent } from './persons/person-card/person-card.component';
+
 // import {MovimientosComponent} from './movimientos/movimientos.component' ;
 
 @NgModule({

@@ -1,3 +1,46 @@
-<p>
-  patient-grid works!
-</p>
+
+<section>
+
+    <header class="header">
+        <h4>Texto busqueda de pacientes</h4>
+        <input class="new-todo"  placeholder="Nombre o apellido paciente" 
+          autofocus="" [(ngModel)]="txtQuery" #txtBox_Query 
+          (keyup.enter)="onKey_Enter(txtBox_Query.value)"
+          (blur)="onKey_Enter(txtBox_Query.value)">
+          <p>{{txtQuery}}</p>
+
+        <div class="alert alert-success" >
+            <div class="text text-info"> Cantidad de pacientes {{patientCount}}</div>
+        </div>
+          <!-- <button class="btn btn-default" (click)=showConfirm()>Buscar  </button> -->
+      </header>
+
+      <ag-grid-angular style="width: 500px; height: 115px;" class="ag-fresh"
+          [rowData]="patientList"
+          [columnDefs]="columnDefs">
+    </ag-grid-angular>
+
+    
+<div class="container">
+    <div class="col-lg-10">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Listado de pacientes</h3>
+                 
+            </div>
+            <div class="panel-body">
+   
+              <div *ngFor="let patient of patientList">
+                {{patient.Persona.Nombre}}
+                <!-- The next line refers to a missing member of user, should generate compile error -->
+                {{patient.Persona.Apellido}}
+                <label [attr.for]="patient.Persona.FechaAlta">  {{patient.Persona.FechaAlta}}</label>
+              </div>
+            </div>
+            
+            
+          </div>
+    </div>
+</div>
+
+</section>
