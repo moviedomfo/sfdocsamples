@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AlertModule } from 'ngx-bootstrap';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import {AgGridModule} from 'ag-grid-angular/main';
+
+
 import { AppComponent } from './app.component';
 import { PatientComponent } from './patient/patient.component';
 import { FontAgComponent } from './font-ag/font-ag.component';
@@ -18,6 +21,11 @@ import {IContextInformation,  ContextInformation,IRequest,Request,IResponse,Resu
 
 import { PatientGridComponent } from './patient/patient-grid/patient-grid.component';
 
+// rich grid and rich grid declarative
+import {DateComponent} from "./commonComponents/date.component";
+import {HeaderComponent} from "./commonComponents/header.component";
+import {HeaderGroupComponent} from "./commonComponents/header-group.component";
+
 import { PersonCardComponent } from './persons/person-card/person-card.component';
 
 // import {MovimientosComponent} from './movimientos/movimientos.component' ;
@@ -28,16 +36,23 @@ import { PersonCardComponent } from './persons/person-card/person-card.component
     PatientComponent,
     FontAgComponent,
     ModalDialogComponent,
+    DateComponent,
+    HeaderComponent,
+    HeaderGroupComponent,
     PersonsComponent,
-    
     PatientGridComponent,
-    
     PersonCardComponent
   ],
   imports: [
     AlertModule.forRoot(),
     BsDropdownModule.forRoot(),
     BrowserModule,
+    AgGridModule.withComponents([
+                  DateComponent,
+                  HeaderComponent,
+                  HeaderGroupComponent,
+                  PatientGridComponent,
+    ]),
     BootstrapModalModule,
     FormsModule,
     HttpModule,MovimientosModule

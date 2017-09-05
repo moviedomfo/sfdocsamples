@@ -1,4 +1,5 @@
 
+
 <section>
 
     <header class="header">
@@ -15,32 +16,35 @@
           <!-- <button class="btn btn-default" (click)=showConfirm()>Buscar  </button> -->
       </header>
 
-      <ag-grid-angular style="width: 500px; height: 115px;" class="ag-fresh"
-          [rowData]="patientList"
-          [columnDefs]="columnDefs">
-    </ag-grid-angular>
-
-    
+   
+      <div class="panel-body">
+        <div style="clear: both;"></div>
+        <ag-grid-angular style="width: 500px; height: 115px;" class="ag-fresh"
+        [rowData]="patientList"
+        [columnDefs]="columnDefs" > 
+  </ag-grid-angular>
 <div class="container">
     <div class="col-lg-10">
+
+
+
         <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">Listado de pacientes</h3>
                  
             </div>
-            <div class="panel-body">
-   
-              <div *ngFor="let patient of patientList">
+          
+              <!-- <div *ngFor="let patient of patientList">
                 {{patient.Persona.Nombre}}
-                <!-- The next line refers to a missing member of user, should generate compile error -->
-                {{patient.Persona.Apellido}}
+                
+                 {{patient.Persona.Apellido}}
                 <label [attr.for]="patient.Persona.FechaAlta">  {{patient.Persona.FechaAlta}}</label>
               </div>
-            </div>
+            </div> -->
             
-            
+             
           </div>
     </div>
 </div>
-
+</div>
 </section>
