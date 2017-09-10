@@ -8,40 +8,44 @@ import {AgGridModule} from 'ag-grid-angular/main';
 
 
 import { AppComponent } from './app.component';
-import { PatientComponent } from './patient/patient.component';
-import { FontAgComponent } from './font-ag/font-ag.component';
-import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
+
+
+
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
-import {PatientsService} from './service/patients.service';
-import {CommonService} from './service/common.service';
-import {MovimientosModule} from './movimientos/movimientos.module';
+import {CommonService,PatientsService} from './service/index';
+import { rutesModule }        from './app.routing';
+
 import { PersonsComponent } from './persons/persons.component' ;
-import {  PatientBE } from './model/patients.model';
+import { PatientComponent } from './patient/patient.component';
+import { PatientBE } from './model/patients.model';
 import {IContextInformation,  ContextInformation,IRequest,Request,IResponse,Result,ServiceError } from './model/common.model';
 
 import { PatientGridComponent } from './patient/patient-grid/patient-grid.component';
 
-// rich grid and rich grid declarative
+// commonComponents rich grid and rich grid declarative
 import {DateComponent} from "./commonComponents/date.component";
 import {HeaderComponent} from "./commonComponents/header.component";
 import {HeaderGroupComponent} from "./commonComponents/header-group.component";
+//commonComponents
+import { PageNotFoundComponent } from './commonComponents/page-not-found/page-not-found.component';
+import { ModalDialogComponent } from './commonComponents/modal-dialog/modal-dialog.component';
+import { FontAgComponent } from './commonComponents/font-ag/font-ag.component';
 
 import { PersonCardComponent } from './persons/person-card/person-card.component';
+import { LoginComponent } from './commonComponents/login/login.component';
 
-// import {MovimientosComponent} from './movimientos/movimientos.component' ;
+
 
 @NgModule({
   declarations: [
     AppComponent,
     PatientComponent,
     FontAgComponent,
-    ModalDialogComponent,
-    DateComponent,
-    HeaderComponent,
-    HeaderGroupComponent,
+    ModalDialogComponent, DateComponent, HeaderComponent, HeaderGroupComponent,PageNotFoundComponent,
     PersonsComponent,
     PatientGridComponent,
-    PersonCardComponent
+    PersonCardComponent,
+    LoginComponent
   ],
   imports: [
     AlertModule.forRoot(),
@@ -55,7 +59,8 @@ import { PersonCardComponent } from './persons/person-card/person-card.component
     ]),
     BootstrapModalModule,
     FormsModule,
-    HttpModule,MovimientosModule
+    HttpModule,
+    rutesModule
   ],entryComponents: [
     ModalDialogComponent
   ],

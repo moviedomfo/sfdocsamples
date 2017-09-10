@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientBE } from '../../model/patients.model';
-import { PatientsService } from '../../service/patients.service';
-import { CommonService } from '../../service/common.service';
+import { PatientsService,CommonService } from '../../service/index';
 
 
 //permmite cambiar la variable obsevada
@@ -60,9 +59,9 @@ export class PatientGridComponent implements OnInit {
 }
 private createColumnDefs() {
   this.columnDefs = [
-    { headerName: "Nombre", field: "Persona.Nombre" ,width: 100,pinned: true},
-    { headerName: "Apellido", field: "Persona.Apellido" ,width: 100,pinned: true},
-    { headerName: "Fecha alta", field: "FechaAlta",width: 100,pinned: true }
+    { headerName: "Nombre", field: "Persona.Nombre" ,width: 150,pinned: true,filter: 'text'},
+    { headerName: "Apellido", field: "Persona.Apellido" ,width: 150,pinned: true,filter: 'text'},
+    { headerName: "Fecha alta", field: "FechaAlta",width: 200,pinned: true }
   ];
 }
   onKey_Enter(value: string) {
@@ -90,5 +89,12 @@ private createColumnDefs() {
 
   onGridReady(params) {
     params.api.sizeColumnsToFit();
+  }
+  onGridCellDoubleClick(event){
+    //alert(event);
+  }
+  onGridRowDoubleClick(event){
+    
+    alert(JSON.stringify(event));
   }
 }
