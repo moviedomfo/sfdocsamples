@@ -14,7 +14,7 @@ import { AppComponent } from './app.component';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import {CommonService,PatientsService} from './service/index';
 import { rutesModule }        from './app.routing';
-
+import {AuthGuard} from './commonComponents/routingGuard/AuthGuard';
 import { PersonsComponent } from './persons/persons.component' ;
 import { PatientComponent } from './patient/patient.component';
 import { PatientBE } from './model/patients.model';
@@ -23,9 +23,9 @@ import {IContextInformation,  ContextInformation,IRequest,Request,IResponse,Resu
 import { PatientGridComponent } from './patient/patient-grid/patient-grid.component';
 
 // commonComponents rich grid and rich grid declarative
-import {DateComponent} from "./commonComponents/date.component";
-import {HeaderComponent} from "./commonComponents/header.component";
-import {HeaderGroupComponent} from "./commonComponents/header-group.component";
+import {DateComponent} from "./commonComponents/ag-grid/date.component";
+import {HeaderComponent} from "./commonComponents/ag-grid/header.component";
+import {HeaderGroupComponent} from "./commonComponents/ag-grid/header-group.component";
 //commonComponents
 import { PageNotFoundComponent } from './commonComponents/page-not-found/page-not-found.component';
 import { ModalDialogComponent } from './commonComponents/modal-dialog/modal-dialog.component';
@@ -64,7 +64,7 @@ import { LoginComponent } from './commonComponents/login/login.component';
   ],entryComponents: [
     ModalDialogComponent
   ],
-  providers: [PatientsService,CommonService],
+  providers: [PatientsService,CommonService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

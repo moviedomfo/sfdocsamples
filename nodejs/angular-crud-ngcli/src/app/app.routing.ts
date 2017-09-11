@@ -3,12 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './commonComponents/login/login.component';
 //import { HomeComponent } from './commonComponents/login/login.component';
 import { PatientComponent } from './patient/patient.component';
+import { PersonsComponent } from './persons/persons.component';
+
 import { AuthGuard } from './commonComponents/routingGuard/AuthGuard';
 import { PageNotFoundComponent }from './commonComponents/page-not-found/page-not-found.component';
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
   //  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'patient', component: PatientComponent, canActivate: [AuthGuard] },
+  { path: 'personList', component: PersonsComponent },
+  { path: 'patient', component: PatientComponent },
     // otherwise redirect to home :Si no se encuentra
     { path: '**', redirectTo: 'PageNotFoundComponent' }
 ];

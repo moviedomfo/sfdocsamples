@@ -9,14 +9,14 @@ import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 
 // rich grid and rich grid declarative
-import {DateComponent} from "../../commonComponents/date.component";
-import {HeaderComponent} from "../../commonComponents/header.component";
-import {HeaderGroupComponent} from "../../commonComponents/header-group.component";
+import {DateComponent} from "../../commonComponents/ag-grid/date.component";
+import {HeaderComponent} from "../../commonComponents/ag-grid/header.component";
+import {HeaderGroupComponent} from "../../commonComponents/ag-grid/header-group.component";
 import {GridOptions} from "ag-grid/main";
 @Component({
   selector: 'app-patient-grid',
   templateUrl: './patient-grid.component.html',
-  styleUrls: ['../../commonComponents/rich-grid.css', '../../commonComponents/proficiency-renderer.css'],
+  styleUrls: ['../../commonComponents/ag-grid/rich-grid.css', '../../commonComponents/ag-grid/proficiency-renderer.css'],
 })
 export class PatientGridComponent implements OnInit {
   private txtQuery: string;

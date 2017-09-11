@@ -2,7 +2,9 @@
 
 export class PersonBE {
 
+     constructor(idPersona : number ,nombre:String){
 
+    }
 
 
     IdPersona: number;
