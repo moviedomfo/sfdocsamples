@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 
 
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
-import {CommonService,PatientsService} from './service/index';
+import {CommonService,PatientsService,PersonsService} from './service/index';
 import { rutesModule }        from './app.routing';
 import {AuthGuard} from './commonComponents/routingGuard/AuthGuard';
 import { PersonsComponent } from './persons/persons.component' ;
@@ -64,7 +64,7 @@ import { LoginComponent } from './commonComponents/login/login.component';
   ],entryComponents: [
     ModalDialogComponent
   ],
-  providers: [PatientsService,CommonService,AuthGuard],
+  providers: [PersonsService,PatientsService,CommonService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

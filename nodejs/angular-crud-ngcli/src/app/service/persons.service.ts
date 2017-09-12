@@ -7,12 +7,12 @@ import {PersonBE} from '../../app/model/persons.model'
 export class PersonsService {
 
   constructor() { }
-  getPersonas() { return Observable.of(PersonaList); }
+  getPersons() { return Observable.of(PersonaList); }
   
-    getHero(id: number | string) {
-      return this.getPersonas()
+    getPerson(id: number | string) {
+      return this.getPersons()
         // (+) before `id` turns the string into a number
-        .map(persona => PersonaList.find(hero => hero.IdPersona === +id));
+        .map(persona => PersonaList.find(p => p.IdPersona === +id));
     }
 }
 
