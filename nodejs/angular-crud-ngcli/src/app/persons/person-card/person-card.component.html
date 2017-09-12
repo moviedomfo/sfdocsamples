@@ -1,3 +1,67 @@
-<p>
-  person-card works!
-</p>
+<section>
+    
+      <header class="header">
+        <h4>Datos de persona</h4>
+        <input class="new-todo" placeholder="Nombre paciente" autofocus="" [(ngModel)]="currenPerson.Nombre" (keyup.enter)="addTodo()">
+        <input class="new-todo" placeholder="Apellido paciente" autofocus="" [(ngModel)]="currenPerson.Apellido" (keyup.enter)="addTodo()">
+      </header>
+    
+      
+        <div class="container">
+          <!--FechaAlta-->
+          <div class="form-group row">
+            <label for="example-text-input" class="col-2 col-form-label">FechaAlta</label>
+            <div class="col-10">
+              <input class="form-control" type="date" [(ngModel)]="currenPerson.FechaAlta" id="patient-FechaAlta-input">
+            </div>
+          </div>
+    
+          <div class="form-group row">
+            <label for="example-text-input" class="col-2 col-form-label">PatientId</label>
+            <div class="col-10">
+              <input class="form-control" type="text" [(ngModel)]="currenPerson.PatientId" id="patient-PatientId-input">
+            </div>
+          </div>
+        </div>
+    
+      
+    </section>
+
+   
+    <div class="alert alert-success" role="alert">
+        <div class="btn-group" dropdown keyboardNav="true">
+          <button id="btnEstadoCivil2" dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
+              Estado Civil op <span class="caret"></span> {{selectedEstadoCivil}} </button>
+          
+          <select *dropdownMenu class="dropdown-menu" role="<menubar></menubar>" aria-labelledby="btnEstadoCivil2" >
+              <option  class="dropdown-item" *ngFor="let c of estadoCivilList" [ngValue]="c"  >{{c.Nombre}}</option>
+            </select>
+        </div>
+      </div>
+      <div class="alert alert-success" role="alert">
+          <div class="btn-group" dropdown keyboardNav="true">
+            <button id="btnEstadoCivil" dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
+                Estado Civil <span class="caret"></span> {{selectedEstadoCivil}} </button>
+            <ul *dropdownMenu class="dropdown-menu" role="<menubar></menubar>" aria-labelledby="btnEstadoCivil" (change)="onEstadoCivilSelection($event)">
+              <li role="menuitem" *ngFor="let item of estadoCivilList">
+                <a class="dropdown-item" href=""> {{item.Nombre}}</a></li>
+                
+            </ul>
+          </div>
+        </div>
+    <h1>Primer combo</h1>
+    <select [(ngModel)]="selectedEstadoCivil" (change)="onEstadoCivilSelection($event)">
+        <option *ngFor="let c of estadoCivilList" [ngValue]="c"  >{{c.Nombre}}</option>
+      </select>
+
+    <div class="alert alert-success" role="alert">
+        <div class="btn-group" dropdown keyboardNav="true">
+          <button id="btnPaises" dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
+          Listado de paises <span class="caret"></span> {{selectedPais}} </button>
+          <ul *dropdownMenu class="dropdown-menu" role="<menubar></menubar>" aria-labelledby="btnPaises">
+            <li role="menuitem" *ngFor="let pais of paises">
+              <a class="dropdown-item" href="setCountry/{{pais.Id}}"> {{pais.Nombre}}</a></li>
+      
+          </ul>
+        </div>
+      </div>

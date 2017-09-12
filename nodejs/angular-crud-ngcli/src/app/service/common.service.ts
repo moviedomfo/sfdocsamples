@@ -12,7 +12,10 @@ export class CommonService {
   public paramList: Param[]= [];
   public paramList$: Subject<Param[]> = new Subject<Param[]>();
   constructor(private http: Http) { }
-
+/**
+ * @idTipoParametro : Nombre de tabla
+ * @idParametroRef : Subnombre , subcategoria
+ */
   searchParametroByParams$(idTipoParametro :number,idParametroRef :number) : Observable<Param[]>
   {
     

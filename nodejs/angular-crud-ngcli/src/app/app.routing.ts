@@ -7,14 +7,12 @@ import { PersonsComponent } from './persons/persons.component';
 import { AuthGuard } from './commonComponents/routingGuard/AuthGuard';
 import { PageNotFoundComponent }from './commonComponents/page-not-found/page-not-found.component';
 const appRoutes: Routes = [
-    { path: 'login', component: LoginComponent },
-  //  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'persons', component: PersonsComponent },
-  { path: 'persons/:id', component: PersonsComponent },
-  { path: 'patient', component: PatientComponent },
-    // otherwise redirect to home :Si no se encuentra
-    { path: '**', redirectTo: 'PageNotFoundComponent' },
-    { path: '**', component: PageNotFoundComponent }
+   { path: 'login', component: LoginComponent },
+   //  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+   { path: 'persons', component: PersonsComponent },
+   { path: 'persons/:id', component: PersonsComponent },
+   { path: 'patient', component: PatientComponent },
+   { path: '**', component: PageNotFoundComponent }
 ];
 
 //TODO:Ver por que en otros desarrollos se usa esto 

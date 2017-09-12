@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientsService } from '../service/index';
 import { PatientBE,IContextInformation, IParam, Param } from '../model/index';
+import {TipoParametroEnum} from '../model/common.constants'
 
 
 //permmite cambiar la variable obsevada

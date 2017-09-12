@@ -64,6 +64,45 @@ export  const HealtConstants={
       }
 
     ];
+export  const TipoParametroEnum = 
+      {
+        Especialidad : 500,
+        Profecion : 100,
+        EstadoCivil : 600,
+        TipoDocumento : 601,
+        TipoRecepcion : 200,
+        TipoEventoMedico : 700,//antes tipo consulta
+        TipoMedioContacto : 1000,
+        Paises : 1050,
+        Localidad : 1200,
+        Provincia : 1100,
+        AllergiesTypes : 10100,
+        AllergiesItemTypes : 101012
+      };
+
+      
+export const CommonValuesEnum =
+    {
+        TodosComboBoxValue : -1000,
+        VariosComboBoxValue : -2000,
+        SeleccioneUnaOpcion : -3000,
+        Ninguno : -4000,
+        /// <summary>
+        /// Esta opcion es usada para seleccion de Mutuales .- Caso Sin mutual particular
+        /// </summary>
+        Particular : -5000
+    };
+    export const DayNamesIndex_ES =
+    {
+        //SAB	VIE	JUE	MIE	MAR	LUN	DOM
+        Sabado : 0,
+        Viernes : 1,
+        Jueves : 2,
+        Miercoles : 3,
+        Martes : 4,
+        Lunes : 5,
+        Domingo : 6
+    }
 
 // expect commonHelper = function function_name(argument) {
 // createFwk_SOA_REQ(bussinesData:any):IRequest

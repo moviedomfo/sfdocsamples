@@ -20,12 +20,12 @@ export class PersonsComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log("-------------------------------------");
-    // console.log(JSON.stringify( this.route.url));
-    console.log(this.route);
-    this.personId= this.route.snapshot.params['id'];
-    alert(this.personId);
-    console.log("-------------------------------------");
+    // console.log("-------------------------------------");
+    // // console.log(JSON.stringify( this.route.url));
+    // console.log(this.route);
+    // this.personId= this.route.snapshot.params['id'];
+    // alert(this.personId);
+    // console.log("-------------------------------------");
     this.personas$ = this.route.paramMap
     .switchMap((params: ParamMap) => {
       // (+) before `params.get()` turns the string into a number
