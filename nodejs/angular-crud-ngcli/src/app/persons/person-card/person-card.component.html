@@ -2,8 +2,24 @@
     
       <header class="header">
         <h4>Datos de persona</h4>
-        <input class="new-todo" placeholder="Nombre paciente" autofocus="" [(ngModel)]="currenPerson.Nombre" (keyup.enter)="addTodo()">
-        <input class="new-todo" placeholder="Apellido paciente" autofocus="" [(ngModel)]="currenPerson.Apellido" (keyup.enter)="addTodo()">
+        
+
+        
+        <input class="new-todo"  placeholder="Nombre"  autofocus="" [(ngModel)]="currenPerson.Nombre" #txtBox_Nombre>
+
+        <input class="new-todo"  placeholder="Apellido"    autofocus="" [(ngModel)]="currenPerson.Apellido" #txtBox_Apellido >
+
+
+        <select [(ngModel)]="currenPerson.TipoDocumento" >
+            <option *ngFor="let c of tipoDocumentoList" [ngValue]="c.Nombre"  >{{c.Nombre}}</option>
+        </select>
+
+        <input class="new-todo"  placeholder="NroDocumento" 
+        autofocus="" [(ngModel)]="currenPerson.NroDocumento" #txtBox_NroDocumento
+        (keyup.enter)="txtBox_NroDocumento_onKeyEnter(txtBox_NroDocumento.value)"
+        (blur)="txtBox_NroDocumento_onKeyEnter(txtBox_NroDocumento.value)">
+
+
       </header>
     
       
@@ -16,45 +32,51 @@
             </div>
           </div>
     
-          <div class="form-group row">
-            <label for="example-text-input" class="col-2 col-form-label">PatientId</label>
-            <div class="col-10">
-              <input class="form-control" type="text" [(ngModel)]="currenPerson.PatientId" id="patient-PatientId-input">
-            </div>
-          </div>
+          <h3>Estado civil</h3>
+          <select [(ngModel)]="currenPerson.IdEstadoCivil"  (change)="onEstadoCivilSelection($event)" >
+              <option *ngFor="let c of estadoCivilList" [ngValue]="c.IdParametro"  >{{c.Nombre}}</option>
+            </select>
+            <select [(ngModel)]="currenPerson"  (change)="onEstadoCivilSelection($event)" >
+                <option *ngFor="let c of estadoCivilList" [ngValue]="c"  >{{c.Nombre}}</option>
+              </select>
         </div>
     
       
     </section>
 
-   
-    <div class="alert alert-success" role="alert">
-        <div class="btn-group" dropdown keyboardNav="true">
-          <button id="btnEstadoCivil2" dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
-              Estado Civil op <span class="caret"></span> {{selectedEstadoCivil}} </button>
-          
-          <select *dropdownMenu class="dropdown-menu" role="<menubar></menubar>" aria-labelledby="btnEstadoCivil2" >
-              <option  class="dropdown-item" *ngFor="let c of estadoCivilList" [ngValue]="c"  >{{c.Nombre}}</option>
-            </select>
-        </div>
-      </div>
-      <div class="alert alert-success" role="alert">
-          <div class="btn-group" dropdown keyboardNav="true">
-            <button id="btnEstadoCivil" dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
-                Estado Civil <span class="caret"></span> {{selectedEstadoCivil}} </button>
-            <ul *dropdownMenu class="dropdown-menu" role="<menubar></menubar>" aria-labelledby="btnEstadoCivil" (change)="onEstadoCivilSelection($event)">
-              <li role="menuitem" *ngFor="let item of estadoCivilList">
-                <a class="dropdown-item" href=""> {{item.Nombre}}</a></li>
-                
-            </ul>
-          </div>
-        </div>
-    <h1>Primer combo</h1>
-    <select [(ngModel)]="selectedEstadoCivil" (change)="onEstadoCivilSelection($event)">
-        <option *ngFor="let c of estadoCivilList" [ngValue]="c"  >{{c.Nombre}}</option>
-      </select>
+    <section>
+      <div class="alert-danger">
 
-    <div class="alert alert-success" role="alert">
+          <div>{{currenPerson.TipoDocumento}}</div>
+          <div>IdEstadocivil {{currenPerson.IdEstadocivil}}</div>
+          <div>{{currenPerson.Nombre}}</div>
+            <div>{{currenPerson.Apellido}}</div>
+            <br>
+          <div>{{currenPerson | json}}</div>
+      </div>
+    </section>
+  
+      
+    <!-- <ng2-dropdown>
+        <ng2-dropdown-button>
+            Open Menu
+        </ng2-dropdown-button>
+        <ng2-dropdown-menu>
+            <ng2-menu-item *ngFor="let page of pages">
+                {{ page }}
+            </ng2-menu-item>
+     
+            <div class='ng2-menu-divider'></div>
+     
+            <ng2-menu-item>
+                With Divider
+            </ng2-menu-item>
+        </ng2-dropdown-menu>
+    </ng2-dropdown> -->
+
+ 
+
+    <!-- <div class="alert alert-success" role="alert">
         <div class="btn-group" dropdown keyboardNav="true">
           <button id="btnPaises" dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
           Listado de paises <span class="caret"></span> {{selectedPais}} </button>
@@ -64,4 +86,4 @@
       
           </ul>
         </div>
-      </div>
+      </div> -->

@@ -36,10 +36,7 @@ export  const HealtConstants={
         ProviderName: 'health'
       };
 
-  export  const paramList = [
-      { Id: 1, Name: "ss", ParentId: 123 },
-      { Id: 1, Name: "ss", ParentId: 33 }
-    ];
+
       export  const patientList = [
       {
         PatientId: 100,

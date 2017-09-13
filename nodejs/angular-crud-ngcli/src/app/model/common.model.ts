@@ -67,14 +67,20 @@ export class Request implements IRequest{
 }
 export interface IParam
 {
-      Id: number;
-    Name:string;
-    ParentId?:number
+    IdParametro: number;
+    Nombre:string;
+    Descripcion:string;
+    IdTipoParametro:number;
+    IdParametroRef?:number;
 }
-export class Param implements IParam{
-    Id: number;
-    Name:string;
-    ParentId?:number
+export class Param {
+    IdParametro: number;
+    Nombre:string;
+    Descripcion:string;
+    IdTipoParametro:number;
+    IdParametroRef?:number;
+    
+
 }
 
   /// Contiene informacion del error de un servicio.-

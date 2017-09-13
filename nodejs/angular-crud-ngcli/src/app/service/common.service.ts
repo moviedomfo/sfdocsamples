@@ -47,7 +47,7 @@ export class CommonService {
   //Metodo directo sin observable
   getById(parentId: number): Param {
     let param: Param;
-    param = this.paramList.filter(p => p.ParentId === parentId)[0];
+    param = this.paramList.filter(p => p.IdParametroRef === parentId)[0];
     return param;
   }
 

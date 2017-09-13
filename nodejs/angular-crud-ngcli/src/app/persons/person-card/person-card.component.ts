@@ -13,14 +13,16 @@ import { PersonBE,IContextInformation, IParam, Param ,TipoParametroEnum} from '.
 export class PersonCardComponent implements OnInit {
 
   private currenPerson:PersonBE;
-  private selectedPais:number;
-  private selectedEstadoCivil:number;
+  private selectedPais:Param;
+  private selectedEstadoCivil:Param;
   
   paises$: Observable<Param[]>;
-  
   paises:Param[];
   estadoCivilList$: Observable<Param[]>;
   estadoCivilList:Param[];
+  tipoDocumentoList$: Observable<Param[]>;
+  tipoDocumentoList:Param[];
+
   constructor(
       private patientService: PatientsService,
       private commonService: CommonService,) {
@@ -32,14 +34,19 @@ export class PersonCardComponent implements OnInit {
     this.paises$.subscribe(
       res => {
         this.paises = res;
-        console.log('ffffffff-*-*-*-*');
+      
       }
     );
     this.estadoCivilList$ = this.commonService.searchParametroByParams$(TipoParametroEnum.EstadoCivil,null);
     this.estadoCivilList$.subscribe(
       res => {
         this.estadoCivilList = res;
-        //console.log(JSON.stringify(res));  
+      }
+    );
+    this.tipoDocumentoList$ = this.commonService.searchParametroByParams$(TipoParametroEnum.TipoDocumento,null);
+    this.tipoDocumentoList$.subscribe(
+      res => {
+        this.tipoDocumentoList = res;
       }
     );
     
@@ -48,6 +55,10 @@ export class PersonCardComponent implements OnInit {
 
 
   onPaisSelection(event) {        alert(this.selectedPais);      }
-  onEstadoCivilSelection(event) {        alert(this.selectedEstadoCivil);      }
+  onEstadoCivilSelection(event) {       
+    console.log(event);
+    console.log(this.selectedEstadoCivil);
+     
+     }
       
 }
