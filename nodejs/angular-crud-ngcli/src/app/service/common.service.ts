@@ -38,9 +38,9 @@ export class CommonService {
           alert("Se encontraron errores " + resToObject.Error.Message);
         }
 
-        let patient: Param[] = resToObject.BusinessData as Param[];
+        let params: Param[] = resToObject.BusinessData as Param[];
 
-        return patient;
+        return params;
       });
   }
 

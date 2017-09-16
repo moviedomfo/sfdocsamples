@@ -37,30 +37,7 @@ export  const HealtConstants={
       };
 
 
-      export  const patientList = [
-      {
-        PatientId: 100,
-        IdPersona: 1,
-        Apellido: "Oviedo",
-        Nombre: "Marcelo",
-        FechaAlta: new Date(),
-        LastAccessTime: new Date(),
-        LastAccessUserId: "",
-        LastHealthInstId: '',
-
-      },
-      {
-        PatientId: 110,
-        IdPersona: 22,
-        Apellido: "Hendryxo",
-        Nombre: "Jimmy",
-        FechaAlta: new Date(),
-        LastAccessTime: new Date(),
-        LastAccessUserId: "",
-        LastHealthInstId: ''
-      }
-
-    ];
+     
 export  const TipoParametroEnum = 
       {
         Especialidad : 500,
@@ -78,6 +55,7 @@ export  const TipoParametroEnum =
       };
 
       
+        
 export const CommonValuesEnum =
     {
         TodosComboBoxValue : -1000,
@@ -100,33 +78,31 @@ export const CommonValuesEnum =
         Lunes : 5,
         Domingo : 6
     }
+export const CommonParams={
+    TodosComboBoxValue:{
+            IdParametro:'-1000',
+            Nombre:'Todos'
+    },
+    VariosComboBoxValue: {
+        IdParametro:'-2000',
+        Nombre:'Varios'
+},
+    SeleccioneUnaOpcion : {
+        IdParametro:'-3000',
+        Nombre:'Seleccione una opcion'
+},
+    Ninguno : {
+        IdParametro:'-4000',
+        Nombre:'Ninguno'
+            },
+   
+    Particular :  {
+        IdParametro:'-5000',
+        Nombre:'Ninguno'
+            }
 
-// expect commonHelper = function function_name(argument) {
-// createFwk_SOA_REQ(bussinesData:any):IRequest
-//   {
-//     let contextInfo: IContextInformation;
-//     let req :IRequest;
-//     contextInfo.Culture = "ES-AR";
-//     contextInfo.ProviderNameWithCultureInfo = "";
-//     contextInfo.HostName  =  'localhost';
-//     contextInfo.HostIp  =  '10.10.200.168';
-//     contextInfo.HostTime  =  new Date(),
-//     contextInfo.ServerName  =  'WebAPIDispatcherClienteWeb';
-//     contextInfo.ServerTime  =  new Date();
-//     contextInfo.UserName  =  'moviedo',
-//     contextInfo.UserId  =  '';
-//     contextInfo.AppId  =  'Healt';
-//     contextInfo.ProviderName = 'health';
-//     req.ContextInformation=contextInfo;
-//     req.BusinessData=bussinesData;
-//     req.Error =null;
-//     req.SecurityProviderName="";
-//     req.Encrypt=false;
+};
 
-//     return req;
-//   }
-  
-// }
 //module.exports =  HealtConstants;
 //module.exports =  contextInfo;
 // const  CNN_STRING_HEALTH  = {

@@ -14,7 +14,7 @@ export class PersonBE {
      Apellido: string;
      Nombre: string;
      Sexo: number;  
-     IdEstadocivil: number;
+     IdEstadoCivil: number;
      FechaNacimiento: Date;
      LastAccessTime: Date;
      LastAccessUserId: string;

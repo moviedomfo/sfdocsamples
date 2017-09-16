@@ -4,21 +4,46 @@
         <h4>Datos de persona</h4>
         
 
+        <div class="form-group row">
+            <label for="example-text-input" class="col-2 col-form-label">Nombre </label>
+            <div class="col-6">
+              <input class="form-control" placeholder="Nombre" autofocus="" type="text" [(ngModel)]="currenPerson.Nombre" #txtBox_Nombre>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="example-text-input" class="col-2 col-form-label">Apellido </label>
+            <div class="col-6">
+              <input class="form-control" placeholder="Apellido " autofocus="" type="text" [(ngModel)]="currenPerson.Apellido" #txtBox_Apellido>
+            </div>
+          </div>
+       
+          <div class="form-group row">
+            <label for="example-text-input" class="col-2 col-form-label">TipoDocumento </label>
+            <div class="col-3">
+                <select [(ngModel)]="currenPerson.TipoDocumento" >
+                    <option *ngFor="let c of tipoDocumentoList" 
+                    [attr.selected]="601" 
+                     [ngValue]="c.Nombre"
+                      >{{c.Nombre}}</option>
+                </select>
+            </div>
+          </div>
+       
+
+          <div class="form-group row">
+            <label for="example-text-input" class="col-2 col-form-label">TipoDocumento </label>
+            <div class="col-5">
+                <input class="new-todo"  placeholder="NroDocumento" 
+                autofocus="" [(ngModel)]="currenPerson.NroDocumento" #txtBox_NroDocumento
+                (keyup.enter)="txtBox_NroDocumento_onKeyEnter(txtBox_NroDocumento.value)"
+                (blur)="txtBox_NroDocumento_onKeyEnter(txtBox_NroDocumento.value)">
         
-        <input class="new-todo"  placeholder="Nombre"  autofocus="" [(ngModel)]="currenPerson.Nombre" #txtBox_Nombre>
+            </div>
+          </div>
+       
 
-        <input class="new-todo"  placeholder="Apellido"    autofocus="" [(ngModel)]="currenPerson.Apellido" #txtBox_Apellido >
-
-
-        <select [(ngModel)]="currenPerson.TipoDocumento" >
-            <option *ngFor="let c of tipoDocumentoList" [ngValue]="c.Nombre"  >{{c.Nombre}}</option>
-        </select>
-
-        <input class="new-todo"  placeholder="NroDocumento" 
-        autofocus="" [(ngModel)]="currenPerson.NroDocumento" #txtBox_NroDocumento
-        (keyup.enter)="txtBox_NroDocumento_onKeyEnter(txtBox_NroDocumento.value)"
-        (blur)="txtBox_NroDocumento_onKeyEnter(txtBox_NroDocumento.value)">
-
+      
 
       </header>
     
@@ -33,27 +58,35 @@
           </div>
     
           <h3>Estado civil</h3>
-          <select [(ngModel)]="currenPerson.IdEstadoCivil"  (change)="onEstadoCivilSelection($event)" >
-              <option *ngFor="let c of estadoCivilList" [ngValue]="c.IdParametro"  >{{c.Nombre}}</option>
+          <select class="form-control margin-bottom" #cmbEstadoCivil  [(ngModel)]="currenPerson.IdEstadoCivil"    >
+                   <option *ngFor="let item of estadoCivilList"  
+                   
+                   #item.IdParametro
+                   [ngValue]="item.IdParametro">{{item.Nombre}}</option>
             </select>
-            <select [(ngModel)]="currenPerson"  (change)="onEstadoCivilSelection($event)" >
-                <option *ngFor="let c of estadoCivilList" [ngValue]="c"  >{{c.Nombre}}</option>
-              </select>
+          
         </div>
     
       
     </section>
 
     <section>
+
+
       <div class="alert-danger">
 
-          <div>{{currenPerson.TipoDocumento}}</div>
-          <div>IdEstadocivil {{currenPerson.IdEstadocivil}}</div>
-          <div>{{currenPerson.Nombre}}</div>
-            <div>{{currenPerson.Apellido}}</div>
-            <br>
+        <div>Current Person </div>
+   
+          
           <div>{{currenPerson | json}}</div>
       </div>
+      <div class="alert-info">
+          
+                    
+                    <div>Selected Estadocivil </div>
+                    
+                    <div>{{selectedEstadoCivil | json}}</div>
+                </div>
     </section>
   
       
