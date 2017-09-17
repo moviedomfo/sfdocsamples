@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { PatientsService ,CommonService} from '../../service/index';
-import { PersonBE,IContextInformation, IParam, Param ,CommonValuesEnum,TipoParametroEnum} from '../../model/index';
+import { PersonBE,IContextInformation, IParam, Param ,CommonValuesEnum,TipoParametroEnum,CommonParams} from '../../model/index';
 import { FormGroup } from '@angular/forms';
 import {ViewChild, ElementRef,Renderer2,AfterContentInit } from '@angular/core';
 
@@ -42,8 +42,8 @@ export class PersonCardComponent implements AfterContentInit  {
   }
   ngOnInit() {
 
- 
-    this.currenPerson = new PersonBE(-1000,"");
+    
+    this.currenPerson = new PersonBE(-1,"");
     this.paises$ = this.commonService.searchParametroByParams$(TipoParametroEnum.Paises,null);
     this.paises$.subscribe(
       res => {
@@ -53,15 +53,8 @@ export class PersonCardComponent implements AfterContentInit  {
     this.estadoCivilList$ = this.commonService.searchParametroByParams$(TipoParametroEnum.EstadoCivil,null);
     this.estadoCivilList$.subscribe(
       res => {
-        this.estadoCivilList = res;
-        var p:Param=new Param();
-        p.Descripcion=  "Seleccione una opcion";
-        p.Nombre=  "Seleccione una opcion";
-        p.IdParametro= CommonValuesEnum.SeleccioneUnaOpcion;
-        
-        this.estadoCivilList.push(p);
-        
-        this.currenPerson.IdEstadoCivil=CommonValuesEnum.SeleccioneUnaOpcion;
+        this.estadoCivilList = this.commonService.appendExtraParamsCombo(res,CommonParams.SeleccioneUnaOpcion.IdParametro);
+        this.currenPerson.IdEstadoCivil = CommonValuesEnum.SeleccioneUnaOpcion;
        
       }
     );

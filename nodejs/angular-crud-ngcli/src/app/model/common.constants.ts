@@ -80,24 +80,24 @@ export const CommonValuesEnum =
     }
 export const CommonParams={
     TodosComboBoxValue:{
-            IdParametro:'-1000',
+            IdParametro:-1000,
             Nombre:'Todos'
     },
     VariosComboBoxValue: {
-        IdParametro:'-2000',
+        IdParametro:-2000,
         Nombre:'Varios'
 },
     SeleccioneUnaOpcion : {
-        IdParametro:'-3000',
+        IdParametro:-3000,
         Nombre:'Seleccione una opcion'
 },
     Ninguno : {
-        IdParametro:'-4000',
+        IdParametro:-4000,
         Nombre:'Ninguno'
             },
    
     Particular :  {
-        IdParametro:'-5000',
+        IdParametro:-5000,
         Nombre:'Ninguno'
             }
 
