@@ -1,96 +1,107 @@
-<section>
-    
-      <header class="header">
-        <h4>Datos de persona</h4>
-        
-
-        <div class="form-group row">
-            <label for="example-text-input" class="col-2 col-form-label">Nombre </label>
-            <div class="col-6">
-              <input class="form-control" placeholder="Nombre" autofocus="" type="text" [(ngModel)]="currenPerson.Nombre" #txtBox_Nombre>
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <label for="example-text-input" class="col-2 col-form-label">Apellido </label>
-            <div class="col-6">
-              <input class="form-control" placeholder="Apellido " autofocus="" type="text" [(ngModel)]="currenPerson.Apellido" #txtBox_Apellido>
-            </div>
-          </div>
-       
-          <div class="form-group row">
-            <label for="example-text-input" class="col-2 col-form-label">TipoDocumento </label>
-            <div class="col-3">
-                <select [(ngModel)]="currenPerson.TipoDocumento" >
-                    <option *ngFor="let c of tipoDocumentoList" 
-                    [attr.selected]="601" 
-                     [ngValue]="c.Nombre"
-                      >{{c.Nombre}}</option>
-                </select>
-            </div>
-          </div>
-       
-
-          <div class="form-group row">
-            <label for="example-text-input" class="col-2 col-form-label">TipoDocumento </label>
-            <div class="col-5">
-                <input class="new-todo"  placeholder="NroDocumento" 
-                autofocus="" [(ngModel)]="currenPerson.NroDocumento" #txtBox_NroDocumento
-                (keyup.enter)="txtBox_NroDocumento_onKeyEnter(txtBox_NroDocumento.value)"
-                (blur)="txtBox_NroDocumento_onKeyEnter(txtBox_NroDocumento.value)">
-        
-            </div>
-          </div>
-       
-
-      
-
-      </header>
-    
-      
-        <div class="container">
-          <!--FechaAlta-->
-          <div class="form-group row">
-            <label for="example-text-input" class="col-2 col-form-label">FechaAlta</label>
-            <div class="col-10">
-              <input class="form-control" type="date" [(ngModel)]="currenPerson.FechaAlta" id="patient-FechaAlta-input">
-            </div>
-          </div>
-    
-          <h3>Estado civil</h3>
-          <select class="form-control margin-bottom" #cmbEstadoCivil  [(ngModel)]="currenPerson.IdEstadoCivil"    >
-                   <option *ngFor="let item of estadoCivilList"  
-                   
-                   #item.IdParametro
-                   [ngValue]="item.IdParametro">{{item.Nombre}}</option>
-            </select>
-          
-        </div>
-    
-      
-    </section>
-
-    <section>
+<form class="form-horizontal" role="form">
+  <!--     
+      <header class="header"> -->
+  <h4>Datos de persona</h4>
 
 
-      <div class="alert-danger">
+  <div class="form-group ">
+    <label for="Nombre" class="col-lg-2 control-label">Nombre </label>
+    <div class="col-lg-6">
+      <input class="form-control" placeholder="Nombre" autofocus="" type="text" [(ngModel)]="currenPerson.Nombre" #txtBox_Nombre>
+    </div>
+  </div>
 
-        <div>Current Person </div>
-   
-          
-          <div>{{currenPerson | json}}</div>
+  <div class="form-group ">
+    <label for="Apellido" class="col-lg-2 control-label">Apellido </label>
+    <div class="col-lg-6">
+      <input class="form-control" placeholder="Apellido " autofocus="" type="text" [(ngModel)]="currenPerson.Apellido" #txtBox_Apellido>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <div class="checkbox">
+        <label>
+                    <input type="checkbox">Sexo
+                  </label>
       </div>
-      <div class="alert-info">
-          
-                    
-                    <div>Selected Estadocivil </div>
-                    
-                    <div>{{selectedEstadoCivil | json}}</div>
-                </div>
-    </section>
-  
-      
-    <!-- <ng2-dropdown>
+    </div>
+  </div>
+  <div class="col-lg-12">
+
+    <div class="form-group col-lg-4">
+      <label for="TipoDocumento" class="col-lg-5 control-label">TipoDocumento </label>
+      <div class="col-lg-5">
+        <select [(ngModel)]="currenPerson.TipoDocumento">
+                              <option *ngFor="let c of tipoDocumentoList" 
+                              [attr.selected]="601" 
+                               [ngValue]="c.Nombre"
+                                >{{c.Nombre}}</option>
+                          </select>
+      </div>
+    </div>
+
+    <div class="form-group col-lg-6 ">
+      <label for="nrodoc" class="col-lg-4 control-label">Nro documento </label>
+      <div class="col-lg-4">
+        <input class="new-todo" placeholder="NroDocumento" autofocus="" [(ngModel)]="currenPerson.NroDocumento" #txtBox_NroDocumento
+          (keyup.enter)="txtBox_NroDocumento_onKeyEnter(txtBox_NroDocumento.value)" (blur)="txtBox_NroDocumento_onKeyEnter(txtBox_NroDocumento.value)">
+
+      </div>
+
+
+    </div>
+  </div>
+  <!-- 
+      </header> -->
+
+
+
+
+  <div class="form-group ">
+    <label for="fechaAlta" class="col-lg-2 control-label">FechaAlta</label>
+    <div class="col-lg-4">
+      <input class="form-control" type="date" [(ngModel)]="currenPerson.FechaAlta" id="patient-FechaAlta-input">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="fechaAlta" class="col-lg-2 control-label">Estado civil</label>
+    <div class="col-lg-4">
+      <select class="form-control margin-bottom" #cmbEstadoCivil [(ngModel)]="currenPerson.IdEstadoCivil">
+                      <option *ngFor="let item of estadoCivilList"  
+                      
+                      #item.IdParametro
+                      [ngValue]="item.IdParametro">{{item.Nombre}}</option>
+               </select>
+    </div>
+  </div>
+
+
+
+</form>
+<div class="row">
+  <div class="col-xs-6 col-md-4">
+    <div class="alert-danger">
+      <div>Current Person </div>
+      <div>{{currenPerson | json}}</div>
+    </div>
+  </div>
+  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+  <div class="col-xs-6 col-md-4">
+    <div class="alert-info">
+
+
+      <div>Selected Estadocivil </div>
+
+      <div>{{selectedEstadoCivil | json}}</div>
+    </div>
+  </div>
+  </div>
+
+
+
+<!-- <ng2-dropdown>
         <ng2-dropdown-button>
             Open Menu
         </ng2-dropdown-button>
@@ -107,9 +118,9 @@
         </ng2-dropdown-menu>
     </ng2-dropdown> -->
 
- 
 
-    <!-- <div class="alert alert-success" role="alert">
+
+<!-- <div class="alert alert-success" role="alert">
         <div class="btn-group" dropdown keyboardNav="true">
           <button id="btnPaises" dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
           Listado de paises <span class="caret"></span> {{selectedPais}} </button>
