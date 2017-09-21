@@ -20,6 +20,8 @@ export  const HealtConstants={
             },
      HealthAPI_URL:"http://localhost:63251/api/",
      HealthExecuteAPI_URL:"http://localhost:63251/api/patients/execute",
+     ImagesSrc_Woman:'assets/images/User_F.bmp',
+     ImagesSrc_Man:'assets/images/User_M.bmp',
      httpOptions:options
 }
   export  const contextInfo ={
