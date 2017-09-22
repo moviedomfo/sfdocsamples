@@ -23,8 +23,7 @@ export class PersonCardComponent implements AfterContentInit {
   estadoCivilList: Param[];
   tipoDocumentoList$: Observable<Param[]>;
   tipoDocumentoList: Param[];
-  womanPath: string;
-  manPath: string;
+
   fullImagePath: string;
 
   @ViewChild('cmbEstadoCivil') cmbEstadoCivil: ElementRef;
@@ -36,18 +35,20 @@ export class PersonCardComponent implements AfterContentInit {
 
   }
   ngAfterContentInit() {
-   
+
     //   var comboEstadocivil=  (<HTMLInputElement>document.getElementById('cmbEstadoCivil'));
 
     //  console.log(this.cmbEstadoCivil);
     // console.log(this.comboEstadocivil.nativeElement);
 
     //comboEstadocivil.value = '602';
+    this.currenPerson.Sexo = 0;
+    this.currenPerson.NroDocumento="0";
+    this.fullImagePath = HealtConstants.ImagesSrc_Man;
+    console.log(this.currenPerson.Sexo);
   }
   ngOnInit() {
 
-    this.womanPath = "assets/images/User_F.bmp";
-    this.manPath = "assets/images/User_M.bmp";
 
     this.fullImagePath = HealtConstants.ImagesSrc_Woman;
 
@@ -75,7 +76,7 @@ export class PersonCardComponent implements AfterContentInit {
 
       }
     );
-    this.setActive(602);
+    //this.setActive(602);
 
 
   }
@@ -95,16 +96,24 @@ export class PersonCardComponent implements AfterContentInit {
 
   }
 
+  txtBox_NroDocumento_onKeyEnter(value: string) {
+    //this.txtQuery += value + ' | ';
+    console.log(value);
+  }
 
-  onSexChanged() {
 
-    if (this.currenPerson.Sexo == 1) {
-      this.fullImagePath = HealtConstants.ImagesSrc_Woman;
+  onSexChanged(inChecked: boolean) {
+
+    if (inChecked) {
+      this.fullImagePath = HealtConstants.ImagesSrc_Man;
+      this.currenPerson.Sexo = 0;
     }
     else {
-      this.fullImagePath = HealtConstants.ImagesSrc_Man;
+      
+      this.fullImagePath = HealtConstants.ImagesSrc_Woman;
+      this.currenPerson.Sexo = 1;
     }
-
-    console.log(this.fullImagePath);
   }
+
+
 }
