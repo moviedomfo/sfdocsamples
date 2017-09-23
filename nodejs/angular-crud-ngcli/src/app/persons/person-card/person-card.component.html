@@ -1,90 +1,109 @@
-<form class="form-horizontal" role="form">
-  <!--     
-      <header class="header"> -->
-  <h4>Datos de persona</h4>
+<div class="col-lg-2">
 
+  <form class="form">
+    <div class="form-group ">
 
-  <div class="form-group ">
-    <label for="Nombre" class="col-lg-2 control-label">Nombre </label>
-    <div class="col-lg-6">
-      <input type="text" class="form-control" name="Nombre" placeholder="Nombre"  [(ngModel)]="currenPerson.Nombre">
+      <img class="img-rounded" [src]="fullImagePath" alt="Foto" />
     </div>
-  </div>
+    <div class="form-group ">
 
-  <div class="form-group ">
-    <label for="Apellido" class="col-lg-2 control-label">Apellido </label>
-    <div class="col-lg-6">
-      <input class="form-control" name="apell" placeholder="Apellido " type="text" [(ngModel)]="currenPerson.Apellido">
+
+      <div class="radio">
+        <label>
+                               <input type="radio" [checked]="currenPerson.Sexo===0" (click)="onSexChanged($event.target.checked)" name="modelProperty">Hombre
+                             </label>
+      </div>
+      <div class="radio">
+        <label>
+                                 <input type="radio" [checked]="currenPerson.Sexo===1" (click)="onSexChanged(!$event.target.checked)" name="modelProperty">Mujer
+                             </label>
+      </div>
+
+
     </div>
-  </div>
- 
-  
+  </form>
+</div>
 
 
-<!-- 
+<div class="col-lg-10">
+
+  <form class="form-horizontal">
+    <div class="form-group ">
+      <label for="Nombre" class="col-lg-2 control-label">Nombre </label>
+      <div class="col-lg-5">
+        <input type="text" class="form-control" name="Nombre" placeholder="Nombre" [(ngModel)]="currenPerson.Nombre">
+      </div>
+    </div>
+
+    <div class="form-group ">
+      <label for="Apellido" class="col-lg-2 control-label">Apellido </label>
+      <div class="col-lg-5">
+        <input class="form-control" name="apell" placeholder="Apellido " type="text" [(ngModel)]="currenPerson.Apellido">
+      </div>
     </div>
 
     <div class="form-group">
-     
+        <div class="col-lg-4">
+            <label for="TipoDocumento" class="col-lg-offset-2 col-lg-4">Tipo Documento</label>
+            <select name="tipodoc" class="col-lg-2" [(ngModel)]="currenPerson.TipoDocumento">
+                <option *ngFor="let c of tipoDocumentoList" 
+                [attr.selected]="601" 
+                 [ngValue]="c.Nombre">{{c.Nombre}}</option>
+            </select>
+        </div>
+        <div class="col-lg-pull-1 col-lg-6">
+            <label for="NroDocumento" class="col-lg-4 ">Nro documento </label>
+            <div class="col-lg-pull-1 col-lg-5">
+              <input class="form-control" name="nroDoc" placeholder="Nro Documento" [(ngModel)]="currenPerson.NroDocumento" #txtBox_NroDocumento2>
+            </div>
+          </div>
+    </div>
+
+  <div class="form-group row">
+        <label for="fechaAlta" class="col-lg-2 control-label">FechaAlta</label>
+        <div class="col-lg-4">
+          <input class="form-control" name="FechaAlta" type="date" [(ngModel)]="currenPerson.FechaAlta">
+        </div>
+      </div>
+      
+      <div class="form-group row">
+          <label for="ecivil" class="col-lg-2 control-label">Estado civil</label>
+          <div class="col-lg-4">
+            <select name="cmbEstadoCivil" class="form-control margin-bottom" #cmbEstadoCivil [(ngModel)]="currenPerson.IdEstadoCivil">
+                        <option *ngFor="let item of estadoCivilList"  
+                        
+                        #item.IdParametro
+                        [ngValue]="item.IdParametro">{{item.Nombre}}</option>
+                 </select>
+        </div>
+      </div>
+  </form>
+  
+  </div>
+      <!-- 
+  
+    <div class="form-group">
         <input class="form-control" name="nroDoc" placeholder="NroDocumento" [(ngModel)]="currenPerson.NroDocumento" #txtBox_NroDocumento (keyup.enter)="txtBox_NroDocumento_onKeyEnter(txtBox_NroDocumento.value)"
           (blur)="txtBox_NroDocumento_onKeyEnter(txtBox_NroDocumento.value)"> -->
-
       <!-- </div> -->
 
-  <div class="form-group ">
-    <label for="fechaAlta" class="col-lg-2 control-label">FechaAlta</label>
-    <div class="col-lg-4">
-      <input class="form-control" name="FechaAlta" type="date" [(ngModel)]="currenPerson.FechaAlta">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="ecivil" class="col-lg-2 control-label">Estado civil</label>
-    <div class="col-lg-4">
-      <select name="cmbEstadoCivil" class="form-control margin-bottom" #cmbEstadoCivil [(ngModel)]="currenPerson.IdEstadoCivil">
-                      <option *ngFor="let item of estadoCivilList"  
-                      
-                      #item.IdParametro
-                      [ngValue]="item.IdParametro">{{item.Nombre}}</option>
-               </select>
-    </div>
-  </div>
-
-
-
-</form>
-<form class="form-inline">
-  <!-- <div class="form-group-lg"> -->
+     
       
-      <legend class="col-form-legend col-sm-2">Sexo</legend>
-  <img class="img-rounded col-lg-2" [src]="fullImagePath" />
 
-  
-  
-    <input type="radio" class="col-lg-2" [checked]="currenPerson.Sexo===0" (click)="onSexChanged($event.target.checked)" name="modelProperty">HOMBRE
-    <input type="radio"class="col-lg-2" [checked]="currenPerson.Sexo===1" (click)="onSexChanged(!$event.target.checked)" name="modelProperty">MUJER
-  
-</form>
+ 
+
+
+
+
 <br/>
 
-<!-- </div> -->
+<br/>
+<br/>
+<br/>
 
 
 
-<form class="form-inline">
 
-
-  <label for="TipoDocumento" class="col-lg-offset-1 col-lg-4">Tipo Documento </label>
-
-  <select name="tipodoc" class="col-lg-2" [(ngModel)]="currenPerson.TipoDocumento">
-                                  <option *ngFor="let c of tipoDocumentoList" 
-                                  [attr.selected]="601" 
-                                   [ngValue]="c.Nombre">{{c.Nombre}}</option>
-                              </select>
-
-  <label for="NroDocumento" class="col-lg-offset-1 col-lg-2 control-label">Nro documento </label>
-  <input class="form-control" name="nroDoc" placeholder="Nro Documento" [(ngModel)]="currenPerson.NroDocumento" #txtBox_NroDocumento2>
-
-</form>
 
 
 

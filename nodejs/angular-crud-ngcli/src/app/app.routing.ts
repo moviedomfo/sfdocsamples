@@ -3,6 +3,7 @@ import { LoginComponent } from './commonComponents/login/login.component';
 //import { HomeComponent } from './commonComponents/login/login.component';
 import { PatientComponent } from './patient/patient.component';
 import { PersonsComponent } from './persons/persons.component';
+import { PruebaComponent } from './prueba/prueba.component';
 
 import { AuthGuard } from './commonComponents/routingGuard/AuthGuard';
 import { PageNotFoundComponent }from './commonComponents/page-not-found/page-not-found.component';
@@ -12,6 +13,8 @@ const appRoutes: Routes = [
    { path: 'persons', component: PersonsComponent },
    { path: 'persons/:id', component: PersonsComponent },
    { path: 'patient', component: PatientComponent },
+   { path: 'prueba', component: PruebaComponent },
+   
    { path: '**', component: PageNotFoundComponent }
 ];
 

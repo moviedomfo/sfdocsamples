@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
+import { PersonBE, IContextInformation, IParam, Param, CommonValuesEnum, TipoParametroEnum, CommonParams, HealtConstants } from '../model/index';
+
+import { FormGroup } from '@angular/forms';
+import { ViewChild, ElementRef, Renderer2, AfterContentInit } from '@angular/core';
 interface Friend {
     id: number;
     name: string;
@@ -18,10 +24,15 @@ export class PruebaComponent implements OnInit {
     public selectValue: Friend;
     public textareaValue: string;
     public textValue: string;
+public Sexo:number;
+public fullImagePath: string;
+  constructor() { 
 
-  constructor() { }
+    
+  }
 
   ngOnInit() {
+    this.fullImagePath = './../' + HealtConstants.ImagesSrc_Man;
      this.friends = [
             {
                 id: 1,
@@ -38,6 +49,19 @@ export class PruebaComponent implements OnInit {
         ];
 
     }
-  
+
+    onSexChanged(inChecked: boolean) {
+        
+            if (inChecked) {
+              this.fullImagePath = './../' +HealtConstants.ImagesSrc_Man;
+              this.Sexo = 0;
+            }
+            else {
+                
+              this.fullImagePath = './../' + HealtConstants.ImagesSrc_Woman;
+              this.Sexo = 1;
+            }
+          }
+        
 
 }

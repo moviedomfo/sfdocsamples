@@ -1,24 +1,69 @@
-<p>
-  Este es el componete de prueba y works fine!
-</p>
+<div class="">
 
-<input type="number" [(ngModel)]="Suma" />
+    <div class="">
+            <div class="col-lg-2">
+                    <form class="form">
+                        <div class="form-group ">
+                                <img class="img-rounded" width="100" height="100" [src]="fullImagePath" alt="Foto" />
+                        </div>
+                        <div class="form-group ">
+                           
+                            
+                                <div class="radio">
+                                    <label>
+                                            <input type="radio" [checked]="currenPerson.Sexo===0" (click)="onSexChanged($event.target.checked)" name="modelProperty">Hombre
+                                          </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                              <input type="radio" [checked]="currenPerson.Sexo===1" (click)="onSexChanged(!$event.target.checked)" name="modelProperty">Mujer
+                                          </label>
+                                </div>
 
-<input type="text" value="{{Suma}}"/>
+                           
+                        </div>
+                    </form>
+            </div>
+            <div class="col-lg-10">
+                <form class="form-horizontal">
+                    <div class="form-group ">
+                        <label for="Nombre" class="col-lg-2 control-label">Nombre </label>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" name="Nombre" placeholder="Nombre" [(ngModel)]="currenPerson.Nombre">
+                        </div>
+                    </div>
 
- <br />
-<select (change)="selectValue = ( $event.target.value && friends[ +$event.target.value ] || null );">
-            <option>No Friends</option>
-            <template ngFor let-friend [ngForOf]="friends" let-index="index">
-                <option [value]="index" [selected]="( selectValue === friend )">
-                    {{ friend.name }}
-                </option>
-            </template>
-</select>
- <br />
-  <br />
-    <strong>Text Value</strong>: {{ textValue | json }}<br />
-        <strong>Textarea Value</strong>: {{ textareaValue | json }}<br />
-        <strong>Checkbox Value</strong>: {{ checkboxValue | json }}<br />
-        <strong>Radiobox Value</strong>: {{ radioValue | json }}<br />
-        <strong>Select Value</strong>: {{ selectValue | json }}<br />
+                    <div class="form-group ">
+                        <label for="Apellido" class="col-lg-2 control-label">Apellido </label>
+                        <div class="col-lg-5">
+                            <input class="form-control" name="apell" placeholder="Apellido " type="text" [(ngModel)]="currenPerson.Apellido">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                            <div class="col-lg-4">
+                                   <label for="TipoDocumento" class="col-lg-offset-2 col-lg-4">Tipo Documento</label>
+                                   <select name="tipodoc" class="col-lg-2" [(ngModel)]="currenPerson.TipoDocumento">
+                                        <option *ngFor="let c of tipoDocumentoList" 
+                                        [attr.selected]="601" 
+                                         [ngValue]="c.Nombre">{{c.Nombre}}</option>
+                                    </select>
+                            </div>
+                            <div class="col-lg-pull-1 col-lg-6">
+                                    <label for="NroDocumento" class="col-lg-4 ">Nro documento </label>
+                                    <div class="col-lg-pull-1 col-lg-5">
+                                      <input class="form-control" name="nroDoc" placeholder="Nro Documento" [(ngModel)]="currenPerson.NroDocumento" #txtBox_NroDocumento2>
+                                    </div>
+                                  </div>
+                        
+                      
+                          </div>
+                      
+                        
+                </form>
+            </div>
+    </div>
+        
+
+</div>

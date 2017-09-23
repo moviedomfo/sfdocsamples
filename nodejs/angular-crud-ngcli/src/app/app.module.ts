@@ -17,6 +17,7 @@ import { rutesModule }        from './app.routing';
 import {AuthGuard} from './commonComponents/routingGuard/AuthGuard';
 import { PersonsComponent } from './persons/persons.component' ;
 import { PatientComponent } from './patient/patient.component';
+import { PruebaComponent } from './prueba/prueba.component';
 import { PatientBE } from './model/patients.model';
 import {IContextInformation,  ContextInformation,IRequest,Request,IResponse,Result,ServiceError } from './model/common.model';
 
@@ -40,7 +41,7 @@ import { LoginComponent } from './commonComponents/login/login.component';
   declarations: [
     AppComponent,
     PatientComponent,
-    FontAgComponent,
+    FontAgComponent,PruebaComponent,
     ModalDialogComponent, DateComponent, HeaderComponent, HeaderGroupComponent,PageNotFoundComponent,
     PersonsComponent,
     PatientGridComponent,
