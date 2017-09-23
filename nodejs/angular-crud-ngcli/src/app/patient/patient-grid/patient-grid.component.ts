@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PatientBE } from '../../model/patients.model';
+import { PatientBE } from '../../model/index';
 import { PatientsService,CommonService } from '../../service/index';
 
 
@@ -76,8 +76,6 @@ private createColumnDefs() {
     this.patientList$ = this.patientsService.retrivePatients$(this.txtQuery);
     this.patientList$.subscribe(
       res => {
-
-
         this.patientList = res;
         
         this.patientCount = this.patientList.length;

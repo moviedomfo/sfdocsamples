@@ -43,54 +43,54 @@
     </div>
 
     <div class="form-group">
-        <div class="col-lg-4">
-            <label for="TipoDocumento" class="col-lg-offset-2 col-lg-4">Tipo Documento</label>
-            <select name="tipodoc" class="col-lg-2" [(ngModel)]="currenPerson.TipoDocumento">
+      <div class="col-lg-4">
+        <label for="TipoDocumento" class="col-lg-2">Tipo Documento</label>
+        <select name="tipodoc" class="form-control col-lg-2 " [(ngModel)]="currenPerson.TipoDocumento">
                 <option *ngFor="let c of tipoDocumentoList" 
                 [attr.selected]="601" 
                  [ngValue]="c.Nombre">{{c.Nombre}}</option>
             </select>
-        </div>
-        <div class="col-lg-pull-1 col-lg-6">
-            <label for="NroDocumento" class="col-lg-4 ">Nro documento </label>
-            <div class="col-lg-pull-1 col-lg-5">
-              <input class="form-control" name="nroDoc" placeholder="Nro Documento" [(ngModel)]="currenPerson.NroDocumento" #txtBox_NroDocumento2>
-            </div>
-          </div>
-    </div>
-
-  <div class="form-group row">
-        <label for="fechaAlta" class="col-lg-2 control-label">FechaAlta</label>
-        <div class="col-lg-4">
-          <input class="form-control" name="FechaAlta" type="date" [(ngModel)]="currenPerson.FechaAlta">
+      </div>
+      <div class="col-lg-pull-1 col-lg-6">
+        <label for="NroDocumento" class="col-lg-5 ">Nro documento </label>
+        <div class="col-lg-pull-1 col-lg-5">
+          <input class="form-control" name="nroDoc" placeholder="Nro Documento" [(ngModel)]="currenPerson.NroDocumento" #txtBox_NroDocumento2>
         </div>
       </div>
-      
-      <div class="form-group row">
-          <label for="ecivil" class="col-lg-2 control-label">Estado civil</label>
-          <div class="col-lg-4">
-            <select name="cmbEstadoCivil" class="form-control margin-bottom" #cmbEstadoCivil [(ngModel)]="currenPerson.IdEstadoCivil">
+    </div>
+
+    <div class="form-group row">
+      <label for="fechaAlta" class="col-lg-2 control-label">FechaAlta</label>
+      <div class="col-lg-4">
+        <input class="form-control" name="FechaAlta" type="date" [(ngModel)]="currenPerson.FechaAlta">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="ecivil" class="col-lg-2 control-label">Estado civil</label>
+      <div class="col-lg-4">
+        <select name="cmbEstadoCivil" class="form-control margin-bottom" #cmbEstadoCivil [(ngModel)]="currenPerson.IdEstadoCivil">
                         <option *ngFor="let item of estadoCivilList"  
                         
                         #item.IdParametro
                         [ngValue]="item.IdParametro">{{item.Nombre}}</option>
                  </select>
-        </div>
       </div>
+    </div>
   </form>
-  
-  </div>
-      <!-- 
+
+</div>
+<!-- 
   
     <div class="form-group">
         <input class="form-control" name="nroDoc" placeholder="NroDocumento" [(ngModel)]="currenPerson.NroDocumento" #txtBox_NroDocumento (keyup.enter)="txtBox_NroDocumento_onKeyEnter(txtBox_NroDocumento.value)"
           (blur)="txtBox_NroDocumento_onKeyEnter(txtBox_NroDocumento.value)"> -->
-      <!-- </div> -->
+<!-- </div> -->
 
-     
-      
 
- 
+
+
+
 
 
 

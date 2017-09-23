@@ -42,9 +42,9 @@
 
 
                     <div class="form-group">
-                            <div class="col-lg-4">
-                                   <label for="TipoDocumento" class="col-lg-offset-2 col-lg-4">Tipo Documento</label>
-                                   <select name="tipodoc" class="col-lg-2" [(ngModel)]="currenPerson.TipoDocumento">
+                            <div class="col-lg-8">
+                                   <label for="TipoDocumento" class="col-lg-offset-2 col-lg-2">Tipo Documento</label>
+                                   <select name="tipodoc" class="col-lg-4" [(ngModel)]="currenPerson.TipoDocumento">
                                         <option *ngFor="let c of tipoDocumentoList" 
                                         [attr.selected]="601" 
                                          [ngValue]="c.Nombre">{{c.Nombre}}</option>

@@ -11,10 +11,11 @@ import {PersonBE} from '../../app/model/persons.model'
 })
 export class PersonsComponent implements OnInit {
   private selectedId: number;
+  private currentPerson:PersonBE;
   personId :number;
   personas$: Observable<PersonBE[]>;
   constructor( 
-    private service: PersonsService,   
+    private personService: PersonsService,   
     private route: ActivatedRoute) 
   { }
 
@@ -30,7 +31,7 @@ export class PersonsComponent implements OnInit {
     .switchMap((params: ParamMap) => {
       // (+) before `params.get()` turns the string into a number
       this.selectedId = +params.get('id');
-      return this.service.getPersons();
+      return this.personService.getPersons();
     });
   }
 

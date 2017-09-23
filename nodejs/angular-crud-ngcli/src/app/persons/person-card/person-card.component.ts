@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input} from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { PatientsService, CommonService } from '../../service/index';
@@ -12,8 +12,10 @@ import { ViewChild, ElementRef, Renderer2, AfterContentInit } from '@angular/cor
   styleUrls: ['./person-card.component.css']
 })
 export class PersonCardComponent implements AfterContentInit {
+  @Input() currenPerson: PersonBE;
+
   private select_form: FormGroup;
-  private currenPerson: PersonBE;
+  
   private selectedPais: Param;
   private selectedEstadoCivil: number;
   private selectedTipoDoc: Param;
