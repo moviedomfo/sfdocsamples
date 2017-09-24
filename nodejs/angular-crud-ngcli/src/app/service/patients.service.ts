@@ -81,13 +81,18 @@ export class PatientsService {
     
     var bussinesData = {
       nombre: txtQuery,
-      apellido: txtQuery
+      apellido: txtQuery,
+      nroDocumento:null,
+      id:null,
+      ReturnGrid:false,
     };
 
 
     let searchParams: URLSearchParams = this.commonService.generete_get_searchParams("RetrivePatientsService", bussinesData);
+    
     HealtConstants.httpOptions.search = searchParams;
-    console.log('trying to execute ' + `${HealtConstants.HealthExecuteAPI_URL}`);
+
+    //console.log('trying to execute ' + `${HealtConstants.HealthExecuteAPI_URL}`);
     return this.http.get(`${HealtConstants.HealthExecuteAPI_URL}`, HealtConstants.httpOptions)
       .map(function (res: Response) {
 
@@ -130,10 +135,32 @@ export class PatientsService {
   //   return patient;
   // }
 
-  getPatientById(patintId: number): PatientBE {
-     let patient: PatientBE;
-     patient = this.patientList.filter(p => p.PatientId === patintId)[0];
-     return patient;
+  getPatientById(patientId: number): Observable<PatientBE> {
+      
+    var bussinesData = {
+      id: patientId
+    };
+
+
+
+    let searchParams: URLSearchParams = this.commonService.generete_get_searchParams("GetPatientService", bussinesData);
+    HealtConstants.httpOptions.search = searchParams;
+    
+    return this.http.get(`${HealtConstants.HealthExecuteAPI_URL}`, HealtConstants.httpOptions)
+      .map(function (res: Response) {
+
+        let result: Result = JSON.parse(res.json());
+      
+        if (result.Error) {
+          this.commonService.handleErrorService(result.Error.Message);
+        }
+
+        let patient: PatientBE = result.BusinessData["Patient"] as PatientBE;
+
+
+
+        return patient;
+      });
    }
 }
 

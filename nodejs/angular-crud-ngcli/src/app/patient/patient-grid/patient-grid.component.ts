@@ -95,4 +95,7 @@ private createColumnDefs() {
     
     alert(JSON.stringify(event));
   }
+  onModelUpdated(event){
+
+  }
 }

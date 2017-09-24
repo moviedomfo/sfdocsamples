@@ -8,12 +8,12 @@ export class PersonsService {
 
   constructor() { }
   getPersons() { return Observable.of(PersonaList); }
-  
-    getPerson(id: number | string) {
-      return this.getPersons()
-        // (+) before `id` turns the string into a number
-        .map(persona => PersonaList.find(p => p.IdPersona === +id));
-    }
+
+  getPerson(id: number | string) {
+    return this.getPersons()
+      // (+) before `id` turns the string into a number
+      .map(persona => PersonaList.find(p => p.IdPersona === +id));
+  }
 }
 
 const PersonaList = [

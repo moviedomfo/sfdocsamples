@@ -103,7 +103,10 @@ export class CommonService {
     searchParams.set("serviceName", serviceName);
     searchParams.set("jsonRequest", JSON.stringify(req));
 
-
+  
+    // console.log("-------------"+serviceName+"------------------");
+    // console.log(JSON.stringify(JSON.stringify(req)));
+    // console.log("-------------"+serviceName+"------------------");
 
     return searchParams;
   }

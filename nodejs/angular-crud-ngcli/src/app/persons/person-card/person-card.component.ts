@@ -12,10 +12,10 @@ import { ViewChild, ElementRef, Renderer2, AfterContentInit } from '@angular/cor
   styleUrls: ['./person-card.component.css']
 })
 export class PersonCardComponent implements AfterContentInit {
-  @Input() currenPerson: PersonBE;
-
-  private select_form: FormGroup;
-  
+  @Input() 
+  currentPerson: PersonBE;
+  @Input() 
+  patientId: number;
   private selectedPais: Param;
   private selectedEstadoCivil: number;
   private selectedTipoDoc: Param;
@@ -35,6 +35,12 @@ export class PersonCardComponent implements AfterContentInit {
     private commonService: CommonService,
     private rd: Renderer2) {
 
+       
+    if(this.currentPerson)
+    alert(this.currentPerson.Nombre);
+    else
+    alert("no hay persona cargada");
+
   }
   ngAfterContentInit() {
 
@@ -44,18 +50,30 @@ export class PersonCardComponent implements AfterContentInit {
     // console.log(this.comboEstadocivil.nativeElement);
 
     //comboEstadocivil.value = '602';
-    this.currenPerson.Sexo = 0;
-    this.currenPerson.NroDocumento="0";
+    // this.currentPerson.Sexo = 0;
+    // this.currentPerson.NroDocumento="0";
     this.fullImagePath = HealtConstants.ImagesSrc_Man;
-    console.log(this.currenPerson.Sexo);
+    //console.log(this.currentPerson.Sexo);
+
+    if(this.currentPerson)
+    alert(this.currentPerson.Nombre);
+    else
+    alert("no hay persona cargada");
+
   }
   ngOnInit() {
 
+  
+    if(this.currentPerson)
+      alert(this.currentPerson.Nombre);
+      else
+      alert("no hay persona cargada");
 
     this.fullImagePath = HealtConstants.ImagesSrc_Woman;
 
-    this.currenPerson = new PersonBE(-1, "");
-    this.currenPerson.Sexo == 1;
+    this.currentPerson = new PersonBE(-1, "");
+    
+    this.currentPerson.Sexo == 1;
     this.paises$ = this.commonService.searchParametroByParams$(TipoParametroEnum.Paises, null);
     this.paises$.subscribe(
       res => {
@@ -66,7 +84,7 @@ export class PersonCardComponent implements AfterContentInit {
     this.estadoCivilList$.subscribe(
       res => {
         this.estadoCivilList = this.commonService.appendExtraParamsCombo(res, CommonParams.SeleccioneUnaOpcion.IdParametro);
-        this.currenPerson.IdEstadoCivil = CommonValuesEnum.SeleccioneUnaOpcion;
+        this.currentPerson.IdEstadoCivil = CommonValuesEnum.SeleccioneUnaOpcion;
 
       }
     );
@@ -108,12 +126,12 @@ export class PersonCardComponent implements AfterContentInit {
 
     if (inChecked) {
       this.fullImagePath = HealtConstants.ImagesSrc_Man;
-      this.currenPerson.Sexo = 0;
+      this.currentPerson.Sexo = 0;
     }
     else {
       
       this.fullImagePath = HealtConstants.ImagesSrc_Woman;
-      this.currenPerson.Sexo = 1;
+      this.currentPerson.Sexo = 1;
     }
   }
 
