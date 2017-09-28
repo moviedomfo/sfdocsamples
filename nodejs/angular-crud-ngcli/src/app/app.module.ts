@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AlertModule } from 'ngx-bootstrap';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -17,7 +17,7 @@ import { rutesModule }        from './app.routing';
 import {AuthGuard} from './commonComponents/routingGuard/AuthGuard';
 import { PersonsComponent } from './persons/persons.component' ;
 import { PatientComponent } from './patient/patient.component';
-import { PruebaComponent } from './prueba/prueba.component';
+
 import { PatientBE } from './model/patients.model';
 import {IContextInformation,  ContextInformation,IRequest,Request,IResponse,Result,ServiceError } from './model/common.model';
 
@@ -35,13 +35,47 @@ import { FontAgComponent } from './commonComponents/font-ag/font-ag.component';
 import { PersonCardComponent } from './persons/person-card/person-card.component';
 import { LoginComponent } from './commonComponents/login/login.component';
 
-
+import {TestModule} from './prueba/test/test.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {
+  MdAutocompleteModule,
+  MdButtonModule,
+  MdButtonToggleModule,
+  MdCardModule,
+  MdCheckboxModule,
+  MdChipsModule,
+  MdDatepickerModule,
+  MdDialogModule,
+  MdExpansionModule,
+  MdGridListModule,
+  MdIconModule,
+  MdInputModule,
+  MdListModule,
+  MdMenuModule,
+  MdNativeDateModule,
+  MdPaginatorModule,
+  MdProgressBarModule,
+  MdProgressSpinnerModule,
+  MdRadioModule,
+  MdRippleModule,
+  MdSelectModule,
+  MdSidenavModule,
+  MdSliderModule,
+  MdSlideToggleModule,
+  MdSnackBarModule,
+  MdSortModule,
+  MdTableModule,
+  MdTabsModule,
+  MdToolbarModule,
+  MdTooltipModule,
+  MdStepperModule,
+} from '@angular/material';
 
 @NgModule({
   declarations: [
     AppComponent,
     PatientComponent,
-    FontAgComponent,PruebaComponent,
+    FontAgComponent,
     ModalDialogComponent, DateComponent, HeaderComponent, HeaderGroupComponent,PageNotFoundComponent,
     PersonsComponent,
     PatientGridComponent,
@@ -59,9 +93,15 @@ import { LoginComponent } from './commonComponents/login/login.component';
                   PatientGridComponent,
     ]),
     BootstrapModalModule,
-    FormsModule,
+    FormsModule,ReactiveFormsModule,
     HttpModule,
-    rutesModule
+    rutesModule,
+    BrowserAnimationsModule,
+    MdAutocompleteModule,    MdButtonModule,    MdButtonToggleModule,    MdCardModule,    MdCheckboxModule,    MdChipsModule,    MdDatepickerModule,    MdDialogModule,    MdExpansionModule,    MdGridListModule,    MdIconModule,    MdInputModule,
+    MdListModule,    MdMenuModule,    MdNativeDateModule,    MdPaginatorModule,    MdProgressBarModule,    MdProgressSpinnerModule,    MdRadioModule,    MdRippleModule,
+    MdSelectModule,    MdSidenavModule,    MdSliderModule,    MdSlideToggleModule,    MdSnackBarModule,    MdSortModule,    MdTableModule,
+    MdTabsModule,    MdToolbarModule,    MdTooltipModule,    MdStepperModule,
+        TestModule
   ],entryComponents: [
     ModalDialogComponent
   ],

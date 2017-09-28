@@ -25,7 +25,7 @@ export class PatientComponent implements OnInit {
 
   patientList$: Observable<PatientBE[]>;
   patientList: PatientBE[];
-  currenPatient: PatientBE;
+  currentPatient: PatientBE;
   private selectedPais: String = '';
   public paises: Array<String> = ["Afghanistan",
     "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain",
@@ -42,8 +42,8 @@ export class PatientComponent implements OnInit {
     this.patientList = res;
   }
   ngOnInit() {
-    this.currenPatient = new PatientBE();
-    this.currenPatient.FechaAlta = new Date(Date.now());
+    this.currentPatient = new PatientBE();
+    this.currentPatient.FechaAlta = new Date(Date.now());
     this.patientList$ = this.patientService.retrivePatientsSimple$();
     this.patientList$.subscribe(
       res => {
@@ -75,7 +75,7 @@ export class PatientComponent implements OnInit {
     //   alert(element);
     // });
     //alert(str);
-    this.patientService.createPatients(this.currenPatient);
+    this.patientService.createPatients(this.currentPatient);
   }
 
   reriveAllPatientList() {

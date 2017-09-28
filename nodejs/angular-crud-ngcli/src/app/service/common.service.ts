@@ -51,7 +51,7 @@ export class CommonService {
      
            var p: Param = new Param();
  
-           console.log('agregando Extra param');
+           
            switch (+parameterToAppend) {
              case CommonParams.SeleccioneUnaOpcion.IdParametro:
                {

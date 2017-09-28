@@ -1,67 +1,67 @@
 import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { PersonBE, IContextInformation, IParam, Param, CommonValuesEnum, TipoParametroEnum, CommonParams, HealtConstants } from '../model/index';
-
+import { PatientsService, CommonService } from '../service/index';
 import { FormGroup } from '@angular/forms';
 import { ViewChild, ElementRef, Renderer2, AfterContentInit } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {  MdDatepicker,MdDatepickerInput }  from '@angular/material';
 interface Friend {
     id: number;
     name: string;
 }
 @Component({
-  selector: 'app-prueba',
-  templateUrl: './prueba.component.html',
-  styleUrls: ['./prueba.component.css']
+    selector: 'app-prueba',
+    templateUrl: './prueba.component.html',
+    providers: [DatePipe]
 })
 
 
 export class PruebaComponent implements OnInit {
 
-  public Suma : number=0; 
-  public friends: Friend[];
-     public radioValue: Friend;
-    public selectValue: Friend;
-    public textareaValue: string;
-    public textValue: string;
-public Sexo:number;
-public fullImagePath: string;
-  constructor() { 
+    private fechaAlta:Date;
+    private currentPerson: PersonBE;
+    tipoDocumentoList$: Observable<Param[]>;
+    tipoDocumentoList: Param[]
 
-    
-  }
-
-  ngOnInit() {
-    this.fullImagePath = './../' + HealtConstants.ImagesSrc_Man;
-     this.friends = [
-            {
-                id: 1,
-                name: "Sarah"
-            },
-            {
-                id: 2,
-                name: "Tricia"
-            },
-            {
-                id: 3,
-                name: "Kim"
-            }
-        ];
+    constructor(private commonService: CommonService,private datePipe: DatePipe ) {
 
     }
 
-    onSexChanged(inChecked: boolean) {
+
+    ngOnngAfterContentInit  (){
+        //alert('ngOnngAfterContentInit');
+        //this.preInitializePerson();
         
-            if (inChecked) {
-              this.fullImagePath = './../' +HealtConstants.ImagesSrc_Man;
-              this.Sexo = 0;
-            }
-            else {
+    }
+
+    private fechaAltaString:string;
+    ngOnInit() {
+        this.fechaAlta = new Date();
+        this.fechaAltaString=this.fechaAlta.toISOString();
+        
+        this.preInitializePerson();
+        this.tipoDocumentoList$ = this.commonService.searchParametroByParams$(TipoParametroEnum.TipoDocumento, null);
+        this.tipoDocumentoList$.subscribe(
+            res => {
+
+                this.tipoDocumentoList = this.commonService.appendExtraParamsCombo(res, CommonParams.SeleccioneUnaOpcion.IdParametro);
                 
-              this.fullImagePath = './../' + HealtConstants.ImagesSrc_Woman;
-              this.Sexo = 1;
             }
-          }
-        
+        );
+    }
+    private cambiarPersona(){
+        this.currentPerson.TipoDocumento = "610";
+        this.currentPerson.Nombre = "Marcelo";
+       }
+    private  preInitializePerson()
+    {
+       
+       this.currentPerson = new PersonBE(-1,"pepe");
+       this.currentPerson.TipoDocumento="610";
+       //this.currentPerson.TipoDocumento = CommonParams.SeleccioneUnaOpcion.IdParametro.toString();
+    }
 
 }

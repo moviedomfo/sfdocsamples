@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientsService } from '../service/index';
-import { PatientBE,IContextInformation, IParam, Param } from '../model/index';
+import { PersonBE,PatientBE,IContextInformation, IParam, Param } from '../model/index';
 import {TipoParametroEnum} from '../model/common.constants'
 
 
@@ -20,16 +20,16 @@ interface Friend {
     name: string;
 }
 @Component({
-  selector: 'controles-prueba',
-  templateUrl: './controles.component.html' 
+  selector: 'testcontroles-prueba',
+  templateUrl: './testcontroles.component.html' 
 })
 
 
-export class PruebaComponent implements OnInit {
+export class TestControlesComponent implements OnInit {
 
     patientList$: Observable<PatientBE[]>;
     patientList: PatientBE[];
-    currenPatient: PatientBE;
+    currentPatient: PatientBE;
     private selectedPais: String = '';
     public paises: Array<String> = ["Afghanistan",
       "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain",
@@ -46,16 +46,20 @@ export class PruebaComponent implements OnInit {
       this.patientList = res;
     }
     ngOnInit() {
-      this.currenPatient = new PatientBE();
-      this.currenPatient.FechaAlta = new Date(Date.now());
-      this.patientList$ = this.patientService.retrivePatientsSimple$();
-      this.patientList$.subscribe(
-        res => {
+      this.currentPatient = new PatientBE();
+      this.currentPatient.Persona = new  PersonBE(999,"Marcelo");
+      this.currentPatient.Persona.Nombre= "Marcelo";
+      this.currentPatient.Persona.Apellido= "Oviedo";
+      this.currentPatient.FechaAlta = new Date(Date.now());
+      alert(JSON.stringify(this.currentPatient));
+      //this.patientList$ = this.patientService.retrivePatientsSimple$();
+      // this.patientList$.subscribe(
+      //   res => {
   
-          this.patientList = res;
+      //     this.patientList = res;
   
-        }
-      );
+      //   }
+      // );
   
       // this.patientService.retrivePatientsSimple$().subscribe(
       //   res=>{
@@ -79,7 +83,7 @@ export class PruebaComponent implements OnInit {
       //   alert(element);
       // });
       //alert(str);
-      this.patientService.createPatients(this.currenPatient);
+      this.patientService.createPatients(this.currentPatient);
     }
   
     reriveAllPatientList() {

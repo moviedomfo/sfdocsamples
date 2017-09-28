@@ -23,7 +23,7 @@ export class PatientGridComponent implements OnInit {
   private patientCount: number;
   private patientList$: Observable<PatientBE[]>;
   private patientList: PatientBE[];
-  currenPatient: PatientBE;
+  currentPatient: PatientBE;
   private columnDefs:any[];
   private gridOptions:GridOptions;
 

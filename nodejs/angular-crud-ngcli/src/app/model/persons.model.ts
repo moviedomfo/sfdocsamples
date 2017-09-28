@@ -2,19 +2,21 @@
 
 export class PersonBE {
 
-     constructor(idPersona : number ,nombre:String){
+     constructor(idPersona : number ,nombre:string){
 
+        this.Nombre= nombre;
+        this.IdPersona= idPersona;
     }
 
 
-    IdPersona: number;
+     IdPersona: number;
      UserId: string;
      TipoDocumento: string;
      NroDocumento: string;
      Apellido: string;
-     Nombre: string;
+    Nombre: string;
      Sexo: number;  
-     IdEstadoCivil: number;
+     IdEstadocivil: number;
      FechaNacimiento: Date;
      LastAccessTime: Date;
      LastAccessUserId: string;

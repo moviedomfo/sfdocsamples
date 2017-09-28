@@ -14,11 +14,10 @@ import { ViewChild, ElementRef, Renderer2, AfterContentInit } from '@angular/cor
 export class PersonCardComponent implements AfterContentInit {
   @Input() 
   currentPerson: PersonBE;
-  @Input() 
-  patientId: number;
+
   private selectedPais: Param;
   private selectedEstadoCivil: number;
-  private selectedTipoDoc: Param;
+  private selectedTipoDoc: number;
   paises$: Observable<Param[]>;
   paises: Param[];
   estadoCivilList$: Observable<Param[]>;
@@ -35,45 +34,32 @@ export class PersonCardComponent implements AfterContentInit {
     private commonService: CommonService,
     private rd: Renderer2) {
 
-       
-    if(this.currentPerson)
-    alert(this.currentPerson.Nombre);
-    else
-    alert("no hay persona cargada");
+  }
+  ngOnChanges() {
+    
+
+  }
+  ngAfterViewInit() {
 
   }
   ngAfterContentInit() {
 
-    //   var comboEstadocivil=  (<HTMLInputElement>document.getElementById('cmbEstadoCivil'));
-
-    //  console.log(this.cmbEstadoCivil);
+       //var comboEstadocivil=  (<HTMLInputElement>document.getElementById('cmbEstadoCivil'));
+       //console.log("Esto es cmbEstadoCivil");
+      //console.log(this.cmbEstadoCivil.nativeElement);
     // console.log(this.comboEstadocivil.nativeElement);
 
-    //comboEstadocivil.value = '602';
-    // this.currentPerson.Sexo = 0;
-    // this.currentPerson.NroDocumento="0";
-    this.fullImagePath = HealtConstants.ImagesSrc_Man;
-    //console.log(this.currentPerson.Sexo);
+  
+   //this.fullImagePath = HealtConstants.ImagesSrc_Man;
+   this.nroDoc = Number(this.currentPerson.NroDocumento);
 
-    if(this.currentPerson)
-    alert(this.currentPerson.Nombre);
-    else
-    alert("no hay persona cargada");
 
   }
   ngOnInit() {
-
-  
-    if(this.currentPerson)
-      alert(this.currentPerson.Nombre);
-      else
-      alert("no hay persona cargada");
-
-    this.fullImagePath = HealtConstants.ImagesSrc_Woman;
-
-    this.currentPerson = new PersonBE(-1, "");
+    this.preInitializePerson();
     
-    this.currentPerson.Sexo == 1;
+
+   
     this.paises$ = this.commonService.searchParametroByParams$(TipoParametroEnum.Paises, null);
     this.paises$.subscribe(
       res => {
@@ -84,35 +70,34 @@ export class PersonCardComponent implements AfterContentInit {
     this.estadoCivilList$.subscribe(
       res => {
         this.estadoCivilList = this.commonService.appendExtraParamsCombo(res, CommonParams.SeleccioneUnaOpcion.IdParametro);
-        this.currentPerson.IdEstadoCivil = CommonValuesEnum.SeleccioneUnaOpcion;
-
       }
     );
     this.tipoDocumentoList$ = this.commonService.searchParametroByParams$(TipoParametroEnum.TipoDocumento, null);
     this.tipoDocumentoList$.subscribe(
       res => {
 
-        this.tipoDocumentoList = res;
-
+        this.tipoDocumentoList = this.commonService.appendExtraParamsCombo(res, CommonParams.SeleccioneUnaOpcion.IdParametro);
+        
       }
     );
-    //this.setActive(602);
+    
 
 
   }
 
-  setActive(active_value: number) {
-    //this.select_form.get('cmbEstadoCivil').patchValue(active_value);
-    // this.select_form.get('cmbEstadoCivil').get('#' + active_value)
-    // .setValue('select',true);
 
+  byParam(item1: number, item2: number) {
+    console.log(JSON.stringify(item1));
+    return item1 === item2;
+  
+  }
+  onPaisSelection(event) { 
+    //alert(this.selectedPais); 
   }
 
-
-  onPaisSelection(event) { alert(this.selectedPais); }
   onEstadoCivilSelection(event) {
-    console.log(event);
-    console.log(this.selectedEstadoCivil);
+    // console.log(event);
+    // console.log(this.selectedEstadoCivil);
 
   }
 
@@ -134,6 +119,16 @@ export class PersonCardComponent implements AfterContentInit {
       this.currentPerson.Sexo = 1;
     }
   }
-
+  nroDoc:number;
+  private  preInitializePerson()
+  {
+    this.fullImagePath = HealtConstants.ImagesSrc_Woman;
+     this.currentPerson = new PersonBE(-1,"");
+     //this.currentPerson.TipoDocumento=613;
+     this.currentPerson.Nombre="";
+     this.currentPerson.TipoDocumento = CommonParams.SeleccioneUnaOpcion.IdParametro.toString();
+     this.currentPerson.IdEstadocivil =CommonParams.SeleccioneUnaOpcion.IdParametro;
+     this.nroDoc = Number(this.currentPerson.NroDocumento);
+  }
 
 }

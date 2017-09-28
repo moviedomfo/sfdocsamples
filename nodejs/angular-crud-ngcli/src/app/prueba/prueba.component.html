@@ -1,69 +1,58 @@
-<div class="">
-
-    <div class="">
-            <div class="col-lg-2">
-                    <form class="form">
-                        <div class="form-group ">
-                                <img class="img-rounded" width="100" height="100" [src]="fullImagePath" alt="Foto" />
-                        </div>
-                        <div class="form-group ">
-                           
-                            
-                                <div class="radio">
-                                    <label>
-                                            <input type="radio" [checked]="currenPerson.Sexo===0" (click)="onSexChanged($event.target.checked)" name="modelProperty">Hombre
-                                          </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                              <input type="radio" [checked]="currenPerson.Sexo===1" (click)="onSexChanged(!$event.target.checked)" name="modelProperty">Mujer
-                                          </label>
-                                </div>
-
-                           
-                        </div>
-                    </form>
-            </div>
-            <div class="col-lg-10">
-                <form class="form-horizontal">
-                    <div class="form-group ">
-                        <label for="Nombre" class="col-lg-2 control-label">Nombre </label>
-                        <div class="col-lg-5">
-                            <input type="text" class="form-control" name="Nombre" placeholder="Nombre" [(ngModel)]="currenPerson.Nombre">
-                        </div>
-                    </div>
-
-                    <div class="form-group ">
-                        <label for="Apellido" class="col-lg-2 control-label">Apellido </label>
-                        <div class="col-lg-5">
-                            <input class="form-control" name="apell" placeholder="Apellido " type="text" [(ngModel)]="currenPerson.Apellido">
-                        </div>
-                    </div>
 
 
-                    <div class="form-group">
-                            <div class="col-lg-8">
-                                   <label for="TipoDocumento" class="col-lg-offset-2 col-lg-2">Tipo Documento</label>
-                                   <select name="tipodoc" class="col-lg-4" [(ngModel)]="currenPerson.TipoDocumento">
-                                        <option *ngFor="let c of tipoDocumentoList" 
-                                        [attr.selected]="601" 
-                                         [ngValue]="c.Nombre">{{c.Nombre}}</option>
-                                    </select>
-                            </div>
-                            <div class="col-lg-pull-1 col-lg-6">
-                                    <label for="NroDocumento" class="col-lg-4 ">Nro documento </label>
-                                    <div class="col-lg-pull-1 col-lg-5">
-                                      <input class="form-control" name="nroDoc" placeholder="Nro Documento" [(ngModel)]="currenPerson.NroDocumento" #txtBox_NroDocumento2>
-                                    </div>
-                                  </div>
-                        
-                      
-                          </div>
-                      
-                        
-                </form>
-            </div>
-    </div>
-        
+<input type="date" class="form-control" name="fechaAlta" type="date" 
+[value]="fechaAlta | date:'yyyy-MM-dd'"> 
 
+<input type="date"class="form-control" 
+  [ngModel] ="fechaAlta | date:'yyyy-MM-dd'" 
+  (ngModelChange)="fechaAlta = $event" 
+  [value]="fechaAlta | date:'yyyy-MM-dd'">
+<h2>
+Valores de fecha
+</h2>
+<h3><b>Fecha : </b>{{fechaAlta}}</h3>
+<h3><b>Fecha toLocaleTimeString : </b>{{fechaAlta.toLocaleTimeString()}}</h3>
+<h3><b>Fecha toLocaleDateString :</b> {{fechaAlta.toLocaleDateString()}}</h3>
+<h3><b>Fecha toDateString :</b> {{fechaAlta.toDateString()}}</h3>
+<h3><b>Fecha toISOString</b> : {{fechaAlta.toISOString()}}</h3>
+
+<!-- <md-form-field>
+  <input mdInput [mdDatepicker]="startAtPicker">
+  <md-datepicker-toggle mdSuffix [for]="startAtPicker"></md-datepicker-toggle>
+  <md-datepicker #startAtPicker></md-datepicker>
+</md-form-field> -->
+<md-datepicker #startAtPicker>
+
+</md-datepicker>
+
+<md-form-field class="example-full-width">
+  <input mdInput placeholder="Email" [formControl]="emailFormControl">
+  <md-error *ngIf="emailFormControl.hasError('pattern')">
+    Please enter a valid email address
+  </md-error>
+  <md-error *ngIf="emailFormControl.hasError('required')">
+    Email is <strong>required</strong>
+  </md-error>
+</md-form-field>
+
+
+<!-- <div class="form-group">
+  <div class="col-lg-8">
+    <label for="TipoDocumento" class="col-lg-offset-2 col-lg-2">Tipo Documento</label>
+    <select name="tipodoc" class="col-lg-4" [(ngModel)]="currentPerson.TipoDocumento">
+          <option *ngFor="let c of tipoDocumentoList"  
+                [ngValue]="c.IdParametro.toString()">{{c.Nombre}}
+          </option>
+                  </select>
+  </div>
+
+</div> -->
+<div class="row" >
+  <button class="btn btn-danger" (click)="cambiarPersona()">Refrescar pèrsona</button>
+        <div class="col-xs-6 col-md-4">
+                <div class="alert-danger">
+                  
+                  <div>{{currentPerson | json}}</div>
+                </div>
+              </div>
 </div>
