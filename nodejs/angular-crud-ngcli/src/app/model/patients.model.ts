@@ -19,6 +19,7 @@ export class PatientBE {//implements IPatient {
     public LastAccessUserId: string;
     public LastHealthInstId: string;
     public Persona:PersonBE;
+ 
 }
 
 export class PatientAllergy {

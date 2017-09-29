@@ -70,6 +70,7 @@ import {
   MdTooltipModule,
   MdStepperModule,
 } from '@angular/material';
+import { PatientMangerComponent } from './patient/patient-manger/patient-manger.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import {
     PersonsComponent,
     PatientGridComponent,
     PersonCardComponent,
-    LoginComponent
+    LoginComponent,
+    PatientMangerComponent
   ],
   imports: [
     AlertModule.forRoot(),
