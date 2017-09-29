@@ -1,8 +1,0 @@
-﻿
-<GetPatientAllergyRes>
-  <ContextInformation>
-    <HostTime>0001-01-01T00:00:00</HostTime>
-    <ServerName>CPUDEL60578</ServerName>
-    <ServerTime>2012-05-15T18:05:01.028875-03:00</ServerTime>
-  </ContextInformation>
-</GetPatientAllergyRes>
