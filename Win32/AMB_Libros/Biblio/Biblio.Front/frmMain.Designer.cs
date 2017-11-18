@@ -82,7 +82,6 @@
             this.openToolStripButton.Name = "openToolStripButton";
             this.openToolStripButton.Size = new System.Drawing.Size(24, 24);
             this.openToolStripButton.Text = "Open";
-            
             // 
             // saveToolStripButton
             // 
@@ -155,10 +154,11 @@
             this.ClientSize = new System.Drawing.Size(843, 558);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.toolStrip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMain";
-            this.Text = "frmMain";
+            this.Text = "Biblioteca";
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.toolStrip.ResumeLayout(false);
