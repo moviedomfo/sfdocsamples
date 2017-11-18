@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblio.Front", "Biblio.Front\Biblio.Front.csproj", "{0A2E3975-4DA7-4D52-B081-98AAD1F71EE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblio.DAC", "Biblio.DAC\Biblio.DAC.csproj", "{33D295F2-F8EB-4516-9701-DF5F46B46085}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A2E3975-4DA7-4D52-B081-98AAD1F71EE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A2E3975-4DA7-4D52-B081-98AAD1F71EE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A2E3975-4DA7-4D52-B081-98AAD1F71EE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A2E3975-4DA7-4D52-B081-98AAD1F71EE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33D295F2-F8EB-4516-9701-DF5F46B46085}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33D295F2-F8EB-4516-9701-DF5F46B46085}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33D295F2-F8EB-4516-9701-DF5F46B46085}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33D295F2-F8EB-4516-9701-DF5F46B46085}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
