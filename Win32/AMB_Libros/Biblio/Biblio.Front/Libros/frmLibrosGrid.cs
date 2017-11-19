@@ -20,8 +20,22 @@ namespace Biblio.Front
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            libroListBindingSource.DataSource = LibrosDAC.Search("");
+            this.Close();
+        }
+
+        private void frmLibrosGrid_Load(object sender, EventArgs e)
+        {
+             ucLibrosGrid1.Search("");
+        }
+
+        private void ucLibrosGrid1_OnClickEvent(object sender, EventArgs e)
+        {
+            lblSelected.Text = ucLibrosGrid1.currentLibro.Titulo;
+        }
+
+        private void ucLibrosGrid1_OnDoubleClickEvent(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -58,8 +58,10 @@
   <ItemGroup>
     <Compile Include="BE\LibrosBE.cs" />
     <Compile Include="BE\SociosBE.cs" />
+    <Compile Include="BE\UsarioBE.cs" />
     <Compile Include="CommonHelpers.cs" />
     <Compile Include="DAC\LibrosDAC.cs" />
+    <Compile Include="DAC\SecurityDAC.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>

@@ -59,5 +59,13 @@ namespace Biblio.Front
             item.Stock = Convert.ToInt32(numStock.Value);
             return item;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using(frmLibrosGrid frm = new frmLibrosGrid())
+            {
+                frm.ShowDialog();
+            }
+        }
     }
 }

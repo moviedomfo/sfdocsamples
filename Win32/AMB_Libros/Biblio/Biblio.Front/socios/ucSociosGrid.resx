@@ -117,34 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="socioBEListBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>260, 17</value>
-  </metadata>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>365, 17</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>51</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAEAICAQAAAAAADoAgAAFgAAACgAAAAgAAAAQAAAAAEABAAAAAAAgAIAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAACAAACAAAAAgIAAgAAAAIAAgACAgAAAwMDAAICAgAAAAP8AAP8AAAD//wD/AAAA/wD/AP//
-        AAD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACbkAAAAAAAAAAAAAAAAPn5+fkAAAAAAAAAAAAAm5ub
-        m5ubAAAAAAAAAAD5+fn5+fn5+QAAAAAAAAALm5ubm5ubm5sP/wAAAAAACfn5+fn5+fn5D/8AAAAAAAub
-        m5ubm5ubmw//AAAAAAAJ+fn5+fn5+fkP/wAAAAAAC5ubm5ubm5ubD/8AAAAAAAn5+fn5+fn5+Q//AAAA
-        AAALm5ubm5uQAAAA/wAAAAAACfn5+fmwCfn5+Q8AAAAAAAubm5ubC5sAm5uQAAAAAAAJ+fn5+Qm5APn5
-        +QAAAAAAC5ubm5uQC5ubm5sAAAAAAAn5+fn5+bAAAAD5AAAAAAALm5ubm5ubm5sPCwAAAAAACfn5+fn5
-        +fn5D/AAAAAAAAubm5ubm5ubmw//AAAAAAAJ+fn5+fn5+fkP/wAAAAAAC5ubm5ubm5ubD/8AAAAAAAn5
-        +fn5+fn5+Q//AAAAAAALm5ubm5ubm5sP/wAAAAAACfn5+fn5+fn5D/8AAAAAAAubm5ubm5ubmw//AAAA
-        AAAJ+fn5+fn5+fD//wAAAAAAC5ubm5ubkAAP//8AAAAAAAn5+fkAAA/////wAAAAAAALkAAA///////w
-        AAAAAAAAAA////////8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//H///8A///wAH//AAB//AAAD/wAA
-        Af8AAAH/AAAB/wAAAf8AAAH/AAAB/wAAAf8AAAH/AAAB/wAAAf8AAAH/AAAB/wAAAf8AAAH/AAAB/wAA
-        Af8AAAH/AAAB/wAAAf8AAAH/AAAB/wAAAf8AAAH/AAAD/wAAB/+AAB//wAD//w==
-</value>
-  </data>
 </root>
