@@ -101,5 +101,14 @@ namespace Biblio.Front
             socioAlta.MdiParent = this;
             socioAlta.Show();
         }
+        frmPrestamo frmPrestamo;
+        private void prestamosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.Contains(frmPrestamo))
+                return;
+            frmPrestamo = new frmPrestamo();
+            frmPrestamo.MdiParent = this;
+            frmPrestamo.Show();
+        }
     }
 }

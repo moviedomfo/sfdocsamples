@@ -21,5 +21,10 @@ namespace Biblio.Common.BE
         public string DNI { get; set; }
         public DateTime FechaAlta { get; set; }
         public DateTime FechaBaja { get; set; }
+
+        public override string ToString()
+        {
+            return this.Apellido + ", " + this.Nombre;
+        }
     }
 }

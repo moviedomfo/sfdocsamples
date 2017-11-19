@@ -33,6 +33,7 @@
             this.btnCrear = new System.Windows.Forms.Button();
             this.btnBuscarSocio = new System.Windows.Forms.Button();
             this.ucLibrosGrid1 = new Biblio.Front.ucLibrosGrid();
+            this.lblSelectedSocio = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,11 +92,23 @@
             this.ucLibrosGrid1.Size = new System.Drawing.Size(821, 363);
             this.ucLibrosGrid1.TabIndex = 18;
             // 
+            // lblSelectedSocio
+            // 
+            this.lblSelectedSocio.AutoSize = true;
+            this.lblSelectedSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelectedSocio.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblSelectedSocio.Location = new System.Drawing.Point(194, 81);
+            this.lblSelectedSocio.Name = "lblSelectedSocio";
+            this.lblSelectedSocio.Size = new System.Drawing.Size(215, 25);
+            this.lblSelectedSocio.TabIndex = 19;
+            this.lblSelectedSocio.Text = "-----------------------------";
+            // 
             // frmPrestamo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1170, 622);
+            this.Controls.Add(this.lblSelectedSocio);
             this.Controls.Add(this.ucLibrosGrid1);
             this.Controls.Add(this.btnBuscarSocio);
             this.Controls.Add(this.btnCrear);
@@ -116,5 +129,6 @@
         private System.Windows.Forms.Button btnCrear;
         private System.Windows.Forms.Button btnBuscarSocio;
         private ucLibrosGrid ucLibrosGrid1;
+        private System.Windows.Forms.Label lblSelectedSocio;
     }
 }

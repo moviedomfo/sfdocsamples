@@ -28,8 +28,10 @@ namespace Biblio.Front
 
         private void ucSociosGrid1_OnClickEvent(object sender, EventArgs e)
         {
+            if (ucSociosGrid1.currentSocio == null)
+                return;
             this.SelectedSocio = ucSociosGrid1.currentSocio;
-            lblSelected.Text = ucSociosGrid1.currentSocio.Nombre + ", " + ucSociosGrid1.currentSocio.Apellido;
+            lblSelected.Text = ucSociosGrid1.currentSocio.ToString();
             
         }
 

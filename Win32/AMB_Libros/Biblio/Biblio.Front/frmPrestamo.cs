@@ -27,6 +27,7 @@ namespace Biblio.Front
                 if (frm.ShowDialog()== DialogResult.OK)
                 {
                     currentSocio = frm.SelectedSocio;
+                    lblSelectedSocio.Text = currentSocio.ToString();
                 }
             }
         }

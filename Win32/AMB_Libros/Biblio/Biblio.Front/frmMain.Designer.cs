@@ -113,14 +113,14 @@
             // altaSocioToolStripMenuItem
             // 
             this.altaSocioToolStripMenuItem.Name = "altaSocioToolStripMenuItem";
-            this.altaSocioToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.altaSocioToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
             this.altaSocioToolStripMenuItem.Text = "Alta";
             this.altaSocioToolStripMenuItem.Click += new System.EventHandler(this.altaSocioToolStripMenuItem_Click_1);
             // 
             // consultaSocioToolStripMenuItem
             // 
             this.consultaSocioToolStripMenuItem.Name = "consultaSocioToolStripMenuItem";
-            this.consultaSocioToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.consultaSocioToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
             this.consultaSocioToolStripMenuItem.Text = "Consulta";
             this.consultaSocioToolStripMenuItem.Click += new System.EventHandler(this.consultaSocioToolStripMenuItem_Click);
             // 
@@ -130,6 +130,7 @@
             this.prestamosToolStripMenuItem.Name = "prestamosToolStripMenuItem";
             this.prestamosToolStripMenuItem.Size = new System.Drawing.Size(109, 24);
             this.prestamosToolStripMenuItem.Text = "Prestamos";
+            this.prestamosToolStripMenuItem.Click += new System.EventHandler(this.prestamosToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -143,7 +144,9 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Biblioteca";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
