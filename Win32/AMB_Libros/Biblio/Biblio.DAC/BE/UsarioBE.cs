@@ -16,6 +16,11 @@ namespace Biblio.Common.BE
         public string Password { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
+
+        public override string ToString()
+        {
+            return String.Concat("Usuario: ", Usuario, " ", Apellido, ", ", Nombre);
+        }
     }
 }
 

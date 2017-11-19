@@ -26,18 +26,24 @@ namespace Biblio.DAC
                 #region params
 
                 cmd.CommandType = CommandType.StoredProcedure;
-
+                SqlParameter param = new SqlParameter("@IdSocio", SqlDbType.Int);
+                param.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(param);
+                cmd.Parameters.AddWithValue("@Nombre", socioBE.Nombre);
                 cmd.Parameters.AddWithValue("@Apellido", socioBE.Apellido);
                 cmd.Parameters.AddWithValue("@DNI", socioBE.DNI);
-                cmd.Parameters.AddWithValue("@FechaAlta", socioBE.FechaAlta);
-                cmd.Parameters.AddWithValue("@FechaBaja", socioBE.FechaBaja);
-                cmd.Parameters.AddWithValue("@socioBE", socioBE.Nombre);
+                
+             
+                cmd.Parameters.AddWithValue("@FechaBaja", null);
+                cmd.Parameters.AddWithValue("@Estado", "Activo");
                 cmd.Parameters.AddWithValue("@Telefono", socioBE.Telefono);
                 #endregion
 
                 cnn.Open();
 
-                cmd.ExecuteNonQuery();
+                socioBE.SocioId= cmd.ExecuteNonQuery();
+
+                 
             }
 
         }
@@ -48,15 +54,15 @@ namespace Biblio.DAC
         /// </summary>
         /// <param name="searchText"></param>
         /// <returns></returns>
-        public static List<SocioBE> CaseLogSearchById(string searchText)
+        public static List<SocioBE> Search(string searchText)
         {
             List<SocioBE> list = new List<SocioBE>();
 
             try
             {
-                string wConnectionStr = ConfigurationManager.ConnectionStrings["EpironConfigurador"].ConnectionString;
+           
 
-                using (SqlConnection cnn = new SqlConnection(wConnectionStr))
+                using (SqlConnection cnn = new SqlConnection(CommonHelpers.Cnnstring))
                 using (SqlCommand cmd = new SqlCommand("[dbo].[socios_s_byParams]", cnn))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
@@ -68,7 +74,7 @@ namespace Biblio.DAC
                         while (reader.Read())
                         {
                             SocioBE item = new SocioBE();
-                            item.SocioId = (int)(reader["SocioId"]);
+                            item.SocioId = (int)(reader["IdSocio"]);
 
                             item.Apellido = (string)(reader["Apellido"]);
 
@@ -86,6 +92,8 @@ namespace Biblio.DAC
                             if (reader["Telefono"] != DBNull.Value)
                                 item.Telefono = (string)(reader["Telefono"]);
 
+                            if (reader["Estado"] != DBNull.Value)
+                                item.Estado = (string)(reader["Estado"]);
                             list.Add(item);
 
                         }

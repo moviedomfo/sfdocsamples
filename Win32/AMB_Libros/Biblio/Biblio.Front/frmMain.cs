@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Biblio.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -86,11 +87,15 @@ namespace Biblio.Front
             librosGrid.Show();
         }
 
-     
 
+        frmSocioGrid frmSocioGrid;
         private void consultaSocioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            if (this.Contains(frmSocioGrid))
+                return;
+            frmSocioGrid = new frmSocioGrid();
+            frmSocioGrid.MdiParent = this;
+            frmSocioGrid.Show();
         }
 
         private void altaSocioToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -109,6 +114,11 @@ namespace Biblio.Front
             frmPrestamo = new frmPrestamo();
             frmPrestamo.MdiParent = this;
             frmPrestamo.Show();
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            this.toolStripStatusLabel.Text = CommonHelpers.currenUser.ToString();
         }
     }
 }

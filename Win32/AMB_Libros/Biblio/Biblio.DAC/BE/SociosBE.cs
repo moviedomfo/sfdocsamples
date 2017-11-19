@@ -21,6 +21,7 @@ namespace Biblio.Common.BE
         public string DNI { get; set; }
         public DateTime FechaAlta { get; set; }
         public DateTime FechaBaja { get; set; }
+        public string Estado { get; internal set; }
 
         public override string ToString()
         {

@@ -31,7 +31,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.txtTelefono = new System.Windows.Forms.Label();
+            this.lblTelefono = new System.Windows.Forms.Label();
             this.txtDNI = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtApellido = new System.Windows.Forms.TextBox();
@@ -39,7 +39,7 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnCrear = new System.Windows.Forms.Button();
-            this.textTelefoco = new System.Windows.Forms.TextBox();
+            this.textTelefono = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -52,9 +52,10 @@
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(21, 8);
+            this.label5.Location = new System.Drawing.Point(16, 6);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(87, 29);
+            this.label5.Size = new System.Drawing.Size(67, 24);
             this.label5.TabIndex = 14;
             this.label5.Text = "Socios";
             // 
@@ -65,40 +66,45 @@
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(197)))), ((int)(((byte)(182)))));
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(-5, -3);
+            this.label4.Location = new System.Drawing.Point(-4, -2);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(811, 59);
+            this.label4.Size = new System.Drawing.Size(608, 48);
             this.label4.TabIndex = 13;
             // 
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Location = new System.Drawing.Point(565, 435);
+            this.btnCancel.Location = new System.Drawing.Point(424, 353);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(143, 43);
+            this.btnCancel.Size = new System.Drawing.Size(107, 35);
             this.btnCancel.TabIndex = 24;
             this.btnCancel.Text = "Cancelar";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // txtTelefono
+            // lblTelefono
             // 
-            this.txtTelefono.AutoSize = true;
-            this.txtTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtTelefono.Location = new System.Drawing.Point(146, 305);
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(40, 25);
-            this.txtTelefono.TabIndex = 22;
-            this.txtTelefono.Text = "Tel";
+            this.lblTelefono.AutoSize = true;
+            this.lblTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblTelefono.Location = new System.Drawing.Point(110, 248);
+            this.lblTelefono.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTelefono.Name = "lblTelefono";
+            this.lblTelefono.Size = new System.Drawing.Size(30, 20);
+            this.lblTelefono.TabIndex = 22;
+            this.lblTelefono.Text = "Tel";
             // 
             // txtDNI
             // 
             this.txtDNI.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDNI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtDNI.Location = new System.Drawing.Point(235, 242);
+            this.txtDNI.Location = new System.Drawing.Point(176, 197);
+            this.txtDNI.Margin = new System.Windows.Forms.Padding(2);
             this.txtDNI.Name = "txtDNI";
-            this.txtDNI.Size = new System.Drawing.Size(234, 30);
+            this.txtDNI.Size = new System.Drawing.Size(176, 26);
             this.txtDNI.TabIndex = 21;
             // 
             // label2
@@ -106,9 +112,10 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(146, 245);
+            this.label2.Location = new System.Drawing.Point(110, 199);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 25);
+            this.label2.Size = new System.Drawing.Size(37, 20);
             this.label2.TabIndex = 20;
             this.label2.Text = "DNI";
             // 
@@ -116,9 +123,10 @@
             // 
             this.txtApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtApellido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtApellido.Location = new System.Drawing.Point(235, 183);
+            this.txtApellido.Location = new System.Drawing.Point(176, 149);
+            this.txtApellido.Margin = new System.Windows.Forms.Padding(2);
             this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(234, 30);
+            this.txtApellido.Size = new System.Drawing.Size(176, 26);
             this.txtApellido.TabIndex = 19;
             // 
             // label1
@@ -126,9 +134,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(146, 186);
+            this.label1.Location = new System.Drawing.Point(110, 151);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 25);
+            this.label1.Size = new System.Drawing.Size(65, 20);
             this.label1.TabIndex = 18;
             this.label1.Text = "Apellido";
             // 
@@ -136,9 +145,10 @@
             // 
             this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtNombre.Location = new System.Drawing.Point(235, 123);
+            this.txtNombre.Location = new System.Drawing.Point(176, 100);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(2);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(234, 30);
+            this.txtNombre.Size = new System.Drawing.Size(176, 26);
             this.txtNombre.TabIndex = 17;
             // 
             // lblTitulo
@@ -146,51 +156,55 @@
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblTitulo.Location = new System.Drawing.Point(146, 126);
+            this.lblTitulo.Location = new System.Drawing.Point(110, 102);
+            this.lblTitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(81, 25);
+            this.lblTitulo.Size = new System.Drawing.Size(65, 20);
             this.lblTitulo.TabIndex = 16;
             this.lblTitulo.Text = "Nombre";
             // 
             // btnCrear
             // 
             this.btnCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCrear.Location = new System.Drawing.Point(397, 435);
+            this.btnCrear.Location = new System.Drawing.Point(298, 353);
+            this.btnCrear.Margin = new System.Windows.Forms.Padding(2);
             this.btnCrear.Name = "btnCrear";
-            this.btnCrear.Size = new System.Drawing.Size(143, 43);
+            this.btnCrear.Size = new System.Drawing.Size(107, 35);
             this.btnCrear.TabIndex = 15;
             this.btnCrear.Text = "Guardar";
             this.btnCrear.UseVisualStyleBackColor = true;
             this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
-            // textTelefoco
+            // textTelefono
             // 
-            this.textTelefoco.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTelefoco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textTelefoco.Location = new System.Drawing.Point(235, 302);
-            this.textTelefoco.Name = "textTelefoco";
-            this.textTelefoco.Size = new System.Drawing.Size(234, 30);
-            this.textTelefoco.TabIndex = 25;
+            this.textTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textTelefono.Location = new System.Drawing.Point(176, 245);
+            this.textTelefono.Margin = new System.Windows.Forms.Padding(2);
+            this.textTelefono.Name = "textTelefono";
+            this.textTelefono.Size = new System.Drawing.Size(176, 26);
+            this.textTelefono.TabIndex = 25;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Biblio.Front.Properties.Resources.images;
-            this.pictureBox1.Location = new System.Drawing.Point(556, 123);
+            this.pictureBox1.Location = new System.Drawing.Point(417, 100);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(206, 186);
+            this.pictureBox1.Size = new System.Drawing.Size(154, 151);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 26;
             this.pictureBox1.TabStop = false;
             // 
             // frmSocioAlta
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(804, 500);
+            this.ClientSize = new System.Drawing.Size(603, 406);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.textTelefoco);
+            this.Controls.Add(this.textTelefono);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.txtTelefono);
+            this.Controls.Add(this.lblTelefono);
             this.Controls.Add(this.txtDNI);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtApellido);
@@ -214,7 +228,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Label txtTelefono;
+        private System.Windows.Forms.Label lblTelefono;
         private System.Windows.Forms.TextBox txtDNI;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtApellido;
@@ -222,7 +236,7 @@
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Button btnCrear;
-        private System.Windows.Forms.TextBox textTelefoco;
+        private System.Windows.Forms.TextBox textTelefono;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

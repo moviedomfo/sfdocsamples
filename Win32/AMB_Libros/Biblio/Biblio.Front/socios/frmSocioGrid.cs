@@ -40,5 +40,10 @@ namespace Biblio.Front
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+
+        private void frmSocioGrid_Load(object sender, EventArgs e)
+        {
+            ucSociosGrid1.Search(String.Empty);
+        }
     }
 }

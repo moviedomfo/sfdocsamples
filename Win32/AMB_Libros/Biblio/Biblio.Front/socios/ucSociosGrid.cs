@@ -41,5 +41,10 @@ namespace Biblio.Front
                 OnDoubleClickEvent(this, new EventArgs());
             }
         }
+
+        public void Search(string txtToSearch)
+        {
+            socioBEListBindingSource.DataSource = SocioDAC.Search(txtToSearch);
+        }
     }
 }

@@ -41,7 +41,7 @@ namespace Biblio.Front
             txtApellido.Text = "";
             txtDNI.Text = "";
             txtNombre.Text = "";
-            txtTelefono.Text = "";
+            textTelefono.Text = "";
         }
 
         SocioBE MapEntity()
@@ -50,8 +50,13 @@ namespace Biblio.Front
             item.Apellido = txtApellido.Text;
             item.Nombre = txtNombre.Text;
             item.DNI = txtDNI.Text;
-            item.Telefono = txtTelefono.Text;
+            item.Telefono = textTelefono.Text;
             return item;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

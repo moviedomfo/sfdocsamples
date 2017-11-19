@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Biblio.Common.BE;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace Biblio.Common
 {
     public class CommonHelpers
     {
+        public static UsarioBE currenUser;
         public static string Cnnstring;
         static CommonHelpers()
         {

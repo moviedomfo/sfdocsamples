@@ -34,6 +34,8 @@
             this.btnBuscarSocio = new System.Windows.Forms.Button();
             this.ucLibrosGrid1 = new Biblio.Front.ucLibrosGrid();
             this.lblSelectedSocio = new System.Windows.Forms.Label();
+            this.lblSelLibro = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,9 +48,10 @@
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(12, 9);
+            this.label5.Location = new System.Drawing.Point(9, 7);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(128, 29);
+            this.label5.Size = new System.Drawing.Size(98, 24);
             this.label5.TabIndex = 14;
             this.label5.Text = "Prestamos";
             // 
@@ -59,27 +62,31 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label4.Location = new System.Drawing.Point(0, 0);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(1170, 59);
+            this.label4.Size = new System.Drawing.Size(878, 48);
             this.label4.TabIndex = 13;
             // 
             // btnCrear
             // 
             this.btnCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCrear.Location = new System.Drawing.Point(737, 516);
+            this.btnCrear.Location = new System.Drawing.Point(518, 448);
+            this.btnCrear.Margin = new System.Windows.Forms.Padding(2);
             this.btnCrear.Name = "btnCrear";
-            this.btnCrear.Size = new System.Drawing.Size(143, 43);
+            this.btnCrear.Size = new System.Drawing.Size(107, 35);
             this.btnCrear.TabIndex = 16;
             this.btnCrear.Text = "Guardar";
             this.btnCrear.UseVisualStyleBackColor = true;
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
             // btnBuscarSocio
             // 
             this.btnBuscarSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscarSocio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBuscarSocio.Location = new System.Drawing.Point(17, 78);
+            this.btnBuscarSocio.Location = new System.Drawing.Point(13, 63);
+            this.btnBuscarSocio.Margin = new System.Windows.Forms.Padding(2);
             this.btnBuscarSocio.Name = "btnBuscarSocio";
-            this.btnBuscarSocio.Size = new System.Drawing.Size(132, 37);
+            this.btnBuscarSocio.Size = new System.Drawing.Size(99, 30);
             this.btnBuscarSocio.TabIndex = 17;
             this.btnBuscarSocio.Text = "Buscar socio";
             this.btnBuscarSocio.UseVisualStyleBackColor = true;
@@ -87,27 +94,57 @@
             // 
             // ucLibrosGrid1
             // 
-            this.ucLibrosGrid1.Location = new System.Drawing.Point(12, 147);
+            this.ucLibrosGrid1.Location = new System.Drawing.Point(11, 128);
+            this.ucLibrosGrid1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ucLibrosGrid1.Name = "ucLibrosGrid1";
-            this.ucLibrosGrid1.Size = new System.Drawing.Size(821, 363);
+            this.ucLibrosGrid1.Size = new System.Drawing.Size(845, 295);
             this.ucLibrosGrid1.TabIndex = 18;
+            this.ucLibrosGrid1.OnDoubleClickEvent += new System.EventHandler(this.ucLibrosGrid1_OnDoubleClickEvent);
+            this.ucLibrosGrid1.OnClickEvent += new System.EventHandler(this.ucLibrosGrid1_OnClickEvent);
             // 
             // lblSelectedSocio
             // 
             this.lblSelectedSocio.AutoSize = true;
             this.lblSelectedSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSelectedSocio.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblSelectedSocio.Location = new System.Drawing.Point(194, 81);
+            this.lblSelectedSocio.Location = new System.Drawing.Point(146, 66);
+            this.lblSelectedSocio.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSelectedSocio.Name = "lblSelectedSocio";
-            this.lblSelectedSocio.Size = new System.Drawing.Size(215, 25);
+            this.lblSelectedSocio.Size = new System.Drawing.Size(154, 20);
             this.lblSelectedSocio.TabIndex = 19;
             this.lblSelectedSocio.Text = "-----------------------------";
             // 
+            // lblSelLibro
+            // 
+            this.lblSelLibro.AutoSize = true;
+            this.lblSelLibro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelLibro.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblSelLibro.Location = new System.Drawing.Point(170, 106);
+            this.lblSelLibro.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSelLibro.Name = "lblSelLibro";
+            this.lblSelLibro.Size = new System.Drawing.Size(154, 20);
+            this.lblSelLibro.TabIndex = 20;
+            this.lblSelLibro.Text = "-----------------------------";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label1.Location = new System.Drawing.Point(11, 106);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(141, 20);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Libro seleccionado";
+            // 
             // frmPrestamo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1170, 622);
+            this.ClientSize = new System.Drawing.Size(878, 505);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblSelLibro);
             this.Controls.Add(this.lblSelectedSocio);
             this.Controls.Add(this.ucLibrosGrid1);
             this.Controls.Add(this.btnBuscarSocio);
@@ -116,6 +153,7 @@
             this.Controls.Add(this.label4);
             this.Name = "frmPrestamo";
             this.Text = "frmPrestamo";
+            this.Load += new System.EventHandler(this.frmPrestamo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -130,5 +168,7 @@
         private System.Windows.Forms.Button btnBuscarSocio;
         private ucLibrosGrid ucLibrosGrid1;
         private System.Windows.Forms.Label lblSelectedSocio;
+        private System.Windows.Forms.Label lblSelLibro;
+        private System.Windows.Forms.Label label1;
     }
 }

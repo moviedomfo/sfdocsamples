@@ -1,4 +1,5 @@
 ﻿using Biblio.Common.BE;
+using Biblio.DAC;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,6 +31,32 @@ namespace Biblio.Front
                     lblSelectedSocio.Text = currentSocio.ToString();
                 }
             }
+        }
+
+        private void frmPrestamo_Load(object sender, EventArgs e)
+        {
+            this.ucLibrosGrid1.Search(String.Empty);
+        }
+
+        private void ucLibrosGrid1_OnDoubleClickEvent(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void ucLibrosGrid1_OnClickEvent(object sender, EventArgs e)
+        {
+            lblSelLibro.Text = ucLibrosGrid1.currentLibro.Titulo;
+        }
+
+        private void btnCrear_Click(object sender, EventArgs e)
+        {
+            if (currentSocio == null)
+                MessageBox.Show("debe seleccionar un socio");
+            if (ucLibrosGrid1.currentLibro == null)
+                MessageBox.Show("debe seleccionar un libro");
+
+
+            LibrosDAC.Prestamo(currentSocio, ucLibrosGrid1.currentLibro);
         }
     }
 }

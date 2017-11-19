@@ -55,8 +55,6 @@ namespace Biblio.DAC
 
             try
             {
-
-
                 using (SqlConnection cnn = new SqlConnection(CommonHelpers.Cnnstring))
                 using (SqlCommand cmd = new SqlCommand("[dbo].[libros_s_byParams]", cnn))
                 {
@@ -86,6 +84,37 @@ namespace Biblio.DAC
             }
 
             return list;
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="socio"></param>
+        /// <param name="libro"></param>
+        public static void Prestamo(SocioBE socio, LibroBE libro)
+        {
+            using (SqlConnection cnn = new SqlConnection(CommonHelpers.Cnnstring))
+            using (SqlCommand cmd = new SqlCommand("[dbo].[prestamo_i]", cnn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                #region params
+                SqlParameter param = new SqlParameter("@IdLibro", SqlDbType.Int);
+                param.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(param);
+
+                cmd.Parameters.AddWithValue("@IdLibro", libro.IdLibro);
+                cmd.Parameters.AddWithValue("@IdSocio", socio.SocioId);
+                
+                cmd.Parameters.AddWithValue("@IdUsuario", CommonHelpers.currenUser.Id);
+
+                #endregion
+
+                cnn.Open();
+
+               cmd.ExecuteNonQuery();
+            }
         }
     }
 }

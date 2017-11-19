@@ -20,7 +20,7 @@ namespace Biblio.DAC
         /// <param name="usr">usuario</param>
         /// <param name="pwd">password</param>
         /// <returns></returns>
-        public UsarioBE Authenticate(string usr, string pwd)
+        public static UsarioBE Authenticate(string usr, string pwd)
         {
             UsarioBE user = null;
             try
