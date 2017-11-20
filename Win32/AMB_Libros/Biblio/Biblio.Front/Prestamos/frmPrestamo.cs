@@ -56,7 +56,23 @@ namespace Biblio.Front
                 MessageBox.Show("debe seleccionar un libro");
 
 
-            LibrosDAC.Prestamo(currentSocio, ucLibrosGrid1.currentLibro);
+            PrestamosDAC.Prestamo(currentSocio, ucLibrosGrid1.currentLibro);
+            this.ucLibrosGrid1.Search(String.Empty);
+        }
+
+        private void lblSelectedSocio_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblSelLibro_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -29,9 +29,15 @@ namespace Biblio.Front
         private void ucSociosGrid1_OnClickEvent(object sender, EventArgs e)
         {
             if (ucSociosGrid1.currentSocio == null)
-                return;
-            this.SelectedSocio = ucSociosGrid1.currentSocio;
-            lblSelected.Text = ucSociosGrid1.currentSocio.ToString();
+            {
+                this.SelectedSocio = ucSociosGrid1.currentSocio;
+                lblSelected.Text = ucSociosGrid1.currentSocio.ToString();
+            }
+            else
+            {
+                 this.SelectedSocio = null;
+                  this.lblSelected.Text = "-----------";
+            }
             
         }
 

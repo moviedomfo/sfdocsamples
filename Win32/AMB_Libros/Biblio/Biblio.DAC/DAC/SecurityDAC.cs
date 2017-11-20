@@ -29,8 +29,8 @@ namespace Biblio.DAC
                 using (SqlCommand cmd = new SqlCommand("[dbo].[usuario_g]", cnn))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@usr", usr);
-                    cmd.Parameters.AddWithValue("@pwd", pwd);
+                    cmd.Parameters.AddWithValue("@usuario", usr);
+                    cmd.Parameters.AddWithValue("@password", pwd);
                     cnn.Open();
 
                     using (SqlDataReader reader = cmd.ExecuteReader())

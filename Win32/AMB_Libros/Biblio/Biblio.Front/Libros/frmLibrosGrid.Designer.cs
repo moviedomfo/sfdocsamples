@@ -40,7 +40,10 @@
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(956, 523);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = global::Biblio.Front.Properties.Resources.close_24;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(908, 529);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(135, 33);
             this.button1.TabIndex = 0;
@@ -71,14 +74,17 @@
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(1115, 59);
+            this.label4.Size = new System.Drawing.Size(1067, 59);
             this.label4.TabIndex = 13;
             // 
             // ucLibrosGrid1
             // 
+            this.ucLibrosGrid1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ucLibrosGrid1.Location = new System.Drawing.Point(5, 62);
             this.ucLibrosGrid1.Name = "ucLibrosGrid1";
-            this.ucLibrosGrid1.Size = new System.Drawing.Size(1098, 455);
+            this.ucLibrosGrid1.Size = new System.Drawing.Size(1060, 454);
             this.ucLibrosGrid1.TabIndex = 15;
             this.ucLibrosGrid1.OnDoubleClickEvent += new System.EventHandler(this.ucLibrosGrid1_OnDoubleClickEvent);
             this.ucLibrosGrid1.OnClickEvent += new System.EventHandler(this.ucLibrosGrid1_OnClickEvent);
@@ -102,7 +108,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1115, 559);
+            this.ClientSize = new System.Drawing.Size(1067, 565);
             this.Controls.Add(this.lblSelected);
             this.Controls.Add(this.ucLibrosGrid1);
             this.Controls.Add(this.label5);

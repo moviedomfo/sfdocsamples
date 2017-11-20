@@ -50,7 +50,9 @@
             // btnCrear
             // 
             this.btnCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCrear.Location = new System.Drawing.Point(280, 441);
+            this.btnCrear.Image = global::Biblio.Front.Properties.Resources.save_as_24;
+            this.btnCrear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCrear.Location = new System.Drawing.Point(517, 441);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(143, 43);
             this.btnCrear.TabIndex = 1;
@@ -168,6 +170,8 @@
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Image = global::Biblio.Front.Properties.Resources.close_24;
+            this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCancel.Location = new System.Drawing.Point(666, 441);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(143, 43);
@@ -179,9 +183,11 @@
             // button1
             // 
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(455, 441);
+            this.button1.Image = global::Biblio.Front.Properties.Resources.users_32;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(46, 386);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(143, 43);
+            this.button1.Size = new System.Drawing.Size(165, 43);
             this.button1.TabIndex = 15;
             this.button1.Text = "Ver listado";
             this.button1.UseVisualStyleBackColor = true;

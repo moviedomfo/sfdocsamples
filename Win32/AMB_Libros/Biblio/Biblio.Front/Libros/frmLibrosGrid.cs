@@ -30,7 +30,13 @@ namespace Biblio.Front
 
         private void ucLibrosGrid1_OnClickEvent(object sender, EventArgs e)
         {
-            lblSelected.Text = ucLibrosGrid1.currentLibro.Titulo;
+            if(ucLibrosGrid1.currentLibro!=null)
+            {
+                lblSelected.Text = ucLibrosGrid1.currentLibro.Titulo;
+            }
+            else
+            { lblSelected.Text = "-----------------"; }
+            
         }
 
         private void ucLibrosGrid1_OnDoubleClickEvent(object sender, EventArgs e)

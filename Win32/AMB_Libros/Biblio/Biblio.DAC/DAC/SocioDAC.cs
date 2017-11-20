@@ -34,7 +34,7 @@ namespace Biblio.DAC
                 cmd.Parameters.AddWithValue("@DNI", socioBE.DNI);
                 
              
-                cmd.Parameters.AddWithValue("@FechaBaja", null);
+                
                 cmd.Parameters.AddWithValue("@Estado", "Activo");
                 cmd.Parameters.AddWithValue("@Telefono", socioBE.Telefono);
                 #endregion
