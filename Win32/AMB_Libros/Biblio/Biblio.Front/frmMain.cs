@@ -120,5 +120,15 @@ namespace Biblio.Front
         {
             this.toolStripStatusLabel.Text = CommonHelpers.currenUser.ToString();
         }
+        frmDevolucion frmDevolucion;
+        private void devolucionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+                if (this.Contains(frmDevolucion))
+                return;
+            frmDevolucion = new frmDevolucion();
+            frmDevolucion.MdiParent = this;
+            frmDevolucion.Show();
+        }
     }
 }

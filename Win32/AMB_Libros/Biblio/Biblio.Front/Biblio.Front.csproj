@@ -54,10 +54,10 @@
     <Compile Include="baseForm.Designer.cs">
       <DependentUpon>baseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmDevolucion.cs">
+    <Compile Include="Prestamos\frmDevolucion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDevolucion.Designer.cs">
+    <Compile Include="Prestamos\frmDevolucion.Designer.cs">
       <DependentUpon>frmDevolucion.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
@@ -84,10 +84,10 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPrestamo.cs">
+    <Compile Include="Prestamos\frmPrestamo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPrestamo.Designer.cs">
+    <Compile Include="Prestamos\frmPrestamo.Designer.cs">
       <DependentUpon>frmPrestamo.cs</DependentUpon>
     </Compile>
     <Compile Include="socios\frmSocioaAlta.cs">
@@ -116,10 +116,16 @@
     <Compile Include="socios\ucSociosGrid.Designer.cs">
       <DependentUpon>ucSociosGrid.cs</DependentUpon>
     </Compile>
+    <Compile Include="Prestamos\ucPrestamosGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Prestamos\ucPrestamosGrid.Designer.cs">
+      <DependentUpon>ucPrestamosGrid.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="baseForm.resx">
       <DependentUpon>baseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDevolucion.resx">
+    <EmbeddedResource Include="Prestamos\frmDevolucion.resx">
       <DependentUpon>frmDevolucion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
@@ -134,7 +140,7 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPrestamo.resx">
+    <EmbeddedResource Include="Prestamos\frmPrestamo.resx">
       <DependentUpon>frmPrestamo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="socios\frmSocioaAlta.resx">
@@ -159,7 +165,11 @@
     <EmbeddedResource Include="socios\ucSociosGrid.resx">
       <DependentUpon>ucSociosGrid.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Prestamos\ucPrestamosGrid.resx">
+      <DependentUpon>ucPrestamosGrid.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\DataSources\Biblio.Common.BE.LibroList.datasource" />
+    <None Include="Properties\DataSources\Biblio.Common.BE.PrestamosViewList.datasource" />
     <None Include="Properties\DataSources\Biblio.Common.BE.SocioBEList.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -172,7 +182,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Biblio.DAC\Biblio.DAC.csproj">
@@ -182,6 +194,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DIARY00B.ICO" />
+<<<<<<< HEAD
+=======
+    <None Include="Resources\summary_zoom_32.png" />
+    <None Include="Resources\security-locked_24.png" />
+    <None Include="Resources\apply_24.png" />
+    <None Include="Resources\close_24.gif" />
+    <None Include="Resources\users_32.png" />
+    <None Include="Resources\save as_24.png" />
+>>>>>>> parent of 7dc2355... Merge remote-tracking branch 'origin/master'
     <None Include="Resources\images.jpg" />
     <None Include="Resources\descarga.jpg" />
     <None Include="Resources\socios.gif" />

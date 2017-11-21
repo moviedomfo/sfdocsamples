@@ -15,6 +15,17 @@ namespace Biblio.Front
         public baseForm()
         {
             InitializeComponent();
+            this.KeyDown += BaseForm_KeyDown;
+            this.KeyPreview = true;
+        }
+
+        private void BaseForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                DialogResult = DialogResult.Cancel;
+                this.Close();
+            }
         }
     }
 }

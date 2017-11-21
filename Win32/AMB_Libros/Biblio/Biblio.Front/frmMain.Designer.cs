@@ -41,6 +41,7 @@
             this.altaSocioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultaSocioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.prestamosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.devolucionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -50,16 +51,17 @@
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 544);
+            this.statusStrip.Location = new System.Drawing.Point(0, 672);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(1022, 22);
+            this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
+            this.statusStrip.Size = new System.Drawing.Size(1363, 25);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
             // 
             // toolStripStatusLabel
             // 
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(49, 20);
             this.toolStripStatusLabel.Text = "Status";
             // 
             // menuStrip1
@@ -68,11 +70,12 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.librosToolStripMenuItem,
             this.sociosToolStripMenuItem,
-            this.prestamosToolStripMenuItem});
+            this.prestamosToolStripMenuItem,
+            this.devolucionesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1022, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1363, 28);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -83,20 +86,20 @@
             this.consultaLibroToolStripMenuItem});
             this.librosToolStripMenuItem.Image = global::Biblio.Front.Properties.Resources.books;
             this.librosToolStripMenuItem.Name = "librosToolStripMenuItem";
-            this.librosToolStripMenuItem.Size = new System.Drawing.Size(71, 24);
+            this.librosToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
             this.librosToolStripMenuItem.Text = "Libros";
             // 
             // altasLibroToolStripMenuItem
             // 
             this.altasLibroToolStripMenuItem.Name = "altasLibroToolStripMenuItem";
-            this.altasLibroToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.altasLibroToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
             this.altasLibroToolStripMenuItem.Text = "Altas";
             this.altasLibroToolStripMenuItem.Click += new System.EventHandler(this.altasLibroToolStripMenuItem_Click);
             // 
             // consultaLibroToolStripMenuItem
             // 
             this.consultaLibroToolStripMenuItem.Name = "consultaLibroToolStripMenuItem";
-            this.consultaLibroToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.consultaLibroToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
             this.consultaLibroToolStripMenuItem.Text = "Consulta";
             this.consultaLibroToolStripMenuItem.Click += new System.EventHandler(this.consultaLibroToolStripMenuItem_Click);
             // 
@@ -107,20 +110,20 @@
             this.consultaSocioToolStripMenuItem});
             this.sociosToolStripMenuItem.Image = global::Biblio.Front.Properties.Resources.socios;
             this.sociosToolStripMenuItem.Name = "sociosToolStripMenuItem";
-            this.sociosToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
+            this.sociosToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
             this.sociosToolStripMenuItem.Text = "Socios";
             // 
             // altaSocioToolStripMenuItem
             // 
             this.altaSocioToolStripMenuItem.Name = "altaSocioToolStripMenuItem";
-            this.altaSocioToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.altaSocioToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
             this.altaSocioToolStripMenuItem.Text = "Alta";
             this.altaSocioToolStripMenuItem.Click += new System.EventHandler(this.altaSocioToolStripMenuItem_Click_1);
             // 
             // consultaSocioToolStripMenuItem
             // 
             this.consultaSocioToolStripMenuItem.Name = "consultaSocioToolStripMenuItem";
-            this.consultaSocioToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.consultaSocioToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
             this.consultaSocioToolStripMenuItem.Text = "Consulta";
             this.consultaSocioToolStripMenuItem.Click += new System.EventHandler(this.consultaSocioToolStripMenuItem_Click);
             // 
@@ -128,20 +131,28 @@
             // 
             this.prestamosToolStripMenuItem.Image = global::Biblio.Front.Properties.Resources.descarga;
             this.prestamosToolStripMenuItem.Name = "prestamosToolStripMenuItem";
-            this.prestamosToolStripMenuItem.Size = new System.Drawing.Size(94, 24);
+            this.prestamosToolStripMenuItem.Size = new System.Drawing.Size(109, 24);
             this.prestamosToolStripMenuItem.Text = "Prestamos";
             this.prestamosToolStripMenuItem.Click += new System.EventHandler(this.prestamosToolStripMenuItem_Click);
             // 
+            // devolucionesToolStripMenuItem
+            // 
+            this.devolucionesToolStripMenuItem.Name = "devolucionesToolStripMenuItem";
+            this.devolucionesToolStripMenuItem.Size = new System.Drawing.Size(110, 24);
+            this.devolucionesToolStripMenuItem.Text = "Devoluciones";
+            this.devolucionesToolStripMenuItem.Click += new System.EventHandler(this.devolucionesToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1022, 566);
+            this.ClientSize = new System.Drawing.Size(1363, 697);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Biblioteca";
@@ -170,6 +181,7 @@
         private System.Windows.Forms.ToolStripMenuItem altaSocioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultaSocioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem prestamosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem devolucionesToolStripMenuItem;
     }
 }
 

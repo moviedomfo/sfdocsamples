@@ -47,6 +47,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
+<<<<<<< HEAD
             // btnCrear
             // 
             this.btnCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -58,6 +59,8 @@
             this.btnCrear.UseVisualStyleBackColor = true;
             this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
+=======
+>>>>>>> parent of 7dc2355... Merge remote-tracking branch 'origin/master'
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
@@ -168,7 +171,14 @@
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+<<<<<<< HEAD
             this.btnCancel.Location = new System.Drawing.Point(666, 441);
+=======
+            this.btnCancel.Image = global::Biblio.Front.Properties.Resources.close_24;
+            this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancel.Location = new System.Drawing.Point(500, 358);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
+>>>>>>> parent of 7dc2355... Merge remote-tracking branch 'origin/master'
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(143, 43);
             this.btnCancel.TabIndex = 13;
@@ -179,9 +189,18 @@
             // button1
             // 
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+<<<<<<< HEAD
             this.button1.Location = new System.Drawing.Point(455, 441);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(143, 43);
+=======
+            this.button1.Image = global::Biblio.Front.Properties.Resources.summary_zoom_32;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(34, 314);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(150, 41);
+>>>>>>> parent of 7dc2355... Merge remote-tracking branch 'origin/master'
             this.button1.TabIndex = 15;
             this.button1.Text = "Ver listado";
             this.button1.UseVisualStyleBackColor = true;
