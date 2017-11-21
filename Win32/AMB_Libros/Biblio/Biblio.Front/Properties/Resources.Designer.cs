@@ -139,8 +139,6 @@ namespace Biblio.Front.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-<<<<<<< HEAD
-=======
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
@@ -161,6 +159,5 @@ namespace Biblio.Front.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
->>>>>>> parent of 7dc2355... Merge remote-tracking branch 'origin/master'
     }
 }

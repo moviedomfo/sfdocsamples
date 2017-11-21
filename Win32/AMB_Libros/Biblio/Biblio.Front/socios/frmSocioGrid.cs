@@ -28,12 +28,6 @@ namespace Biblio.Front
 
         private void ucSociosGrid1_OnClickEvent(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-            if (ucSociosGrid1.currentSocio == null)
-                return;
-            this.SelectedSocio = ucSociosGrid1.currentSocio;
-            lblSelected.Text = ucSociosGrid1.currentSocio.ToString();
-=======
             if (ucSociosGrid1.currentSocio != null)
             {
                 this.SelectedSocio = ucSociosGrid1.currentSocio;
@@ -44,7 +38,6 @@ namespace Biblio.Front
                  this.SelectedSocio = null;
                   this.lblSelected.Text = "-----------";
             }
->>>>>>> parent of 7dc2355... Merge remote-tracking branch 'origin/master'
             
         }
 

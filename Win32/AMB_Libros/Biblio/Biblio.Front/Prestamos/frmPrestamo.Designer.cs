@@ -64,11 +64,7 @@
             this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-<<<<<<< HEAD:Win32/AMB_Libros/Biblio/Biblio.Front/frmPrestamo.Designer.cs
-            this.label4.Size = new System.Drawing.Size(878, 48);
-=======
             this.label4.Size = new System.Drawing.Size(828, 48);
->>>>>>> parent of 7dc2355... Merge remote-tracking branch 'origin/master':Win32/AMB_Libros/Biblio/Biblio.Front/Prestamos/frmPrestamo.Designer.cs
             this.label4.TabIndex = 13;
             // 
             // lblSelectedSocio
@@ -76,40 +72,26 @@
             this.lblSelectedSocio.AutoSize = true;
             this.lblSelectedSocio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSelectedSocio.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-<<<<<<< HEAD:Win32/AMB_Libros/Biblio/Biblio.Front/frmPrestamo.Designer.cs
-            this.lblSelectedSocio.Location = new System.Drawing.Point(146, 66);
-=======
             this.lblSelectedSocio.Location = new System.Drawing.Point(187, 66);
->>>>>>> parent of 7dc2355... Merge remote-tracking branch 'origin/master':Win32/AMB_Libros/Biblio/Biblio.Front/Prestamos/frmPrestamo.Designer.cs
             this.lblSelectedSocio.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSelectedSocio.Name = "lblSelectedSocio";
             this.lblSelectedSocio.Size = new System.Drawing.Size(154, 20);
             this.lblSelectedSocio.TabIndex = 19;
             this.lblSelectedSocio.Text = "-----------------------------";
-<<<<<<< HEAD:Win32/AMB_Libros/Biblio/Biblio.Front/frmPrestamo.Designer.cs
-=======
          
->>>>>>> parent of 7dc2355... Merge remote-tracking branch 'origin/master':Win32/AMB_Libros/Biblio/Biblio.Front/Prestamos/frmPrestamo.Designer.cs
             // 
             // lblSelLibro
             // 
             this.lblSelLibro.AutoSize = true;
             this.lblSelLibro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSelLibro.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-<<<<<<< HEAD:Win32/AMB_Libros/Biblio/Biblio.Front/frmPrestamo.Designer.cs
-            this.lblSelLibro.Location = new System.Drawing.Point(170, 106);
-=======
             this.lblSelLibro.Location = new System.Drawing.Point(187, 106);
->>>>>>> parent of 7dc2355... Merge remote-tracking branch 'origin/master':Win32/AMB_Libros/Biblio/Biblio.Front/Prestamos/frmPrestamo.Designer.cs
             this.lblSelLibro.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSelLibro.Name = "lblSelLibro";
             this.lblSelLibro.Size = new System.Drawing.Size(154, 20);
             this.lblSelLibro.TabIndex = 20;
             this.lblSelLibro.Text = "-----------------------------";
-<<<<<<< HEAD:Win32/AMB_Libros/Biblio/Biblio.Front/frmPrestamo.Designer.cs
-=======
          
->>>>>>> parent of 7dc2355... Merge remote-tracking branch 'origin/master':Win32/AMB_Libros/Biblio/Biblio.Front/Prestamos/frmPrestamo.Designer.cs
             // 
             // label1
             // 
@@ -122,8 +104,6 @@
             this.label1.Size = new System.Drawing.Size(141, 20);
             this.label1.TabIndex = 21;
             this.label1.Text = "Libro seleccionado";
-<<<<<<< HEAD:Win32/AMB_Libros/Biblio/Biblio.Front/frmPrestamo.Designer.cs
-=======
        
             // 
             // ucLibrosGrid1
@@ -167,18 +147,13 @@
             this.btnCrear.Text = "Guardar";
             this.btnCrear.UseVisualStyleBackColor = true;
             this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
->>>>>>> parent of 7dc2355... Merge remote-tracking branch 'origin/master':Win32/AMB_Libros/Biblio/Biblio.Front/Prestamos/frmPrestamo.Designer.cs
             // 
             // frmPrestamo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-<<<<<<< HEAD:Win32/AMB_Libros/Biblio/Biblio.Front/frmPrestamo.Designer.cs
-            this.ClientSize = new System.Drawing.Size(878, 505);
-=======
             this.ClientSize = new System.Drawing.Size(828, 545);
             this.Controls.Add(this.ucLibrosGrid1);
->>>>>>> parent of 7dc2355... Merge remote-tracking branch 'origin/master':Win32/AMB_Libros/Biblio/Biblio.Front/Prestamos/frmPrestamo.Designer.cs
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblSelLibro);
             this.Controls.Add(this.lblSelectedSocio);
@@ -186,10 +161,7 @@
             this.Controls.Add(this.btnCrear);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-<<<<<<< HEAD:Win32/AMB_Libros/Biblio/Biblio.Front/frmPrestamo.Designer.cs
-=======
             this.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
->>>>>>> parent of 7dc2355... Merge remote-tracking branch 'origin/master':Win32/AMB_Libros/Biblio/Biblio.Front/Prestamos/frmPrestamo.Designer.cs
             this.Name = "frmPrestamo";
             this.Text = "Prestamos";
             this.Load += new System.EventHandler(this.frmPrestamo_Load);

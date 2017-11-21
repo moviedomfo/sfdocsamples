@@ -194,15 +194,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DIARY00B.ICO" />
-<<<<<<< HEAD
-=======
     <None Include="Resources\summary_zoom_32.png" />
     <None Include="Resources\security-locked_24.png" />
     <None Include="Resources\apply_24.png" />
     <None Include="Resources\close_24.gif" />
     <None Include="Resources\users_32.png" />
     <None Include="Resources\save as_24.png" />
->>>>>>> parent of 7dc2355... Merge remote-tracking branch 'origin/master'
     <None Include="Resources\images.jpg" />
     <None Include="Resources\descarga.jpg" />
     <None Include="Resources\socios.gif" />

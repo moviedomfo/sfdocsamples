@@ -27,6 +27,7 @@ namespace Biblio.Front
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
+            if (!ValidateInputs()) return;
 
             var libro = MapEntity();
             try
@@ -42,6 +43,26 @@ namespace Biblio.Front
             }
         }
 
+        bool ValidateInputs()
+        {
+            errorProvider1.Clear();
+            if (string.IsNullOrEmpty(txtAutor.Text))
+            {
+                errorProvider1.SetError(this.txtAutor, "Ingrese el nombre de autor");
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtIDSBN.Text))
+            {
+                errorProvider1.SetError(this.txtIDSBN, "Ingrese ISBN");
+                return false;
+            }
+            if (string.IsNullOrEmpty(txttitulo.Text))
+            {
+                errorProvider1.SetError(this.txttitulo, "Ingrese titulo");
+                return false;
+            }
+            return true;
+        }
         void Clear()
         {
             txtAutor.Text = "";

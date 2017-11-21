@@ -38,10 +38,7 @@ namespace Biblio.Front
             this.ucLibrosGrid1.Search(String.Empty);
         }
 
-        private void ucLibrosGrid1_OnDoubleClickEvent(object sender, EventArgs e)
-        {
-            
-        }
+      
 
         private void ucLibrosGrid1_OnClickEvent(object sender, EventArgs e)
         {
@@ -50,8 +47,6 @@ namespace Biblio.Front
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD:Win32/AMB_Libros/Biblio/Biblio.Front/frmPrestamo.cs
-=======
             if (!ValidateInputs()) return;
             
 
@@ -69,18 +64,17 @@ namespace Biblio.Front
             }
                
 
->>>>>>> parent of 7dc2355... Merge remote-tracking branch 'origin/master':Win32/AMB_Libros/Biblio/Biblio.Front/Prestamos/frmPrestamo.cs
             if (currentSocio == null)
-                MessageBox.Show("debe seleccionar un socio");
+            { MessageBox.Show("debe seleccionar un socio"); return false; }
+              
             if (ucLibrosGrid1.currentLibro == null)
-                MessageBox.Show("debe seleccionar un libro");
-
-
-<<<<<<< HEAD:Win32/AMB_Libros/Biblio/Biblio.Front/frmPrestamo.cs
-            LibrosDAC.Prestamo(currentSocio, ucLibrosGrid1.currentLibro);
+            { MessageBox.Show("debe seleccionar un libro");
+                return false; }
+            return true;
         }
-=======
+
+        
+
      
->>>>>>> parent of 7dc2355... Merge remote-tracking branch 'origin/master':Win32/AMB_Libros/Biblio/Biblio.Front/Prestamos/frmPrestamo.cs
     }
 }

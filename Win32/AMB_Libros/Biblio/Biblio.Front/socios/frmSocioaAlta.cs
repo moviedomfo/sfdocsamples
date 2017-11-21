@@ -21,6 +21,8 @@ namespace Biblio.Front
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
+            if (!ValidateInputs()) return;
+
             var item = MapEntity();
             try
             {
@@ -35,7 +37,26 @@ namespace Biblio.Front
             }
         }
 
-
+        bool ValidateInputs()
+        {
+            errorProvider1.Clear();
+            if (string.IsNullOrEmpty(txtApellido.Text))
+            {
+                errorProvider1.SetError(this.txtApellido, "Ingrese apellido");
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtDNI.Text))
+            {
+                errorProvider1.SetError(this.txtDNI, "Ingrese DNI");
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtNombre.Text))
+            {
+                errorProvider1.SetError(this.txtNombre, "Ingrese Nombre");
+                return false;
+            }
+            return true;
+        }
         void Clear()
         {
             txtApellido.Text = "";
