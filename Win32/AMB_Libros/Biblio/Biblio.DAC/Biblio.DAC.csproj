@@ -57,9 +57,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BE\LibrosBE.cs" />
+    <Compile Include="BE\PrestamosView.cs" />
     <Compile Include="BE\SociosBE.cs" />
     <Compile Include="BE\UsarioBE.cs" />
     <Compile Include="CommonHelpers.cs" />
+    <Compile Include="DAC\PrestamosDAC.cs" />
     <Compile Include="DAC\LibrosDAC.cs" />
     <Compile Include="DAC\SecurityDAC.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -69,15 +71,6 @@
     </Compile>
     <Compile Include="DAC\SocioDAC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="biblio.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="biblio_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>biblio.mdf</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
