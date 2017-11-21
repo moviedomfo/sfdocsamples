@@ -5847,3 +5847,12 @@ Win32/AMB_Libros/Biblio/Biblio.Front/obj/Debug/Biblio.Front.csproj.GenerateResou
 Win32/AMB_Libros/Biblio/Biblio.Front/obj/Debug/Biblio.Front.csproj.FileListAbsolute.txt
 Win32/AMB_Libros/Biblio/Biblio.Front/obj/Debug/Biblio.Front.baseForm.resources
 Win32/AMB_Libros/Biblio/Biblio.Front/obj/Debug/Biblio.Front.Properties.Resources.resources
+Win32/AMB_Libros/Biblio/Biblio.Front/obj/Debug/Biblio.Front.ucSociosGrid.resources
+Win32/AMB_Libros/Biblio/Biblio.Front/obj/Debug/Biblio.Front.ucPrestamosGrid.resources
+Win32/AMB_Libros/Biblio/Biblio.Front/obj/Debug/Biblio.Front.ucLibrosGrid.resources
+Win32/AMB_Libros/Biblio/Biblio.Front/obj/Debug/Biblio.Front.frmSocioGrid.resources
+Win32/AMB_Libros/Biblio/Biblio.Front/obj/Debug/Biblio.Front.frmSocioAlta.resources
+Win32/AMB_Libros/Biblio/Biblio.Front/obj/Debug/Biblio.Front.frmPrestamo.resources
+Win32/AMB_Libros/Biblio/Biblio.Front/obj/Debug/Biblio.Front.frmLogin.resources
+Win32/AMB_Libros/Biblio/Biblio.Front/obj/Debug/Biblio.Front.frmDevolucion.resources
+Win32/AMB_Libros/Biblio/Biblio.Front/bin/Debug/Biblio.Front.vshost.exe.manifest
