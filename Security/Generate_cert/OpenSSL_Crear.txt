@@ -1,0 +1,44 @@
+
+Crear csr para MYASP
+https://support.comodo.com/index.php?/Knowledgebase/Article/View/1/19/csr-generation-using-openssl-apache-wmod_ssl-nginx-os-x
+
+req -nodes -newkey rsa:2048 -keyout myserver.key -out server.csr
+Alternatively one may issue the following command to generate a CSR:
+
+openssl req -nodes -newkey rsa:2048 -keyout myserver.key -out server.csr -subj "/C=GB/ST=Yorks/L=York/O=MyCompany Ltd./OU=IT/CN=mysubdomain.mydomain.com"
+
+
+1 ejecutamos openssl
+
+2 Convertir archivo key en pem
+ 
+pkcs8 -in c:\certificados\FACTURACIONE_2e5ca4536d9b158d.key -inform DER -out c:\certificados\FACTURACIONE_2e5ca4536d9b158d.key.pem
+pkcs8 -inform DER -in C:\certificados\FACTURACIONE_2e5ca4536d9b158d.key –out C:\certificados\FACTURACIONE_2e5ca4536d9b158d.key.pem
+
+3 Convertir archivo cer en pem
+x509 -in c:\certificados\FACTURACIONE_2e5ca4536d9b158d.crt –inform DER -out c:\certificados\FACTURACIONE_2e5ca4536d9b158d.crt.pem
+x509 -inform DER -outform PEM -in C:\certificados\FACTURACIONE_2e5ca4536d9b158d.crt -out c:\certificados\FACTURACIONE_2e5ca4536d9b158d.crt.pem
+
+
+
+
+Convertir Certificado a PEM
+
+Para realizar la conversión del archivo .cer a .pem, ejecute el siguiente comando:
+x509 -inform DER -outform PEM -in c:\certificados\FACTURACIONE_2e5ca4536d9b158d.crt  -out c:\certificados\FACTURACIONE_2e5ca4536d9b158d.crt.pem
+
+Convertir Llave Privada .key a .pem 
+
+pkcs8 -inform DER -in c:\certificados\FACTURACIONE_2e5ca4536d9b158d.key –out c:\certificados\FACTURACIONE_2e5ca4536d9b158d.key.pem
+pkcs8 -in c:\certificados\FACTURACIONE_2e5ca4536d9b158d.key -inform DER -out c:\certificados\FACTURACIONE_2e5ca4536d9b158d.pem
+
+
+pkcs12 -export -in c:\certificados\FACTURACIONE_2e5ca4536d9b158d.cer.pem -inkey c:\certificados\FACTURACIONE_2e5ca4536d9b158d.key.pem -out c:\certificados\FACTURACIONE_2e5ca4536d9b158d.pfx -passout pass:12345678a
+
+
+
+
+Convertir del formato .crt a .p12
+pkcs12 -export -inkey c:\certificados\adventistas_test.key -in c:\certificados\adventistas_test.crt -out adventistas_test.pkc
+
+pkcs12 -export -inkey c:\certificados\adventistas_test.key -in c:\certificados\adventistas_test.crt -out c:\certificados\adventistas_test.p12 -name "adventistas_test"

@@ -26,6 +26,7 @@ namespace WindowsFormsApplication6
             TimeSpan t = new TimeSpan(d.Ticks);
             DateTime fechiInicioTimpos = d.AddDays(-t.Days);
 
+
             str.AppendLine("Fecha                    " + d.ToString());
             str.AppendLine("fechiInicioTimpos        " + fechiInicioTimpos.ToString());
             str.AppendLine("------------------------------------------------------------------------");
@@ -50,9 +51,11 @@ namespace WindowsFormsApplication6
             str.AppendLine("TimeSpan TotalMinutes       " + t.TotalMinutes);
             str.AppendLine("Time Start hh:mm             " + String.Concat(d.ToString("hh"), ":", d.ToString("mm")));
 
- 
-            
-           
+
+            TimeSpan res = d- fechiInicioTimpos;
+            str.AppendLine("------------------------------------------------------------------------");
+            str.AppendLine("TimeSpan resultado restar ambas fechas         " + res.TotalMilliseconds);
+
             textBox1.Text = str.ToString();
         }
 
@@ -75,6 +78,19 @@ namespace WindowsFormsApplication6
             str.AppendLine("TimeSpan TotalMinutes" + TimeStart_timesp.TotalMinutes);
             str.AppendLine("Time Start hh:mm " + String.Concat(TimeStart_timesp.ToString("hh"), ":", TimeStart_timesp.ToString("mm")));
             textBox1.Text = str.ToString();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            StringBuilder str = new StringBuilder();
+            //[d.] hh:mm[:ss[. ff]] }[ws]
+            var ti = TimeSpan.Parse("00:00");
+            var tf = TimeSpan.Parse("23:59:59");
+
+            str.AppendLine("ti " + ti.TotalMinutes);
+            str.AppendLine("ti " + tf.TotalMinutes);
+            textBox1.Text = str.ToString();
+
         }
     }
 }
