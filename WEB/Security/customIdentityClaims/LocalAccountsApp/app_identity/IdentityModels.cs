@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -19,10 +20,17 @@ namespace LocalAccountsApp.app_identity
             // Add any custom User properties/code here
         }
         public int IntituteId { get; set; }
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser,Guid> manager, string authenticationType)
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser, Guid> manager, string authenticationType)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
+            // Add custom user claims here
+            return userIdentity;
+        }
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser, Guid> manager)
+        {
+            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
+            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Add custom user claims here
             return userIdentity;
         }
@@ -67,14 +75,12 @@ namespace LocalAccountsApp.app_identity
             this.ApplicationUsers = new List<ApplicationUserGroup>();
         }
 
-        public ApplicationGroup(string name)
-            : this()
+        public ApplicationGroup(string name): this()
         {
             this.Name = name;
         }
 
-        public ApplicationGroup(string name, string description)
-            : this(name)
+        public ApplicationGroup(string name, string description): this(name)
         {
             this.Description = description;
         }
@@ -92,14 +98,25 @@ namespace LocalAccountsApp.app_identity
 
     public class ApplicationUserGroup
     {
+        //Mapping Composite primary key 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key, Column(Order = 0)]
         public Guid ApplicationUserId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key, Column(Order = 1)]
         public Guid ApplicationGroupId { get; set; }
     }
 
     public class ApplicationGroupRole
     {
+        //Mapping Composite primary key 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key, Column(Order = 0)]
         public Guid ApplicationGroupId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key, Column(Order = 1)]
         public Guid ApplicationRoleId { get; set; }
+        
     }
   
 }

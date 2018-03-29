@@ -15,11 +15,12 @@ namespace LocalAccountsApp.app_identity
     {
         public ApplicationDbContext() : base("DefaultConnection")
         {
+            
         }
 
         static ApplicationDbContext()
         {
-            //  Database.SetInitializer<ApplicationDbContext>(new ApplicationDbInitializer());
+              Database.SetInitializer<ApplicationDbContext>(new ApplicationDbInitializer());
         }
 
         public static ApplicationDbContext Create()
@@ -36,30 +37,35 @@ namespace LocalAccountsApp.app_identity
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            //configures the ApplicationGroupId and ApplicationUserId properties to be the composite primary key of the ApplicationUserGroup type.
+            modelBuilder.Entity<ApplicationUserGroup>().HasKey(t => new { t.ApplicationGroupId, t.ApplicationUserId });
+            //configures the ApplicationGroupId and ApplicationUserId properties to be the composite primary key of the ApplicationUserGroup type.
+            modelBuilder.Entity<ApplicationGroupRole>().HasKey(t => new { t.ApplicationGroupId, t.ApplicationRoleId });
+
             //////////    // Map Users to Groups:
-            //////////    modelBuilder.Entity<ApplicationGroup>()
-            //////////        .HasMany<ApplicationUserGroup>((ApplicationGroup g) => g.ApplicationUsers)
-            //////////        .WithRequired()
-            //////////        .HasForeignKey<Guid>((ApplicationUserGroup ag) => ag.ApplicationGroupId);
-            //////////    modelBuilder.Entity<ApplicationUserGroup>()
-            //////////        .HasKey((ApplicationUserGroup r) =>
-            //////////            new
-            //////////            {
-            //////////                ApplicationUserId = r.ApplicationUserId,
-            //////////                ApplicationGroupId = r.ApplicationGroupId
-            //////////            }).ToTable("ApplicationUserGroups");
+            modelBuilder.Entity<ApplicationGroup>()
+                .HasMany<ApplicationUserGroup>((ApplicationGroup g) => g.ApplicationUsers)
+                .WithRequired()
+                .HasForeignKey<Guid>((ApplicationUserGroup ag) => ag.ApplicationGroupId);
+            modelBuilder.Entity<ApplicationUserGroup>()
+                .HasKey((ApplicationUserGroup r) =>
+                    new
+                    {
+                        ApplicationUserId = r.ApplicationUserId,
+                        ApplicationGroupId = r.ApplicationGroupId
+                    }).ToTable("ApplicationUserGroups");
 
             //////////    // Map Roles to Groups:
-            //////////    modelBuilder.Entity<ApplicationGroup>()
-            //////////   .HasMany<ApplicationGroupRole>((ApplicationGroup g) => g.ApplicationRoles)
-            //////////   .WithRequired()
-            //////////   .HasForeignKey<Guid>((ApplicationGroupRole ap) => ap.ApplicationGroupId);
-            //////////    modelBuilder.Entity<ApplicationGroupRole>().HasKey((ApplicationGroupRole gr) =>
-            //////////        new
-            //////////        {
-            //////////            ApplicationRoleId = gr.ApplicationRoleId,
-            //////////            ApplicationGroupId = gr.ApplicationGroupId
-            //////////        }).ToTable("ApplicationGroupRoles");
+            modelBuilder.Entity<ApplicationGroup>()
+           .HasMany<ApplicationGroupRole>((ApplicationGroup g) => g.ApplicationRoles)
+           .WithRequired()
+           .HasForeignKey<Guid>((ApplicationGroupRole ap) => ap.ApplicationGroupId);
+            modelBuilder.Entity<ApplicationGroupRole>().HasKey((ApplicationGroupRole gr) =>
+                new
+                {
+                    ApplicationRoleId = gr.ApplicationRoleId,
+                    ApplicationGroupId = gr.ApplicationGroupId
+                }).ToTable("ApplicationGroupRoles");
 
             //////////}
         }
