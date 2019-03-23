@@ -1,8 +1,44 @@
 
+
+.body{
+
+}
+.img{
+    width: 100%
+}
 #cover{
     background-image:url('../img/blog_page.jpg' );
+    background-position: center center ;
     background-color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
     color: beige;
-image-resolution: inherit;
-border-image-slice: fill;
+    text-align: center;
+    display: flex;
+    align-items: center;
 }
+
+#cover-texto{
+    width:100% 
+}
+
+#cover-texto .form-inline{
+    padding: Srem 0
+}
+#contenido-seccion{
+    padding: 5rem 0 ;
+
+}
+
+#acerca-de{
+    background : black url('../img/bg_gestion_2.jpg' ) center center no-repeat;
+    background-size: cover;
+}
+
+
+#texto-acerca-de{
+    background : black url('../img/bg_gestion_2.jpg' ) center center no-repeat;
+    color: white;
+    padding: 1.875rem;
+}
+

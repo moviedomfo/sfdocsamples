@@ -2,81 +2,211 @@
 <html lang="en">
 
 <head>
-    <title>Bootstrap 4 Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap 4 Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/style.css">
 
 
 </head>
 
 <body>
 
+  <!-- header superior -->
+  <section id="cover">
+    <div class="cover-texto">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1>C.E.L.A.M </h1>
+            <p class="longer">Cooperativa Electrica Adelia Maria</p>
 
-    <section id="cover">
-        <div class="cover-texto">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                            <h1>Prueaba de maquetado Bootstrap4</h1>
-                            <p>You can edit this home page using our free, drag and drop Page Builder, or simply disable it to fall back to a standard blog. It's a powerful page building experience.
-                              </p>
+          </div>
 
-                    </div>
-                    
-                   
-                </div>
-            </div>
+
         </div>
-    </section>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-          
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                </li>
-              </ul>
-              <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
-            </div>
-          </nav>
-          
-    <div class="container">
-        <h1>My First Bootstrap Page</h1>
-        <p>This is some text.</p>
+      </div>
     </div>
-    <script src="./js/jquery-3.3.1.js"></script>
-    <script src="./js/jquery-3.3.1.slim.min.js"></script>
-    <script src="./js/popper.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
+  </section>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation"></button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">Dropdown</a>
+          <div class="dropdown-menu" aria-labelledby="dropdownId">
+            <a class="dropdown-item" href="#">Action 1</a>
+            <a class="dropdown-item" href="#">Action 2</a>
+          </div>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+
+  <section id="noticias">
+    <div class="contenido-seccion">
+      <div class="container">
+        <h2>Ultimas Noticias </h2>
+        <p class="lead">Teachers and students can use these comprehensive French language guides to improve reading,
+          writing, and comprehension skills for beginner, intermediate and advanced levels.</p>
+        <div class="row">
+          <div class="col-sm-12">
+
+
+            <div class="card-columns">
+
+              <div class="card">
+                  <img src="./img/bg_lampara_1.jpg" class="card-img-top" alt="...">
+                <div class="card-block">
+                  <h4 class="card-title">Instalaciones internas</h4>
+                  <h6 class="card-subtitle">Monte de los Gauchos</h6>
+                </div>
+                
+                <div class="card-block">
+                  <p class="card-text">El mantenimiento frecuente de los tanques domiciliarios de reserva es
+                    indispensable
+                    para conservar la calidad de agua dentro del hogar. Por tal motivo se recomienda realizar una
+                    limpieza de
+                    los mismos cada seis meses. </p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+              </div>
+
+
+              <div class="card">
+                  <img src="./img/pexels-photo-355952.jpeg" class="card-img-top" alt="...">
+                <div class="card-block">
+                  <h4 class="card-title">Aviso</h4>
+                  <h6 class="card-subtitle">Monte de los Gauchos</h6>
+                  <p class="card-text">La Cooperativa Eléctrica de Adelia María comunica que el día miércoles 20-03-2019
+                      se
+                      realizará la visita mensual a Monte de los Gauchos.
+                      Los interesados en realizar consultas deben dirigirse al edificio de la Municipalidad, en el horario
+                      de
+                      9:00 a 12:00. Allí serán atendidos por nuestro personal. Los esperamos.</p>
+                </div>
+                
+              
+         
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+            <div class="card">
+                <img src="./img/bg_gestion_1.jpg" class="card-img-top" alt="...">
+              <div class="card-block">
+                <h5 class="card-title">Iformacion Gral title</h5>
+                <h6 class="card-subtitle">Ronda Iluminación</h6>
+              </div>
+              
+              <div class="card-block">
+                  <p class="card-text">Catálogos de luminarias, Buscador de promociones, artefactos y artículos de
+                    iluminación en Argentina. Lámparas decorativas, profesionales y de exterior.. </p>
+                </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+            <div class="card">
+                <img src="./img/bg_lampara_1.jpg" class="card-img-top" alt="...">
+              <div class="card-block">
+                <h5 class="card-title">Cocorda Iluminación internas</h5>
+                <h6 class="card-subtitle">Ronda Iluminación</h6>
+              </div>
+             
+              <div class="card-block">
+                <p class="card-text">Catálogos de luminarias, Buscador de promociones, artefactos y artículos de
+                  iluminación en Argentina. Lámparas decorativas, profesionales y de exterior.. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+            <div class="card">
+                <img src="./img/bg_itSecurity.jpg" class="card-img-top" alt="...">
+              <div class="card-block">
+                <h5 class="card-title">Town by town</h5>
+                <h6 class="card-subtitle">Where the Irish live in southern Connecticut</h6>
+
+              </div>
+              
+              <div class="card-block">
+                <p class="card-text">Here in Connecticut, there is no shortage of Irish people. A total of 559,689
+                  peopleHere in Connecticut, there is no shortage of Irish people. A total of 546,383 people reported
+                  being of Irish descent in 2017, according to the U.S. Census Bureau. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+            <div class="card">
+                <img src="./img/chairs-computers-contemporary-1170412.jpg" class="card-img-top" alt="...">
+              <div class="card-block">
+                <h5 class="card-title">Instalaciones internas</h5>
+                <h6 class="card-subtitle">Imágenes de Instalaciones internas </h6>
+                <p class="card-text">¿Quién debe realizar las reparaciones, cambios de cañería o instalaciones de gas
+                    dentro del domicilio? La instalación domiciliara de gas es propiedad del ... </p>
+              </div>
+     
+
+         
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+            <div class="card">
+                <img src="./img/lagertha.jpg" class="card-img-top" alt="Laghertha">
+              <div class="card-block">
+                <h5 class="card-title">Ladgerda</h5>
+                <h6 class="card-subtitle">a skjaldmö, semi-legendaria </h6>
+              </div>
+             
+              <div class="card-block">
+                <p class="card-text">Ladgerda o Lathgertha fue una skjaldmö, semi-legendaria guerrera vikinga de
+                  Dinamarca, que según algunas fuentes y sagas nórdicas era una
+                  de las esposas del legendario caudillo Ragnar Lodbrok. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    </div>
+
+
+  </section>
+
+  <div class="container">
+    <h1>My First Bootstrap Page</h1>
+    <p>This is some text.</p>
+  </div>
+  <script src="./js/jquery-3.3.1.js"></script>
+  <script src="./js/jquery-3.3.1.slim.min.js"></script>
+  <script src="./js/popper.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
 </body>
 
 </html>
