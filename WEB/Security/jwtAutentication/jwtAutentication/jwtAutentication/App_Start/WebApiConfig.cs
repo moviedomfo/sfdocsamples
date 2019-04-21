@@ -11,8 +11,8 @@ namespace jwtAuthentication
         public static void Register(HttpConfiguration config)
         {
             // Configuración y servicios de API web
-            //config.MessageHandlers.Add(new TokenValidationHandler());
-            config.MessageHandlers.Add(new MessageHandler1());
+            config.MessageHandlers.Add(new TokenValidationHandler());
+            //config.MessageHandlers.Add(new MessageHandler1());
             // Rutas de API web
             config.MapHttpAttributeRoutes();
 
