@@ -1,2 +1,0 @@
-installutil MultipleInstanceService.exe
-pause

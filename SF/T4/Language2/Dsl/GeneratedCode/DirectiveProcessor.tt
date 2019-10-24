@@ -1,5 +1,0 @@
-<#
-	string directiveName = "FWK_Dsl";
-#>
-<#@ include file="Dsl\ModelDirectiveProcessor.tt" #>
-<#@ Dsl processor="DslDirectiveProcessor"  requires="fileName='..\DslDefinition.dsl'" #>

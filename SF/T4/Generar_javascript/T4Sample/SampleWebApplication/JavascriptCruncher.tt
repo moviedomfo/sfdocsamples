@@ -1,9 +1,0 @@
-<#@ template debug="false" hostspecific="true" language="C#" #>
-<#@ output extension=".log" #>
-<#@ assembly name="JavascriptCruncher" #>
-<#@ import namespace="JavascriptCruncher" #>
-<#
-    JavascriptCruncherTemplate t = new JavascriptCruncherTemplate();
-	t.Host = this.Host;
-    this.Write(t.TransformText());
-#>
