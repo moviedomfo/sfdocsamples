@@ -5968,3 +5968,5 @@ WEB/Security/jwtAutentication/jwtAutentication/packages/Microsoft.Net.Compilers.
 WEB/Security/jwtAutentication/jwtAutentication/packages/Microsoft.Net.Compilers.2.4.0/tools/Microsoft.CSharp.Core.targets
 WEB/Security/jwtAutentication/jwtAutentication/packages/Microsoft.Net.Compilers.2.4.0/build/Microsoft.Net.Compilers.props
 WEB/Security/jwtAutentication/jwtAutentication/packages/Microsoft.Net.Compilers.2.4.0/ThirdPartyNotices.rtf
+AspNetCore.versioning/AspNetCore.versioning/bin
+AspNetCore.versioning/AspNetCore.versioning/obj
