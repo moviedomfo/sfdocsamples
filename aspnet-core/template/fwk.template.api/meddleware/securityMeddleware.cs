@@ -1,0 +1,55 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Extensions;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace keepcon.api.meddleware
+{
+    /// <summary>
+    /// https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/write?view=aspnetcore-5.0
+    /// </summary>
+    public class SecurityMiddleware 
+    {
+        private readonly RequestDelegate _next;
+        public SecurityMiddleware(RequestDelegate next)
+        {
+            _next = next;
+        }
+        public async Task InvokeAsync(HttpContext context)
+        {
+            var url = UriHelper.GetDisplayUrl(context.Request);
+            var cultureQuery = context.Request.Query["culture"];
+
+            if (!string.IsNullOrWhiteSpace(cultureQuery))
+            {
+                var culture = new CultureInfo(cultureQuery);
+
+                CultureInfo.CurrentCulture = culture;
+                CultureInfo.CurrentUICulture = culture;
+
+            }
+
+            // Do work that doesn't write to the Response.
+            
+            // Call the next delegate/middleware in the pipeline
+            await _next(context);
+            // Do logging or other work that doesn't write to the Response. 
+
+
+        }
+    }
+
+
+    public static class SecurityMiddlewareExtensions
+    {
+        public static IApplicationBuilder UseSecurityMiddleware(
+            this IApplicationBuilder builder)
+        {
+            return builder.UseMiddleware<SecurityMiddleware>();
+        }
+    }
+}
