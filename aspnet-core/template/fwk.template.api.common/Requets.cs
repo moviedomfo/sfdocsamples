@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace keepcon.api.common.BE
+namespace pelsoft.api.common.BE
 {
     public class Requets
     {

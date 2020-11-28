@@ -1,4 +1,4 @@
-using keepcon.api.models;
+using pelsoft.api.models;
 using Fwk.Exceptions;
 using Fwk.HelperFunctions;
 using Microsoft.AspNetCore.Identity;
@@ -12,14 +12,14 @@ using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using keepcon.api.common;
+using pelsoft.api.common;
 
 
 
-namespace keepcon.api.service
+namespace pelsoft.api.service
 {
 
-    public interface IkeepconService
+    public interface IpelsoftService
     {
         void ReciveAction(ReciveActionReq req);
 
@@ -29,7 +29,7 @@ namespace keepcon.api.service
     /// El nombre de esta clase podria ser generico si es que se utilizara la misma para todas las empresas 
     /// De momento se usa la implementcion epesifica de la interfaz para cada negocio
     /// </summary>
-    public class KeepconService : IkeepconService
+    public class pelsoftService : IpelsoftService
     {
 
         /// <summary>
@@ -40,15 +40,15 @@ namespace keepcon.api.service
         {
             try
             {
-                var receivedUserId = KeepconDAC.Insert(req);
+                var receivedUserId = pelsoftDAC.Insert(req);
                 if (req.channel == "facebook")
                 {
-                    var accountDetailUnique = KeepconDAC.Get_Facebook_Account(req.owner);
-                    var detail = KeepconDAC.Get_AccountDetail(accountDetailUnique);
+                    var accountDetailUnique = pelsoftDAC.Get_Facebook_Account(req.owner);
+                    var detail = pelsoftDAC.Get_AccountDetail(accountDetailUnique);
                     
-                    var settings = KeepconDAC.Get_ApplicationSettings(188, detail.AccountId);
+                    var settings = pelsoftDAC.Get_ApplicationSettings(188, detail.AccountId);
 
-                    var log = KeepconDAC.crear_caso(detail, settings, req.action, accountDetailUnique,req.source_userid, receivedUserId);
+                    var log = pelsoftDAC.crear_caso(detail, settings, req.action, accountDetailUnique,req.source_userid, receivedUserId);
 
                 }
             } 

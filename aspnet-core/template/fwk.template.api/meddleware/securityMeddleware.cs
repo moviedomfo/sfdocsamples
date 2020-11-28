@@ -7,7 +7,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace keepcon.api.meddleware
+namespace pelsoft.api.meddleware
 {
     /// <summary>
     /// https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/write?view=aspnetcore-5.0
@@ -32,9 +32,14 @@ namespace keepcon.api.meddleware
                 CultureInfo.CurrentUICulture = culture;
 
             }
-
+            if (!context.Request.Headers.ContainsKey("Authorization"))
+            {
+                //The next parameter represents the next delegate in the pipeline. You can short-circuit the pipeline by not calling the next parameter
+                //When a delegate doesn't pass a request to the next delegate, it's called short-circuiting the request pipeline.
+                await context.Response.WriteAsync("No contiene , bearer header!");
+            }
             // Do work that doesn't write to the Response.
-            
+
             // Call the next delegate/middleware in the pipeline
             await _next(context);
             // Do logging or other work that doesn't write to the Response. 

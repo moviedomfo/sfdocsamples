@@ -11,7 +11,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace  keepcon.api.common
+namespace  pelsoft.api.common
 {
 
     /// <summary>

@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace keepcon.api.common
+namespace pelsoft.api.common
 {
     public class apiLogServices
     {
@@ -25,7 +25,13 @@ namespace keepcon.api.common
                 apiLogServices.TryInsertLog(ex);
             });
         }
-
+        public static Task Log_asynk(ApiEvent apiEvent)
+        {
+            return Task.Run(() =>
+            {
+                apiLogServices.TryInsertLog(apiEvent);
+            });
+        }
 
         /// <summary>
         /// Siempre enviara mail si el hilo está configurado para eso.
@@ -43,11 +49,25 @@ namespace keepcon.api.common
 
             Insert(apiEvent);
         }
+        static void TryInsertLog(ApiEvent apiEvent)
+        {
+
+            if (string.IsNullOrEmpty(apiEvent.Source))
+                apiEvent.Source = apiAppSettings.apiConfig.api_InstanceName;
+            else
+                apiEvent.Source = String.Concat(apiAppSettings.apiConfig.api_InstanceName," " , apiEvent.Source);
+
+            apiEvent.LogDate = DateTime.Now;
+            apiEvent.Machine = Environment.MachineName;
+            
+
+            Insert(apiEvent);
+        }
 
         static void Insert(ApiEvent pEvent)
         {
 
-            var connectionString = CommonHelpers.GetCnn(CommonHelpers.cnnStringName_keepcon).ConnectionString;
+            var connectionString = CommonHelpers.GetCnn(CommonHelpers.cnnStringName_pelsoft).ConnectionString;
             using (SqlConnection wCnn = new SqlConnection(connectionString))
             using (SqlCommand wCmd = new SqlCommand())
             {

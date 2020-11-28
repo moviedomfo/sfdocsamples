@@ -1,6 +1,6 @@
 using System;
 
-namespace keepcon.api
+namespace pelsoft.api
 {
     public class AccountDetail
     {

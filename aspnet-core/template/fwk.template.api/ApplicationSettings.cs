@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace keepcon.api
+namespace pelsoft.api
 {
     public class ApplicationSettings
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace keepcon.api.models
+namespace pelsoft.api.models
 {
     public class ReciveActionReq
     {

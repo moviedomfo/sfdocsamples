@@ -15,12 +15,12 @@ using System.Net.Sockets;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace keepcon.api.common
+namespace pelsoft.api.common
 {
     public class CommonHelpers
     {
         
-        public const string cnnStringName_keepcon = "keepcon"; 
+        public const string cnnStringName_pelsoft = "pelsoft"; 
 
         internal static ISymetriCypher ISymetriCypher;
         public static int ExpirationSeconds = 600;

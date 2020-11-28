@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using keepcon.api.common;
+using pelsoft.api.common;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 using Microsoft.AspNetCore.Internal;
@@ -23,11 +23,11 @@ using System.Threading;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.FileProviders;
 using Newtonsoft.Json.Serialization;
-using keepcon.api.service;
+using pelsoft.api.service;
 using Microsoft.AspNetCore.Http.Extensions;
-using keepcon.api.meddleware;
+using pelsoft.api.meddleware;
 
-namespace keepcon.api
+namespace pelsoft.api
 {
     public class Startup
     {
@@ -67,7 +67,7 @@ namespace keepcon.api
             #endregion
 
             // configure DI for application services
-            services.AddScoped<IkeepconService, KeepconService>();
+            services.AddScoped<IpelsoftService, pelsoftService>();
   
             services.AddControllers();
             #region configure jwt authentication
@@ -139,7 +139,7 @@ namespace keepcon.api
             {
                 c.SwaggerDoc(name: "v1", new OpenApiInfo
                 {
-                    Title = "Keepcon  API ",
+                    Title = "pelsoft  API ",
                     Version = "v1"
                 });
             });
@@ -164,7 +164,7 @@ namespace keepcon.api
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseSecurityMiddleware();
+        
             #region servicios meidleware de swagger
 
             app.UseSwagger();
@@ -175,15 +175,17 @@ namespace keepcon.api
         //https://localhost:44351/index.html
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Keepcon  API");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "pelsoft  API");
                 c.RoutePrefix = "";
 
             });
 
             #endregion
 
-        
-           
+
+            app.UseSecurityMiddleware();
+
+            app.UseLogsMiddleware();
 
             app.UseCors("CorsPolicy");
 
@@ -217,7 +219,7 @@ namespace keepcon.api
             //////    // Do logging or other work that doesn't write to the Response.
             //////});
             ///
-            //app.Map("keepcon", keepcontHandler);
+            //app.Map("pelsoft", pelsofttHandler);
             //app.Map("meucci", meucciHandler);
 
             //Run delegates don't receive a next parameter. 

@@ -1,5 +1,5 @@
-using keepcon.api.common;
-using keepcon.api.models;
+using pelsoft.api.common;
+using pelsoft.api.models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,9 +7,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace keepcon.api
+namespace pelsoft.api
 {
-    public class KeepconDAC
+    public class pelsoftDAC
     {
         /// <summary>
         /// Inserta socio
@@ -17,10 +17,10 @@ namespace keepcon.api
         /// <param name="reciveAction"></param>
         public static int Insert(ReciveActionReq reciveAction)
         {
-            var connectionString = CommonHelpers.GetCnn(CommonHelpers.cnnStringName_keepcon).ConnectionString;
+            var connectionString = CommonHelpers.GetCnn(CommonHelpers.cnnStringName_pelsoft).ConnectionString;
 
             using (SqlConnection cnn = new SqlConnection(connectionString))
-            using (SqlCommand cmd = new SqlCommand("[ApiKeepcon].[ReceivedUser_i]", cnn))
+            using (SqlCommand cmd = new SqlCommand("[Apipelsoft].[ReceivedUser_i]", cnn))
             {
                 #region params
 
@@ -61,8 +61,8 @@ namespace keepcon.api
 
             try
             {
-                using (SqlConnection cnn = new SqlConnection(CommonHelpers.GetCnn(CommonHelpers.cnnStringName_keepcon).ConnectionString))
-                using (SqlCommand cmd = new SqlCommand("[ApiKeepcon].[Facebook_Account_s_Owner]", cnn))
+                using (SqlConnection cnn = new SqlConnection(CommonHelpers.GetCnn(CommonHelpers.cnnStringName_pelsoft).ConnectionString))
+                using (SqlCommand cmd = new SqlCommand("[Apipelsoft].[Facebook_Account_s_Owner]", cnn))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Owner", owner);
@@ -97,8 +97,8 @@ namespace keepcon.api
 
             try
             {
-                using (SqlConnection cnn = new SqlConnection(CommonHelpers.GetCnn(CommonHelpers.cnnStringName_keepcon).ConnectionString))
-                using (SqlCommand cmd = new SqlCommand("[ApiKeepcon].[AccountDetail_s_AccountDetailUnique]", cnn))
+                using (SqlConnection cnn = new SqlConnection(CommonHelpers.GetCnn(CommonHelpers.cnnStringName_pelsoft).ConnectionString))
+                using (SqlCommand cmd = new SqlCommand("[Apipelsoft].[AccountDetail_s_AccountDetailUnique]", cnn))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@AccountDetailUnique", accountDetailUnique);
@@ -126,9 +126,9 @@ namespace keepcon.api
 
 
         /// <summary>
-        /// -	Se obtiene el id del usuario de keepcon
+        /// -	Se obtiene el id del usuario de pelsoft
         /// </summary>
-        /// <param name="settingId">: Identificador para obtener el usuario de keepcon. Se pasa el valor 183</param>
+        /// <param name="settingId">: Identificador para obtener el usuario de pelsoft. Se pasa el valor 183</param>
         /// <param name="accountId">Identificador de la Unidad de negocio</param>
         /// <returns></returns>
         public static ApplicationSettings Get_ApplicationSettings(int settingId, int? accountId)
@@ -137,8 +137,8 @@ namespace keepcon.api
 
             try
             {
-                using (SqlConnection cnn = new SqlConnection(CommonHelpers.GetCnn(CommonHelpers.cnnStringName_keepcon).ConnectionString))
-                using (SqlCommand cmd = new SqlCommand("[ApiKeepcon].[ApplicationSettings_s_BySettingId]", cnn))
+                using (SqlConnection cnn = new SqlConnection(CommonHelpers.GetCnn(CommonHelpers.cnnStringName_pelsoft).ConnectionString))
+                using (SqlCommand cmd = new SqlCommand("[Apipelsoft].[ApplicationSettings_s_BySettingId]", cnn))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@settingId", settingId);
@@ -171,10 +171,10 @@ namespace keepcon.api
         /// </summary>
         /// <param name="accountDetail"></param>
         /// <param name="applicationSettings"></param>
-        /// <param name="action">Identificador obtenido al insertar el registro recibido por keepcon</param>
+        /// <param name="action">Identificador obtenido al insertar el registro recibido por pelsoft</param>
         /// <param name="accountDetailUnique">Identificador de la Unidad de negocio</param>
         /// <param name="sourceUserId">Identificador de la Unidad de negocio</param>
-        /// <param name="receivedUserId"> Se pasa el valor del parámetro obtenido del sp [ApiKeepcon].[ReceivedUser_i]</param>
+        /// <param name="receivedUserId"> Se pasa el valor del parámetro obtenido del sp [Apipelsoft].[ReceivedUser_i]</param>
         /// <returns></returns>
         public static int crear_caso(AccountDetail accountDetail, 
             ApplicationSettings applicationSettings,
@@ -186,8 +186,8 @@ namespace keepcon.api
 
             try
             {
-                using (SqlConnection cnn = new SqlConnection(CommonHelpers.GetCnn(CommonHelpers.cnnStringName_keepcon).ConnectionString))
-                using (SqlCommand cmd = new SqlCommand("[ApiKeepcon].[Case_BySourceUserId_Action]", cnn))
+                using (SqlConnection cnn = new SqlConnection(CommonHelpers.GetCnn(CommonHelpers.cnnStringName_pelsoft).ConnectionString))
+                using (SqlCommand cmd = new SqlCommand("[Apipelsoft].[Case_BySourceUserId_Action]", cnn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     SqlParameter param = new SqlParameter("@CaseLogId", SqlDbType.Int);
@@ -198,13 +198,13 @@ namespace keepcon.api
                     cmd.Parameters.AddWithValue("@ServiceChannelId", accountDetail.ServiceChannelId);
                     //Identificador del usuario en la red social. Se pasa el valor del parámetro
                     cmd.Parameters.AddWithValue("@SourceUserId", sourceUserId);
-                    //Identificador del usuario Keepcon. Se pasa el valor de campo Value obtenido de la ejecución del sp [ApiKeepcon].[ApplicationSettings_s_BySettingId]
+                    //Identificador del usuario pelsoft. Se pasa el valor de campo Value obtenido de la ejecución del sp [Apipelsoft].[ApplicationSettings_s_BySettingId]
                     cmd.Parameters.AddWithValue("@UsuarioChatBot", applicationSettings.Value);
                     //Identificador de la Unidad de negocio
                     cmd.Parameters.AddWithValue("@AccountId", accountDetail.AccountId);
                     //acción que se debe realizar sobre un caso
                     cmd.Parameters.AddWithValue("@Action", action);
-                    //Identificador obtenido al insertar el registro recibido por keepcon. Se pasa el valor del parámetro obtenido del sp [ApiKeepcon].[ReceivedUser_i]
+                    //Identificador obtenido al insertar el registro recibido por pelsoft. Se pasa el valor del parámetro obtenido del sp [Apipelsoft].[ReceivedUser_i]
                     cmd.Parameters.AddWithValue("@ReceivedUserId", receivedUserId);
 
                  

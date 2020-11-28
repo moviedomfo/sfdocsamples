@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace keepcon.api.common
+namespace pelsoft.api.common
 {
     public class ApiEvent
     {
