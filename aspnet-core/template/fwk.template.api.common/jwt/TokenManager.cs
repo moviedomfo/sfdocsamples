@@ -1,12 +1,12 @@
 ﻿
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Caching.Distributed;
-using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Primitives;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using fwk.template.api.common;
 
 namespace fwk.template.api.common.jwt
 {
@@ -14,16 +14,16 @@ namespace fwk.template.api.common.jwt
     {
         readonly IDistributedCache _cache;
         readonly IHttpContextAccessor _httpContext;
-        readonly IOptions<JwtOptions> _options;
+        readonly IApiConfig _options;
 
         public TokenManager(IDistributedCache cache,
-            IHttpContextAccessor httpContext,
-            IOptions<JwtOptions> options
+            IHttpContextAccessor httpContext
+            //IApiConfig options
             )
         {
             _cache = cache;
             _httpContext = httpContext;
-            _options = options;
+           _options = apiAppSettings.apiConfig;
 
         }
 
@@ -47,7 +47,7 @@ namespace fwk.template.api.common.jwt
           => await _cache.SetStringAsync(GetKey(token), //set ny value that makes sense as longs as it´s not an umpty or null value
             " ", new DistributedCacheEntryOptions
             {
-                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(_options.Value.ExpiryMinutes)
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(_options.api_expireTime)
             });
 
         private static string GetKey(string token) => $"tokens:{token}:desactivated";

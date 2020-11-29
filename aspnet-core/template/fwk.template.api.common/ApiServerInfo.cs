@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace pelsoft.api.models
+namespace fwk.template.api.common
 {
     public class ApiServerInfo
     {

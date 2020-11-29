@@ -5,7 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace pelsoft.api.common
+namespace fwk.template.api.common
 {
     public class ApiOkResponse : ApiResponse
     {

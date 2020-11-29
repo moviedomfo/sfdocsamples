@@ -16,17 +16,65 @@
             </summary>
             <param name="req"></param>
         </member>
-        <member name="T:pelsoft.api.meddleware.LogsMeddleware">
+        <member name="M:pelsoft.api.middleware.ErrorHandlerMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Este middleware atrapara todos los errores y los logueara
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:pelsoft.api.middleware.ErrorHandlerMiddleware.HandleErrorAsync(Microsoft.AspNetCore.Http.HttpContext,System.Exception)">
+            <summary>
+            Procesa el error (loguea y extrae otra info) al no hacer next produce un cortocircuito de la canalización
+            </summary>
+            <param name="context"></param>
+            <param name="exception"></param>
+            <returns></returns>
+        </member>
+        <member name="T:pelsoft.api.middleware.ErrorHandlerMiddlewareExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:pelsoft.api.middleware.ErrorHandlerMiddlewareExtensions.UseErrorHandlerMiddleware(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="builder"></param>
+            <returns></returns>
+        </member>
+        <member name="T:pelsoft.api.middleware.Logsmiddleware">
             <summary>
             Middlewre que perite loguear todas las entradas a las APIS: Se pueden agregar filtros tambien
             Aunque si filtracemos por URL convendria usar .Map --> Handler
             https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/write?view=aspnetcore-5.0
             </summary>
         </member>
-        <member name="T:pelsoft.api.meddleware.SecurityMiddleware">
+        <member name="M:pelsoft.api.middleware.Logsmiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Configuration.IConfiguration,fwk.template.api.common.IApiLogServices)">
             <summary>
+            
+            </summary>
+            <param name="next"></param>
+            <param name="configuration"></param>
+            <param name="logService"></param>
+        </member>
+        <member name="T:pelsoft.api.middleware.TokenManagerMiddleware">
+            <summary>
+            Token Mannager Middleware
             https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/write?view=aspnetcore-5.0
             </summary>
+        </member>
+        <member name="T:pelsoft.api.middleware.TokenManagerMiddlewareExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:pelsoft.api.middleware.TokenManagerMiddlewareExtensions.UseTokenManagerMiddleware(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="builder"></param>
+            <returns></returns>
         </member>
         <member name="P:pelsoft.api.models.ReciveActionReq.source_userid">
             <summary>

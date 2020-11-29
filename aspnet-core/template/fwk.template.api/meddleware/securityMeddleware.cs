@@ -10,18 +10,18 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace pelsoft.api.meddleware
+namespace pelsoft.api.middleware
 {
     /// <summary>
     /// Token Mannager Middleware
     /// https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/write?view=aspnetcore-5.0
     /// </summary>
-    public class TokenMannagerMiddleware :IMiddleware
+    public class TokenManagerMiddleware : IMiddleware
     {
         private readonly RequestDelegate _next;
         private readonly ITokenManager _tokenManager;
 
-        public TokenMannagerMiddleware(RequestDelegate next, ITokenManager tokenManager)
+        public TokenManagerMiddleware(RequestDelegate next, ITokenManager tokenManager)
         {
             _next = next;
         }
@@ -83,17 +83,17 @@ namespace pelsoft.api.meddleware
     /// <summary>
     /// 
     /// </summary>
-    public static class TokenMannagerMiddlewareExtensions
+    public static class TokenManagerMiddlewareExtensions
     {
         /// <summary>
         /// 
         /// </summary>
         /// <param name="builder"></param>
         /// <returns></returns>
-        public static IApplicationBuilder UseTokenMannagerMiddleware(
+        public static IApplicationBuilder UseTokenManagerMiddleware(
             this IApplicationBuilder builder)
         {
-            return builder.UseMiddleware<TokenMannagerMiddleware>();
+            return builder.UseMiddleware<TokenManagerMiddleware>();
         }
     }
 }

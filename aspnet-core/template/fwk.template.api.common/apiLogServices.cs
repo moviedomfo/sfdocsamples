@@ -6,9 +6,9 @@ using System.Data.SqlClient;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace pelsoft.api.common
+namespace fwk.template.api.common
 {
-    public class apiLogServices
+    public class ApiLogServices : IApiLogServices
     {
 
 
@@ -18,18 +18,18 @@ namespace pelsoft.api.common
         /// 
         /// </summary>
         /// <param name="ex"></param>
-        public static Task LogError_asynk(Exception ex)
+        public Task LogError_asynk(Exception ex)
         {
             return Task.Run(() =>
             {
-                apiLogServices.TryInsertLog(ex);
+                TryInsertLog(ex);
             });
         }
-        public static Task Log_asynk(ApiEvent apiEvent)
+        public Task Log_asynk(ApiEvent apiEvent)
         {
             return Task.Run(() =>
             {
-                apiLogServices.TryInsertLog(apiEvent);
+                TryInsertLog(apiEvent);
             });
         }
 
@@ -49,17 +49,22 @@ namespace pelsoft.api.common
 
             Insert(apiEvent);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="apiEvent"></param>
         static void TryInsertLog(ApiEvent apiEvent)
         {
 
             if (string.IsNullOrEmpty(apiEvent.Source))
                 apiEvent.Source = apiAppSettings.apiConfig.api_InstanceName;
             else
-                apiEvent.Source = String.Concat(apiAppSettings.apiConfig.api_InstanceName," " , apiEvent.Source);
+                apiEvent.Source = String.Concat(apiAppSettings.apiConfig.api_InstanceName, " ", apiEvent.Source);
 
             apiEvent.LogDate = DateTime.Now;
             apiEvent.Machine = Environment.MachineName;
-            
+
 
             Insert(apiEvent);
         }
@@ -107,7 +112,7 @@ namespace pelsoft.api.common
                     wParam = wCmd.Parameters.Add("ServiceInstanceUnique", SqlDbType.UniqueIdentifier);
                     wParam.Value = pEvent.ServiceInstanceUnique;
 
-            
+
 
                     wCmd.ExecuteNonQuery();
                     wCnn.Close();
@@ -116,7 +121,7 @@ namespace pelsoft.api.common
                 {
                     TechnicalException te = new TechnicalException("Error de Fwk.Logging al intentar insertar log en base de datos", ex);
                     te.ErrorId = "9004";
-           
+
                     throw te;
                 }
             }

@@ -11,7 +11,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace  pelsoft.api.common
+namespace fwk.template.api.common
 {
 
     /// <summary>
@@ -286,48 +286,22 @@ namespace  pelsoft.api.common
 
     }
 
-    
 
 
 
-    public class apiConfig
+
+    public class apiConfig : IApiConfig
     {
 
-        /// <summary>
-        /// si wapiConfigPath = "" intenta buscarlo en AppSettings si no lo encuntra configurado lo buscara en el root de la aplicacion
-        /// </summary>
-        /// <param name="wapiConfigPath"></param>
-        /// <returns></returns>
-        public static apiConfig CreateNew(string wapiConfigPath)
-        {
-
-            apiConfig apiConfig = null;
-            if (string.IsNullOrEmpty(wapiConfigPath))
-            {
-                //wapiConfigPath = System.Configuration.ConfigurationManager.AppSettings.Get("wapiConfig");
-
-                if (String.IsNullOrEmpty(wapiConfigPath))
-                    throw new TechnicalException("No se encuentra configurada la ruta del archivo  el wapiConfig.json en web.config settings");
-
-            }
-
-            if (System.IO.File.Exists(wapiConfigPath) == false)
-                throw new TechnicalException("No existe el archivo  " + wapiConfigPath);
-
-
-            string apiConfigJson = FileFunctions.OpenTextFile(wapiConfigPath);
-            apiConfig = (apiConfig)SerializationFunctions.DeSerializeObjectFromJson(typeof(apiConfig), apiConfigJson);
-
-
-
-            return apiConfig;
-        }
-        
         public string api_InstanceName { get; set; }
         public string api_secretKey { get; set; }
         public string api_audienceToken { get; set; }
         public string api_issuerToken { get; set; }
-        public string api_expireTime { get; set; }
+
+        /// <summary>
+        /// in minutes
+        /// </summary>
+        public int api_expireTime { get; set; }
         public string api_authServerBaseUrl { get; set; }
 
         public string api_storageBaseUrl { get; set; }
@@ -342,7 +316,7 @@ namespace  pelsoft.api.common
 
         public string proxyDomain { get; set; }
 
-        public api_mail api_mail  { get; set; }
+        public api_mail api_mail { get; set; }
 
 
 

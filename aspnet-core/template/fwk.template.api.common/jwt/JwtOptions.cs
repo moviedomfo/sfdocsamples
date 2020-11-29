@@ -10,3 +10,4 @@ namespace fwk.template.api.common.jwt
         public int ExpiryMinutes { get; set; }
         public string Issuer { get; set; }
     }
+}

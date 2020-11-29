@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using pelsoft.api.common;
+
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 using Microsoft.AspNetCore.Internal;
@@ -25,7 +25,9 @@ using Microsoft.Extensions.FileProviders;
 using Newtonsoft.Json.Serialization;
 using pelsoft.api.service;
 using Microsoft.AspNetCore.Http.Extensions;
-using pelsoft.api.meddleware;
+using pelsoft.api.middleware;
+using fwk.template.api.common.jwt;
+using fwk.template.api.common;
 
 namespace pelsoft.api
 {
@@ -46,9 +48,14 @@ namespace pelsoft.api
             var connectionStrings = new Fwk.Database.ConnectionStrings();
             Configuration.Bind("ConnectionStrings", connectionStrings);
 
+            var apiConfigSection = Configuration.GetSection("apiConfig");
             var apiConfig = new apiConfig();
-            Configuration.Bind("apiConfig", apiConfig);      //  <--- This
+            Configuration.Bind("apiConfig",apiConfig);
+            var m = apiConfig.api_mail;
+            services.Configure<IApiConfig>(apiConfigSection);
 
+       
+         
 
             apiAppSettings.connectionStrings = connectionStrings;
             apiAppSettings.apiConfig = apiConfig;
@@ -67,14 +74,22 @@ namespace pelsoft.api
             #endregion
 
             #region configure DI for application services
-            //Transient objects are always different; a new instance is provided to every controller and every service.
-            services.AddTransient<TokenMannagerMiddleware>();
 
+            //Transient objects are always different; a new instance is provided to every controller and every service.
+            //services.AddTransient<TokenManagerMiddleware>();
+            services.AddTransient<ITokenManager, TokenManager>();
+    
+        
             // Scoped objects are the same within a request, but different across different requests 
             //services.AddScoped<IpelsoftService, pelsoftService>();
 
             //Singleton objects are the same for every object and every request (regardless of whether an instance is provided in ConfigureServices)
             services.AddSingleton<IpelsoftService, pelsoftService>();
+            services.AddSingleton<IApiLogServices, ApiLogServices>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddDistributedMemoryCache();
+
+
             #endregion
             services.AddControllers();
 
@@ -192,11 +207,12 @@ namespace pelsoft.api
 
             #endregion
 
-
-            app.UseTokenMannagerMiddleware(); // puede ser      app.UseMiddleware<TokenMannagerMiddleware>();
-
             app.UseLogsMiddleware();
+            app.UseErrorHandlerMiddleware();
+            
+            app.UseTokenManagerMiddleware(); // puede ser      app.UseMiddleware<TokenManagerMiddleware>();
 
+            
             app.UseCors("CorsPolicy");
 
             app.UseHttpsRedirection();

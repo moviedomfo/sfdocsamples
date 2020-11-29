@@ -1,8 +1,8 @@
+using fwk.template.api.common;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.Extensions.Configuration;
-using pelsoft.api.common;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -10,23 +10,32 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace pelsoft.api.meddleware
+namespace pelsoft.api.middleware
 {
     /// <summary>
     /// Middlewre que perite loguear todas las entradas a las APIS: Se pueden agregar filtros tambien
     /// Aunque si filtracemos por URL convendria usar .Map --> Handler
     /// https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/write?view=aspnetcore-5.0
     /// </summary>
-    public class LogsMeddleware
+    public class Logsmiddleware
     {
         public IConfiguration _configuration { get; }
+        private readonly IApiLogServices _logService;
 
         private readonly RequestDelegate _next;
-        public LogsMeddleware(RequestDelegate next, IConfiguration configuration)
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="next"></param>
+        /// <param name="configuration"></param>
+        /// <param name="logService"></param>
+        public Logsmiddleware(RequestDelegate next, IConfiguration configuration, IApiLogServices logService)
 
         {
             _configuration = configuration;
             _next = next;
+            _logService = logService;
         }
 
         public async Task InvokeAsync(HttpContext context)
@@ -54,7 +63,7 @@ namespace pelsoft.api.meddleware
                 apiEvent.Source = url;
 
                 //se envia el log en un segundo plano
-                apiLogServices.Log_asynk(apiEvent);
+                _logService.Log_asynk(apiEvent);
             }
             
 
@@ -73,7 +82,7 @@ namespace pelsoft.api.meddleware
         public static IApplicationBuilder UseLogsMiddleware(
             this IApplicationBuilder builder)
         {
-            return builder.UseMiddleware<LogsMeddleware>();
+            return builder.UseMiddleware<Logsmiddleware>();
         }
     }
 }

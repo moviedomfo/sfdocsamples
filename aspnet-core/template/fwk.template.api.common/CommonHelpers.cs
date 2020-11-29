@@ -15,7 +15,7 @@ using System.Net.Sockets;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace pelsoft.api.common
+namespace fwk.template.api.common
 {
     public class CommonHelpers
     {

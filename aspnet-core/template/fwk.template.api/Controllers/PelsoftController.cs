@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Net;
-using pelsoft.api.common;
 using pelsoft.api.models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using pelsoft.api.service;
 using Fwk.Exceptions;
+using fwk.template.api.common;
 
 namespace pelsoft.api.Controllers
 {
@@ -15,13 +15,15 @@ namespace pelsoft.api.Controllers
     [ApiController]
     public class PelsoftController : ControllerBase
     {
-        private readonly IpelsoftService service;
+        private readonly IpelsoftService _service;
+        private readonly IApiLogServices _logService;
 
-        public PelsoftController(IpelsoftService service)
+
+        public PelsoftController(IpelsoftService service, IApiLogServices logService)
         {
-            this.service = service;
-
-        }
+            _service = service;
+            _logService = logService;
+        }  
 
 
         [HttpPost("[action]")]
@@ -35,7 +37,7 @@ namespace pelsoft.api.Controllers
             }
             catch (Exception ex)
             {
-                apiLogServices.LogError_asynk(ex);
+                _logService.LogError_asynk(ex);
                 return BadRequest(ex.Message);
             }
         }
@@ -50,7 +52,7 @@ namespace pelsoft.api.Controllers
             }
             catch (Exception ex)
             {
-                apiLogServices.LogError_asynk(ex);
+                _logService.LogError_asynk(ex);
                 return BadRequest(ex.Message);
             }
         }
