@@ -66,10 +66,18 @@ namespace pelsoft.api
 
             #endregion
 
-            // configure DI for application services
-            services.AddScoped<IpelsoftService, pelsoftService>();
-  
+            #region configure DI for application services
+            //Transient objects are always different; a new instance is provided to every controller and every service.
+            services.AddTransient<TokenMannagerMiddleware>();
+
+            // Scoped objects are the same within a request, but different across different requests 
+            //services.AddScoped<IpelsoftService, pelsoftService>();
+
+            //Singleton objects are the same for every object and every request (regardless of whether an instance is provided in ConfigureServices)
+            services.AddSingleton<IpelsoftService, pelsoftService>();
+            #endregion
             services.AddControllers();
+
             #region configure jwt authentication
 
 
@@ -133,7 +141,9 @@ namespace pelsoft.api
             });
 
             #endregion
+
             IdentityModelEventSource.ShowPII = true;
+
             #region servicios  de swagger
             services.AddSwaggerGen(c =>
             {
@@ -183,7 +193,7 @@ namespace pelsoft.api
             #endregion
 
 
-            app.UseSecurityMiddleware();
+            app.UseTokenMannagerMiddleware(); // puede ser      app.UseMiddleware<TokenMannagerMiddleware>();
 
             app.UseLogsMiddleware();
 
