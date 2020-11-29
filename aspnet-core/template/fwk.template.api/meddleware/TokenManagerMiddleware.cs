@@ -18,14 +18,15 @@ namespace pelsoft.api.middleware
     /// </summary>
     public class TokenManagerMiddleware : IMiddleware
     {
-        private readonly RequestDelegate _next;
+        //private readonly RequestDelegate _next;
         private readonly ITokenManager _tokenManager;
 
-        public TokenManagerMiddleware(RequestDelegate next, ITokenManager tokenManager)
+        public TokenManagerMiddleware(ITokenManager tokenManager)
         {
-            _next = next;
+            //_next = next;
+            _tokenManager = tokenManager;
         }
-        public async Task InvokeAsync(HttpContext context)
+        public async Task InvokeAsync(HttpContext context , RequestDelegate next)
         {
             var url = UriHelper.GetDisplayUrl(context.Request);
             //var cultureQuery = context.Request.Query["culture"];
@@ -50,7 +51,7 @@ namespace pelsoft.api.middleware
 
             if(await _tokenManager.IsCurrentActiveToken())
             {
-                await _next(context);
+                await next(context);
                 return;
             }
 
@@ -58,25 +59,19 @@ namespace pelsoft.api.middleware
             //short-circuit
             context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
 
-            // Call the next delegate/middleware in the pipeline
-            await _next(context);
-            // Do logging or other work that doesn't write to the Response. 
+            
+            //await next(context);
+            
 
 
         }
 
-        public Task InvokeAsync(HttpContext context, RequestDelegate next)
-        {
-            throw new NotImplementedException();
-        }
+        //public Task InvokeAsync(HttpContext context, RequestDelegate next)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
-        private string GetCurrentToken(HttpContext context)
-        {
-            var authorizationHeader = context.Request.Headers["Authorization"];
-
-            return authorizationHeader == StringValues.Empty ? string.Empty :
-                        authorizationHeader.Single().Split(" ").Last(); //Bearer token
-        }
+     
     }
 
 

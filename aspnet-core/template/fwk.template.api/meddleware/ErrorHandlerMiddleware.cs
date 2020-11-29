@@ -14,9 +14,10 @@ namespace pelsoft.api.middleware
         private readonly RequestDelegate _next;
         private readonly IApiLogServices _logService;
 
-        public ErrorHandlerMiddleware(RequestDelegate next)
+        public ErrorHandlerMiddleware(RequestDelegate next, IApiLogServices logService)
         {
             _next = next;
+            _logService = logService;
         }
 
         /// <summary>

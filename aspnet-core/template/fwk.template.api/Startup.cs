@@ -76,7 +76,7 @@ namespace pelsoft.api
             #region configure DI for application services
 
             //Transient objects are always different; a new instance is provided to every controller and every service.
-            //services.AddTransient<TokenManagerMiddleware>();
+            services.AddTransient<TokenManagerMiddleware>();
             services.AddTransient<ITokenManager, TokenManager>();
     
         
