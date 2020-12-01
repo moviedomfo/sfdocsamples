@@ -8,10 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-
-using Microsoft.AspNetCore.Internal;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -91,6 +88,7 @@ namespace pelsoft.api
 
 
             #endregion
+
             services.AddControllers();
 
             #region configure jwt authentication
@@ -206,6 +204,8 @@ namespace pelsoft.api
             });
 
             #endregion
+
+            
 
             app.UseLogsMiddleware();
             app.UseErrorHandlerMiddleware();

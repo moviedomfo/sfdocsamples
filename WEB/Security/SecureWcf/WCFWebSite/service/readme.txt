@@ -1,2 +1,0 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="SecureWcf.CoreSecurityAspnet"  CodeBehind="~/App_Code/CoreSecurityAspnet.cs"%>
-<%@ ServiceHost Language="C#" Debug="true" Service="SecureWcf.CoreSecurityAspnet"  CodeBehind="~/App_Code/CoreSecurityAspnet.cs"%>
