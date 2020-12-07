@@ -4,7 +4,7 @@ var colors = require('colors');
 
 console.log("--------------forEach----------------".blue);
 prod.forEach(i=>{
-    console.log(i.nombre);    
+    console.log(i.name);    
 });
 // console.log("--------------map----------------".blue);
 // prod.map(i=>{
@@ -15,11 +15,11 @@ console.log("--------------Uso de Spread operator----------------");
 
 //using spread operator
 //const arrayCopy = [...prod];
-const array = { ...prod };
+const arrayCopy = [...prod,  {id: 200 , name:"Cereza"} ];
 
 // arrayCopy.map(i=>{
-//     //i.nombre = {...i, nombre  : i.nombre + "_modificado"};
-//     i.nombre =  i.nombre + "_modificado";
+//     //i.name = {...i, name  : i.name + "_modificado"};
+//     i.name =  i.name + "_modificado";
 // });
 arrayCopy[0].id = 20000;
 
