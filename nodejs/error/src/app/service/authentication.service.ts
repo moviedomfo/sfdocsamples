@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 
 import jwt_decode from "jwt-decode";
 import { AuthenticateResponse, CurrentLogin, SecurityUser } from '../model/securityIdentity.model';
+import { CommonService } from './common.service';
 
 
 @Injectable()
@@ -18,7 +19,7 @@ export class AuthenticationService {
 
 
   constructor(private commonService: CommonService, private http: HttpClient) {
-    // set token if saved in local storage
+
   }
 
   isAuth() {

@@ -8,6 +8,7 @@ import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 import { IContextInformation } from '../model/common.model';
 import { StockBE } from '../model/stock.model';
 import { AppConstants } from '../model/common.constants';
+import { CommonService } from './common.service';
 
 
 @Injectable()
@@ -17,9 +18,8 @@ export class stockService {
   
   //public currentstockChange_subject$: Subject<ProviderBE> = new Subject<ProviderBE>();
 
-  constructor(private http: HttpClient, commonService: CommonService) {
-    
-  
+  constructor(private commonService: CommonService, private http: HttpClient) {
+
   }
 
 
@@ -44,24 +44,25 @@ export class stockService {
       map(res => {
 
         return res;
-      })).pipe(catchError(handleError));
+      }));
+      // })).pipe(catchError(handleError));
 
 
   }
 
 
-  private handleError(httpError:HttpErrorResponse){
+  // private handleError(httpError:HttpErrorResponse){
 
-      if(httpError.error instanceof ErrorEvent){
-        alert('Client side error: ' + httpError.error.message) ;
-        return;
-      }
+  //     if(httpError.error instanceof ErrorEvent){
+  //       alert('Client side error: ' + httpError.error.message) ;
+  //       return;
+  //     }
 
-      //server error
-      return new ErrorObservable("")
+  //     //server error
+  //     return new ErrorObservable("")
 
 
-  }
+  // }
 
 
   

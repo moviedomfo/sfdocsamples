@@ -83,5 +83,8 @@
       }
     }
   },
-  "defaultProject": "material-aio-example"
+  "defaultProject": "material-aio-example",
+  "cli": {
+    "analytics": "a3c12448-4afb-4e13-9c81-3bc0273094d7"
+  }
 }

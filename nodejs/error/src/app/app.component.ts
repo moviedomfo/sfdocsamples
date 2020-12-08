@@ -1,6 +1,13 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { AppConstants } from './model/common.constants';
+import { stockService } from './service/stock.service';
+import { CommonService } from './service/common.service';
+import { StockBE } from './model/stock.model';
 
+// permmite cambiar la variable obsevada
+import { Observable, Subject, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,8 +15,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'error';
-
-  constructor(private http: HttpClient) {}
+  public stockList: StockBE[];
+  constructor(private http: HttpClient,private stockService:stockService,private commonService:CommonService) {}
 
   localError() {
     throw Error("The app component has thrown an error!");
@@ -22,4 +29,24 @@ export class AppComponent {
   successfulRequest() {
     this.http.get("https://httpstat.us/200?sleep=2000").toPromise();
   }
+
+  retriveStock() {
+    
+    var stockList$ = this.stockService.retriveStock$('',null);
+    stockList$.subscribe(
+      res => {
+        this.stockList = res;
+
+     
+
+      },
+      err => {
+
+       console.log(err);
+      }
+    );
+      
+
+  }
+
 }

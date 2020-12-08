@@ -7,7 +7,22 @@
 <div class="content-container">
 	<button mat-raised-button (click)="localError()">Local front end error</button>
 	<button mat-raised-button (click)="failingRequest()">Server request with error</button>
-	<button mat-raised-button (click)="successfulRequest()">Successful request showing loading spinner</button>
+  <button mat-raised-button (click)="successfulRequest()">Successful request showing loading spinner</button>
+  
+
+
+  
+<div class="mdc-form-field">
+  <button mat-stroked-button color="primary" (click)="retriveStock()">Retrive Stock</button>
+
+
+</div>
+<div>
+  <button mat-stroked-button disabled>Disabled</button>
+  <button class="mui-btn mui-btn--primary" disabled>Button</button>
+  <button class="mui-btn mui-btn--danger" disabled>Button</button>
+  <button class="mui-btn mui-btn--accent" disabled>Button</button>
+</div>
 </div>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
