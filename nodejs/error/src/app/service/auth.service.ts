@@ -2,34 +2,39 @@ import { Injectable } from '@angular/core';
 
 import { AppConstants } from "../model/common.constants";
 import { map, catchError } from 'rxjs/operators';
-import { Observable, Subject, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 import jwt_decode from "jwt-decode";
 import { AuthenticateResponse, CurrentLogin, SecurityUser } from '../model/securityIdentity.model';
 import { CommonService } from './common.service';
+import { Router } from '@angular/router';
 
 
 @Injectable()
-export class AuthenticationService {
+export class authService {
  
-
+  public isAuthenticated = new BehaviorSubject<boolean>(false);
 
   // public logingChange_subject$: Subject<logingChange> = new Subject<logingChange>();
 
 
-  constructor(private commonService: CommonService, private http: HttpClient) {
+  constructor(private commonService: CommonService, private http: HttpClient,private router: Router) {
 
   }
 
-  isAuth() {
+
+  //modo de uso ->  async metodo(){ this.isAuthenticated = await this.authService.checkAuthenticated();}
+  async  isAuth() {
 
     var currentUser: CurrentLogin = this.getCurrenLoging();
-    if (currentUser)
-      return true;
-    else
-      return false;
 
+  
+    if (currentUser)
+      this.isAuthenticated.next(true);
+    else
+      this.isAuthenticated.next(false);
+   
   }
 
   
@@ -123,14 +128,17 @@ export class AuthenticationService {
   //   this.logingChange_subject$.next(lcRes);
   // }
 
-  // get_currentproviderData(): Provider_FullViewBE {
-  //   var currentItem: providerFullData = new Provider_FullViewBE();
-  //   let str = localStorage.getItem('currentproviderData');
-  //   currentItem = JSON.parse(str);
 
-  //   return currentItem;
-  // }
-
+  async logout(redirect: string) {
+    try {
+      //await this.signOut();
+      localStorage.removeItem('currentLogin');
+      this.isAuthenticated.next(false);
+      this.router.navigate([redirect]);
+    } catch (err) {
+      console.error("authService logout error " + err);
+    }
+  }
   
   public getCurrenLoging(): CurrentLogin {
     var currentLogin: CurrentLogin;

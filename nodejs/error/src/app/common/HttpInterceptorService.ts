@@ -9,11 +9,11 @@ import { Observable, throwError } from "rxjs";
 import { catchError, finalize } from "rxjs/operators";
 
 import { Injectable } from "@angular/core";
-import { LoadingDialogService } from '../comoponents/loading/loading-dialog.service';
-import { ErrorDialogService } from '../comoponents/error-dialog/error-dialog.service';
+import { LoadingDialogService } from './comoponents/loading/loading-dialog.service';
+import { ErrorDialogService } from './comoponents/error-dialog/error-dialog.service';
 
 @Injectable()
-export class HttpErrorInterceptor implements HttpInterceptor {
+export class HttpInterceptorService implements HttpInterceptor {
   constructor(
     private errorDialogService: ErrorDialogService,
     private loadingDialogService: LoadingDialogService
@@ -26,6 +26,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         console.error("Error from error interceptor", error);
+        
         this.errorDialogService.openDialog(error.message ?? JSON.stringify(error), error.status);
         return throwError(error);
       }),

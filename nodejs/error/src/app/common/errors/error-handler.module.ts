@@ -1,7 +1,7 @@
 import { NgModule, ErrorHandler } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { GlobalErrorHandler } from "./global-error-handler";
-import { HttpErrorInterceptor } from "./http-error.interceptor";
+import { HttpInterceptorService } from "../HttpInterceptorService";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 
 @NgModule({
@@ -9,7 +9,7 @@ import { HTTP_INTERCEPTORS } from "@angular/common/http";
   imports: [CommonModule],
   providers: [
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
-    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }
   ]
 })
 export class ErrorHandlerModule {}

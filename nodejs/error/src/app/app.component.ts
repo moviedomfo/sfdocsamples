@@ -8,15 +8,30 @@ import { StockBE } from './model/stock.model';
 // permmite cambiar la variable obsevada
 import { Observable, Subject, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { authService } from './service/auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'error';
+  title = 'Error handling';
+  
+  isAuthenticated: boolean;
   public stockList: StockBE[];
-  constructor(private http: HttpClient,private stockService:stockService,private commonService:CommonService) {}
+  constructor(private http: HttpClient,
+    private stockService:stockService,
+    private authService:authService) {}
+
+
+  logout() {
+    this.authService.logout('/');
+    
+  }
+
+
+
+
 
   localError() {
     throw Error("The app component has thrown an error!");

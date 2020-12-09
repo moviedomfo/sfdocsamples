@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthenticationService } from './service/authentication.service';
+import { authService } from './service/auth.service';
 import { stockService } from './service/stock.service';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -13,10 +13,16 @@ import { SharedModule } from './common/shared.module';
 import { CoreModule } from './common/core.module';
 import { CommonService } from './service/common.service';
 import { MatNativeDateModule } from '@angular/material/core';
+import { HomeComponent } from './pages/home/home.component';
+import { GameComponent } from './pages/game/game.component';
+
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +42,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     useValue: { appearance: "fill" }
     },
     CommonService,
-    stockService,AuthenticationService],
+    stockService,authService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
