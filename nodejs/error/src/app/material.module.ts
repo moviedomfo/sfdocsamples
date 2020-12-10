@@ -5,7 +5,6 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import {PortalModule} from '@angular/cdk/portal';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {CdkStepperModule} from '@angular/cdk/stepper';
-import {CdkTableModule} from '@angular/cdk/table';
 import {CdkTreeModule} from '@angular/cdk/tree';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatBadgeModule} from '@angular/material/badge';
@@ -41,14 +40,15 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
-import {OverlayModule} from '@angular/cdk/overlay';
+import { MatFormFieldModule } from '@angular/material/form-field';
+//import {OverlayModule} from '@angular/cdk/overlay';
 
 @NgModule({
   exports: [
     A11yModule,
     ClipboardModule,
     CdkStepperModule,
-    CdkTableModule,
+    MatFormFieldModule,
     CdkTreeModule,
     DragDropModule,
     MatAutocompleteModule,
@@ -86,7 +86,7 @@ import {OverlayModule} from '@angular/cdk/overlay';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-    OverlayModule,
+    //OverlayModule,
     PortalModule,
     ScrollingModule,
   ]

@@ -28,15 +28,18 @@ export class authService {
   async  isAuth() {
 
     var currentUser: CurrentLogin = this.getCurrenLoging();
+    
+    const authenticated = currentUser ? true:false;
+    this.isAuthenticated.next(authenticated);
 
-  
-    if (currentUser)
-      this.isAuthenticated.next(true);
-    else
-      this.isAuthenticated.next(false);
-   
+    // if (currentUser)
+    //   this.isAuthenticated.next(authenticated);
+    // else
+    //   this.isAuthenticated.next(false);
+
+      return authenticated;
   }
-
+ 
   
   ///Este método de autenticacion usa jwk contra un rest asp api
   public oauthToken$(userName: string, password: string): Observable<any> {

@@ -8,12 +8,12 @@ import { LoadingDialogComponent } from './comoponents/loading/loading-dialog/loa
 import { ErrorDialogComponent } from './comoponents/error-dialog/error-dialog.component';
 import { LoadingDialogService } from './comoponents/loading/loading-dialog.service';
 import { ErrorDialogService } from './comoponents/error-dialog/error-dialog.service';
-import { LoginComponent } from './login/login.component';
+
 
 const sharedComponents = [LoadingDialogComponent, ErrorDialogComponent];
 
 @NgModule({
-  declarations: [...sharedComponents, LoginComponent],
+  declarations: [...sharedComponents],
   imports: [CommonModule, RouterModule, MaterialModule],
   exports: [...sharedComponents],
   providers: [ErrorDialogService, LoadingDialogService],
