@@ -4,10 +4,10 @@ import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 
 import { MaterialModule } from "../material.module";
-import { LoadingDialogComponent } from './comoponents/loading/loading-dialog/loading-dialog.component';
-import { ErrorDialogComponent } from './comoponents/error-dialog/error-dialog.component';
-import { LoadingDialogService } from './comoponents/loading/loading-dialog.service';
-import { ErrorDialogService } from './comoponents/error-dialog/error-dialog.service';
+import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
+import { LoadingDialogService } from './loading-dialog.service';
+import { ErrorDialogService } from './error-dialog/error-dialog.service';
+import { LoadingDialogComponent } from './loading-dialog/loading-dialog.component';
 
 
 const sharedComponents = [LoadingDialogComponent, ErrorDialogComponent];
@@ -19,4 +19,4 @@ const sharedComponents = [LoadingDialogComponent, ErrorDialogComponent];
   providers: [ErrorDialogService, LoadingDialogService],
   entryComponents: [...sharedComponents]
 })
-export class SharedModule {}
+export class CoreModule {}

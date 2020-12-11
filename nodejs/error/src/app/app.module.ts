@@ -5,11 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { authService } from './service/auth.service';
 import { stockService } from './service/stock.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialModule } from "./material.module";
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from "@angular/material/form-field";
-import { SharedModule } from './common/shared.module';
+import { CoreModule } from './common/core.module';
 import { CommonService } from './service/common.service';
 import { MatNativeDateModule } from '@angular/material/core';
 import { HomeComponent } from './pages/home/home.component';
@@ -17,6 +17,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { GameComponent } from './pages/game/game.component';
 import { PepeComponent } from './pepe/pepe.component';
 import { CommonModule } from '@angular/common';
+import { HttpInterceptorService } from './common/HttpInterceptorService';
 
 
 
@@ -40,10 +41,10 @@ import { CommonModule } from '@angular/common';
     HttpClientModule,
     MaterialModule,
     MatNativeDateModule,
-
-    SharedModule
+    CoreModule
   ],
   providers: [  
+    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
     {
     provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
     useValue: { appearance: "fill" }
