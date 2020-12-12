@@ -1,11 +1,10 @@
 import { Injectable, Inject } from '@angular/core';
 
 // permmite cambiar la variable obsevada
-import { Observable, Subject } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { IContextInformation } from '../model/common.model';
+import { HttpClient,  HttpParams } from '@angular/common/http';
 import { StockBE } from '../model/stock.model';
 import { AppConstants } from '../model/common.constants';
 import { CommonService } from './common.service';
@@ -14,7 +13,7 @@ import { CommonService } from './common.service';
 @Injectable()
 export class stockService {
 
-  private contextInfo: IContextInformation;
+
   
   //public currentstockChange_subject$: Subject<ProviderBE> = new Subject<ProviderBE>();
 

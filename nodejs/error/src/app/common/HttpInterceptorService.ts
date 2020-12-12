@@ -28,12 +28,26 @@ export class HttpInterceptorService implements HttpInterceptor {
   intercept( request: HttpRequest<any>,    next: HttpHandler  ): Observable<HttpEvent<any>> {
 
     this.loadingDialogService.openDialog();
-
+    let req;
+    if(request.body.includes( '/api/security/authenticate'))
+    {
+      req = request.clone(
+        {
+          setHeaders: {
+            'Content-Type': 'application/json; charset=utf-8',
+            Accept: 'application/json',
+            'securityProviderName':AppConstants.oaut_securityProviderName,
+            'Access-Control-Allow-Methods': '*',
+            'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With',
+            'Access-Control-Allow-Origin': '*'
+          }
+        });
+    }
     //let headers = this.get_AuthorizedHeader();
    
-    let req;
+  
     //if contains any call to our  API
-    if(request.url.includes(AppConstants.AppAPI_URL)) 
+    if(!req && request.url.includes(AppConstants.AppAPI_URL)) 
     {
       let currentLogin: CurrentLogin =  this.getCurrenLoging();
      

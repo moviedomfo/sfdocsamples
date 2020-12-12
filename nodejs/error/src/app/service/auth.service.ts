@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { AppConstants } from "../model/common.constants";
 import { map, catchError } from 'rxjs/operators';
 import { BehaviorSubject, Observable, Subject, throwError } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import jwt_decode from "jwt-decode";
 import { AuthenticateResponse, CurrentLogin, SecurityUser } from '../model/securityIdentity.model';
@@ -19,7 +19,8 @@ export class AuthService {
   // public logingChange_subject$: Subject<logingChange> = new Subject<logingChange>();
 
 
-  constructor(private commonService: CommonService, private http: HttpClient,private router: Router) {
+  constructor(private commonService: CommonService,
+     private http: HttpClient,private router: Router) {
 
   }
 
@@ -74,7 +75,7 @@ export class AuthService {
 
 
           return currentLogin;
-        })).pipe(catchError(this.commonService.handleError));
+        }));//.pipe(catchError(this.commonService.handleError));
 
   }
 
@@ -156,6 +157,26 @@ export class AuthService {
 
   }
 
+  retriveStock2$():  Observable<any> {
+
+
+    
+    const httpParams = new HttpParams()
+      .set(`searchText`, '')
+      .set(`stockType`, '');
+
+   
+    let outhHeader = this.commonService.get_AuthorizedHeader();
+
+     return this.http.get<any>(`${AppConstants.AppAPI_URL}stock/retriveAll`, { headers: outhHeader, params: httpParams }).pipe(
+       map(res => {
+
+         return res;
+       }));
+ 
+
+
+  }
 
 
 

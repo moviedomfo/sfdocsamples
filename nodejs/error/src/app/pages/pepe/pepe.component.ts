@@ -36,18 +36,23 @@ export class PepeComponent implements OnInit {
   }
 
   async authenticate() {
+
+    // this.authService.retriveStock2$().subscribe(res=>{
+    //     alert('todo ok');
+    // });
+    // return;
     this.loginInvalid = false;
 
-    // if (this.form.valid) {
+    
       try {
 
-        await this.authService.oauthToken$(this.userName, this.password);
+        this.authService.oauthToken$(this.userName, this.password).subscribe(res=>{
+               alert('todo ok');
+           });
       } catch (err) {
         this.loginInvalid = true;
       }
-    // } else {
-    //   this.formSubmitAttempt = true;
-    // }
+   
   }
 
 }
