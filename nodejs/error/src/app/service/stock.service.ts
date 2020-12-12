@@ -38,18 +38,49 @@ export class stockService {
       .set(`searchText`, searchText)
       .set(`stockType`, stockTypeTxt);
 
-    let outhHeader = this.commonService.get_AuthorizedHeader();
+      return this.http.get<StockBE[]>(`${AppConstants.AppAPI_URL}stock/retriveAll`, { params: httpParams }).pipe(
+        map(res => {
+  
+          return res;
+        }));
+        
 
-    return this.http.get<StockBE[]>(`${AppConstants.AppAPI_URL}stock/retriveAll`, { headers: outhHeader, params: httpParams }).pipe(
-      map(res => {
+    //let outhHeader = this.commonService.get_AuthorizedHeader();
 
-        return res;
-      }));
-      // })).pipe(catchError(handleError));
+    // return this.http.get<StockBE[]>(`${AppConstants.AppAPI_URL}stock/retriveAll`, { headers: outhHeader, params: httpParams }).pipe(
+    //   map(res => {
+
+    //     return res;
+    //   }));
+    //   })).pipe(catchError(handleError));
 
 
   }
+  retriveStock2$(searchText: string, stockType?: number):  Observable<StockBE[]> {
 
+    if (!searchText)
+      searchText = '';
+    
+    let stockTypeTxt = '';
+    if(stockType)
+        stockTypeTxt= stockType.toString();
+    
+    const httpParams = new HttpParams()
+      .set(`searchText`, searchText)
+      .set(`stockType`, stockTypeTxt);
+
+   
+    let outhHeader = this.commonService.get_AuthorizedHeader();
+
+     return this.http.get<StockBE[]>(`${AppConstants.AppAPI_URL}stock/retriveAll`, { headers: outhHeader, params: httpParams }).pipe(
+       map(res => {
+
+         return res;
+       }));
+    //   })).pipe(catchError(handleError));
+
+
+  }
 
   // private handleError(httpError:HttpErrorResponse){
 

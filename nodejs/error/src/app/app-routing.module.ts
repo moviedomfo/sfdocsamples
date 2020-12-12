@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PepeComponent } from './pepe/pepe.component';
+import { PepeComponent } from './pages/pepe/pepe.component';
 import { HomeComponent } from './pages/home/home.component';
 
 

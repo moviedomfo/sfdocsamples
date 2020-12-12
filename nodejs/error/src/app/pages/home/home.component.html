@@ -1,4 +1,17 @@
-<p>home works!</p>
 
-<input type="text" class="form-control" name="txtProviderName" placeholder="Nombre o Razon social"
-[(ngModel)]="Name">
+
+<div class="content-container">
+    <button mat-raised-button (click)="localError()">Local front end error</button>
+    <button mat-raised-button (click)="failingRequest()">Server request with error</button>
+    <button mat-raised-button (click)="successfulRequest()">Successful request showing loading spinner</button>
+
+
+
+
+    <div class="mdc-form-field">
+        <button mat-stroked-button color="primary" (click)="retriveStock()">Retrive Stock</button>
+    </div>
+    <div class="mdc-form-field">
+        <button mat-stroked-button color="warning" (click)="retriveStock2()">Retrive Stock 2</button>
+    </div>
+</div>

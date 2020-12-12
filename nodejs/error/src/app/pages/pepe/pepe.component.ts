@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { authService } from '../service/auth.service';
+import { AuthService } from 'src/app/service/auth.service';
+
 
 @Component({
   selector: 'app-pepe',
@@ -17,7 +18,7 @@ export class PepeComponent implements OnInit {
   
     private route: ActivatedRoute,
     private router: Router,
-    private authService: authService
+    private authService: AuthService
   ) {
   }
 

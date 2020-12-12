@@ -26,8 +26,7 @@ export  const AppConstants={
     AppVersion:environment.version,
      AppAPI_URL:environment.App_BaseURL + "api/",
      Culture:environment.culture,
-     AppExecuteAPI_URL: environment.App_BaseURL  + 'api/fwk/execute/',
-     AppExecuteWhiteListAPI_URL: environment.App_BaseURL  + 'api/fwk/executeWhiteList/',
+
      
      AppOAuth_BaseUrl: environment.AppOAuth_BaseUrl , 
      AppOAuth_URL: environment.AppOAuth_BaseUrl +  "api/security/authenticate", 
@@ -37,7 +36,7 @@ export  const AppConstants={
      //httpOptions:options,
      httpClientOption_form_urlencoded:{headers:header_httpClient_form_urlencoded},
      httpClientOption_contenttype_json:{headers:header_httpClient_contentTypeJson},
-     DefaultHealthInstitutionId:   'a92a227f-f39a-4ad5-b726-4a84963e5dd3',
+     DefaultInstitutionId:   'a92a227f-f39a-4ad5-b726-4a84963e5dd3',
      oaut_client_id: environment.oaut_client_id,
      oaut_client_secret:environment.oaut_client_secret, 
      oaut_securityProviderName:environment.oaut_securityProviderName,

@@ -21,46 +21,28 @@
 <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
   <mat-icon>menu</mat-icon>
 </button>
+
 </mat-toolbar>
+
+
 <mat-menu x-position="before" #menu="matMenu">
-<button mat-menu-item routerLink="/">
-  <mat-icon>home</mat-icon>
-  Home
-</button>
-<button mat-menu-item routerLink="/game">
-  <mat-icon>gamepad</mat-icon>
-  Play
-</button>
-<button mat-menu-item routerLink="/login" *ngIf="!isAuthenticated">
-  <mat-icon>power_settings_new</mat-icon>
-  Login
-</button>
-<button mat-menu-item *ngIf="isAuthenticated" (click)="logout()">
-  <mat-icon>exit_to_app</mat-icon>
-  Logout
-</button>
+  <button mat-menu-item routerLink="/">
+      <mat-icon>home</mat-icon>
+      Home
+  </button>
+  <button mat-menu-item routerLink="/game">
+      <mat-icon>gamepad</mat-icon>
+      Play
+  </button>
+  <button mat-menu-item routerLink="/login" *ngIf="!isAuthenticated">
+      <mat-icon>power_settings_new</mat-icon>
+      Login
+  </button>
+  <button mat-menu-item *ngIf="isAuthenticated" (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+      Logout
+  </button>
 </mat-menu>
-
-<div class="content-container">
-	<button mat-raised-button (click)="localError()">Local front end error</button>
-	<button mat-raised-button (click)="failingRequest()">Server request with error</button>
-  <button mat-raised-button (click)="successfulRequest()">Successful request showing loading spinner</button>
-  
-
-
-  
-<div class="mdc-form-field">
-  <button mat-stroked-button color="primary" (click)="retriveStock()">Retrive Stock</button>
-
-
-</div>
-<div>
-  <button mat-stroked-button disabled>Disabled</button>
-  <button class="mui-btn mui-btn--primary" disabled>Button</button>
-  <button class="mui-btn mui-btn--danger" disabled>Button</button>
-  <button class="mui-btn mui-btn--accent" disabled>Button</button>
-</div>
-</div>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->

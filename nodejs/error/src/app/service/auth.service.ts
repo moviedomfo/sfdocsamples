@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 
 
 @Injectable()
-export class authService {
+export class AuthService {
  
   public isAuthenticated = new BehaviorSubject<boolean>(false);
 
@@ -69,7 +69,7 @@ export class authService {
           currentLogin.currentUser.UserName = userName;
      
 
-          localStorage.setItem('currentLogin', JSON.stringify(currentLogin));
+          localStorage.setItem('currentLoginDemo', JSON.stringify(currentLogin));
          
 
 
@@ -80,7 +80,7 @@ export class authService {
 
   public oauthRefreshToken$(returnUrl: string): Observable<any> {
 
-    let currentLogin: CurrentLogin = JSON.parse(localStorage.getItem('currentLogin'));
+    let currentLogin: CurrentLogin = JSON.parse(localStorage.getItem('currentLoginDemo'));
 
 
 
@@ -109,7 +109,7 @@ export class authService {
             currentLogin.currentUser.UserName = currentLogin.currentUser.UserName;
 
 
-            localStorage.setItem('currentLogin', JSON.stringify(currentLogin));
+            localStorage.setItem('currentLoginDemo', JSON.stringify(currentLogin));
           
   
   
@@ -124,7 +124,7 @@ export class authService {
   // signOut(): void {
   //   // clear token remove user from local storage to log user out
 
-  //   localStorage.removeItem('currentLogin');
+  //   localStorage.removeItem('currentLoginDemo');
   //   let lcRes: logingChange = new logingChange();
   //   lcRes.isLogued = false;
   //   lcRes.returnUrl = '';
@@ -135,7 +135,7 @@ export class authService {
   async logout(redirect: string) {
     try {
       //await this.signOut();
-      localStorage.removeItem('currentLogin');
+      localStorage.removeItem('currentLoginDemo');
       this.isAuthenticated.next(false);
       this.router.navigate([redirect]);
     } catch (err) {
@@ -145,7 +145,7 @@ export class authService {
   
   public getCurrenLoging(): CurrentLogin {
     var currentLogin: CurrentLogin;
-    let str = localStorage.getItem('currentLogin');
+    let str = localStorage.getItem('currentLoginDemo');
     if (str) {
       currentLogin = JSON.parse(str);
      
