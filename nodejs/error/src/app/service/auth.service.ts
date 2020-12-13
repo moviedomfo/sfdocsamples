@@ -56,6 +56,8 @@ export class AuthService {
 
     return this.http.post<any>(AppConstants.AppOAuth_URL,
       bussinesData, AppConstants.httpClientOption_contenttype_json).pipe(
+           //return this.http.post<any>(AppConstants.AppOAuth_URL,  bussinesData).pipe(
+
         map(res => {
 
           let currentLogin: CurrentLogin = new CurrentLogin();
@@ -75,7 +77,7 @@ export class AuthService {
 
 
           return currentLogin;
-        }));//.pipe(catchError(this.commonService.handleError));
+        }));
 
   }
 

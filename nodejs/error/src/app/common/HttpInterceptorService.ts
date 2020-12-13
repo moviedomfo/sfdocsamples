@@ -29,19 +29,22 @@ export class HttpInterceptorService implements HttpInterceptor {
 
     this.loadingDialogService.openDialog();
     let req;
-    if(request.body.includes( '/api/security/authenticate'))
+    
+    const url = `${AppConstants.AppAPI_URL}security/authenticate`;
+
+    if(request.url.includes(url))
     {
-      req = request.clone(
-        {
-          setHeaders: {
-            'Content-Type': 'application/json; charset=utf-8',
-            Accept: 'application/json',
-            'securityProviderName':AppConstants.oaut_securityProviderName,
-            'Access-Control-Allow-Methods': '*',
-            'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With',
-            'Access-Control-Allow-Origin': '*'
-          }
-        });
+      req = request.clone();
+      // req = request.clone(
+      //   {
+      //     setHeaders: {
+      //       'Content-Type': 'application/json; charset=utf-8',
+      //       Accept: 'application/json',
+      //       'Access-Control-Allow-Methods': '*',
+      //       'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With',
+      //       'Access-Control-Allow-Origin': '*'
+      //     }
+      //   });
     }
     //let headers = this.get_AuthorizedHeader();
    
@@ -80,27 +83,49 @@ export class HttpInterceptorService implements HttpInterceptor {
     
 
     return next.handle(req).pipe(
-      catchError((error: HttpErrorResponse) => {
+      catchError((httpError: HttpErrorResponse) => {
 
         //Bearer error="invalid_token", error_description="The token expired at '12/12/2020 14:55:34'"
         //error.error.
-        alert(error.status);
-        console.error("Error from error interceptor", error);
+        //alert(error.status);
+        console.error("Error from error interceptor", httpError);
         
          //aqui trabajaremos el error Si es 401 y requiere refresh token o si requiere loging por q el refresh_token expiro
          //requiere refreshtoken
+         let message = httpError.message;
+         if(httpError.error){
+           message =  httpError.error.ExceptionMessage || httpError.error.exceptionMessage || httpError.error.Message;
 
-         //requiere loging this.authService.logout('/login'); 
-        if(error.status === 401){
-          this.authService.logout('/login');
-          this.loadingDialogService.hideDialog();
+            
+          if (httpError.error.InnerException) {
+           message = message + "\r\n" + httpError.error.ExceptionMessage || httpError.error.InnerException.exceptionMessage || httpError.error.InnerException.Message;
+           }
+          }
+         
+       
+
+        if(httpError.status === 401){
+
+          if(httpError.error)
+          {
+            //user not exist
+            if(httpError.error.ErrorId === '450')
+            {
+              message = httpError.error.Message;
+            }
+              
+              this.authService.logout('/login');
+              this.loadingDialogService.hideDialog();
+            
+          }
+          
         }
         
-        this.errorDialogService.openDialog(error.message ?? JSON.stringify(error), error.status);
+        this.errorDialogService.openDialog(message ?? JSON.stringify(httpError), httpError.status);
 
        
 
-        return throwError(error);
+        return throwError(httpError);
       }),
       finalize(() => {
         this.loadingDialogService.hideDialog();
@@ -125,7 +150,7 @@ export class HttpInterceptorService implements HttpInterceptor {
 
   getCurrenLoging(): CurrentLogin {
     var currentLogin: CurrentLogin;
-    let str = localStorage.getItem('currentLogin');
+    let str = localStorage.getItem('currentLoginDemo');
     if (str) {
       currentLogin = JSON.parse(str);
      

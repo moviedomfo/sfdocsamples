@@ -109,7 +109,7 @@ export class CommonService {
 
   public getCurrenLoging(): CurrentLogin {
     var currentLogin: CurrentLogin;
-    let str = localStorage.getItem('currentLogin');
+    let str = localStorage.getItem('currentLoginDemo');
     if (str) {
       currentLogin = JSON.parse(str);
       return currentLogin;
