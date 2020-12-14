@@ -15,3 +15,10 @@
         <button mat-stroked-button color="warning" (click)="retriveStock2()">Retrive Stock 2</button>
     </div>
 </div>
+
+<ul class="mdc-list" *ngFor="let item of stockList">
+    <li class="mdc-list-item" tabindex="0">
+        <span class="mdc-list-item__ripple"></span>
+        <span class="mdc-list-item__text">{{item.Description}}</span>
+      </li>
+</ul>

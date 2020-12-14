@@ -23,16 +23,12 @@ export class PepeComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/game';
+    //this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/game';
 
-    // this.form = this.fb.group({
-    //   username: ['', Validators.email],
-    //   password: ['', Validators.required]
-    // });
-
-    if (await this.authService.isAuth()) {
-      await this.router.navigate([this.returnUrl]);
-    }
+    
+    // if (await this.authService.isAuth()) {
+    //   await this.router.navigate([this.returnUrl]);
+    // }
   }
 
   async authenticate() {

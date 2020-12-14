@@ -74,18 +74,16 @@ export class AuthService {
 
           localStorage.setItem('currentLoginDemo', JSON.stringify(currentLogin));
          
-
-
           return currentLogin;
         }));
 
   }
 
-  public oauthRefreshToken$(returnUrl: string): Observable<any> {
+  
+  public async oauthRefreshToken$(returnUrl: string): Promise<Observable<any>> {
 
+    alert ('calling oauthRefreshToken');
     let currentLogin: CurrentLogin = JSON.parse(localStorage.getItem('currentLoginDemo'));
-
-
 
       var bussinesData = {
         refresh_token: currentLogin.oAuth.refresh_token,
@@ -105,19 +103,14 @@ export class AuthService {
             currentLogin.oAuth = res;
 
             let tokenInfo = jwt_decode(currentLogin.oAuth.access_token); // decode token
-  
-  
             currentLogin.currentUser = new SecurityUser();
             currentLogin.currentUser.UserId = res.userId;
             currentLogin.currentUser.UserName = currentLogin.currentUser.UserName;
 
-
             localStorage.setItem('currentLoginDemo', JSON.stringify(currentLogin));
-          
-  
   
             return currentLogin;
-          })).pipe(catchError(this.commonService.handleError));
+          }));//.pipe(catchError(this.commonService.handleError));
 
   }
 

@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
     private authService:AuthService) {}
 
   ngOnInit(): void {
+    this.stockList = [];
   }
 
 
