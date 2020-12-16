@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { tap } from 'rxjs/operators';
 import { StockBE } from 'src/app/model/stock.model';
 import { AuthService } from 'src/app/service/auth.service';
 import { stockService } from 'src/app/service/stock.service';
@@ -42,11 +43,7 @@ export class HomeComponent implements OnInit {
     stockList$.subscribe(
       res => {
         this.stockList = res;
-     },
-      err => {
-       console.log(err);
-      }
-    );
+     });
   }
   retriveStock2() {
     
@@ -54,10 +51,42 @@ export class HomeComponent implements OnInit {
     stockList$.subscribe(
       res => {
         this.stockList = res;
-     },
-      err => {
-       console.log(err);
-      }
+     }
+      // err => {
+      //  console.log(err);
+      // }
     );
   }
+
+
+  oauthToken() {
+    
+     this.authService.oauthToken$('moviedo','123456').subscribe(
+      res => {
+          alert('llamada a oauthToken ok');
+     });
+
+    //  this.authService.oauthRefreshToken$().subscribe(
+    //   res => {
+    //       alert('llamada a refreshTk ok');
+    //  });
+  }
+
+  refreshTk(){
+
+    //tab doesn't consime the observable subscriber 
+    // subscribe  does execute the observable, tab just obvserve the response
+  //  return   this.authService.oauthRefreshToken$().pipe(
+  //      tap(()=>{
+  //       alert('llamada a refreshTk ok');
+  //      })
+  //    );
+     return   this.authService.oauthRefreshToken$().subscribe(
+      res => {
+        alert('llamada a oauthRefreshToken ok');
+       });
+  
+   
+  }
+
 }

@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable, Subject, throwError } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 import jwt_decode from "jwt-decode";
-import { AuthenticateResponse, CurrentLogin, SecurityUser } from '../model/securityIdentity.model';
+import { AuthenticateResponse, CurrentLogin, logingChange, SecurityUser } from '../model/securityIdentity.model';
 import { CommonService } from './common.service';
 import { Router } from '@angular/router';
 
@@ -16,7 +16,8 @@ export class AuthService {
  
   public isAuthenticated = new BehaviorSubject<boolean>(false);
 
-  // public logingChange_subject$: Subject<logingChange> = new Subject<logingChange>();
+  public logingChange_subject$: Subject<logingChange> = new Subject<logingChange>();
+
 
 
   constructor(private commonService: CommonService,
@@ -24,6 +25,12 @@ export class AuthService {
 
   }
 
+
+  get_logingChange$(): Observable<logingChange> {
+    return this.logingChange_subject$.asObservable();
+  }
+
+ 
 
   //modo de uso ->  async metodo(){ this.isAuthenticated = await this.authService.checkAuthenticated();}
   async  isAuth() {
@@ -56,8 +63,6 @@ export class AuthService {
 
     return this.http.post<any>(AppConstants.AppOAuth_URL,
       bussinesData, AppConstants.httpClientOption_contenttype_json).pipe(
-           //return this.http.post<any>(AppConstants.AppOAuth_URL,  bussinesData).pipe(
-
         map(res => {
 
           let currentLogin: CurrentLogin = new CurrentLogin();
@@ -80,22 +85,24 @@ export class AuthService {
   }
 
   
-  public async oauthRefreshToken$(returnUrl: string): Promise<Observable<any>> {
+  public  oauthRefreshToken$(): Observable<any> {
 
-    alert ('calling oauthRefreshToken');
+   
     let currentLogin: CurrentLogin = JSON.parse(localStorage.getItem('currentLoginDemo'));
 
       var bussinesData = {
+
         refresh_token: currentLogin.oAuth.refresh_token,
         grant_type: 'refresh_token',
         client_id: AppConstants.oaut_client_id,
         securityProviderName: AppConstants.oaut_securityProviderName,
         client_secret: AppConstants.oaut_client_secret
       }
-  
 
-      return this.http.post<any>(AppConstants.AppOAuth_URL,
-        bussinesData, AppConstants.httpClientOption_contenttype_json).pipe(
+
+      // return this.http.post<any>(AppConstants.AppOAuth_URL,
+      //   bussinesData, AppConstants.httpClientOption_contenttype_json).pipe(
+    return this.http.post<any>(AppConstants.AppOAuth_URL,bussinesData).pipe(
           map(res => {
   
             let currentLogin: CurrentLogin = new CurrentLogin();
@@ -109,31 +116,29 @@ export class AuthService {
 
             localStorage.setItem('currentLoginDemo', JSON.stringify(currentLogin));
   
-            return currentLogin;
+         
           }));//.pipe(catchError(this.commonService.handleError));
 
   }
 
 
 
+  signOut(): void {
+    // clear token remove user from local storage to log user out
 
-  // signOut(): void {
-  //   // clear token remove user from local storage to log user out
+    this.logout();
+    let lc: logingChange = new logingChange();
+    lc.isLogued = false;
+    lc.returnUrl = '';
+    this.logingChange_subject$.next(lc);
+  }
 
-  //   localStorage.removeItem('currentLoginDemo');
-  //   let lcRes: logingChange = new logingChange();
-  //   lcRes.isLogued = false;
-  //   lcRes.returnUrl = '';
-  //   this.logingChange_subject$.next(lcRes);
-  // }
-
-
-  async logout(redirect: string) {
+  async logout() {
     try {
       //await this.signOut();
       localStorage.removeItem('currentLoginDemo');
       this.isAuthenticated.next(false);
-      this.router.navigate([redirect]);
+      this.router.navigate(['login']);
     } catch (err) {
       console.error("authService logout error " + err);
     }

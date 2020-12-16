@@ -35,20 +35,7 @@ import { CurrentLogin, logingChange } from '../model/securityIdentity.model';
 export class CommonService {
   constructor(private http: HttpClient, private router: Router) {}
 
-  public logingChange_subject$: Subject<logingChange> = new Subject<logingChange>();
-  get_logingChange$(): Observable<logingChange> {
-    return this.logingChange_subject$.asObservable();
-  }
 
-  signOut(): void {
-    // clear token remove user from local storage to log user out
-
-    localStorage.removeItem('currentLogin');
-    let lcRes: logingChange = new logingChange();
-    lcRes.isLogued = false;
-    lcRes.returnUrl = '';
-    this.logingChange_subject$.next(lcRes);
-  }
 
   // retornra el objeto Request de un URLSearchParams: Este contiene las siguientes clases
   //  SecurityProviderName?: string;
@@ -118,7 +105,7 @@ export class CommonService {
   }
   ///Error inspection, interpretation, and resolution is something you want to do in the service, not in the component.
   public handleError(httpError: HttpErrorResponse | any) {
-    console.log(httpError);
+    
     let ex: ServiceError = new ServiceError();
     ex.Machine = 'PC-Desarrollo';
     // A client-side or network error occurred. Handle it accordingly.
@@ -158,7 +145,7 @@ export class CommonService {
         ex.Message =
           'No está autorizado para realizar esta acción. Intente iniciar sesion nuevamente, si el problema persiste, por favor comuníquese con el administrador';
         alert(ex.Message);
-        this.signOut();
+        //this.signOut();
 
         return;
       }
@@ -209,25 +196,12 @@ export class CommonService {
     return ex;
   }
 
-  public handleErrorObservable(error: ServiceError) {
-    console.error(error.Message || error);
-    return Observable.throw(error.Message);
-  }
+
   public handleErrorPromise(error: Response | any) {
     return Promise.reject(error.message || error);
   }
 
-  public handleHttpError(error) {
-    console.log(JSON.stringify(error));
-    if (error.status == '401') {
-      //Error de permisos
-      this.router.navigate(['login']);
-    } else {
-      console.log('Oto error status : ' + error.status);
-    }
 
-    return Observable.throw(error._body);
-  }
   //cuando se le pasa un byte[] retorna su base64 string
   public convert_byteArrayTobase64(arrayBuffer: ArrayBuffer): string {
     var base64String = btoa(
