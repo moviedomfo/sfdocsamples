@@ -69,20 +69,25 @@ export class HttpInterceptorService implements HttpInterceptor {
         if (httpError.status === 401) {
           
           showDialog = false;
+               //si refresh token caduca se envia a loging nuevamente
+               if (httpError.error && httpError.error.ErrorId === '460') {
+                this.authService.logout();
+            
+              }
           this.refreshToken()
           .pipe(
              switchMap(() => {
-               //No tenemos que setrear el header ya que el mismo servicio authService.oauthRefreshToken lo hace
-                return next.handle(req);
+           
+              
+            //No tenemos que setrear el header ya que el mismo servicio authService.oauthRefreshToken lo hace
+              return next.handle(req);
+              
+               
              })
            
           );
           
-          //si refresh token caduca se envia a loging nuevamente
-          if (httpError.error && httpError.error.ErrorId === '460') {
-            this.authService.logout();
-            
-          }
+       
          
           
           
@@ -108,12 +113,11 @@ export class HttpInterceptorService implements HttpInterceptor {
 
     //tab doesn't consime the observable subscriber 
     // subscribe  does execute the observable, tab just obvserve the response
-   return   this.authService.oauthRefreshToken$().pipe(
-       tap(()=>{
-          console.log("refreshToken ");
-       })
-     );
-    
+
+     return   this.authService.oauthRefreshToken$().subscribe(
+      res => {
+        alert('llamada a oauthRefreshToken ok');
+       });
   }
 
 
