@@ -1,4 +1,5 @@
 using fwk.template.api.common;
+using pelsoft.api.be;
 using pelsoft.api.models;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace pelsoft.api
+namespace pelsoft.api.dac
+
 {
     public class pelsoftDAC
     {

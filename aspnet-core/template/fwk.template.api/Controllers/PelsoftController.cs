@@ -29,17 +29,17 @@ namespace pelsoft.api.Controllers
         [HttpPost("[action]")]
         public IActionResult ReciveAction(ReciveActionReq req)
         {
-            try
-            {
-                //service.ReciveAction(req);
+            //try
+            //{
+                _service.ReciveAction(req);
 
                 return Ok("Se ejecuto correctamente ReciveAction (post)");
-            }
-            catch (Exception ex)
-            {
-                _logService.LogError_asynk(ex);
-                return BadRequest(ex.Message);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //   // _logService.LogError_asynk(ex);
+            //    return BadRequest(ex.Message);
+            //}
         }
 
         [HttpGet("[action]")]
@@ -52,8 +52,8 @@ namespace pelsoft.api.Controllers
             }
             catch (Exception ex)
             {
-                _logService.LogError_asynk(ex);
-                return BadRequest(ex.Message);
+                var apiErrRes = new ApiErrorResponse(null, ex);
+                return StatusCode(apiErrRes.StatusCode, apiErrRes);
             }
         }
 

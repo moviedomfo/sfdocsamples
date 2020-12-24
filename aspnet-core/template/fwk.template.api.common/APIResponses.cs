@@ -1,3 +1,4 @@
+using Fwk.Exceptions;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -17,60 +18,150 @@ namespace fwk.template.api.common
             Result = result;
         }
     }
+
     public class ApiErrorResponse : ApiResponse
     {
-        string errorId = null;
-        string errorType = null;
-        public ApiErrorResponse(HttpStatusCode statusCode, string message = null,string errorId=null) : base((int)statusCode, message)
+        public string ErrorId { get; set; }
+        //string errorType = null;
+        public ApiErrorResponse(HttpStatusCode statusCode, string message = null, string errorId = null) : base((int)statusCode, message)
         {
+
         }
-        //public ApiErrorResponse(int statusCode, Exception ex) : base(statusCode)
-        //{
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="statusCode"></param>
+        /// <param name="ex"></param>
+        public ApiErrorResponse(int? statusCode, Exception ex) : base(statusCode)
+        {
+
+            setMessageAndStatus(ex);
+
+            if (!statusCode.HasValue && !string.IsNullOrEmpty(ErrorId))
+            {
+                int id;
+                int.TryParse(ErrorId, out id);
+                if (id >= 400 && id < 500)
+                {
+                    this.StatusCode = (int)HttpStatusCode.Unauthorized;
+                    return;
+                }
 
 
+                this.StatusCode = (int)HttpStatusCode.InternalServerError;
+            }
 
-        //}
+        }
 
         public IEnumerable<string> Errors { get; }
 
-        //public ApiErrorResponse(ModelStateDictionary modelState)
-        //    : base(400)
-        //{
-        //    if (modelState.IsValid)
-        //    {
-        //        throw new ArgumentException("ModelState must be invalid", nameof(modelState));
-        //    }
 
-        //    Errors = modelState.SelectMany(x => x.Value.Errors)
-        //        .Select(x => x.ErrorMessage).ToArray();
-        //}
+
+        void setMessageAndStatus(Exception ex)
+        {
+
+            //if (ex.GetType() == typeof(HttpResponseException))
+            //        msg = ex.Message;
+            //return msg = ex.Message;
+            if (ex.GetType() == typeof(FunctionalException))
+            {
+                var te = ex as FunctionalException;
+
+                this.Message = te.Message;
+                this.ErrorId = te.ErrorId;
+            }
+            if (ex.GetType() == typeof(TechnicalException))
+            {
+                var te = ex as TechnicalException;
+
+                this.Message = te.Message;
+                this.ErrorId = te.ErrorId;
+            }
+
+            if (ex.InnerException != null)
+            {
+
+                this.Message = this.Message + ex.InnerException.Message;
+                if (ex.InnerException.GetType() == typeof(System.Net.Sockets.SocketException))
+                {
+                    var e = ex.InnerException as System.Net.Sockets.SocketException;
+                    if (e.ErrorCode == 10060)
+                        this.Message = "La url no es accesible " + Environment.NewLine + this.Message;
+                }
+                //if (ex.InnerException.GetType() == typeof(WebExcepcion))
+                //{
+                //    var e = ex.InnerException as System.Net.Sockets.SocketException;
+                //    if (e.ErrorCode == 10060)
+                //        msg = "WAPI wapiAppSettings.apiConfig.apiDomain no es accesible " + Environment.NewLine + msg;
+                //}
+            }
+
+            else
+                this.Message = ex.Message;
+
+
+        }
+
+
+
+
+
     }
     public class ApiResponse
     {
-        public int StatusCode { get; }
+        public int StatusCode { get; set; }
+        public HttpStatusCode StatusEnum { get; set; }
 
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string Message { get; }
+        public string Message { get; set; }
 
-        public ApiResponse(int statusCode, string message = null)
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="statusCode"></param>
+        /// <param name="message"></param>
+
+        public ApiResponse(int? statusCode, string message = null)
         {
-            StatusCode = statusCode;
+            if (!statusCode.HasValue)
+                statusCode = (int)HttpStatusCode.InternalServerError;
+
+            StatusCode = statusCode.Value;
+            StatusEnum = (HttpStatusCode)statusCode.Value;
             Message = message ?? GetDefaultMessageForStatusCode(statusCode);
         }
 
-        private static string GetDefaultMessageForStatusCode(int statusCode)
+
+
+
+        private string GetDefaultMessageForStatusCode(int? statusCode)
         {
+            if (statusCode.HasValue)
+            {
+                //var lista = (HttpStatusCode[])Enum.GetValues(typeof(HttpStatusCode));
+                var status = Enum.GetValues(typeof(HttpStatusCode)).Cast<HttpStatusCode>();
+
+                if (status.Any(i => i == (HttpStatusCode)statusCode))
+                    return ReasonPhrases.GetReasonPhrase(statusCode.Value);
+            }
+
+
             switch (statusCode)
             {
 
-                case 404:
-                    return "Resource not found";
-                case 500:
-                    return "An unhandled error occurred";
+                case 450:
+                    return "User not found";
+                case 451:
+                    return "User or password incorrect";
                 default:
                     return null;
             }
         }
 
+
+
     }
+
 }

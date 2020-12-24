@@ -4,17 +4,64 @@
         <name>fwk.template.api</name>
     </assembly>
     <members>
-        <member name="T:pelsoft.api.service.pelsoftService">
+        <member name="M:pelsoft.api.Controllers.SecurityController.Authenticate(System.String,System.String,System.String)">
             <summary>
-            El nombre de esta clase podria ser generico si es que se utilizara la misma para todas las empresas 
-            De momento se usa la implementcion epesifica de la interfaz para cada negocio
+            Verifica un usuario (MOCK), y genera un access y refresh token correspondientes.
             </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <param name="securityProvider"></param>
+            <returns></returns>
         </member>
-        <member name="M:pelsoft.api.service.pelsoftService.ReciveAction(pelsoft.api.models.ReciveActionReq)">
+        <member name="M:pelsoft.api.Controllers.SecurityController.RefreshToken(System.String,System.String,System.String)">
             <summary>
-            
+            Obtiene los datos asociados al usuario identificado en el refresh_token, y genera un nuevo Access Token y Refresh Token
             </summary>
-            <param name="req"></param>
+            <param name="refresh_token"></param>
+            <param name="ipAddress"></param>
+            <param name="securityProvider"></param>
+            <returns></returns>
+        </member>
+        <member name="M:pelsoft.api.dac.pelsoftDAC.Insert(pelsoft.api.models.ReciveActionReq)">
+            <summary>
+            Inserta socio
+            </summary>
+            <param name="reciveAction"></param>
+        </member>
+        <member name="M:pelsoft.api.dac.pelsoftDAC.Get_Facebook_Account(System.String)">
+            <summary>
+            Si el canal es “Facebook” se ejecuta el siguiente sp
+            </summary>
+            <param name="owner"></param>
+            <returns></returns>
+        </member>
+        <member name="M:pelsoft.api.dac.pelsoftDAC.Get_AccountDetail(System.Guid)">
+            <summary>
+            Si el canal es “Facebook” se ejecuta el siguiente sp
+            -	Se obtienen datos particulares de la cuenta
+            </summary>
+            <param name="accountDetailUnique"></param>
+            <returns></returns>
+        </member>
+        <member name="M:pelsoft.api.dac.pelsoftDAC.Get_ApplicationSettings(System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            -	Se obtiene el id del usuario de pelsoft
+            </summary>
+            <param name="settingId">: Identificador para obtener el usuario de pelsoft. Se pasa el valor 183</param>
+            <param name="accountId">Identificador de la Unidad de negocio</param>
+            <returns></returns>
+        </member>
+        <member name="M:pelsoft.api.dac.pelsoftDAC.crear_caso(pelsoft.api.AccountDetail,pelsoft.api.be.ApplicationSettings,System.String,System.Guid,System.String,System.Int32)">
+            <summary>
+            -	Se busca el caso relacionado al usuario de la red social para luego liberar o cerrar, de acuerdo a la acción recibida.
+            </summary>
+            <param name="accountDetail"></param>
+            <param name="applicationSettings"></param>
+            <param name="action">Identificador obtenido al insertar el registro recibido por pelsoft</param>
+            <param name="accountDetailUnique">Identificador de la Unidad de negocio</param>
+            <param name="sourceUserId">Identificador de la Unidad de negocio</param>
+            <param name="receivedUserId"> Se pasa el valor del parámetro obtenido del sp [Apipelsoft].[ReceivedUser_i]</param>
+            <returns></returns>
         </member>
         <member name="M:pelsoft.api.middleware.ErrorHandlerMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
             <summary>
@@ -76,51 +123,27 @@
             <param name="builder"></param>
             <returns></returns>
         </member>
+        <member name="T:pelsoft.api.models.loginResult">
+            <summary>
+            kcrm auth result
+            </summary>
+        </member>
         <member name="P:pelsoft.api.models.ReciveActionReq.source_userid">
             <summary>
             Identificador del usuario en la red social. 
             </summary>
         </member>
-        <member name="M:pelsoft.api.pelsoftDAC.Insert(pelsoft.api.models.ReciveActionReq)">
+        <member name="T:pelsoft.api.service.pelsoftService">
             <summary>
-            Inserta socio
+            El nombre de esta clase podria ser generico si es que se utilizara la misma para todas las empresas 
+            De momento se usa la implementcion epesifica de la interfaz para cada negocio
             </summary>
-            <param name="reciveAction"></param>
         </member>
-        <member name="M:pelsoft.api.pelsoftDAC.Get_Facebook_Account(System.String)">
+        <member name="M:pelsoft.api.service.pelsoftService.ReciveAction(pelsoft.api.models.ReciveActionReq)">
             <summary>
-            Si el canal es “Facebook” se ejecuta el siguiente sp
+            
             </summary>
-            <param name="owner"></param>
-            <returns></returns>
-        </member>
-        <member name="M:pelsoft.api.pelsoftDAC.Get_AccountDetail(System.Guid)">
-            <summary>
-            Si el canal es “Facebook” se ejecuta el siguiente sp
-            -	Se obtienen datos particulares de la cuenta
-            </summary>
-            <param name="accountDetailUnique"></param>
-            <returns></returns>
-        </member>
-        <member name="M:pelsoft.api.pelsoftDAC.Get_ApplicationSettings(System.Int32,System.Nullable{System.Int32})">
-            <summary>
-            -	Se obtiene el id del usuario de pelsoft
-            </summary>
-            <param name="settingId">: Identificador para obtener el usuario de pelsoft. Se pasa el valor 183</param>
-            <param name="accountId">Identificador de la Unidad de negocio</param>
-            <returns></returns>
-        </member>
-        <member name="M:pelsoft.api.pelsoftDAC.crear_caso(pelsoft.api.AccountDetail,pelsoft.api.ApplicationSettings,System.String,System.Guid,System.String,System.Int32)">
-            <summary>
-            -	Se busca el caso relacionado al usuario de la red social para luego liberar o cerrar, de acuerdo a la acción recibida.
-            </summary>
-            <param name="accountDetail"></param>
-            <param name="applicationSettings"></param>
-            <param name="action">Identificador obtenido al insertar el registro recibido por pelsoft</param>
-            <param name="accountDetailUnique">Identificador de la Unidad de negocio</param>
-            <param name="sourceUserId">Identificador de la Unidad de negocio</param>
-            <param name="receivedUserId"> Se pasa el valor del parámetro obtenido del sp [Apipelsoft].[ReceivedUser_i]</param>
-            <returns></returns>
+            <param name="req"></param>
         </member>
         <member name="M:pelsoft.api.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
             <summary>
