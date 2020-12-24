@@ -1,4 +1,5 @@
 using Fwk.Exceptions;
+using Microsoft.AspNetCore.WebUtilities;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -44,12 +45,12 @@ namespace fwk.template.api.common
                 int.TryParse(ErrorId, out id);
                 if (id >= 400 && id < 500)
                 {
-                    this.StatusCode = (int)HttpStatusCode.Unauthorized;
+                    this.StatusEnum = HttpStatusCode.Unauthorized;
                     return;
                 }
 
 
-                this.StatusCode = (int)HttpStatusCode.InternalServerError;
+                this.StatusEnum = HttpStatusCode.InternalServerError;
             }
 
         }
@@ -110,7 +111,7 @@ namespace fwk.template.api.common
     }
     public class ApiResponse
     {
-        public int StatusCode { get; set; }
+        //public int StatusCode { get; set; }
         public HttpStatusCode StatusEnum { get; set; }
 
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
@@ -128,7 +129,7 @@ namespace fwk.template.api.common
             if (!statusCode.HasValue)
                 statusCode = (int)HttpStatusCode.InternalServerError;
 
-            StatusCode = statusCode.Value;
+            //StatusCode = statusCode.Value;
             StatusEnum = (HttpStatusCode)statusCode.Value;
             Message = message ?? GetDefaultMessageForStatusCode(statusCode);
         }

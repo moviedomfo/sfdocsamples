@@ -45,11 +45,13 @@ namespace pelsoft.api.middleware
         /// <returns></returns>
         private  Task HandleErrorAsync(HttpContext context, Exception exception)
         {
-            var response = new { message = exception.Message };
-            var payload = JsonConvert.SerializeObject(response);
+            //var response = new { message = exception.Message };
+            //var payload = JsonConvert.SerializeObject(response);
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = 400;
-
+            var apiErrRes = new ApiErrorResponse(null, exception);
+            var payload = JsonConvert.SerializeObject(apiErrRes);
+            //return StatusCode(apiErrRes.StatusCode, apiErrRes);
             _logService.LogError_asynk(exception);
             return context.Response.WriteAsync(payload);
         }

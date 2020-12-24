@@ -53,7 +53,7 @@ namespace pelsoft.api.Controllers
             catch (Exception ex)
             {
                 var apiErrRes = new ApiErrorResponse(null, ex);
-                return StatusCode(apiErrRes.StatusCode, apiErrRes);
+                return StatusCode((int)apiErrRes.StatusEnum, apiErrRes);
             }
         }
 
