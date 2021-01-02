@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace pelsoft.auth.models
 {
-    public class mokloging
+    public class MockLogin
     {
         public string user { get;set;}
         public string password { get;set;}

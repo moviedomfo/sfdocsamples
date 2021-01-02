@@ -4,6 +4,12 @@
         <name>fwk.template.api</name>
     </assembly>
     <members>
+        <member name="M:pelsoft.api.Controllers.AuthenticationController.auth(pelsoft.auth.models.AuthenticationRequest)">
+            <summary>
+            </summary>
+            <param name="req"></param>
+            <returns>Retorna JWT</returns>
+        </member>
         <member name="M:pelsoft.api.Controllers.SecurityController.Authenticate(System.String,System.String,System.String)">
             <summary>
             Verifica un usuario (MOCK), y genera un access y refresh token correspondientes.
@@ -97,7 +103,7 @@
             https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/write?view=aspnetcore-5.0
             </summary>
         </member>
-        <member name="M:pelsoft.api.middleware.Logsmiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Configuration.IConfiguration,fwk.template.api.common.IApiLogServices)">
+        <member name="M:pelsoft.api.middleware.Logsmiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Configuration.IConfiguration,pelsoft.api.common.IApiLogServices)">
             <summary>
             
             </summary>

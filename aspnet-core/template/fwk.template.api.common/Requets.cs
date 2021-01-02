@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace fwk.template.api.common
+namespace pelsoft.api.common
 {
     public class Requets
     {

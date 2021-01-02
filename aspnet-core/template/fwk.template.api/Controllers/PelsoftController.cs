@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using pelsoft.api.service;
 using Fwk.Exceptions;
 using fwk.template.api.common;
+using Microsoft.Extensions.Logging;
+using pelsoft.api.common;
 
 namespace pelsoft.api.Controllers
 {
@@ -17,12 +19,14 @@ namespace pelsoft.api.Controllers
     {
         private readonly IpelsoftService _service;
         private readonly IApiLogServices _logService;
-
+        CustomLogger myLogger;
+        
 
         public PelsoftController(IpelsoftService service, IApiLogServices logService)
         {
             _service = service;
             _logService = logService;
+            myLogger = CustomLogger.GetInstance();
         }  
 
 
@@ -57,7 +61,37 @@ namespace pelsoft.api.Controllers
             }
         }
 
+        [HttpPost("[action]")]
+        //[Authorize]
+        public IActionResult log(consoleReq req)
+        {
+            try
+            {
+                //_logger.LogInformation(100,"info");
+                //_logger.LogInformation("info");
+                //_logger.LogWarning(" Warning");
+                //_logger.LogCritical("LogCritical");
+                //_logger.LogError("LogError");
 
+                myLogger.Info("info");
+
+                myLogger.Warning(" Warning " + req.message);
+
+                myLogger.Error("LogError " + req.message);
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ApiErrorResponse(null, ex));
+            }
+        }
+
+    }
+    public class consoleReq
+    {
+
+        public string message { get; set; }
 
     }
 }

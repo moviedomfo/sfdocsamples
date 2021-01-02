@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace fwk.template.api.common
+namespace pelsoft.api.common
 
 {
     public class GenericCompare<T> : IEqualityComparer<T> where T : class

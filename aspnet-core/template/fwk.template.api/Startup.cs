@@ -24,7 +24,7 @@ using pelsoft.api.service;
 using Microsoft.AspNetCore.Http.Extensions;
 using pelsoft.api.middleware;
 using fwk.template.api.common.jwt;
-using fwk.template.api.common;
+using pelsoft.api.common;
 
 namespace pelsoft.api
 {

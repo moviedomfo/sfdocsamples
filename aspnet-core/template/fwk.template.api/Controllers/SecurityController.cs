@@ -4,16 +4,14 @@ using System.Net;
 using pelsoft.api.models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using pelsoft.api.service;
 using Fwk.Exceptions;
-using fwk.template.api.common;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
-using pelsoft.template.models;
 using Fwk.Security.Identity;
 using pelsoft.auth.common;
 using Microsoft.Extensions.Configuration;
 using pelsoft.auth.helpers;
+using pelsoft.auth.models;
 
 namespace pelsoft.api.Controllers
 {
@@ -50,8 +48,8 @@ namespace pelsoft.api.Controllers
 
                     loginResult res = new loginResult
                     {
-                        token = authenticateResponse.JwtToken,
-                        refresh_token = authenticateResponse.RefreshToken
+                        token = authenticateResponse.token,
+                        refresh_token = authenticateResponse.refresh_token
                     };
 
                     return Ok(res);
@@ -62,8 +60,8 @@ namespace pelsoft.api.Controllers
 
                     loginResult res = new loginResult
                     {
-                        token = authenticateResponse.JwtToken,
-                        refresh_token = authenticateResponse.RefreshToken
+                        token = authenticateResponse.token,
+                        refresh_token = authenticateResponse.refresh_token
                     };
 
                     return Ok(res);
@@ -92,9 +90,9 @@ namespace pelsoft.api.Controllers
         /// <param name="password"></param>
         /// <param name="securityProvider"></param>
         /// <returns></returns>
-        private AuthenticateResponse Authenticate(string username, string password, string securityProvider)
+        private AuthenticationResponse Authenticate(string username, string password, string securityProvider)
         {
-            var mokloging = new pelsoft.auth.models.mokloging();
+            var mokloging = new MockLogin();
             Configuration.Bind("mokloging", mokloging);
 
             if (password.Equals(mokloging.password) && username.Equals(mokloging.user))
@@ -112,7 +110,15 @@ namespace pelsoft.api.Controllers
                 var jwtTokenString = TokenGenerator.GenerateToken(claimsIdentity, securityProvider);
                 var refreshTokenString = _refreshTokenProvider.GenerateRefreshToken(IpAddress(), user.Id.ToString()).Token;
 
-                return new AuthenticateResponse(jwtTokenString, refreshTokenString);
+                var res = new AuthenticationResponse
+                {
+                    token = jwtTokenString,
+                    refresh_token = refreshTokenString
+                };
+
+                return res;
+
+               
             }
             else
             {
@@ -130,11 +136,11 @@ namespace pelsoft.api.Controllers
         /// <param name="ipAddress"></param>
         /// <param name="securityProvider"></param>
         /// <returns></returns>
-        private AuthenticateResponse RefreshToken(string refresh_token, string ipAddress, string securityProvider)
+        private AuthenticationResponse RefreshToken(string refresh_token, string ipAddress, string securityProvider)
         {
             var tokenData = _refreshTokenProvider.FetchToken(refresh_token);
 
-            var mokloging = new pelsoft.auth.models.mokloging();
+            var mokloging = new MockLogin();
             Configuration.Bind("mokloging", mokloging);
 
             SecurityUserBE user = new SecurityUserBE
@@ -150,7 +156,13 @@ namespace pelsoft.api.Controllers
             var jwtTokenString = TokenGenerator.GenerateToken(claimsIdentity, securityProvider);
             var refreshTokenString = _refreshTokenProvider.RefreshToken(tokenData, ipAddress).Token;
 
-            return new AuthenticateResponse(jwtTokenString, refreshTokenString);
+            var res = new AuthenticationResponse
+            {
+                token = jwtTokenString,
+                refresh_token = refreshTokenString
+            };
+
+            return res;
         }
     }
 }

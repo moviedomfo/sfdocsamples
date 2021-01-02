@@ -11,9 +11,9 @@ namespace pelsoft.auth.common
     public interface IRefreshTokenProvider
     {
         RefreshToken FetchToken(string refreshToken);
-        RefreshToken GenerateRefreshToken(string ipAddress, string userId);
+        RefreshToken GenerateRefreshToken(string userId, string ipAddress);
         RefreshToken RefreshToken(RefreshToken refreshToken, string ipAddress);
-        bool Revoke(string refreshToken, string ipAddress);
+        bool Revoke(RefreshToken refreshToken, string ipAddress, RefreshToken revokingToken = null);
     }
 
     /// <summary>
@@ -37,7 +37,7 @@ namespace pelsoft.auth.common
         /// <param name="ipAddress"></param>
         /// <param name="userId"></param>
         /// <returns></returns>
-        public RefreshToken GenerateRefreshToken(string ipAddress, string userId)
+        public RefreshToken GenerateRefreshToken(string userId, string ipAddress)
         {
             using var rngCryptoServiceProvider = new RNGCryptoServiceProvider();
             var randomBytes = new byte[64];
@@ -57,7 +57,7 @@ namespace pelsoft.auth.common
         }
       
         /// <summary>
-        /// Refresca el token, lo revoca, y almacena el nuevo.
+        /// Genera un nuevo token de refresco y revoca el viejo.
         /// </summary>
         /// <param name="refreshToken">Token a refrescar</param>
         /// <param name="ipAddress">IP del generador</param>
@@ -65,10 +65,7 @@ namespace pelsoft.auth.common
         public RefreshToken RefreshToken(RefreshToken old_refresh_token, string ipAddress)
         {
             var refresh_token = GenerateRefreshToken(old_refresh_token.UserID, ipAddress);
-
-            old_refresh_token.Revoked = DateTime.UtcNow;
-            old_refresh_token.RevokedByIp = ipAddress;
-            old_refresh_token.ReplacedByToken = refresh_token.Token;
+            Revoke(old_refresh_token, ipAddress, refresh_token);
 
             return refresh_token;
         }
@@ -98,14 +95,15 @@ namespace pelsoft.auth.common
         /// <param name="refresh_token">Token a refrescar</param>
         /// <param name="ipAddress">IP del generador</param>
         /// <returns><c>true</c> si es revocado correctamente; <c>false</c> si estaba revocado o no existe</returns>
-        public bool Revoke(string refreshToken, string ipAddress)
+        public bool Revoke(RefreshToken refreshToken, string ipAddress, RefreshToken revokingToken = null)
         {
-            var refresh_token = FetchToken(refreshToken);
-
-            refresh_token.Revoked = DateTime.UtcNow;
-            refresh_token.RevokedByIp = ipAddress;
-            _store.Remove(refresh_token.Token);
-            _store.Set(refresh_token.Token, refresh_token);
+            refreshToken.Revoked = DateTime.UtcNow;
+            refreshToken.RevokedByIp = ipAddress;
+            if (revokingToken != null)
+            {
+                refreshToken.ReplacedByToken = revokingToken.Token;
+            }
+            _store.Set(refreshToken.Token, refreshToken);
 
             return true;
         }       

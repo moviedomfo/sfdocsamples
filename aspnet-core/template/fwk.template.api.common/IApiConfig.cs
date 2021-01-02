@@ -1,4 +1,4 @@
-﻿namespace fwk.template.api.common
+﻿namespace pelsoft.api.common
 {
     /// <summary>
     /// 

@@ -2,11 +2,12 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Primitives;
+using pelsoft.api.common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using fwk.template.api.common;
+
 
 namespace fwk.template.api.common.jwt
 {
