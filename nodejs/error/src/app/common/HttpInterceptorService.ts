@@ -62,8 +62,7 @@ export class HttpInterceptorService implements HttpInterceptor {
         //aqui trabajaremos el error Si es 401 y requiere refresh token o si requiere loging por q el refresh_token expiro
         //requiere refreshtoken
         let message = this.getFromHttpErrorMessage(httpError);
-      
-     
+ 
         
         //Si error de autenticacion
         if (httpError.status === 401) {

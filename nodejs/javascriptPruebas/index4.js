@@ -12,3 +12,4 @@ console.log(products);
 console.log(colors.red( arrayCopy));
 
 
+
