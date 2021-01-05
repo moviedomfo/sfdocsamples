@@ -63,33 +63,7 @@ async function call_rapidapi_Axios_async(){
 
 }
 
-function getNombre_Axios(){
-    axios.defaults.httpAgent = new  https.Agent(
-        {
-          rejectUnauthorized: false
-            
-        });
-    console.log(colors.blue( 'llamando getNombre_Axios'));
-    const url = 'https://localhost:44351/api/Facturas/getByNroFactura?nroFact=297739';
- 
-    // Make a request for a user with a given ID
-axios.get('https://localhost:44351/api/Facturas/getByNroFactura?nroFact=297739')
-            .then(function (response) {
-              // handle success
-                console.log(colors.blue( response));
-            })
-            .catch(function (error) {
-                console.log(colors.red( error));
-            
-            })
-            .then(function () {
-            // always executed
-            });
 
-   
-
-    
-}
 
 function getNombre_Unirest(){
   
