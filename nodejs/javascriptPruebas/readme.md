@@ -15,7 +15,30 @@ Cómo funciona Async/Await en menos de 15 minutos
     https://www.youtube.com/watch?v=rKK1q7nFt7M&t=638s
 
 
-index5
-uso de Axios, unirest, node-fetch y rapidapi
+index5 index 7
+    uso de Axios, unirest, node-fetch y rapidapi
+Si usamos node app.js arrojara error 
+    . FetchError: request to https://localhost:5100/api/Facturas/getByNroFactura?nroFact=297739 failed, reason: write EPROTO 4988:error:1425F102:SSL routines:ssl_choose_client_version:unsupported protocol:c:\ws\deps\openssl\openssl\ssl\statem\statem_lib.c:1922:
+Esto se debe a que la version 12 o mayor de nodejs solo admite SSL/TLS v 2.0 en adelante por lo tanto explisitamente debenmos usar el siguiente comando:
 
-index 6 Async
+    node --tls-min-v1.0 index7.js
+Con lo que obtendremos el siguiente error si no le espesificamos el certificado
+
+    Error
+      message: 'request to https://localhost:5100/api/Facturas/getByNroFactura?nroFact=297739 failed, reason: unable to verify the first certificate',
+
+Soucion 1 --> ignore SSL issues 
+
+    To allow any certificate, you have to add this line near the top of your code;
+    This will allow just about anything, but it's also dangerous, so use with caution.
+
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+Solucion 2 --set setting headers
+    
+    const agent = new https.Agent({
+        rejectUnauthorized: false
+    });
+
+
+A Complete Guide to Securely Connecting Node.js and Axios (JS) Using Mutual TLS
+https://smallstep.com/hello-mtls/doc/combined/nodejs/axios
