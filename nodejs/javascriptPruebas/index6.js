@@ -9,7 +9,7 @@ var colors = require('colors');
 const  geDatos = () =>{
     console.log(colors.blue( 'llamando geDatos asincrono'));
     return new Promise ((resolve,reject) => {
-                if(productos.lengthe!==0){
+                if(productos.length !==0){
                     reject (new Error("error provocado"));                    
                 }
 
