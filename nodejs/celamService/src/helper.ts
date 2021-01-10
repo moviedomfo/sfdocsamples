@@ -9,54 +9,60 @@ import * as fs from 'fs';
 //const settings = fs.readFileSync('appsettins.json');
 
 export class Helper {
-    
-    /* 
+  /* 
         async function Sample()
             {
                 await WriteFile("someFile.txt", "someData");
                 console.log("WriteFile is finished");
             }
      */
-    public static WriteFile(fileName, data): Promise<void>
-    {
-        return new Promise<void>((resolve, reject) =>
-        {
-            fs.writeFile(fileName, data, (err) => 
-            {
-                if (err)
-                {
-                    reject(err);    
-                }
-                else
-                {
-                    resolve();
-                }
-            });
-        });        
-    }
-
-
-    public static saveFile = (fileName:string, content:string) => ({
-        
-        
+  public static WriteFile(fileName, data): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      fs.writeFile(fileName, data, (err) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve();
+        }
+      });
     });
+  }
 
-    public static getTime_Iso(): DateTime {
-        let dt_local = DateTime.local();
-        var d = DateTime.fromISO(dt_local.toString()).toFormat(
-          "yyyy-MM-dd HH-mm-ss"
-        );
-        return d;
-      }
-    
-    // async function openFile() {
-    //     try {
-    //       const csvHeaders = 'name,quantity,price'
-    //       await fs.writeFile('groceries.csv', csvHeaders);
-    //     } catch (error) {
-    //       console.error(`Got an error trying to write to a file: ${error.message}`);
-    //     }
-    //   }
+  public static OpenFile(fileName: string): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      var json = fs.readFileSync(fileName, "utf8");
+      console.log(json);
+      resolve(json);
+      // fs.readFile(fileName,  (err,data) =>
+      // {
+      //     if (err)
+      //     {
+      //         reject(err);
+      //     }
+      //     else
+      //     {
+      //         resolve(data);
+      //     }
+      // });
+    });
+  }
 
-   
+  public static saveFile = (fileName: string, content: string) => ({});
+
+  public static getTime_Iso(): DateTime {
+    let dt_local = DateTime.local();
+    var d = DateTime.fromISO(dt_local.toString()).toFormat(
+      "yyyy-MM-dd HH-mm-ss"
+    );
+    return d;
+  }
+
+  // async function openFile() {
+  //     try {
+  //       const csvHeaders = 'name,quantity,price'
+  //       await fs.writeFile('groceries.csv', csvHeaders);
+  //     } catch (error) {
+  //       console.error(`Got an error trying to write to a file: ${error.message}`);
+  //     }
+  //   }
 }

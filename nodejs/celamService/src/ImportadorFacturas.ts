@@ -98,13 +98,18 @@ export class ImportadorFacturas {
     //   .catch((error) => {
     //     console.log(colors.red(error));
     //   });
-    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+  
     axios
       .get(url, {
         httpsAgent: agent,
       })
-      .then((res) => {
-        console.log(colors.blue(res.data));
+      .then(async (res) => {
+        let resToJson = JSON.stringify(res.data);
+        await Helper.WriteFile("factura.json", resToJson);
+        // .then(()=>{
+         console.log(colors.yellow('saved in factura.json'));
+        // });
+        
       })
       .catch(function (error) {
         console.log(colors.red(error));
@@ -145,13 +150,16 @@ export class ImportadorFacturas {
     });
     const url =
       "https://localhost:5100/api/Facturas/getByNroFactura?nroFact=297739";
-    axios.get(url, {
-            httpsAgent: agent
+      
+      axios
+        .get(url, {
+          httpsAgent: agent,
         })
-        .then(res => {
-            console.log(colors.blue(res.data));
-        }).catch(function (error) {
-            console.log(colors.red(error));
+        .then((res) => {
+          console.log(colors.blue(res.data));
+        })
+        .catch(function (error) {
+          console.log(colors.red(error));
         });
   }
 }
