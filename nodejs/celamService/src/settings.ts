@@ -1,26 +1,29 @@
-
-
-//const settings = fs.readFileSync('appsettins.json');
-
-import { readFile } from "fs";
 import { Helper } from "./helper";
-
+import {Category,CategoryLogger,CategoryServiceFactory,CategoryConfiguration,LogLevel} from "typescript-logging";
+CategoryServiceFactory.setDefaultConfiguration(new CategoryConfiguration(LogLevel.Info));
+// Create categories, they will autoregister themselves, one category without parent (root) and a child category.
+// export const catService = new Category("service");
+// export const catFacturas = new Category("facturas", catService);
 
 
 export class AppSettings {
 
-    public  static async create(): Promise<AppSettings>{
+  public static Instance:AppSettings;
 
-      let setting:   AppSettings;
-      // Helper.OpenFile('appsettins.json').then( (res)=>{
+  
+    public  static async Create(): Promise<AppSettings>{
 
-      //    setting = JSON.parse(res) as AppSettings;
-        
-      // });
-      var res = await Helper.OpenFile('appsettins.json');
+      //let setting:   AppSettings;
+     if(AppSettings.Instance)
+      return AppSettings.Instance;
+      else
+      {
+        var res = await Helper.OpenFile('appsettins.json');
 
-      setting = JSON.parse(res) as AppSettings;
-      return  setting;
+        AppSettings.Instance = JSON.parse(res) as AppSettings;
+      }
+      
+      return  AppSettings.Instance;
     } 
 
 

@@ -6,10 +6,13 @@ import { DateTime } from "../node_modules/luxon";
 import { Color } from "colors";
 import axios, { AxiosStatic } from "axios";
 import { Helper } from "./helper";
+import { AppSettings } from "./settings";
 var colors = require("colors");
 var cron = require("node-cron");
 const https = require("https");
 export class ImportadorFacturas {
+
+  
   //private cronJob: CronJob;
   colors: Color;
 
@@ -40,34 +43,61 @@ export class ImportadorFacturas {
   }
 
   public async Start() {
+    const setting =  await AppSettings.Create();
     // Do some task
     console.log(
       colors.red("------------------Importer Start--------------------")
     );
-    //   let dt_local= DateTime.local();
-    //   var d = DateTime.fromISO(dt_local.toString()).toFormat('yyyy-MM-dd HH-mm-ss');
-    //   console.log(colors.blue('importing invoices : ' + d));
-    let numerador = 0;
-    cron.schedule("* * * * *", () => {
-      // let dt_local= DateTime.local();
-      // var d = DateTime.fromISO(dt_local.toString()).toFormat('yyyy-MM-dd HH-mm-ss');
-      // console.log(colors.blue('facturando at : ' + d));
-      //async () =>  this.DoWork();
 
+    
+    cron.schedule("* * * * *", () => {
       this.DoWork()
         .then(() => {
-          numerador++;
-          console.log(numerador);
+    
+          //console.log(numerador);
         })
         .catch((e) => {
           console.log(colors.red(e));
         });
     });
   }
-
   private async DoWork(): Promise<void> {
-    const url =
-      "https://localhost:5100/api/Facturas/getByNroFactura?nroFact=297739";
+    const url =    "https://localhost:58000/api/Facturas/ImportarFacturas";
+
+    console.log(colors.blue("importing invoices : " + Helper.getTime_Iso()));
+
+    const agent = new https.Agent({
+        rejectUnauthorized: false
+    });
+
+    let period = Helper.getPeriodo();
+   let req  = 
+    {
+      "year":2020,
+       "month" : 12,
+       "period" : "01122020"
+    }
+   
+    axios
+      .post(url, {
+        httpsAgent: agent,
+        data:req
+      },
+       )
+      .then(async (res) => {
+        //let resToJson = JSON.stringify(res.data);
+        // await Helper.WriteFile("factura.json", resToJson);
+        Helper.Log("Se lealizo la importacion de facturas periodo : " + Helper.getFileNamePrefix)
+         console.log(colors.yellow('saved in factura.json'));
+      })
+      .catch(function (error) {
+        console.log(colors.red(error));
+      });
+   
+  }
+
+  private async DoWorkTest(): Promise<void> {
+    const url =    "https://localhost:5100/api/Facturas/getByNroFactura?nroFact=297739";
 
     console.log(colors.blue("importing invoices : " + Helper.getTime_Iso()));
 
@@ -76,29 +106,6 @@ export class ImportadorFacturas {
     });
 
    
-
-
-    // axios({
-    //   url: url,
-    //   method: "GET",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   responseType: "json",
-    //   httpsAgent: new https.Agent({
-    //     rejectUnauthorized: false,
-    //   }),
-    // })
-    //   .then( (response) => { // para transformarla en async .then(async (response) => {
-    //     console.log(colors.blue(response.data));
-    //     // let resToJson = JSON.stringify(response.data);
-    //     // await Helper.WriteFile("countries-3.json", resToJson);
-       
-    //   })
-    //   .catch((error) => {
-    //     console.log(colors.red(error));
-    //   });
-  
     axios
       .get(url, {
         httpsAgent: agent,
@@ -106,42 +113,61 @@ export class ImportadorFacturas {
       .then(async (res) => {
         let resToJson = JSON.stringify(res.data);
         await Helper.WriteFile("factura.json", resToJson);
-        // .then(()=>{
          console.log(colors.yellow('saved in factura.json'));
-        // });
         
       })
       .catch(function (error) {
         console.log(colors.red(error));
       });
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        // if(productos.length !==0){
-        //     reject (new Error("error provocado"));
-        // }
-        // do your async steps here
-        resolve();
-      }, 2000);
-    });
+   
   }
 
-  private async DoWork_prueba(): Promise<void> {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        // if(productos.length !==0){
-        //     reject (new Error("error provocado"));
-        // }
-        // do your async steps here
-        console.log(colors.blue("importing invoices : " + Helper.getTime_Iso()));
 
-        resolve();
-      }, 2000);
+  /* only for testing purpose */
+   public ImportarFacturas() {
+
+    
+    const url =    "http://localhost:58000/api/Facturas/ImportarFacturas";
+
+    console.log(colors.blue("importing invoices : " + Helper.getTime_Iso()));
+
+    const agent = new https.Agent({
+        rejectUnauthorized: false
     });
+
+    let period = Helper.getPeriodo();
+   let req  = 
+    {
+      "year":2020,
+       "month" : 12,
+       "period" : period
+    }
+   
+    axios
+      .post(url, {
+        httpsAgent: agent,
+        data:req
+      },
+       )
+      .then(async (res) => {
+        //let resToJson = JSON.stringify(res.data);
+        // await Helper.WriteFile("factura.json", resToJson);
+        Helper.Log("Se lealizo la importacion de facturas periodo : " + Helper.getFileNamePrefix)
+         console.log(colors.yellow('saved in factura.json'));
+      })
+      .catch(function (error) {
+
+
+        Helper.LogError(JSON.stringify(error.response.data));
+        
+        console.log(colors.red(Helper.GetError(error)));
+   
+      });
+   
   }
 
-  /* Coinvierte fecha local y retorna a formato ISO  */
- 
-  public callApi() {
+
+  public getByNroFactura() {
 
     console.log(colors.cyan('call_Axios_async1'));
     // At request level
@@ -149,7 +175,7 @@ export class ImportadorFacturas {
         rejectUnauthorized: false
     });
     const url =
-      "https://localhost:5100/api/Facturas/getByNroFactura?nroFact=297739";
+      "http://localhost:5100/api/Facturas/getByNroFactura?nroFact=297739";
       
       axios
         .get(url, {
@@ -162,4 +188,17 @@ export class ImportadorFacturas {
           console.log(colors.red(error));
         });
   }
+
+  // private async SampleReturnPromise(): Promise<void> {
+  //   return new Promise((resolve, reject) => {
+  //     setTimeout(() => {
+  //       // if(productos.length !==0){
+  //       //     reject (new Error("error provocado"));
+  //       // }
+  //       //do your async steps here
+  //       resolve();
+  //     }, 2000);
+  //   });
+  // }
+
 }

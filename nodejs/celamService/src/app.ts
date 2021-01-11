@@ -4,26 +4,23 @@ import { Helper } from './helper';
 import  { ImportadorFacturas } from './ImportadorFacturas';
 import { AppSettings } from './settings';
 
-//var colors = require('colors');
-//var cron = require('node-cron');
 
+
+// let n = Helper.getPeriodo();
+
+// console.log(n);
 
 
 
 const importer = new ImportadorFacturas();
 
-
-
-// Helper.OpenFile('appsettins.json').then(res=>{
-
-//     let setting:AppSettings = JSON.parse(res);
-   
+importer.ImportarFacturas();
+//importer.getByNroFactura();
+// init().then(()=>{
+//     importer.Start().then((res)=>{
+//         //console.log('Staritng....');
+//      });
 // });
-init().then(()=>{
-    importer.Start().then((res)=>{
-        //console.log('Staritng....');
-     });
-});
 
  
 
@@ -31,10 +28,12 @@ init().then(()=>{
 
 async function init() {
       try {
-        let setting =  await AppSettings.create();
+        let setting =  await AppSettings.Create();
         console.log('Initializing ....' );
+        Helper.Log('Initializing ....');
         console.log(setting );
       } catch (error) {
+        Helper.LogError(`Got an error trying to write to a file: ${error.message}`);
         console.error(`Got an error trying to write to a file: ${error.message}`);
       }
     }
