@@ -32,6 +32,7 @@ export class AppSettings {
 
 
 export class Factura {
+  public apiUrlBase: string;
   public sourceFolder: string;
   public destFolder: string;
 }

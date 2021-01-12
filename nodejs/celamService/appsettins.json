@@ -1,7 +1,8 @@
 {
     "factura": {
+       "apiUrlBase" : "http://localhost:58000/",
         "sourceFolder": "e:\\logs\\",
-        "destFolder": "c:\\Users\\moviedo\\Dropbox\\celam\\Facturacion\\"
+       "destFolder": "c:\\Users\\moviedo\\Dropbox\\celam\\Facturacion\\"
   }
   
 }

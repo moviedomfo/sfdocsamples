@@ -83,20 +83,28 @@ export class Helper {
     return d;
   }
 
+  /* Retorna 01MMYYYY */
   public static getPeriodo(): String {
 
     var dt_local = DateTime.local();
     //return 01032020-
-     return  DateTime.fromISO(dt_local.toString()).toFormat("ddMMyyyy-");
+    return  DateTime.fromISO(dt_local.toString()).toFormat("01MMyyyy");
   }
-  // async function openFile() {
-  //     try {
-  //       const csvHeaders = 'name,quantity,price'
-  //       await fs.writeFile('groceries.csv', csvHeaders);
-  //     } catch (error) {
-  //       console.error(`Got an error trying to write to a file: ${error.message}`);
-  //     }
-  //   }
+
+  public static getMonth_MM(): String {
+
+    var dt_local = DateTime.local();
+    return  DateTime.fromISO(dt_local.toString()).toFormat("MM");
+     
+  }
+  
+  public static getDay_dd(): String {
+
+    var dt_local = DateTime.local();
+    //return 01032020-
+     return  DateTime.fromISO(dt_local.toString()).toFormat("dd");
+  }
+  
 
   public static Log(message: string): void {
     try{
@@ -121,7 +129,8 @@ export class Helper {
 
   public static GetError(error): void {
     let message = error.message;
-    message = message.concat(error.response.data.Message, '\n');
+    if(error.response)
+      message = message.concat(error.response.data.Message, '\n');
     return message;
   }
 

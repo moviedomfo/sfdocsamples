@@ -5,27 +5,22 @@ import  { ImportadorFacturas } from './ImportadorFacturas';
 import { AppSettings } from './settings';
 
 
-
-// let n = Helper.getPeriodo();
-
-// console.log(n);
-
-
-
 const importer = new ImportadorFacturas();
 
-importer.ImportarFacturas();
-//importer.getByNroFactura();
+
+
 // init().then(()=>{
-//     importer.Start().then((res)=>{
-//         //console.log('Staritng....');
-//      });
+//     importer.ImportarFacturas();
 // });
 
+//importer.getByNroFactura();
+init().then(()=>{
+    importer.Start().then((res)=>{
+        console.log('End invoice importin....');
+     });
+});
+
  
-
-
-
 async function init() {
       try {
         let setting =  await AppSettings.Create();
