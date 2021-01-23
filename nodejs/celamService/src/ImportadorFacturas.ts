@@ -41,21 +41,11 @@ export class ImportadorFacturas {
   }
 
   public async Start() {
-    
-    // Do some task
     console.log(
       colors.red("------------------Importer Start--------------------")
     );
-
-    cron.schedule("* * * * *", () => {
-      this.DoWork()
-        .then(() => {
-          //console.log(numerador);
-        })
-        .catch((e) => {
-          console.log(colors.red(e));
-        });
-    });
+    
+    cron.schedule("* * * * *", async () =>  {await  this.DoWork();});
   }
 
   private async DoWork(): Promise<void> {
@@ -83,7 +73,6 @@ export class ImportadorFacturas {
         //let resToJson = JSON.stringify(res.data);
         // await Helper.WriteFile("factura.json", resToJson);
         Helper.Log("Se lealizo la importacion de facturas periodo : " + period);
-
         console.log(
           colors.yellow(Helper.getTime_Iso() +
             "Se lealizo la importacion de facturas periodo : " + period
@@ -91,15 +80,8 @@ export class ImportadorFacturas {
         );
       })
       .catch(function (error) {
-        //Helper.LogError(JSON.stringify(error.response.data));
-
-        console.log(
-          colors.red(
-            Helper.getTime_Iso() +
-              " Importing finalized with errors : " +
-              Helper.GetError(error)
-          )
-        );
+        Helper.LogErrorFull("Importing finalized with errors :" ,error );
+  
       });
   }
 
@@ -122,7 +104,7 @@ export class ImportadorFacturas {
         console.log(colors.yellow("saved in factura.json"));
       })
       .catch(function (error) {
-        console.log(colors.red(error));
+        Helper.LogErrorFull("Importing finalized with errors :" ,error );
       });
   }
 
@@ -159,15 +141,7 @@ export class ImportadorFacturas {
         );
       })
       .catch(function (error) {
-        //Helper.LogError(JSON.stringify(error.response.data));
-
-        console.log(
-          colors.red(
-            Helper.getTime_Iso() +
-              " Importing finalized with errors : " +
-              Helper.GetError(error)
-          )
-        );
+        Helper.LogErrorFull("Importing finalized with errors :" ,error );
       });
   }
 
@@ -187,7 +161,7 @@ export class ImportadorFacturas {
         console.log(colors.blue(res.data));
       })
       .catch(function (error) {
-        console.log(colors.red(error));
+        Helper.LogErrorFull("GetByNroFactura errors :" ,error );
       });
   }
 

@@ -1,4 +1,5 @@
 import { DateTime } from "../node_modules/luxon";
+var colors = require("colors");
 //import {catService,catFacturas} from "./settings"
 
 //import DateTime from 'luxon/src/datetime.js'
@@ -127,7 +128,22 @@ export class Helper {
   }
 
 
-  public static GetError(error): void {
+  public static LogErrorFull(message :string error: any): void {
+
+    Helper.LogError( Helper.GetError(error));
+    
+    console.log(
+      colors.red(
+        Helper.getTime_Iso() + " " + message     + " "    +
+          Helper.GetError(error)
+      )
+    );
+  }
+
+
+
+
+  public static GetError(error): string {
     let message = error.message;
     if(error.response)
       message = message.concat(error.response.data.Message, '\n');
