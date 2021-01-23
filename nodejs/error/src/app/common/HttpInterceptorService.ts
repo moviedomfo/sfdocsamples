@@ -25,10 +25,7 @@ export class HttpInterceptorService implements HttpInterceptor {
     private authService: AuthService
   ) {}
 
-  intercept(
-    request: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
+  intercept(    request: HttpRequest<any>,    next: HttpHandler  ): Observable<HttpEvent<any>> {
     this.loadingDialogService.openDialog();
     let req;
 
@@ -73,23 +70,12 @@ export class HttpInterceptorService implements HttpInterceptor {
                 this.authService.logout();
             
               }
-          this.refreshToken()
-          .pipe(
-             switchMap(() => {
-           
-              
-            //No tenemos que setrear el header ya que el mismo servicio authService.oauthRefreshToken lo hace
-              return next.handle(req);
-              
-               
-             })
-           
-          );
-          
-       
-         
-          
-          
+        this.authService.oauthRefreshToken$().subscribe(
+                res => {
+                  alert('llamada a oauthRefreshToken ok');
+                   //No tenemos que setrear el header ya que el mismo servicio authService.oauthRefreshToken lo hace
+                  return next.handle(req);
+                 });
         }
         if(showDialog){
           this.errorDialogService.openDialog(
@@ -97,7 +83,6 @@ export class HttpInterceptorService implements HttpInterceptor {
             httpError.status
           );
         }
-        
 
         return throwError(httpError);
       }),
@@ -106,22 +91,6 @@ export class HttpInterceptorService implements HttpInterceptor {
       })
     ) as Observable<HttpEvent<any>>;
   }
-
-
-  refreshToken(){
-
-    //tab doesn't consime the observable subscriber 
-    // subscribe  does execute the observable, tab just obvserve the response
-
-     return   this.authService.oauthRefreshToken$().subscribe(
-      res => {
-        alert('llamada a oauthRefreshToken ok');
-       });
-  }
-
-
-  
-
 
   setAutHeader (request: HttpRequest<any> ) {
     
@@ -183,7 +152,7 @@ export class HttpInterceptorService implements HttpInterceptor {
           httpError.error.InnerException.Message;
       }
     } else {
-      message = httpError.error  || httpError.message;
+      message = httpError.message  ? httpError.message  : httpError.error;
     }
 
     return message;

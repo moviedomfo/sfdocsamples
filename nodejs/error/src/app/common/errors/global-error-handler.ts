@@ -1,5 +1,6 @@
 import { ErrorHandler, Injectable } from "@angular/core";
-import { ErrorDialogService } from '../comoponents/error-dialog/error-dialog.service';
+import { ErrorDialogService } from '../error-dialog/error-dialog.service';
+//import { ErrorDialogService } from '../comoponents/error-dialog/error-dialog.service';
 
 @Injectable()
 export class GlobalErrorHandler implements ErrorHandler {

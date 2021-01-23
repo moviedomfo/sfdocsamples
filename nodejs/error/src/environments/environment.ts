@@ -1,8 +1,8 @@
 
 export const environment = {
   production: false,
-  App_BaseURL:"https://localhost:44351/",
-  AppOAuth_BaseUrl:"https://localhost:44351/", 
+  App_BaseURL:"http://localhost:58000/",
+  AppOAuth_BaseUrl:"http://localhost:58000/", 
  
   oaut_client_id: 'nodeJSClient',//'reteteosClient',
   oaut_client_secret:'pletorico28',
