@@ -11,7 +11,7 @@ prod.forEach(i=>{
 //     console.log(i.nombre.yellow);    
 // });
 
-console.log("--------------Uso de Spread operator----------------");
+console.log(colors.cyan("--------------Uso de Spread operator----------------"));
 
 //using spread operator
 //const arrayCopy = [...prod];
@@ -22,8 +22,9 @@ const arrayCopy = [...prod,  {id: 200 , name:"Cereza"} ];
 //     i.name =  i.name + "_modificado";
 // });
 arrayCopy[0].id = 20000;
-
+console.log(colors.cyan("--------------Prod----------------"));
 console.log(prod);
+console.log(colors.cyan("--------------Prod arrayCopy----------------"));
 console.log(arrayCopy);
 
 //console.log(JSON.stringify(array).green);
