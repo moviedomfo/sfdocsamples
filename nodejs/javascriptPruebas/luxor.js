@@ -32,3 +32,9 @@ console.log(colors.red('local.toISO : ') + colors.blue(local.toISO()));
 console.log(colors.red('local.toISODate : ') + colors.blue(local.toISODate()));
 console.log(colors.yellow('---------------------------------'));
 
+
+
+const fecha = '2021-01-22';
+const convertida =  DateTime.fromISO(fecha+'T13:00:00.00');
+
+console.log(colors.yellow('FECHA :' + fecha + ' --> ' + convertida.toSQLDate()  ));
