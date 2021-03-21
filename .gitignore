@@ -5972,3 +5972,7 @@ AspNetCore.versioning/AspNetCore.versioning/bin
 AspNetCore.versioning/AspNetCore.versioning/obj
 nodejs/angular-global-error-handling-master/package-lock.json
 nodejs/javascriptPruebas/package-lock.json
+dist/
+node_modules/
+*_logs.txt
+
