@@ -16,9 +16,9 @@ console.log(colors.cyan("--------------numeros----------------"));
 console.log(numeros);
 console.log(colors.cyan("--------------númerod arrayCopy----------------"));
 console.log(arrayCopy);
-console.log(colors.yellow('*****************************************************"));
+console.log(colors.yellow("*****************************************************"));
 
-const [num]  =  numeros;
+// const [num]  =  numeros;
 
-console.log(num);
+// console.log(num);
 

@@ -4,5 +4,13 @@ var colors = require('colors');
 
 let listaNombre = productos.map(producto =>  producto.name);
 
-console.log(listaNombre);
+productos.map(p => 
+
+        console.log('El gusto es ' + p.name)
+
+        
+     
+     );
+
+//console.log(listaNombre);
 

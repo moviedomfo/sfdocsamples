@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 
 
 @Injectable()
-export class AuthService {
+export class AuthService {  
  
   public isAuthenticated = new BehaviorSubject<boolean>(false);
 
@@ -51,6 +51,7 @@ export class AuthService {
   
   ///Este método de autenticacion usa jwk contra un rest asp api
   public oauthToken$(userName: string, password: string): Observable<any> {
+
 
     var bussinesData = {
       userName: userName,
