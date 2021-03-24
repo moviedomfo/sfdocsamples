@@ -8,19 +8,20 @@ var amqp = require('amqplib/callback_api');
 
 //const faker = require('faker');
 import * as faker from 'faker';
-import { DateTime } from "../node_modules/luxon";
+import { DateTime } from "luxon";
 import { Color } from "colors";
-import {v4 as uuidv4} from '../node_modules/uuid'
+import {v4 as uuidv4} from 'uuid'
 //import { faker } from "../node_modules/faker";
 import { Helper } from "./helper";
 import { AppSettings } from "./settings";
 import { Person } from "./model";
-const messagesAmount=6;
+
 var colors = require("colors");
 var cron = require("node-cron");
 const exchangeName = process.env.EXCHANGE || 'peopleArrives'
 const routingKey = process.env.ROUTING_KEY || ''
 const wait = 400;
+const messagesAmount=6;
 const rabbitSettings ={
   protocol:'amqp',
   hostName:'localhost',
@@ -31,8 +32,8 @@ const rabbitSettings ={
   auutMechanism:['PLAIN','AMQPLAIN','EXTERNAL']
 
 }
-export class Publisher {
-  //private cronJob: CronJob;
+export class Subscriber {
+  
   colors: Color;
 
   constructor() {}
@@ -57,7 +58,7 @@ export class Publisher {
     //       await this.DoWork() 
 
     //     },2000);
-        await this.DoWork2();
+    
   }
 
   public  sleep(ms) {
@@ -76,14 +77,16 @@ export class Publisher {
    
  }
 
-  public async DoWork(): Promise<void> {
+  public async DoWork() {
 
     return new Promise<void>((resolve, reject) => {
         try{
-            let  p:Person = this.generatePerson()
-            
+            let  p:Person = new  Person();
+            p.Id = uuidv4();
+            p.FirstName = faker.name.firstName();
+            p.Lastname = faker.name.lastName();
     
-            this.send(p);
+            //this.send(p);
             Helper.Log('enviando a la cola ' + p.GetFullName());
           
             resolve();
@@ -132,81 +135,6 @@ export class Publisher {
    }
     
   
-   public async DoWork2(): Promise<void> {
 
-    // const connection = await amqp.connect('amqp://localhost');
-    // const channel = await connection.createChannel();
-
-    // await channel.assertExchange(exchangeName, 'direct')
-
-    //   this.sleepLoop(messagesAmount, async () => {
-    //     const person = this.generatePerson();
-    //     const message = JSON.stringify(person);
-
-    //     const sent = channel.publish(
-    //         exchangeName,
-    //         routingKey,
-    //         Buffer.from(JSON.stringify(message)),
-    //         {
-    //             // persistent: true
-    //         }
-    //     )
-
-    //     sent
-    //         ? console.log(`Sent message to "${exchangeName}" exchange`, person.GetFullName())
-    //         : console.log(
-    //               `Fails sending message to "${exchangeName}" exchange`)
-    // });
-       
-    let v = messagesAmount;
-    amqp.connect('amqp://localhost', function(error0, connection) {
-        if (error0) {
-            throw error0;
-        }
-        connection.createChannel(function(error1, channel) {
-            if (error1) {
-                throw error1;
-            }
-            channel.assertExchange(exchangeName, 'direct', {
-                durable: false // by default is true
-            });
-            //this.sleepLoop(this.messagesAmount, async () => {
-              while (v--){
-              const person = this.generatePerson();
-              const sent = channel.publish(
-                        exchangeName, 
-                        routingKey, Buffer.from(JSON.stringify(person)), {
-                          // persistent: true
-                      });
-
-              sent
-              ? console.log(`Sent person to "${exchangeName}" exchange`, person.GetFullName())
-              : console.log(`Fails sending message to "${exchangeName}" exchange` )
-
-               //this.sleep(wait);
-
-            }
-          //});
-            
-        });
-    
-     
-    });
-   
-      
-  }
-    
-
-   generatePerson():Person{
-    let  p:Person = new  Person();
-    p.Id = uuidv4();
-    p.FirstName = faker.name.firstName();
-    p.Lastname = faker.name.lastName();
-
-    return p;
-   }
-
-    
-
-
+  
 }
