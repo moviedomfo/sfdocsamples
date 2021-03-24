@@ -10,6 +10,7 @@ namespace AspNetCore.versioning.Controllers
     //https://www.youtube.com/watch?v=ryPo5hYHSzM
     [ApiController]
     [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/[controller]")]
     [ApiVersion("1.0")]
     [ApiVersion("1.1")]
     public class MastersController : ControllerBase

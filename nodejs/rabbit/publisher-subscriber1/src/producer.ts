@@ -18,7 +18,7 @@ import { Person } from "./model";
 
 var colors = require("colors");
 var cron = require("node-cron");
-
+const exchange = 'peopleArrives';
 
 export class Publisher {
   //private cronJob: CronJob;
@@ -49,7 +49,21 @@ export class Publisher {
       
   }
 
- 
+  public  sleep(ms) {
+    return new Promise((resolve) =>{
+      setTimeout(resolve,ms);
+    })
+  }
+
+  public async  sleepLoop(number,cb) {
+
+    while (number--){
+
+      await this.sleep(wait);
+      cb();
+    }
+   
+ }
 
   public async DoWork(): Promise<void> {
 
@@ -60,9 +74,9 @@ export class Publisher {
             p.FirstName = faker.name.firstName();
             p.Lastname = faker.name.lastName();
     
-            this.send(p);
+            //this.send(p);
             Helper.Log('enviando a la cola ' + p.GetFullName());
-    
+          
             resolve();
         }catch(err){
             Helper.LogErrorFull("Error al leer carpeta de cobranzas", err);
@@ -85,20 +99,22 @@ export class Publisher {
             if (error1) {
                 throw error1;
             }
-            var exchange = 'peopleArrives';
-            var msg = JSON.stringify(person);//process.argv.slice(2).join(' ') || 'Hello World!';
+
+    
     
             channel.assertExchange(exchange, 'fanout', {
-                durable: false
+                durable: false // by default is true
             });
-            channel.publish(exchange, '', Buffer.from(msg));
-            console.log(" [x] Sent %s", msg);
+
+            channel.publish(exchange, '', Buffer.from(JSON.stringify(person)));
+
+            console.log(" [x] Sent %s", person.GetFullName());
         });
     
-         setTimeout(function() {
-             connection.close();
-             process.exit(0);
-         }, 500);
+        //  setTimeout(function() {
+        //      connection.close();
+        //      process.exit(0);
+        //  }, 500);
     });
    }
     
