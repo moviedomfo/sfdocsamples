@@ -1,11 +1,11 @@
 import { Helper } from './helper';
-import  { Subscriber } from './subscriber';
+import  { Publisher } from './producer';
 import { AppSettings } from './settings';
 
-const consumer = new Subscriber();
+const publisher = new Publisher();
 
 init().then(()=>{
-  consumer.Start().then((res)=>{
+    publisher.Start().then((res)=>{
    
      });
 });

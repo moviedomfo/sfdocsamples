@@ -20,6 +20,7 @@ var colors = require("colors");
 var cron = require("node-cron");
 const exchangeName = process.env.EXCHANGE || 'peopleArrives'
 const routingKey = process.env.ROUTING_KEY || ''
+const exchangeType = 'direct'
 const wait = 400;
 const rabbitSettings ={
   protocol:'amqp',
@@ -80,7 +81,7 @@ export class Publisher {
 
     return new Promise<void>((resolve, reject) => {
         try{
-            let  p:Person = this.generatePerson()
+            let  p:Person = Publisher.generatePerson()
             
     
             this.send(p);
@@ -111,7 +112,7 @@ export class Publisher {
 
     
     
-            channel.assertExchange(exchangeName, 'fanout', {
+            channel.assertExchange(exchangeName, exchangeType, {
                 durable: false // by default is true
             });
 
@@ -134,29 +135,7 @@ export class Publisher {
   
    public async DoWork2(): Promise<void> {
 
-    // const connection = await amqp.connect('amqp://localhost');
-    // const channel = await connection.createChannel();
-
-    // await channel.assertExchange(exchangeName, 'direct')
-
-    //   this.sleepLoop(messagesAmount, async () => {
-    //     const person = this.generatePerson();
-    //     const message = JSON.stringify(person);
-
-    //     const sent = channel.publish(
-    //         exchangeName,
-    //         routingKey,
-    //         Buffer.from(JSON.stringify(message)),
-    //         {
-    //             // persistent: true
-    //         }
-    //     )
-
-    //     sent
-    //         ? console.log(`Sent message to "${exchangeName}" exchange`, person.GetFullName())
-    //         : console.log(
-    //               `Fails sending message to "${exchangeName}" exchange`)
-    // });
+   
        
     let v = messagesAmount;
     amqp.connect('amqp://localhost', function(error0, connection) {
@@ -172,7 +151,7 @@ export class Publisher {
             });
             //this.sleepLoop(this.messagesAmount, async () => {
               while (v--){
-              const person = this.generatePerson();
+              const person = Publisher.generatePerson();
               const sent = channel.publish(
                         exchangeName, 
                         routingKey, Buffer.from(JSON.stringify(person)), {
@@ -197,7 +176,7 @@ export class Publisher {
   }
     
 
-   generatePerson():Person{
+   public static generatePerson():Person{
     let  p:Person = new  Person();
     p.Id = uuidv4();
     p.FirstName = faker.name.firstName();
@@ -206,7 +185,6 @@ export class Publisher {
     return p;
    }
 
-    
 
 
 }
