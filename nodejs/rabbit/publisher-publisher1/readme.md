@@ -70,6 +70,7 @@ npm install --production
 
 
 # RabbiMQ 
+
   This app use rabbit mq and need client NodeJs installed on 
     npm i amqp.node.client
 

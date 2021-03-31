@@ -12,7 +12,7 @@ namespace AspNetCore.versioning.Controllers
     [Route("api/v{version:apiVersion}/[controller]")]
     [Route("api/[controller]")]
     [ApiVersion("1.0")]
-    [ApiVersion("1.1")]
+    [ApiVersion("1.1")] 
     public class MastersController : ControllerBase
     {
         private static readonly string[] Summaries_eng = new[]

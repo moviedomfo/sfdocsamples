@@ -8,20 +8,22 @@ var amqp = require('amqplib/callback_api');
 
 //const faker = require('faker');
 import * as faker from 'faker';
-import { DateTime } from "../node_modules/luxon";
+import { DateTime } from "luxon";
 import { Color } from "colors";
-import {v4 as uuidv4} from '../node_modules/uuid'
+import {v4 as uuidv4} from 'uuid'
 //import { faker } from "../node_modules/faker";
-import { Helper } from "./helper";
-import { AppSettings } from "./settings";
-import { Person } from "./model";
+import { Helper } from "../helper";
+import { AppSettings } from "../settings";
+import { Person } from "../model";
 const messagesAmount=6;
 var colors = require("colors");
 var cron = require("node-cron");
-const exchangeName = process.env.EXCHANGE || 'peopleArrives'
-const routingKey = process.env.ROUTING_KEY || ''
-const exchangeType = 'direct'
+const queue = process.env.QUEUE || 'peopleArrivesQueue';
+const exchangeName = process.env.EXCHANGE || 'peopleArrivesExchange'; 
+const routingKey = process.env.ROUTING_KEY || ''; // no existe dado que es fanout
+const exchangeType = 'fanout'
 const wait = 400;
+
 const rabbitSettings ={
   protocol:'amqp',
   hostName:'localhost',
@@ -53,12 +55,12 @@ export class Publisher {
    
     
 
-    //  setInterval(async () => { 
+     setInterval(async () => { 
 
-    //       await this.DoWork() 
+          await this.DoWork() 
 
-    //     },2000);
-        await this.DoWork2();
+        },2000);
+        //await this.DoWork();
   }
 
   public  sleep(ms) {
@@ -77,66 +79,8 @@ export class Publisher {
    
  }
 
-  public async DoWork(): Promise<void> {
-
-    return new Promise<void>((resolve, reject) => {
-        try{
-            let  p:Person = Publisher.generatePerson()
-            
-    
-            this.send(p);
-            Helper.Log('enviando a la cola ' + p.GetFullName());
-          
-            resolve();
-        }catch(err){
-            Helper.LogErrorFull("Error al leer carpeta de cobranzas", err);
-            reject(err);
-        }
-       
-
-   
-      });
-      
-  }
-
- 
-   public send(person:Person){
-    amqp.connect('amqp://localhost', function(error0, connection) {
-        if (error0) {
-            throw error0;
-        }
-        connection.createChannel(function(error1, channel) {
-            if (error1) {
-                throw error1;
-            }
-
-    
-    
-            channel.assertExchange(exchangeName, exchangeType, {
-                durable: false // by default is true
-            });
-
-            const sent = channel.publish(exchangeName, routingKey, Buffer.from(JSON.stringify(person)));
-
-            sent
-            ? console.log(`Sent person to "${exchangeName}" exchange`, person.GetFullName())
-            : console.log(`Fails sending message to "${exchangeName}" exchange` )
-
-            
-        });
-    
-        //  setTimeout(function() {
-        //      connection.close();
-        //      process.exit(0);
-        //  }, 500);
-    });
-   }
-    
   
-   public async DoWork2(): Promise<void> {
-
-   
-       
+   public async DoWork(): Promise<void> {
     let v = messagesAmount;
     amqp.connect('amqp://localhost', function(error0, connection) {
         if (error0) {
@@ -146,16 +90,22 @@ export class Publisher {
             if (error1) {
                 throw error1;
             }
-            channel.assertExchange(exchangeName, 'direct', {
+
+            // intenta crear la cola si existe no pasa nada si no la crea
+            // await channel.assertQueue(queue);
+            
+            channel.assertExchange(exchangeName, exchangeType, {
                 durable: false // by default is true
             });
+
             //this.sleepLoop(this.messagesAmount, async () => {
               while (v--){
-              const person = Publisher.generatePerson();
-              const sent = channel.publish(
-                        exchangeName, 
-                        routingKey, Buffer.from(JSON.stringify(person)), {
-                          // persistent: true
+                const person = Publisher.generatePerson();
+                const sent = channel.publish(
+                          exchangeName, 
+                          routingKey,// no existe dado que es fanout
+                          Buffer.from(JSON.stringify(person)), {
+                            // persistent: true
                       });
 
               sent
@@ -185,6 +135,60 @@ export class Publisher {
     return p;
    }
 
+   public async DoWork_old(): Promise<void> {
 
+    return new Promise<void>((resolve, reject) => {
+        try{
+            let  p:Person = Publisher.generatePerson()
+            
+    
+            this.send(p);
+            Helper.Log('enviando a la cola ' + p.GetFullName());
+          
+            resolve();
+        }catch(err){
+            Helper.LogErrorFull("Error al leer carpeta de cobranzas", err);
+            reject(err);
+        }
+       
+
+   
+      });
+      
+  }
+
+ 
+   public async send(person:Person){
+
+   await amqp.connect('amqp://localhost',async function(error0, connection)  {
+        if (error0) {
+            throw error0;
+        }
+        connection.createChannel(function(error1, channel) {
+            if (error1) {
+                throw error1;
+            }
+
+            
+            
+             channel.assertExchange(exchangeName, exchangeType, {
+                durable: false // by default is true
+            });
+
+            const sent = channel.publish(exchangeName, routingKey, Buffer.from(JSON.stringify(person)));
+
+            sent
+            ? console.log(`Sent person to "${exchangeName}" exchange`, person.GetFullName())
+            : console.log(`Fails sending message to "${exchangeName}" exchange` )
+
+            
+        });
+    
+        //  setTimeout(function() {
+        //      connection.close();
+        //      process.exit(0);
+        //  }, 500);
+    });
+   }
 
 }
