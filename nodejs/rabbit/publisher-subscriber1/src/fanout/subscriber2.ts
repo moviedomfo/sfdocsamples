@@ -12,7 +12,7 @@ const pattern = process.env.PATTERN || '';
 
 
 
-export class Subscriber {
+export class Subscriber2{
   
   colors: Color;
 
@@ -22,11 +22,34 @@ export class Subscriber {
     console.log(colors.blue("------------------subscriber started--------------------") );
   
     this.do_consume();
-
+   // await this.DoWork() ;
     
     
   }
 
+  public async DoWork() {
+
+    return new Promise<void>(async (resolve, reject) => {
+        try{
+           
+        
+         await this.do_consume(). catch(e => {
+          console.log('---------------------------------') ;
+           console.log(e) ;
+           console.log('---------------------------------') 
+          });
+          
+          resolve();
+        }catch(err){
+            Helper.LogErrorFull("Error al leer carpeta de cobranzas", err);
+            reject(err);
+        }
+       
+
+   
+      });
+      
+  }
 
  
   async  do_consume(){

@@ -8,32 +8,22 @@ var amqp = require('amqplib/callback_api');
 
 //const faker = require('faker');
 import * as faker from 'faker';
-import { DateTime } from "luxon";
 import { Color } from "colors";
 import {v4 as uuidv4} from 'uuid'
-//import { faker } from "../node_modules/faker";
 import { Helper } from "../helper";
 import { AppSettings } from "../settings";
 import { Person } from "../model";
 const messagesAmount=6;
 var colors = require("colors");
 var cron = require("node-cron");
-const queue = process.env.QUEUE || 'peopleArrivesQueue';
+// En el fanout la cola no importa por que el publisher le tira a todos
+//const queue = process.env.QUEUE || 'peopleArrivesQueue';
 const exchangeName = process.env.EXCHANGE || 'peopleArrivesExchange'; 
 const routingKey = process.env.ROUTING_KEY || ''; // no existe dado que es fanout
 const exchangeType = 'fanout'
 const wait = 400;
 
-const rabbitSettings ={
-  protocol:'amqp',
-  hostName:'localhost',
-  port:5672,
-  username:'guist',
-  password:'guist',
-  vhost:'/',
-  auutMechanism:['PLAIN','AMQPLAIN','EXTERNAL']
 
-}
 export class Publisher {
   //private cronJob: CronJob;
   colors: Color;
@@ -44,9 +34,7 @@ export class Publisher {
     console.log(
       colors.blue("------------------publisher started--------------------")
     );
-    if (!AppSettings.Instance) {
-      console.log("AppSettings.instance is not initialized");
-    }
+   
 
       //runs every minute
     // cron.schedule("*/1 * * * *", async () => {
@@ -56,28 +44,17 @@ export class Publisher {
     
 
      setInterval(async () => { 
+      console.log(
+        colors.blue("------------------sending--------------------")
+      );
+          await this.DoWork() ;
 
-          await this.DoWork() 
 
-        },2000);
+        },3000);
         //await this.DoWork();
   }
 
-  public  sleep(ms) {
-    return new Promise((resolve) => {
-      setTimeout(resolve,ms);
-    })
-  }
 
-  public async  sleepLoop(number, cb) {
-
-    while (number--){
-
-      await this.sleep(wait);
-      cb();
-    }
-   
- }
 
   
    public async DoWork(): Promise<void> {
@@ -90,10 +67,7 @@ export class Publisher {
             if (error1) {
                 throw error1;
             }
-
-            // intenta crear la cola si existe no pasa nada si no la crea
-            // await channel.assertQueue(queue);
-            
+           
             channel.assertExchange(exchangeName, exchangeType, {
                 durable: false // by default is true
             });
@@ -105,7 +79,7 @@ export class Publisher {
                           exchangeName, 
                           routingKey,// no existe dado que es fanout
                           Buffer.from(JSON.stringify(person)), {
-                            // persistent: true
+                             persistent: true
                       });
 
               sent
@@ -118,7 +92,12 @@ export class Publisher {
           //});
             
         });
-    
+
+       setTimeout(function() {
+
+              connection.close();
+              //process.exit(0);
+          }, 500);
      
     });
    
@@ -134,6 +113,23 @@ export class Publisher {
 
     return p;
    }
+
+
+   public  sleep(ms) {
+    return new Promise((resolve) => {
+      setTimeout(resolve,ms);
+    })
+  }
+
+  public async  sleepLoop(number, cb) {
+
+    while (number--){
+
+      await this.sleep(wait);
+      cb();
+    }
+   
+ }
 
    public async DoWork_old(): Promise<void> {
 
