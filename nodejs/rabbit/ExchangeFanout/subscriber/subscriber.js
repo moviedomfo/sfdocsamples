@@ -6,7 +6,7 @@ const queue = process.env.QUEUE || 'peopleArrivesQueue'
 const exchangeName = process.env.EXCHANGE || 'peopleArrivesExchange'; 
 const routingKey = process.env.ROUTING_KEY || ''; // no existe dado que es fanout
 const exchangeType = 'fanout'
-const wait = 400;
+
 
 console.log({
     queue,

@@ -1,4 +1,9 @@
 
+# how to start
+ 
+    npm start
+
+
 # components
  **types/node**
 'require'.   Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.ts(2580)
