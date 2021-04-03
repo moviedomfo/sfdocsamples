@@ -6,7 +6,7 @@ const queue = process.env.QUEUE || 'peopleArrivesQueue'
 const exchangeName = process.env.EXCHANGE || 'peopleArrivesExchange'; 
 const routingKey = process.env.ROUTING_KEY || ''; // no existe dado que es fanout
 const exchangeType = 'fanout'
-
+import Person from  './model.js'
 
 console.log({
     queue,
@@ -29,8 +29,8 @@ async function subscriber() {
     await channel.bindQueue(queue, exchangeName)
 
     channel.consume(queue,async (message) => {
-       
-        const person = JSON.parse(message.content.toString())
+        
+        const person = JSON.parse(message.content.toString());
         await log(person) 
         // await sleep(3000);
         // console.log(color.red('fuera del sleep'))
@@ -48,10 +48,7 @@ function sleep(ms) {
       setTimeout(resolve,ms);
     })
   }
-  function intensiveOperation() {
-    let i = 1e3
-    while (i--) {}
-}  
+  
 function log(person) {
     return new Promise((resolve) => {
         const f = new Date().toISOString()

@@ -5,19 +5,16 @@ var mv = require('mv');
 const readline = require('readline');
 var amqp = require('amqplib/callback_api');
 
-
-//const faker = require('faker');
 import * as faker from 'faker';
 import { Color } from "colors";
 import {v4 as uuidv4} from 'uuid'
 import { Helper } from "../helper";
-import { AppSettings } from "../settings";
 import { Person } from "../model";
-const messagesAmount=6;
+var messagesAmount=6;
 var colors = require("colors");
 var cron = require("node-cron");
 // En el fanout la cola no importa por que el publisher le tira a todos
-//const queue = process.env.QUEUE || 'peopleArrivesQueue';
+
 const exchangeName = process.env.EXCHANGE || 'peopleArrivesExchange'; 
 const routingKey = process.env.ROUTING_KEY || ''; // no existe dado que es fanout
 const exchangeType = 'fanout'
@@ -49,16 +46,14 @@ export class Publisher {
       );
           await this.DoWork() ;
 
-
         },3000);
-        //await this.DoWork();
   }
 
 
 
   
    public async DoWork(): Promise<void> {
-    let v = messagesAmount;
+    
     amqp.connect('amqp://localhost', function(error0, connection) {
         if (error0) {
             throw error0;
@@ -72,8 +67,8 @@ export class Publisher {
                 durable: false // by default is true
             });
 
-            //this.sleepLoop(this.messagesAmount, async () => {
-              while (v--){
+            //this.sleepLoop(messagesAmount, async () => {
+              while (messagesAmount--){
                 const person = Publisher.generatePerson();
                 const sent = channel.publish(
                           exchangeName, 
@@ -86,7 +81,7 @@ export class Publisher {
               ? console.log(`Sent person to "${exchangeName}" exchange`, person.GetFullName())
               : console.log(`Fails sending message to "${exchangeName}" exchange` )
 
-               //this.sleep(wait);
+              
 
             }
           //});
