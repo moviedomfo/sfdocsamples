@@ -6,7 +6,6 @@ const readline = require('readline');
 var amqp = require('amqplib/callback_api');
 
 import * as faker from 'faker';
-import { Color } from "colors";
 import {v4 as uuidv4} from 'uuid'
 import { Helper } from "../helper";
 import { Person } from "../model";
@@ -22,8 +21,7 @@ const wait = 400;
 
 
 export class Publisher {
-  //private cronJob: CronJob;
-  colors: Color;
+
 
   constructor() {}
 

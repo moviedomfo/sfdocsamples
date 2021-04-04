@@ -3,18 +3,15 @@ import * as faker from 'faker';
 var colors = require("colors");
 import {v4 as uuidv4} from 'uuid'
 import { Person } from './model';
-
-
 var messagesAmount = 2;
 var cron = require("node-cron");
 // En el direct la cola no importa, al igual que en el fanout
-const exchangeName = process.env.EXCHANGE || 'alertsDirectExchange'; 
+const exchangeName =  'alertsDirectExchange'; 
 const exchangeType = 'direct'
 
 
 
 export class Publisher {
-  public static  amqpConn = null;
   constructor() {}
 
   public async Start() {
@@ -30,44 +27,91 @@ export class Publisher {
     );
     
 
-      await this.DoWork(alertSeverity) ;
-      await this.DoWork(alertSeverity) ;
-      // await this.DoWork(alertSeverity) ;
-      //   setInterval(async () => {
-      //     console.log(colors.blue(`---->Sending--------------- "${alertSeverity}"-----`));
-      //     await this.DoWork(alertSeverity) ;
-      //   }, 3000);
+      //await this.DoWork(alertSeverity) ;
+      
+        setInterval(async () => {
+          console.log(colors.blue(`---->Sending--------------- "${alertSeverity}"-----`));
+            await this.DoWork(alertSeverity) ;
+        }, 3000);
+      }
+      public async DoWork(alertSeverity): Promise<void> {
+    
+        amqp.connect('amqp://localhost', function(error0, connection) {
+            if (error0) {
+                throw error0;
+            }
+            connection.createChannel(function(error1, channel) {
+                if (error1) {
+                    throw error1;
+                }
+               
+                channel.assertExchange(exchangeName, exchangeType, {
+                    durable: false // by default is true
+                });
+    
+                //this.sleepLoop(messagesAmount, async () => {
+                  while (messagesAmount--){
+                    const person = Publisher.generatePerson();
+                    const sent = channel.publish(
+                              exchangeName, 
+                              '',// no existe dado que es fanout
+                              Buffer.from(JSON.stringify(person)), {
+                                 persistent: true
+                          });
+    
+                  sent
+                  ? console.log(`Sent person to "${exchangeName}" exchange`, person.GetFullName())
+                  : console.log(`Fails sending message to "${exchangeName}" exchange` )
+    
+                  
+    
+                }
+              //});
+                
+            });
+    
+           setTimeout(function() {
+    
+                  connection.close();
+                  //process.exit(0);
+              }, 500);
+         
+        });
+       
+          
       }
 
-
-  public async DoWork(alertSeverity): Promise<void> {
+  public async DoWorkdss(alertSeverity): Promise<void> {
    
     amqp.connect("amqp://localhost" , function (error0, connection) {
+     
       if (error0) {
-        console.error("[AMQP]", error0.message);
-      }
+        throw error0;
+    }
+   
   
-      connection.on("error", function(err) {
-        if (err.message !== "Connection closing") {
-          console.error("[AMQP] conn error", err.message);
-        }
-      });
-      connection.on("close", function() {
-        console.error("[AMQP] reconnecting");
-        return; // setTimeout(this.DoWork(alertSeverity), 7000);
-      });
+      // connection.on("error", function(err) {
+      //   if (err.message !== "Connection closing") {
+      //     console.error("[AMQP] conn error", err.message);
+      //   }
+      // });
+      // connection.on("close", function() {
+      //   console.error("[AMQP] connection close");
+      //   //return; // setTimeout(this.DoWork(alertSeverity), 7000);
+      // });
     
-        // WHEN CONNECTED
-  
-      connection.createChannel(function (error1, channel) {
-      
+     // WHEN CONNECTED
+       connection.createChannel(function (error1, channel) {
+            if (error1) {
+              throw error1;
+          }
         
     
-        channel.on("error", function(err) {
-          //console.error("[AMQP] channel error", err.message);
-          console.error("[channel] error", err);
-          connection.close();
-        });
+        // channel.on("error", function(err) {
+        //   //console.error("[AMQP] channel error", err.message);
+        //   console.error("[channel] error", err);
+        //   connection.close();
+        // });
         // channel.on("close", function() {
         //   console.log("[AMQP] channel closed");
         // });
@@ -82,29 +126,26 @@ export class Publisher {
             const person = Publisher.generatePerson();
             console.log(colors.blue(`---->Sending--------------- "${alertSeverity}"-----`));  
     
-            const sent = channel.publish( 
-              exchangeName,
-              alertSeverity, // ruteo
-              Buffer.from(JSON.stringify(person)),
-              {
-                //persistent: true,
-              }
-            );
+            const sent = channel.publish(
+              exchangeName, 
+              '',// no existe dado que es fanout
+              Buffer.from(JSON.stringify(person)), {
+                 persistent: true
+          });
     
             sent
-              ? console.log(
-                  `Sent to "${exchangeName}" exchange "${exchangeName}" `,  person.GetFullName())
-                : 
-                console.log(`Fails sending message to "${exchangeName}" exchange `, person.GetFullName());
+              ? console.log(`Sent to "${exchangeName}" exchange "${exchangeName}" `,  person.GetFullName())
+              : console.log(`Fails sending message to "${exchangeName}" exchange `, person.GetFullName());
       
         }
         //Publisher.exitAfterSend();
-        setTimeout(function () {
-          connection.close();
-       //process.exit(0);
-        }, 500);
+      
       });
-    
+
+      setTimeout(function () {
+        connection.close();
+        //process.exit(0);
+      }, 500);
   
   
     });
