@@ -2,38 +2,41 @@
 
 const color = require('colors') 
 const amqp = require('amqplib')
-const queue = process.env.QUEUE || 'peopleArrivesQueue'
-const exchangeName = process.env.EXCHANGE || 'peopleArrivesExchange'; 
-const routingKey = process.env.ROUTING_KEY || ''; // no existe dado que es fanout
-const exchangeType = 'fanout'
+const queue = process.env.QUEUE || 'alerts'
+const exchangeName = process.env.EXCHANGE || 'alertsDirectExchange'; 
+//const pattern = process.env.PATTERN || 'orange'; 
+var pattern = 'insteretsss'; 
+const exchangeType = 'direct'
 
 
 console.log({
     queue,
-    exchangeName
+    exchangeName,
+    pattern
 })
 
-
-
 async function subscriber() {
+    // leemos los parametros o args
+    const args = process.argv.slice(2);
+    // routingKey
+    pattern  = args.length > 0 ? args[2] : "insteretsss";
+    console.log(pattern);
+    console.log(color.blue(`------------------Listenning Direct Ex ruting  "${pattern}" --------------------` )  );
+
     const connection = await amqp.connect('amqp://localhost')
     const channel = await connection.createChannel()
 
     await channel.assertQueue(queue)
-
-    //await channel.assertExchange(exchangeName, exchangeType)
     await channel.assertExchange(exchangeName, exchangeType, {
         durable: false // by default is true
     });
-
-    await channel.bindQueue(queue, exchangeName)
+    await channel.bindQueue(queue, exchangeName,pattern)
 
     channel.consume(queue,async (message) => {
         
         const person = JSON.parse(message.content.toString());
         await log(person) 
-        // await sleep(3000);
-        // console.log(color.red('fuera del sleep'))
+        
         channel.ack(message)
     })
 }
