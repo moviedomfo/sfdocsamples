@@ -5976,3 +5976,6 @@ dist/
 node_modules/
 *_logs.txt
 
+GoogleGmailAPi/GoogleGmailAPi/bin
+GoogleGmailAPi/GoogleGmailAPi/obj
+GoogleGmailAPi/GoogleGmailAPi/packages
