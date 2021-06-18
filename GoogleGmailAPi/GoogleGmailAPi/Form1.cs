@@ -29,7 +29,11 @@ namespace GoogleGmailAPi
         {
             try
             {
-                GmailWrapper.Send1(txtTo.Text, txtBody.Text);
+                
+                    GmailWrapper.SendHTMLmessage(txtTo.Text);
+                GmailWrapper.SendHTMLmessage("catalina.oviedo.vilchez@gmail.com");
+                GmailWrapper.SendHTMLmessage("Celam_walter@hotmail.com");
+                // GmailWrapper.Send1(txtTo.Text, txtBody.Text);
             }
             catch(Exception ex)
             {
