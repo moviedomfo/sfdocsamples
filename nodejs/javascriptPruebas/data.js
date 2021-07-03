@@ -13,3 +13,39 @@ const products = [
 ]
 
 module.exports = products;
+
+
+const sociosMutual =
+ [
+    {
+      nroSocio: 5001,
+      name: "Walter Parra",
+      adherentes: [
+        {
+          orden: 1,
+          name: "Alejo Parra"
+        },
+        {
+          nroSocio: 2,
+          name: "Maria Parra"
+        },
+        
+      ]
+    },
+    {
+      nroSocio: 1578,
+      name: "Alinsgston Floyd",
+      adherentes: [
+        {
+          orden: 1,
+          name: "Jonn "
+        },
+        {
+          nroSocio: 2,
+          name: "Maria "
+        },
+        
+      ]
+    }
+  ]
+;

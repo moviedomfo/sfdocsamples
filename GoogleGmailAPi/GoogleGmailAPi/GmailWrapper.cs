@@ -65,16 +65,14 @@ namespace GoogleGmailAPi
         {
             //Create Message
             MailMessage mail = new MailMessage();
-            mail.Subject = "Facturación disponible CELAM: Período 18    ";
+            mail.Subject = "Facturación disponible CELAM: Período 18";
             mail.Body = FillBody(socio,new StringBuilder (table)).ToString();
             mail.From = new MailAddress("celamltda@gmail.com", "CELAM Facturacion");
-            
-
             mail.To.Add(new MailAddress(to));
             mail.IsBodyHtml = true;
-            
             string attImg = "img_header_content_id.jpg";
             mail.Attachments.Add(new Attachment(attImg));
+ 
             MimeKit.MimeMessage mimeMessage = MimeKit.MimeMessage.CreateFromMailMessage(mail);
 
             Message message = new Message();
@@ -94,7 +92,6 @@ namespace GoogleGmailAPi
                     "user",
                     CancellationToken.None,
                     new FileDataStore(credPath, true)).Result;
-                // Console.WriteLine("Credential file saved to: " + credPath);
             }
 
             // Create Gmail API service.
