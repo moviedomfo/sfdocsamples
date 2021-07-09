@@ -1,6 +1,7 @@
 
 var colors = require('colors');
 
+// using spread operator to clone array
 
 const numeros = [1,2,3,4,5,6];
 const letras = ['A','B','C','D','E'];
@@ -12,7 +13,7 @@ console.log(numeros);
 
 console.log();
 
-//using spread operator to clone array
+
 const arrayCopy = [...numeros];
 arrayCopy[0] = 20000;
 arrayCopy[4] = 4222.5;

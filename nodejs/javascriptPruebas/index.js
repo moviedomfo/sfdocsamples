@@ -1,6 +1,7 @@
 const prod = require('./data.js')
 var colors = require('colors');
 
+// Uso de Spreead operator
 
 console.log("--------------forEach----------------".blue);
 prod.forEach(i=>{
@@ -11,7 +12,7 @@ prod.forEach(i=>{
 //     console.log(i.nombre.yellow);    
 // });
 
-console.log(colors.cyan("--------------Uso de Spread operator----------------"));
+console.log(colors.cyan("--------------Uso de Spreead operator----------------"));
 
 //using spread operator
 //const arrayCopy = [...prod];

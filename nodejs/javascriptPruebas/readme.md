@@ -42,3 +42,11 @@ Solucion 2 --set setting headers
 
 A Complete Guide to Securely Connecting Node.js and Axios (JS) Using Mutual TLS
 https://smallstep.com/hello-mtls/doc/combined/nodejs/axios
+
+
+## index index Spreed operator Samples
+## index3 y 4 Uso de map
+## index5 , 6 7 Async Callbacks unirest Axios fetch 
+## index8 var let const
+## Operaciones con Arrays
+## index9 Desestructuración + Arrow Function
