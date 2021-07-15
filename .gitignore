@@ -5979,3 +5979,6 @@ node_modules/
 GoogleGmailAPi/GoogleGmailAPi/bin
 GoogleGmailAPi/GoogleGmailAPi/obj
 GoogleGmailAPi/GoogleGmailAPi/packages
+bin/
+obj/
+packages/

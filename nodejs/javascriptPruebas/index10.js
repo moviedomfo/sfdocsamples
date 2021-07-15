@@ -52,7 +52,7 @@ const person1 = { name: 'Edward', value: 21 };
 
 const person2 = {...person1,['key']:1000};
 
-console.log(person2);
+// console.log(person2);
 // Creamos otro objeto con copia  del 
 // person2 + nomnbre como atributo = al objeto mismo, 
 // Tipo = una constante
