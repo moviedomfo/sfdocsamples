@@ -19,7 +19,12 @@ namespace pelsoft.auth.common
 
         public static SecurityProvider Get(string name, SecurityProviders providers)
         {
-            return providers.Where(p => p.Name.ToLowerInvariant().Equals(name.ToLowerInvariant())).FirstOrDefault();
+            var prov =  providers.Where(p => p.Name.ToLowerInvariant().Equals(name.ToLowerInvariant())).FirstOrDefault();
+
+            if (prov == null)
+                throw new Exception("No existe el proveedor " + name);
+
+            return prov;
         }
         
     }

@@ -33,7 +33,7 @@ namespace pelsoft.auth
         {
             //var provider = fwkSec.SecurityManager.get_secConfig().GetByName(securityProvider.ToLowerInvariant());
             // var provider = Providers.Where(p => p.Name.ToLowerInvariant().Equals(securityProvider.ToLowerInvariant()));
-
+            //https://vmsdurano.com/-net-core-3-1-signing-jwt-with-rsa/#google_vignette
             var securityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(provider.RsaPublicKey));
             var signingCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 

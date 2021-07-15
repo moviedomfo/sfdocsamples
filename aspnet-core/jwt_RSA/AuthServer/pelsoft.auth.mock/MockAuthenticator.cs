@@ -29,7 +29,7 @@ namespace pelsoft.auth.Authenticators
             var username = caseInsensitiveParameters["username"].GetString();
             var password = caseInsensitiveParameters["password"].GetString();
 
-
+            
 
             var moklogingProviders = moklogings.Where(p => p.provider.Equals(req.security_provider, StringComparison.InvariantCultureIgnoreCase));
 
