@@ -62,3 +62,7 @@ const person3 = {
   ['Tipo']: 'EMPLEADO'};
 
 console.log(person3);
+
+
+
+

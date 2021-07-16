@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace pelsoft.api.helpers
 {
+    
     public class apiHelper
     {
         static string folderName_web = "/store/Images/";

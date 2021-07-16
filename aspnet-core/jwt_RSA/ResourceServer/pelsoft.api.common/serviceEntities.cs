@@ -270,20 +270,6 @@ namespace  pelsoft.api.common
         }
 
 
-        //public static void setProxy()
-        //{
-        //    if (apiAppSettings.apiConfig.proxyEnabled)
-        //    {
-        //        var proxyURI = new Uri(string.Format("http://{0}:{1}", apiAppSettings.apiConfig.proxyName, apiAppSettings.apiConfig.proxyPort));
-        //        proxy = new HttpClientHandler
-        //        {
-        //            Proxy = new WebProxy(proxyURI, false),
-        //            UseProxy = true,
-        //            Credentials = new NetworkCredential(apiAppSettings.apiConfig.proxyUser, apiAppSettings.apiConfig.proxyPassword,
-        //            apiAppSettings.apiConfig.proxyDomain)
-        //        };
-        //    }
-        //}
 
     }
 
@@ -325,6 +311,8 @@ namespace  pelsoft.api.common
         }
 
         public string api_secretKey { get; set; }
+        public string api_RsaPrivateKey { get; set; }
+        public string api_RsaPublicKey { get; set; }
         public string api_audienceToken { get; set; }
         public string api_issuerToken { get; set; }
         

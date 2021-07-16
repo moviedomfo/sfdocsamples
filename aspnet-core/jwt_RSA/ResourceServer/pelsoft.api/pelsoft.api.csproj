@@ -11,7 +11,7 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <DocumentationFile>E:\projects\pelsoftRepos\setelliteApps\pelsoft_API\trunk\meucciAPI\pelsoft.api\pelsoft.api.xml</DocumentationFile>
+    <DocumentationFile>E:\projects\sfdocsamples\aspnet-core\jwt_RSA\ResourceServer\pelsoft.api\pelsoft.api.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

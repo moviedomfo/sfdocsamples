@@ -47,14 +47,15 @@ namespace pelsoft.auth.Authenticators
             {
                 var user = new
                 {
-                    Email = "",
+                    Email = "mockuser@pelsoft.com",
                     Id = Guid.NewGuid(),
                     UserName = username
                 };
 
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity();
                 claimsIdentity.AddClaim(new Claim(ClaimTypes.Name.ToString(), user.UserName));
-
+                claimsIdentity.AddClaim(new Claim(ClaimTypes.Email.ToString(), user.Email));
+                claimsIdentity.AddClaim(new Claim(ClaimTypes.NameIdentifier.ToString(), user.UserName));
                 return new UserClaims
                 {
                     UserId = user.Id.ToString(),

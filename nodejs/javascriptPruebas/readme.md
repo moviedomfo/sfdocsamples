@@ -45,7 +45,8 @@ https://smallstep.com/hello-mtls/doc/combined/nodejs/axios
 
 
 ## index index Spreed operator Samples
-## index3 y 4 Uso de map
+## index3  Uso de map
+## index4 -
 ## index5 , 6 7 Async Callbacks unirest Axios fetch 
 ## index8 var let const
 ## Operaciones con Arrays
