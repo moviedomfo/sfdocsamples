@@ -54,11 +54,8 @@ namespace pelsoft.auth.Controllers
 
                     var user = _authenticator.FetchUser(req, tokenData.UserID);
                     
-                    var claims= new Claim[] {
-          
-                    new Claim("FirstName", user.),
-                    new Claim(claims.LastName, claims.LastName),
-                    new Claim(nameof(claims.Email), claims.Email)
+                  
+                  
                     var jwt = TokenGenerator.GenerateToken(user.Claims, provider);
                     var refreshTokenString = _refreshTokenProvider.RefreshToken(tokenData, IpAddress()).Token;
 

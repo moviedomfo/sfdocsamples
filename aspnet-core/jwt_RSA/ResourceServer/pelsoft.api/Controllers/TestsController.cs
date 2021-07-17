@@ -2,6 +2,7 @@
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using static Microsoft.AspNetCore.Http.StatusCodes;
 
 namespace pelsoft.api.Controllers
@@ -28,7 +29,7 @@ namespace pelsoft.api.Controllers
             var claims = new JwtCustomClaims
             {
                 FirstName = "Vynn",
-                LastName = "Durano",
+                NameIdentifier = "Durano",
                 Email = "whatever@email.com"
             };
 
@@ -51,12 +52,13 @@ namespace pelsoft.api.Controllers
                 var jwtToken = handler.ReadToken(req.token) as JwtSecurityToken;
                 try
                 {
+            
                     var claims = new JwtCustomClaims
                     {
-                        FirstName = jwtToken.Claims.First(claim => claim.Type == "Name").Value,
-                        NameIdentifier = jwtToken.Claims.First(claim => claim.Type == "NameIdentifier").Value,
-                        Email = jwtToken.Claims.First(claim => claim.Type == "Email").Value
-                    };
+                      FirstName = jwtToken.Claims.First(claim => claim.Type == ClaimTypes.Name).Value,
+                     NameIdentifier = jwtToken.Claims.First(claim => claim.Type.Contains("nameidentifier")).Value,
+                     Email = jwtToken.Claims.First(claim => claim.Type == ClaimTypes.Email).Value
+                };
 
                     return Ok(claims);
                 }catch(Exception ex)

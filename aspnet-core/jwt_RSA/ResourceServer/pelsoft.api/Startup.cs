@@ -90,15 +90,12 @@ namespace pelsoft.api
 
      
 
-           var publicKey = apiAppSettings.apiConfig.api_RsaPublicKey.ToByteArray();
-         
-            //var  api_RsaPublicKey = "MIIBigKCAYEAzBH2scmajfwr+9uvNDX2Yo+sqa6T1Nc8tsWnmn0P48msdH498qOZa4fR6FFZ/vz4zyN2juPoI1l7eTfSICVByYt+4ye1Pqi8P0ZiGGfbPtpKM3AY+hogkQUvNBSiJDqzOb61ysubwX9k6w39czd/Yr746BZiZgjBSvJod8MAHvn5a8FycYnFhzOyGgJraxWA0wgpyiXMyz2c9lHA86H385WK/1QnS3JDo20Ga4oN7YNw6+kjFnrBapcBkVk14nEh9ibD89+m0NQkWuXHTB2yVHJvXX27bwKqS6TR263jBR/hdyIuaJOgqWTTG4z4Q+yPkxhVPDBR4Vpe5RKD8dxnuE9MfN35hYdjONkug3LIc4QjG1OwRjE8TmG7x8EOAugxccz5K7IJzb4mPk7vR4zpNDA/88tTdxb4QLZcowsCLuLZUF5XDn/d5DiUBj289T8145/4XGRGEa0ze6O5wQyhcMb2Y3oe58MLUe1aRsuaXCyfSJN5sPjoQV6c6uFEdCIJAgMBAAE=".ToByteArray();
-            
+           
 
-             using RSA rsa = RSA.Create();
+            var publicKey = apiAppSettings.apiConfig.api_RsaPublicKey.ToByteArray();
 
+            using RSA rsa = RSA.Create();
             rsa.ImportRSAPublicKey(publicKey, out _);
-
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
