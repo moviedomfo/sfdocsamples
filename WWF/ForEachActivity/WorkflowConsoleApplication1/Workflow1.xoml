@@ -1,7 +1,0 @@
-﻿<SequentialWorkflowActivity x:Class="WorkflowConsoleApplication1.Workflow1" Initialized="InitializeCollection" x:Name="Workflow1" xmlns:ns0="clr-namespace:ForEachActivity;Assembly=ForEachActivity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow">
-	<ns0:ForEach Iterating="OnEachHandler" x:Name="forEach1" Items="{x:Null}" Description="A generic flow control activity that executes once for each item in a collection.">
-		<CodeActivity x:Name="codeActivity1" ExecuteCode="code1_ExecuteCode" />
-		<CancellationHandlerActivity x:Name="cancellationHandlerActivity1" />
-		<FaultHandlersActivity x:Name="faultHandlersActivity1" />
-	</ns0:ForEach>
-</SequentialWorkflowActivity>

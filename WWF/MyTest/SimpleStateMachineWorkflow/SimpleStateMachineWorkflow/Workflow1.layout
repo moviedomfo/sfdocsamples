@@ -1,7 +1,0 @@
-﻿<StateMachineWorkflowDesigner xmlns:ns0="clr-namespace:System.Drawing;Assembly=System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Name="OrderProcessingWorkflow" Location="30; 30" Size="1075; 514" AutoSizeMargin="16; 24" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow">
-	<StateMachineWorkflowDesigner.Designers>
-		<StateDesigner Name="WaitingForOrderStateActivity" Location="288; 91" Size="176; 80" AutoSizeMargin="16; 24" />
-		<StateDesigner Name="OrderProcessingStateActivity" Location="473; 167" Size="175; 80" AutoSizeMargin="16; 24" />
-		<StateDesigner Name="OrderCompletedStateActivity" Location="395; 289" Size="176; 80" AutoSizeMargin="16; 24" />
-	</StateMachineWorkflowDesigner.Designers>
-</StateMachineWorkflowDesigner>

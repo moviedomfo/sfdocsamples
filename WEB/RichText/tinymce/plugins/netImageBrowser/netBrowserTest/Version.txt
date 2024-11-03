@@ -1,9 +1,0 @@
-﻿Version: 1.0
-
-author : iLyas Osmanogullari
-
-authorurl : http://ilyax.com
-
-infourl : http://ilyax.com/imagebrowser/
-
-

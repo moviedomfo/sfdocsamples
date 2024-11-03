@@ -1,1 +1,0 @@
-SecureWcf posee un buen ejemplo de manejo

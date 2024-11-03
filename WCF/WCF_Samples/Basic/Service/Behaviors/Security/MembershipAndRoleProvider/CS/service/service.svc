@@ -1,2 +1,0 @@
-<%@ServiceHost language="c#" Factory="Microsoft.ServiceModel.Samples.CalculatorServiceHostFactory" %>
-

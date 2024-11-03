@@ -1,9 +1,0 @@
-
-<Events>
-  <Event Date="2015-04-01T15:18:54.1741227-03:00" Machine="SANTANA" User="moviedo" Id="10ff483e-e9fb-49f4-bddd-47ae77ed9338" LogType="Error" AppId="">
-    <EntityState>Unchanged</EntityState>
-    <Message><![CDATA[Se ha intentado levantar el despachador de servicios.Verifique que esten correctamente configurados en el .config los AppSettings.
-ServiceDispatcherName y ServiceDispatcherConnection
-]]></Message>
-  </Event>
-</Events>

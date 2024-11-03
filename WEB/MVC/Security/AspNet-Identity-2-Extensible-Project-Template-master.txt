@@ -1,2 +1,0 @@
-﻿AspNet Identity 2.0 Extensible Project Template
-This project expands upon the work done by the ASP.NET Identity Team 

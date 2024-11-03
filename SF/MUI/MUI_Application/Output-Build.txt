@@ -1,3 +1,0 @@
------- Build started: Project: WindowsFormsApplication1, Configuration: Debug Any CPU ------
-WindowsFormsApplication1 -> D:\Projects\DocEjemplos\MUI\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
-========== Build: 1 succeeded or up-to-date, 0 failed, 0 skipped ==========

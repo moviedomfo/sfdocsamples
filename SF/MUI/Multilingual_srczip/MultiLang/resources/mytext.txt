@@ -1,9 +1,0 @@
-greeting=Hi There!
-article1=Here are some words.
-article2=Here are some more words.
-article3=And here are the rest of the words.
-langselect=Please select your language
-enterfname=Please enter your first name
-enterlname=Please enter your last name
-enteraddr=Please enter your address
-submitbtnval=Submit

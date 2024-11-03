@@ -1,9 +1,0 @@
-﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WebService_Secure.Properties" GeneratedClassName="Settings">
-  <Profiles />
-  <Settings>
-    <Setting Name="WebService_Secure_gastosWs_SingleService" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost/gastosws/SingleService.asmx</Value>
-    </Setting>
-  </Settings>
-</SettingsFile>
